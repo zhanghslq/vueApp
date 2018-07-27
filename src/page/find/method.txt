@@ -1,0 +1,65 @@
+ controlNum: function (){
+    //封装一个限制字数方法
+    var checkStrLengths = function (str, maxLength) {
+      var maxLength = maxLength;
+      var result = 0;
+      if (str && str.length > maxLength) {
+        result = maxLength;
+      } else {
+        result = str.length;
+      }
+      return result;
+    }
+
+    //监听输入
+    $(".wishContent").on('input propertychange', function () {
+
+      //获取输入内容
+      var userDesc = $(this).val();
+
+      //判断字数
+      var len;
+      if (userDesc) {
+        len = checkStrLengths(userDesc, 800);
+      } else {
+        len = 0
+      }
+
+      //显示字数
+      $(".wordsNum").html(len + '/800');
+    });
+  },
+    findSlide1:function (){
+    var swiper1 = new Swiper('.swiper-container', {
+      slidesPerView: 2.2,
+      spaceBetween: 8,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  },
+    findSlide2: function (){
+    var swiper1 = new Swiper('.swiper-container2', {
+      slidesPerView: 3.4,
+      spaceBetween: 8,
+      pagination: {
+        el: '.swiper-pagination2',
+        clickable: true,
+      },
+    });
+  },
+    findPageTab:  function (){
+    var $li = $('.tabNav a');
+    var $ul = $('.tabList .tabListInfo');
+    $("#navcon01").css('height',$ul.eq(0).height())
+    $li.click(function(){
+      var $this = $(this);
+      var $t = $this.index();
+      $li.removeClass();
+      $this.addClass('Cur');
+      $ul.css('display','none');
+      $ul.eq($t).css('display','block');
+      $("#navcon01").css('height',$ul.eq($t).height())
+    })
+  }

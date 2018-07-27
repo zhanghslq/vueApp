@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+/**
+*个人中心
+*@file:personalCenter.css;
+*@create author:gj;
+*@create time 2018/07/24
+**/
+
+/*X币 开始*/
+.currencyMain{
+	height: auto;
+	overflow: hidden;
+}
+.currencyMain .currencyMainTop{
+	height: auto;
+	overflow: hidden;
+}
+.currencyMainTop h3{
+	font-size: 0.28rem;
+	color:#444;
+	text-align: center;
+	margin:1.3rem 0 0.53rem 0;
+}
+.currencyMainTop .money{
+	color:#ecbc68;
+	font-size: 1rem;
+	text-align: center;
+}
+.currencyMainTop .operation{
+	height: auto;
+	overflow: hidden;
+	margin:1.8rem 0 1.1rem 0;
+}
+.currencyMainTop .operation a{
+	width: 2.82rem;
+	height: 0.66rem;
+	line-height: 0.66rem;
+	text-align: center;
+	background: #ecbc68;
+	display: block;
+	float: left;
+	color:#fff;
+	text-decoration: none;
+	font-size: 0.32rem;
+	margin-left: 0.68rem;
+}
+.currencyMainTop .explain{
+	height: auto;
+	overflow: hidden;
+	margin:0 0.7rem;
+}
+.explain .explainInfo{
+	height: auto;
+	overflow: hidden;
+	margin-bottom: 0.33rem;
+}
+.explain .explainInfo i.yel,
+.explain .explainInfo i.rd{
+	width: 0.1rem;
+	height: 0.1rem;
+	background: #ecbc68;
+	display: inline-block;
+	float:left;
+	margin:0.1rem 0.15rem 0 0;
+}
+.explain .explainInfo i.rd{
+	background:#eb0000;
+}
+.explain .explainInfo span{
+	font-size: 0.24rem;
+	color:#7b7b7b;
+	display: inline-block;
+	float: left;
+}
+.explain .explainInfo em{
+	display: inline-block;
+	float: right;
+	font-size:0.24rem;
+	color:#444;
+}
+.explain .explainInfo p{
+	color:#c2c2c2;
+	font-size: 0.22rem;
+}
+.currencyMain .currencyMainBottom{
+	width:7.5rem;
+	height: 2.16rem;
+	background: url(../../images/secondLevel/currencyPic.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	bottom: 0;
+}
+.currencyMain .currencyMainBottom p{
+	text-align: center;
+	margin-top: 1.5rem;
+	font-size:0.24rem;
+	color:#7b7b7b;
+}
+.currencyMain .currencyMainBottom p a{
+	color:#ecbc68;
+}
+
+
+
+
+
+
+
+/*X币 结束*/

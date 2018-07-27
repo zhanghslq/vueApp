@@ -1,0 +1,264 @@
+@charset "UTF-8";
+
+/**
+*登录样式
+*@file:login.css;
+*@create author:gj;
+*@create time 2018/07/04
+**/
+.logoIcon{
+  width:2.52rem;
+  height: 2.79rem;
+  margin:2.08rem auto 2.1rem;
+  background: url(../../images/common/logo.png) no-repeat;
+  background-size:100%;
+}
+.logoMain{
+  text-align: center;
+}
+.logoMain p{
+  font-size:0.24rem;
+  color:#ecbc68;
+}
+.logoMain .authorization,
+.mobileMain .logonBtn{
+  display: block;
+  background: -webkit-linear-gradient(left, #f4e28f , #ecbc68);
+  background: -o-linear-gradient(right, #f4e28f, #ecbc68);
+  background: -moz-linear-gradient(right, #f4e28f, #ecbc68);
+  background: linear-gradient(to right, #f4e28f , #ecbc68);
+  -webkit-box-shadow:0.2rem 0.1rem 0.5rem #d3d4d7;
+  -moz-box-shadow:0.2rem 0.1rem 0.5rem #d3d4d7;
+  box-shadow:0.2rem 0.1rem 0.5rem #d3d4d7;
+}
+.logoMain .authorization{
+  width: 6.32rem;
+  height: 0.8rem;
+  line-height: 0.76rem;
+  margin:0.2rem auto;
+}
+.logoMain .authorization em{
+  width:0.44rem;
+  height: 0.37rem;
+  display: inline-block;
+  float: left;
+  margin:0.2rem 0.15rem 0 1.66rem;
+  background: url(../../images/common/weChatIcon.png) no-repeat;
+  background-size:100%;
+}
+.logoMain .authorization span{
+  color:#fff;
+  font-size: 0.38rem;
+  display: inline-block;
+  float: left;
+}
+.logoMain .phoneLogin{
+  font-size: 0.28rem;
+  color:#ecbc68;
+  display: block;
+  margin-top: 0.3rem;
+}
+.mobileMain{
+  height: 100%;
+  position: relative;
+}
+.mobileMain p{
+  font-size: 0.34rem;
+  color:#ecbc68;
+  text-align: center;
+  margin:0.6rem 0;
+}
+.mobileMain .mobileInfo{
+  width: 6.7rem;
+  height: 1.02rem;
+  background: #fff;
+  margin:0 auto 0.2rem;
+  -webkit-box-shadow:0.2rem #c8c8c8;
+  -moz-box-shadow:0.2rem #c8c8c8;
+  box-shadow:0.2rem #c8c8c8;
+}
+.mobileInfo #mobile-number{
+  width:6.1rem;
+  height: 0.98rem;
+  line-height:0.98rem;
+  margin:0 0 0 0.37rem;
+  border:none;
+}
+.mobileInfo .codeNum{
+  width: 4rem;
+  height: 0.98rem;
+  line-height: 0.98rem;
+  margin-left: 0.3rem;
+  border:none;
+  font-size: 0.26rem;
+  float: left;
+}
+.mobileInfo .codeBtn{
+  width:2.2rem;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  border-left: 2px solid #f4e28f;
+  float: left;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+.mobileInfo .codeBtn a{
+  font-size:0.26rem;
+  color:#ecbc68;
+  text-decoration: underline;
+}
+.mobileMain .voice{
+  margin:0.05rem 0 0 0.42rem;
+  font-size:0.26rem;
+  color:#ecbc68;
+}
+.mobileMain .voice a{
+  color:#ecbc68;
+  text-decoration: underline;
+}
+.mobileMain .logonBtn{
+  width:6.7rem;
+  height: 0.99rem;
+  line-height: 0.99rem;
+  text-align: center;
+  color:#fff;
+  font-size:0.38rem;
+  margin:0.6rem auto;
+}
+.mobileInfo .areaCode{
+  width: 0.9rem;
+  height: 1.02rem;
+  line-height: 1.02rem;
+  display: block;
+  margin-left: 0.3rem;
+  font-size:0.26rem;
+  color:#ecbc68;
+  float: left;
+  position: relative;
+}
+.mobileInfo .areaCode em{
+  width: 0.13rem;
+  height: 0.11rem;
+  display: block;
+  background: url(../../images/common/downIcon.png) no-repeat;
+  background-size:100%;
+  position: absolute;
+  top:0.45rem;
+  right: 0;
+}
+.mobileInfo .phoneNum{
+  width:4.8rem;
+  height: 0.92rem;
+  line-height: 1.02rem;
+  margin-left: 0.3rem;
+  border:none;
+  color:#666;
+  font-size: 0.26rem;
+}
+/*选择国家*/
+.countryAreaMain{
+  height: auto;
+  overflow:hidden;
+  position: relative;
+  margin-top: 0.9rem;
+}
+.countryAreaMain ul{
+  height: auto;
+  overflow:hidden;
+  background: #fff;
+}
+.countryAreaMain ul li{
+  height: 0.72rem;
+  line-height: 0.72rem;
+  overflow:hidden;
+  margin:0 0.4rem;
+  padding:0 0.06rem;
+  border-bottom: 0.01rem solid #f6f6f6;
+}
+.countryAreaMain ul li span{
+  font-size: 0.26rem;
+  color:#000;
+  display: block;
+  float: left;
+}
+.countryAreaMain ul li em{
+  display: block;
+  float: right;
+  color:#969696;
+  font-size: 0.26rem;
+}
+.countryAreaMain ul li.letter{
+  margin:0;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  background:#f7f7f7;
+  padding-left: 0.5rem;
+  color:#898989;
+}
+.countryAreaMain .letterList{
+  width:0.2rem;
+  text-align: center;
+  height: auto;
+  overflow:hidden;
+  position: fixed;
+  top:30%;
+  right: 0.08rem;
+  z-index: 99;
+  font-size: 0.12rem;
+}
+.tregionList{
+  top:38% !important;
+}
+.promptText{
+  height: 0.64rem;
+  line-height: 0.64rem;
+  background: #9d9d9d;
+  color:#fff;
+  padding-left: 0.3rem;
+}
+.smallPrompt{
+  height: 0.54rem;
+  line-height: 0.54rem;
+  background:#f0f0f0;
+  color:#7b7b7b;
+  padding-left: 0.3rem;
+}
+.defaultAddress{
+  height: 0.83rem;
+  line-height: 0.83rem;
+  background: #fff;
+  padding-left: 0.3rem;
+}
+.defaultAddress span{
+  color:#444;
+  font-size:0.28rem;
+  display: block;
+  float: left;
+  font-weight: bolder;
+}
+.defaultAddress a{
+  padding:0 0.1rem;
+  height: 0.26rem;
+  line-height: 0.26rem;
+  display: block;
+  float: left;
+  background: #f0f0f0;
+  font-size: 0.18rem;
+  color:#7b7b7b;
+  margin:0.3rem 0 0 0.113rem;
+}
+.location{
+  height: 1.4rem;
+  background: #fff;
+}
+.location span{
+  height: 0.72rem;
+  line-height: 0.72rem;
+  border:0.02rem solid #ebebeb;
+  background: #f0f0f0;
+  display: inline-block;
+  font-size:0.28rem;
+  padding:0 0.58rem;
+  color:#444;
+  margin:0.28rem 0 0 0.3rem;
+}

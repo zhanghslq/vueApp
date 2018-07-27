@@ -1,0 +1,664 @@
+@charset "UTF-8";
+
+/**
+*二级页样式
+*@file:secondLevel.css;
+*@create author:gj;
+*@create time 2018/07/05
+**/
+#nav .bar {
+	width:65px;
+	height:3px;
+	position:absolute;
+	bottom:0;
+	left:0;
+}
+#nav .bar .color {
+	width:65px;
+	margin:0 auto;
+	height:3px;
+	background:#ecbc68;
+}
+/*猩际出品*/
+.carouselMain{
+	height:3rem;
+	background:red;
+}
+.advantage{
+	height:0.88rem;
+	overflow:hidden;
+	line-height:0.88rem;
+	background:#ecbc68;
+}
+.advantage span{
+	font-size:0.24rem;
+	color:#fff;
+	display:block;
+	float:left;
+	margin:0 0 0 0.6rem;
+}
+.advantage span em.globalIcon{
+	width:0.27rem;
+	height:0.27rem;
+	display:block;
+	float:left;
+	margin:0.3rem 0.1rem 0 0;
+	background:url(../../images/secondLevel/globalIcon.png) no-repeat;
+	background-size:100%;
+}
+.advantage span em.strictIcon{
+	width:0.22rem;
+	height:0.24rem;
+	display:block;
+	float:left;
+	margin:0.33rem 0.1rem 0 0;
+	background:url(../../images/secondLevel/strictIcon.png) no-repeat;
+	background-size:100%;
+} 
+.advantage span em.afterSale{
+	width:0.27rem;
+	height:0.27rem;
+	display:block;
+	float:left;
+	margin:0.33rem 0.1rem 0 0;
+	background:url(../../images/secondLevel/afterSale.png) no-repeat;
+	background-size:100%;
+} 
+.recommendation{
+	height:auto;
+	overflow:hidden;
+	padding-top:0.33rem;
+	margin-bottom: 0.6rem;
+}
+.recommendation .titleIng,
+.newGood .titleIng,
+.selectedSeries .titleIng{
+	height:auto;
+	overflow:hidden;
+	text-align:center;
+	margin-bottom:0.4rem;
+}
+.recommendation .titleIng h2,
+.newGood .titleIng h2,
+.selectedSeries .titleIng h2{
+	font-size:0.4rem;
+	font-weight:bolder;
+	color:#444;
+	display:block;
+}
+.recommendation .titleIng span,
+.newGood .titleIng span,
+.selectedSeries .titleIng span{
+	font-size:0.17rem;
+	color:#666;
+	display:block;
+	margin-top:0.05rem;
+	letter-spacing:0.04rem;
+}
+.recommendation .listMain{
+	height:auto;
+	overflow:hidden;
+	padding-left:0.24rem;
+}
+.recommendation .listMain a{
+	width:3.48rem;
+	height:3.46rem;
+	background:#fff;
+	display:block;
+	float:left;
+	overflow:hidden;
+	margin:0 0.06rem 0.06rem 0;
+	position:relative;
+}
+.recommendation .listMain a em{
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+	border-bottom:0.25rem solid transparent;
+	border-right:0.25rem solid transparent;
+	border-top:0.25rem solid #ecbc68;
+	border-left:0.25rem solid #ecbc68;
+    width:0;
+    height:0;
+}
+.recommendation .listMain .listPic{
+	width:3.48rem;
+	height: 2.4rem;
+	margin-bottom:0.15rem;
+}
+.recommendation .listMain a img{
+	max-width: 100%;
+	height: 100%;
+	display: block;
+	margin:0.15rem auto 0;
+}
+.recommendation .listMain a h3{
+	height:0.35rem;
+	overflow:hidden;
+	text-align:center;
+	margin:0 0.08rem;
+	font-weight:bolder;
+	font-size:0.26rem;
+	color:#444;
+}
+.recommendation .listMain a span{
+	text-align:center;
+	margin:0 0.08rem;
+	font-size:0.23rem;
+	color:#666;
+	display:block;
+}
+.newGood,
+.selectedSeries{
+	height: auto;
+	overflow:hidden;
+	margin-bottom: 0.6rem;
+}
+.newGood .newGoodMain{
+	height: auto;
+	overflow:hidden;
+}
+.newGood .newGoodMain li{
+	height: 2.64rem;
+	width:7rem;
+	overflow:hidden;
+	margin:0 auto 0.09rem;
+	background: #fff;
+}
+.newGoodMain li .newGoodLeft{
+	width:3.13rem;
+	height: 2.64rem;
+	overflow:hidden;
+	float:left;
+	display: block;
+}
+.newGoodMain li .newGoodLeft img{
+	max-width:100%;
+	height: 100%;
+	display: block;
+	margin:0 auto;
+}
+.newGoodMain li .newGoodRight{
+	width: 3.58rem;
+	float: right;
+}
+.newGoodMain li .newGoodRight h3{
+	font-size: 0.3rem;
+	color:#444;
+	font-weight: bolder;
+	margin:0.65rem 0 0.08rem 0;
+}
+.newGoodMain li .newGoodRight span{
+	display: block;
+	font-size:0.24rem;
+	color:#666;
+}
+.newGoodMain li .newGoodRight .purchaseBtn{
+	width:1.5rem;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	text-align: center;
+	display: block;
+	font-size:0.24rem;
+	color:#fff;
+	background:#ecbc68;
+	float: right;
+	border-radius: 0.06rem;
+	margin:0.5rem 0.3rem 0 0;
+}
+.seriesMain .navMain{
+	height: 0.64rem;
+	line-height: 0.64rem;
+	background:#fff;
+}
+.navMain .swiper-container .swiper-slide{
+	font-size:0.28rem;
+	color:#666;
+	text-align: center;
+}
+.topDistance .describeInfo{
+	width:7.5rem;
+	height:3.5rem;
+	overflow:hidden;
+	background:url(../../images/secondLevel/setBg.jpg) no-repeat;
+	background-size:100%;
+	text-align:center;
+	margin-bottom:0.2rem;
+}
+.topDistance .describeInfo h4{
+	font-size:0.3rem;
+	color:#444;
+	font-weight:bolder;
+	margin:0.38rem 0 0.2rem 0;
+}
+.topDistance .describeInfo p{
+	font-size:0.2rem;
+	color:#666;
+	margin-bottom:0.1rem;
+}
+.topDistance .describeInfo .moreBtn{
+	font-size:0.22rem;
+	color:#444;
+	text-decoration:underline;
+}
+.topDistance .exhibitionList{
+	height:auto;
+	overflow:hidden;
+}
+.topDistance .exhibitionList li{
+	width:2.22rem;
+	height:3.56rem;
+	overflow:hidden;
+	background:#fff;
+	float:left;
+	margin:0 0 0.2rem 0.2rem;
+}
+.topDistance .exhibitionList li a{
+	display:block;
+}
+.exhibitionList li .exhibitPic{
+	width:2.22rem;
+	height:2.22rem;
+	overflow:hidden;
+}
+.exhibitionList li .exhibitPic img{
+	max-width:100%;
+	height: 100%;
+	display: block;
+	margin:0 auto;
+}
+.exhibitionList li h3{
+	font-size:0.24rem;
+	color:#444;
+	line-height:0.35rem;
+	height:0.7rem;
+	overflow:hidden;
+	text-align:left;
+	margin:0.15rem 0.1rem 0.05rem 0.1rem;
+}
+.exhibitionList .priceInfo .newPri{
+	display:inline-block;
+	font-size:0.18rem;
+	color:#f5500e;
+	font-weight:bolder;
+	margin:0 0.1rem 0 0.15rem;
+}
+.exhibitionList .priceInfo .newPri em{
+	font-size:0.24rem;
+}
+.exhibitionList .priceInfo .timePri{
+	font-size:0.18rem;
+	color:#c2c2c2;
+	display:inline-block;
+	text-decoration: line-through;
+}
+
+/*每日十荐*/
+.tenBanner{
+	width:100%;
+	height:3.04rem;
+	margin-top: 0.9rem;
+}
+.tenBanner img{
+	width:100%;
+}
+.tenMain{
+	height:auto;
+	overflow:hidden;
+	margin-top:0.2rem;
+}
+.tenMain li{
+	width:7.14rem;
+	height:3.26rem;
+	background:#fff;
+	display:block;
+	margin:0 auto 0.15rem;
+	border-radius:0.06rem;
+	-webkit-box-shadow:0 0 0.2rem #c8c8c8;  
+    -moz-box-shadow:0 0 0.2rem #c8c8c8;  
+    box-shadow:0 0 0.2rem #c8c8c8; 
+	position:relative;
+}
+.tenMain li .hotLabel{
+	width:0.3rem;
+	height:0.3rem;
+	line-height:0.3rem;
+	text-align:center;
+	background:#ecbc68;
+	color:#fff;
+	font-size:0.2rem;
+	display:block;
+	position:absolute;
+	top:0.18rem;
+	right:-0.01rem;
+}
+.tenMain li .tenmainLeft{
+	width:2.88rem;
+	height:2.96rem;
+	float:left;
+	margin:0.15rem;
+	position:relative;
+}
+.tenMain li .tenmainLeft img{
+	max-width:100%;
+	display:block;
+	margin:auto auto;
+}
+.tenMain li .tenmainLeft span{
+	padding:0 0.1rem;
+	height:0.3rem;
+	line-height:0.3rem;
+	display:block;
+	background:#ecbc68;
+	color:#fff;
+	font-size:0.21rem;
+	position:absolute;
+	left:0;
+	bottom:0;
+}
+.tenMain li .tenmainRight{
+	width:3.8rem;
+	height:2.96rem;
+	overflow:hidden;
+	float:left;
+	margin-top:0.12rem;
+}
+.tenMain li .tenmainRight a.title{
+	font-size:0.3rem;
+	color:#444;
+	height:0.85rem;
+	overflow:hidden;
+	display:block;
+	font-weight:bolder;
+	margin-bottom:0.05rem;
+}
+.tenMain li .tenmainRight .half{
+	font-size:0.24rem;
+	color:#7b7b7b;
+}
+.tenmainRight .priceNum{
+	height:auto;
+	overflow:hidden;
+	margin-top:1rem;
+}
+.tenmainRight .priceNum .priceNumLeft{
+	width:2.2rem;
+	float:left;
+}
+.priceNum .priceNumLeft .presentPrice{
+	display:inline-block;
+	margin:0.17rem 0 0 0;
+	font-size: 0.18rem;
+    color: #f5500e;
+}
+.priceNum .priceNumLeft .presentPrice em{
+	font-size: 0.3rem;
+}
+.priceNum .priceNumLeft .originalPrice{
+	font-size: 0.18rem;
+    color: #c2c2c2;
+    text-decoration: line-through;
+	position:relative;
+}
+.priceNumLeft .originalPrice i{
+	width:0.63rem;
+	height:0.24rem;
+	display:block;
+	background:url(../../images/secondLevel/priceIcon.png) no-repeat;
+	background-size:100%;
+	position:absolute;
+	top:-0.2rem;
+	left:0;
+}
+.tenmainRight .priceNum .immediatelyBtn{
+	width:1.58rem;
+	height:0.55rem;
+	line-height:0.55rem;
+	text-align:center;
+	background:#ecbc68;
+	display:block;
+	font-size:0.26rem;
+	color:#fff;
+	float:right;
+}
+/*新品种草*/
+.growGrassMain{
+	height:auto;
+	overflow:hidden;
+	margin-top:1.2rem;
+}
+.growGrassMain a{
+	width:7rem;
+	height:auto;
+	margin:0 auto 0.15rem;
+	display:block;
+	-webkit-box-shadow:0 0 0.2rem #c8c8c8;  
+    -moz-box-shadow:0 0 0.2rem #c8c8c8;  
+    box-shadow:0 0 0.2rem #c8c8c8; 
+	background:#fff;
+}
+.growGrassMain a .picInfo{
+	position:relative;
+}
+.growGrassMain a .picInfo img{
+	width:7rem;
+	height:3.94rem;
+	display:block;
+	margin:0 auto;
+}
+.growGrassMain a .picInfo .picTitle{
+	width:100%;
+	text-align:center;
+	position:absolute;
+	top:1.2rem;
+}
+.picInfo .picTitle h3{
+	font-size:0.5rem;
+	color:#fff;
+	font-weight:bolder;
+}
+.picInfo .picTitle span{
+	padding:0.04rem 0.2rem;
+	border:0.01rem solid #ccc;
+	font-size:0.24rem;
+	color:#ccc;
+	display:inline-block;
+	margin-top:0.1rem;
+}
+.growGrassMain a .growText{
+	padding:0.21rem 0.14rem;
+}
+.growGrassMain a .growText h3{
+	font-size:0.32rem;
+	font-weight:bolder;
+	color:#444;
+	margin-bottom:0.05rem;
+}
+.growGrassMain a .growText span{
+	font-size:0.28rem;
+	color:#7b7b7b;
+}
+
+/*搜索*/
+.searchHead .search {
+	width: 6.07rem;
+	height: 0.56rem;
+	display: block;
+	background: #fff;
+	float: left;
+	margin: 0.17rem 0 0 0.2rem;
+}
+.searchHead .search em {
+    width: 0.24rem;
+    height: 0.24rem;
+    display: block;
+    float: left;
+    background: url(../../images/common/searchIcon.png) no-repeat;
+    background-size: 100%;
+    margin: 0.15rem 0.14rem 0 0.27rem;
+}
+.searchHead .search input {
+    width: 5.35rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    float: left;
+    border: none;
+    font-size: 0.26rem;
+}
+.searchHead .cancelBtn{
+	font-size:0.26rem;
+	color:#fff;
+}
+.searchMain{
+	height:auto;
+	overflow:hidden;
+	margin:0.35rem 0.15rem;
+}
+.searchMain .searchTitle{
+	font-size:0.26rem;
+	color:#7b7b7b;
+}
+.searchMain .searchInfo{
+	height:auto;
+	overflow:hidden;
+	margin-top:0.3rem;
+}
+.searchMain .searchInfo a{
+	padding:0.12rem 0.3rem;
+	border:0.02rem solid #e8e8e8;
+	background:#fff;
+	display:inline-block;
+	color:#444;
+	font-size:0.26rem;
+	margin:0 0.15rem 0 0;
+}
+/*分类*/
+header .classifiSearch{
+	width:6.56rem;
+	height:0.56rem;
+	display:block;
+	background:#fff;
+	float:left;
+	margin:0.17rem 0 0 0.7rem;
+}
+header .classifiSearch em{
+	width:0.24rem;
+	height:0.24rem;
+	display:block;
+	float:left;
+	background:url(../../images/common/searchIcon.png) no-repeat;
+	background-size:100%;
+	margin:0.15rem 0.14rem 0 1.94rem;
+}
+header .classifiSearch input{
+	width:4rem;
+	height:0.5rem;
+	line-height:0.5rem;
+	float:left;
+	border:none;
+	font-size:0.26rem;
+}
+.classifiMain{
+ 	height: auto;
+ 	overflow:hidden;   
+}
+.classifiMain .classifiContent{
+	width: 100%;
+	min-height:10rem;
+	overflow:hidden;
+	background: #fff;
+	margin-top: 0.9rem;
+}
+.classifiContent .classifiLeft{
+	width:1.6rem;
+	height: 100%;
+	background: #f4f5f7;
+	position: fixed;
+	left:0;
+	top:0.9rem;
+} 
+.classifiContent .classifiLeft a{
+	width:100%;
+	height: 0.9rem;
+	line-height: 0.9rem;
+	text-align: center;
+	display: block;
+	color:#666;
+	font-size:0.26rem;
+}
+.classifiContent .classifiLeft a.Cur{
+	font-weight: bolder;
+	background: #fff;
+}
+.classifiContent .classifiRight{
+	width:5.91rem;
+	float: right;
+	background: #fff;
+}
+.classifiRight .rightContent{
+	height: auto;
+	overflow:hidden;
+	padding-top: 0.4rem;
+}
+.rightContent .contentIng{
+	display: none;
+}
+.contentIng .contentTitle{
+	width: 2rem;
+	height: auto;
+	overflow: hidden;
+	margin:0 auto 0.3rem;
+}
+.contentIng .contentTitle em{
+	width: 0.16rem;
+	height: 0.02rem;
+	display: inline-block;
+	background: #c2c2c2;
+	float: left;
+	margin-top: 0.15rem;
+}
+.contentIng .contentTitle span{
+	display: inline-block;
+	font-size:0.24rem;
+	color:#c2c2c2;
+	margin:0 0.26rem 0;
+	float: left;
+}
+.contentIng .contentInfo{
+	height: auto;
+	overflow: hidden;
+	margin-bottom: 0.2rem;
+}
+.contentIng .contentInfo a{
+	display: block;
+	height: 1.7rem;
+	width:1.24rem;
+	text-align:center; 
+	overflow:hidden;
+	float: left;
+	margin:0 0 0.3rem 0.58rem;
+}
+.contentIng .contentInfo a .infoPic{
+	width: 1.24rem;
+	height: 1.24rem;
+	display: block;
+}
+.contentIng .contentInfo a .infoPic img{
+	max-width: 100%;
+	height: 100%;
+	margin:auto auto;
+}
+.contentIng .contentInfo a span{
+	font-size:0.24rem;
+	color:#444;
+	display: inline-block;
+	margin-top: 0.1rem;
+}
+
+
+
+
+
+
+
