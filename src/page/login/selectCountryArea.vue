@@ -1263,8 +1263,8 @@ function mobileArray() {
   return mobileArray;
 }
 </script>
-<style scoped src="../../style/other/login.css"></style>
-
-<style scoped>
-
+<style scoped src="">
+  @import "../../css/other/login.css";
 </style>
+
+

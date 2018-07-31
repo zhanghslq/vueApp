@@ -32,5 +32,8 @@ export default {
   name: 'newGrowGrass'
 }
 </script>
-<style scoped src="../../style/common/common.css"></style>
-<style scoped src="../../style/other/secondLevel.css"></style>
+
+<style scoped src="">
+  @import "../../css/common/common.css";
+  @import "../../css/other/secondLevel.css";
+</style>

@@ -10,6 +10,7 @@ $(function(){
   beautyImg();         //图片轮播
   timeLimit();         //限时抢购滑动图
   makeUpone();         //美妆护肤下面的滑动列表
+  memberDatil();       //会员中心下面的滑动列表
 })
 
 /*滑动导航切换内容*/
@@ -228,6 +229,16 @@ function makeUpone(){
       slidesPerView: 3.5,
       pagination: {
         el: '.swiper-pagination2',
+        clickable: true,
+      },
+    });
+}
+/*会员中心下面的滑动列表*/
+function memberDatil(){
+    var swiper1 = new Swiper('.swiper-container3', {
+      slidesPerView: 3.5,
+      pagination: {
+        el: '.swiper-pagination3',
         clickable: true,
       },
     });

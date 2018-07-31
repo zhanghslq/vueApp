@@ -24,10 +24,88 @@ import onlineCustomers from '../page/find/onlineCustomers'
 import Xcurrency from '../page/personalCenter/Xcurrency'
 import shopIndex from '../page/shoppingBag/shoppIndex'
 import modifyAddress from '../page/shoppingBag/modifyAddress'
+import accountInfo from '../page/personalCenter/accountInfo'
+import aboutUS from '../page/personalCenter/aboutUS'
+import coupon from '../page/personalCenter/coupon'
+import detailedPage from '../page/personalCenter/detailedPage'
+import exchangeX from '../page/personalCenter/exchangeX'
+import memberCenter from '../page/personalCenter/memberCenter'
+import modifyName from '../page/personalCenter/modifyName'
+import modifyPhone from '../page/personalCenter/modifyPhone'
+import myCollection from '../page/personalCenter/myCollection'
+import personalPage from '../page/personalCenter/personalPage'
+import refundProgress from '../page/personalCenter/refundProgress'
+import remindSetUp from '../page/personalCenter/remindSetUp'
+import selectCountryAreaPersonal from '../page/personalCenter/selectCountryArea'
+import setUp from '../page/personalCenter/setUp'
+import updateMobileLogin from '../page/personalCenter/updateMobileLogin'
 Vue.use(Router)
 Vue.use(VueResource)
 export default new Router({
   routes: [
+    {
+      path:'/detailedPage',
+      name:'detailedPage',
+      component:detailedPage
+    },{
+      path:'/updateMobileLogin',
+      name:'updateMobileLogin',
+      component:updateMobileLogin
+    },{
+      path:'/setUp',
+      name:'setUp',
+      component:setUp
+    },{
+      path:'/personal/selectCountryArea',
+      name:'selectCountryAreaPersonal',
+      component:selectCountryAreaPersonal
+    },{
+      path:'/remindSetUp',
+      name:'remindSetUp',
+      component:remindSetUp
+    },{
+      path:'/refundProgress',
+      name:'refundProgress',
+      component:refundProgress
+    },{
+      path:'/personalPage',
+      name:'personalPage',
+      component:personalPage
+    },{
+      path:'/myCollection',
+      name:'myCollection',
+      component:myCollection
+    }, {
+      path:'/modifyPhone',
+      name:'modifyPhone',
+      component:modifyPhone
+    },{
+      path:'/modifyName',
+      name:'modifyName',
+      component:modifyName
+    },{
+      path:'/memberCenter',
+      name:'memberCenter',
+      component:memberCenter
+    },{
+      path:'/exchangeX',
+      name:'exchangeX',
+      component:exchangeX
+    },
+    {
+      path:'/aboutUS',
+      name:'aboutUS',
+      component:aboutUS
+    },{
+      path:'/coupon',
+      name:'coupon',
+      component:coupon
+    },
+    {
+      path:'/accountInfo',
+      name:'accountInfo',
+      component:accountInfo
+    },
     {
       path: '/onlineCustomers',
       name: 'onlineCustomers',

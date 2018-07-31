@@ -394,6 +394,159 @@
 }
 /*收货地址 结束*/
 /*修改收货地址 开始*/
+.addressCorrel .addressFillIn{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	padding:0 0.23rem;
+	margin-bottom: 0.15rem;
+}
+.addressFillIn .fillInfo{
+	height: auto;
+	overflow: hidden;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.addressFillIn .fillInfo i{
+	color:#eb1414;
+	font-size: 0.28rem;
+	float:left;
+	display: inline-block;
+	margin-right: 0.12rem;
+	margin-top: 0.2rem;
+}
+.addressFillIn .fillInfo span{
+	width: 1.5rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	display: inline-block;
+	float: left;
+	font-size: 0.28rem;
+	color:#444;
+}
+.addressFillIn .fillInfo input,
+.addressFillIn .fillInfo .choiceCity{
+	width: 5rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	display: inline-block;
+	float: left;
+	border:none;
+	font-size:0.24rem;
+	color:#444;
+}
+.addressFillIn .fillInfo .detailedAdd{
+	height: 0.8rem;
+	width: 5rem;
+	margin:0.24rem 0;
+	border:none;
+	font-size:0.24rem;
+	color:#444;
+}
+.addressCorrel .identification{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	margin-bottom: 0.15rem;
+}
+.addressCorrel .identification .idLeft,
+.addressCorrel .default .defaultLeft{
+	height: 0.8rem;
+	line-height: 0.8rem;
+	float: left; 
+	margin-left: 0.23rem;
+	font-size: 0.28rem;
+	color:#444;
+}
+.identification .idLeft em,
+.addressCorrel .default .defaultLeft em{
+	font-size: 0.18rem;
+	color:#9d9d9d;
+}
+.identification .idRight,
+.identification .idCur{
+	width: 0.2rem;
+	height: 0.11rem;
+	display: inline-block;
+	float: right;
+	margin-right: 0.23rem;
+	background: url(../../images/common/updownIcon.png) no-repeat 0 0;
+	background-size:100%;
+	margin-top: 0.35rem;
+}
+.identification .idCur{
+	background: url(../../images/common/updownIcon.png) no-repeat 0 -0.19rem;
+	background-size:100%;
+}
+.addressCorrel .default{
+	height: 0.8rem;
+	line-height: 0.8rem;
+	background: #fff;
+	position: relative;
+}
+.addressCorrel .preservation{
+	margin:0.8rem 0.23rem;
+	height: 0.98rem;
+	line-height: 0.98rem;
+	background: #ecbc68;
+	display: block;
+	text-align: center;
+	font-size: 0.36rem;
+	color:#fff;
+}
+.identification .idTop{
+	height: auto;
+	overflow: hidden;
+}
+.identification .idBottom{
+	border-top:0.02rem solid #f4f5f7;
+	padding-top: 0.23rem;
+}
+.identification .idBottom p{
+	font-size: 0.24rem;
+	color:#7b7b7b;
+	line-height: 0.34rem;
+	padding:0 0.23rem;
+}
+.identification .idBottom .idPhoto{
+	margin:0.4rem 0 0.3rem 0;
+	padding:0 0.23rem;
+}
+.idBottom .idPhoto .idPhotoInfo{
+	height: auto;
+	overflow: hidden;
+}
+.idPhoto .idPhotoInfo .photoLeft{
+	width: 3.36rem;
+	height: 2.26rem;
+	background: url(../../images/threeLevel/idJust.png) no-repeat;
+	background-size: 100%;
+	float: left;
+}
+.idPhoto .idPhotoInfo .photoRight{
+	width: 3.36rem;
+	height: 2.26rem;
+	background: url(../../images/threeLevel/idBack.png) no-repeat;
+	background-size: 100%;
+	float: right;
+}
+.idBottom .idPhoto p{
+	text-align: center;
+	margin-top: 0.2rem;
+}
+.idBottom .idPhoto p a{
+	color:#ecbc68;
+}
+.identification .idBottom .explain{
+	height: auto;
+	overflow: hidden;
+	background: #fafafa;
+	padding:0.26rem 0.23rem 0;
+	font-size: 0.24rem;
+}
+.idBottom .explain p{
+	margin-bottom: 0.15rem;
+	line-height: 0.38rem;
+}
 
 /*修改收货地址 结束*/
 
@@ -438,30 +591,10 @@
 /*适配*/
 @media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
 	@media only screen and (max-device-width :480px){
-		.arrayListInfo a .discount .limit{
-	    	width: 1.25rem;
-	    	height: 0.3rem;
-	    	line-height: 0.3rem;
-	    	font-size: 0.16rem;
-	    }
-	    .arrayListInfo a .discount .specific{
-	    	height:0.36rem;
-			min-width:1.25rem;
-			line-height:0.36rem;
-	    }
+
     }
 	@media only screen and (min-device-width :481px){
-		.arrayListInfo a .discount .limit{
-	    	width: 1.25rem;
-	    	height: 0.3rem;
-	    	line-height: 0.3rem;
-	    	font-size: 0.16rem;
-	    } 
-	    .arrayListInfo a .discount .specific{
-	    	height:0.36rem;
-			min-width:1.25rem;
-			line-height:0.36rem;
-	    }
+
 	}
 }
 @media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){ 
@@ -476,17 +609,6 @@
 	#page{
 		padding-top: 5px;
 	}
-	.arrayListInfo a .discount .limit{
-    	width: 1.1rem;
-    	height: 0.3rem;
-    	line-height: 0.3rem;
-    	font-size: 0.16rem;
-    }
-    .arrayListInfo a .discount .specific{
-    	height:0.36rem;
-		min-width:1.1rem;
-		line-height:0.36rem;
-    }
 }
 @media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){ 
 	.addr{
@@ -500,17 +622,6 @@
 	#page{
 		padding-top: 10px;
 	}
-	.arrayListInfo a .discount .limit{
-    	width: 0.94rem;
-    	height: 0.3rem;
-    	line-height: 0.3rem;
-    	font-size: 0.16rem;
-    }
-    .arrayListInfo a .discount .specific{
-    	height:0.36rem;
-		min-width:0.98rem;
-		line-height:0.36rem;
-    }
 }
 
 

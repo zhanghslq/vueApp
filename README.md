@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # y
 
 > xjapp
@@ -19,3 +20,7 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+=======
+# vueApp
+vue做app的页面
+>>>>>>> 5c77d3eaea328fbb7aee7318878c9656773e2d27

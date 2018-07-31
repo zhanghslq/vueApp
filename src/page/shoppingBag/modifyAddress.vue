@@ -53,17 +53,17 @@
 
 <script>
   import  {city} from '../../js/plugins/city'
-  import   '../../js/plugins/picker.min'
+  var Picker = require("../../js/plugins/picker.min");
   // import '../../js/other/login'
     export default {
       name: "modifyAddress",
       data (){
           return {
-            city
+            city,
+            Picker
           }
       },
       components:{
-
       },
       methods:{
 
@@ -75,7 +75,6 @@
           var third = []; /* 镇 */
           var selectedIndex = [0, 0, 0]; /* 默认选中的地区 */
           var checked = [0, 0, 0]; /* 已选选项 */
-
           function creatList(obj, list){
             obj.forEach(function(item, index, arr){
               var temp = new Object();

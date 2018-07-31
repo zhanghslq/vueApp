@@ -14,7 +14,7 @@
     </div>
   </div>
 </template>
-<style>
+<style scoped>
   .container {
     max-width: 640px;
     margin: 0 auto;

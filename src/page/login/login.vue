@@ -15,5 +15,7 @@ export default {
   name: 'login'
 }
 </script>
-<style scoped src="../../style/common/common.css"></style>
-<style scoped src="../../style/other/login.css"></style>
+<style scoped src="">
+  @import "../../css/common/common.css";
+  @import "../../css/other/login.css";
+</style>

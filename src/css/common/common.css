@@ -24,7 +24,7 @@ del, ins {
 li {
   list-style: none;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 { 
   font-size: 100%;
   font-weight: normal;
 }
@@ -58,7 +58,7 @@ html, body {
   height: 100%;
   font-family:"\5fae\8f6f\96c5\9ed1",Arial,sans-serif;
   font-size:0.26rem;
-  font-size-adjust:100 !important;
+/*  font-size-adjust:100%!important*/
   background-color: #f4f5f7;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
@@ -99,6 +99,13 @@ body{
 }
 .mb1{
   margin-bottom: 1rem !important;
+}
+.hidden{
+  height:auto ;
+  overflow: hidden;
+}
+.mt5{
+  margin-top: 0.5rem;
 }
 /*头部 开始*/
 header{
@@ -190,10 +197,10 @@ header .releaseBtn{
   margin:0 auto;
   position: fixed;
   bottom:0;
-  -webkit-box-shadow:0 0 0.25rem #d3d4d7;
-  -moz-box-shadow:0 0 0.25rem #d3d4d7;
-  box-shadow:0 0 0.25rem #d3d4d7;
-  z-index: 999;
+  -webkit-box-shadow:0 0 0.25rem #d3d4d7;  
+  -moz-box-shadow:0 0 0.25rem #d3d4d7;  
+  box-shadow:0 0 0.25rem #d3d4d7;  
+  z-index: 999; 
 }
 .footerNav a,
 .memberFooter a{
@@ -257,12 +264,17 @@ header .releaseBtn{
   background-size:100%;
 }
 .footerNav .personal,
-.memberFooter .personal{
+.memberFooter .personal,
+.memberFooter .active .personal{
   width: 0.43rem;
   height: 0.43rem;
-  background: url(../../images/common/personalIcon.png) no-repeat;
+  background: url(../../images/common/personalIcon.png) no-repeat 0 0;
   background-size:100%;
   margin:0.12rem 0 0.02rem 0;
+}
+.memberFooter .active .personal{
+  background: url(../../images/common/personalIcon.png) no-repeat 0 -0.77rem;
+  background-size:100%;
 }
 .footerNav .active span,
 .memberFooter .active span{
@@ -363,39 +375,39 @@ header .releaseBtn{
   display: block;
   margin: auto auto;
 }
-.contain .containContent .text .title{
-  color: #576788;
+.contain .containContent .text .title{ 
+  color: #576788; 
   font-size: 1.8rem;
 }
 .contain .containContent .text .txt{
-  color: #323232;
+  color: #323232; 
   font-size: 1.5rem;
 }
 .contain .containContent .text .tm{
-  font-size: 1.4rem;
+  font-size: 1.4rem;    
   overflow: hidden;
 }
 .contain .containContent .text .tm .fl{
-  float: left;
+  float: left;  
   padding-left: 5px;
 }
 .contain .containContent .text .tm .fr{
-  float: right;
+  float: right; 
   padding-right: 15px;
 }
-.contain .containContent .text .cmt{
-  color: #444444;
-  font-size: 1.5rem;
-  background-color: #eeeeee;
+.contain .containContent .text .cmt{ 
+  color: #444444; 
+  font-size: 1.5rem;   
+  background-color: #eeeeee; 
   margin-top: 5px;
   padding: 5px;
 }
-.contain .containContent .text .cmt .fav{
-  color: #576788;
-  border-bottom: 1px solid #d5d5d5;
+.contain .containContent .text .cmt .fav{ 
+  color: #576788; 
+  border-bottom: 1px solid #d5d5d5; 
   padding-bottom: 5px;
 }
-.contain .containContent .text .cmt span{
+.contain .containContent .text .cmt span{ 
   color: #576788;
 }
 /*缩略图 结束*/
@@ -519,7 +531,8 @@ header .releaseBtn{
 .arrayList .arrayListInfo a,
 .searchCont .searchContInfo a,
 .tabListInfo a.shapplist,
-.lookOther .lookOtherList a{
+.lookOther .lookOtherList a,
+.selectionMembers .memberList a{
   width:3.38rem;
   height:auto;
   display:block;
@@ -531,7 +544,8 @@ header .releaseBtn{
 .arrayListInfo a .infoPic,
 .searchContInfo a .infoPic,
 .tabListInfo a.shapplist .infoPic,
-.lookOtherList a .infoPic{
+.lookOtherList a .infoPic,
+.memberList a .infoPic{
     width: 2.98rem;
     height: 3.02rem;
     overflow: hidden;
@@ -540,7 +554,8 @@ header .releaseBtn{
 .arrayListInfo a .infoPic img,
 .searchContInfo a .infoPic img,
 .tabListInfo a.shapplist .infoPic img,
-.lookOtherList a .infoPic img{
+.lookOtherList a .infoPic img,
+.memberList a .infoPic img{
   max-width:100%;
   height:100%;
   display:block;
@@ -549,7 +564,8 @@ header .releaseBtn{
 .arrayListInfo a p,
 .searchContInfo a p,
 .tabListInfo a.shapplist p,
-.lookOtherList a p{
+.lookOtherList a p,
+.memberList a p{
   font-size:0.28rem;
   color:#444;
   height:0.75rem;
@@ -559,7 +575,8 @@ header .releaseBtn{
 .arrayListInfo a .price,
 .searchContInfo a .price,
 .tabListInfo a.shapplist .price,
-.lookOtherList a .price{
+.lookOtherList a .price,
+.memberList a .price{
   height:auto;
   overflow:hidden;
   margin-top:0.15rem;
@@ -626,29 +643,32 @@ header .releaseBtn{
 .arrayListInfo a .discount .limit,
 .searchContInfo a .discount .limit,
 .tabListInfo a.shapplist .discount .limit{
-  width:0.94rem;
+/*  width:0.94rem;
   height:0.26rem;
   line-height:0.26rem;
-  text-align:center;
+  text-align:center;*/
   border:0.02rem solid #f7363c;
   color:#f7363c;
-  font-size:0.2rem;
+  font-size:0.18rem;
   display:block;
   float:left;
+  padding: 0 0.08rem;
   margin-right:0.08rem;
 }
 .arrayListInfo a .discount .specific,
 .searchContInfo a .discount .specific,
 .tabListInfo a.shapplist .discount .specific{
-  height:0.3rem;
+ /* height:0.3rem;
   min-width:0.98rem;
   line-height:0.3rem;
-  text-align:center;
+  text-align:center;*/
   float:left;
   display:block;
   background:#f7363c;
   color:#fff;
   font-size:0.2rem;
+  border:0.02rem solid #f7363c;
+  padding:0 0.08rem;
 }
 /*商品列表 结束*/
 /*表单开关样式*/
@@ -667,7 +687,7 @@ header .releaseBtn{
     width: .7rem;
     height: .3rem;
     position: absolute;
-    top: 0;left: 0;
+    top: 0;left: 0;  
     z-index: 2;
     border: 0;
     background: 0 0;
@@ -713,7 +733,7 @@ header .releaseBtn{
     width:.42rem;
     height: .42rem;
     position: absolute;
-    top: 73%;
+    top: 77%;
     left: 0;
     -webkit-transform:translateY(-50%);
     border-radius: 100%;
@@ -723,6 +743,127 @@ header .releaseBtn{
     -webkit-transition: left .2s;
     transition: left .2s
 }
+/*首页与会员中心共用*/
+.nationalMain .propaganda{
+  height: auto;
+  overflow:hidden;
+  margin-bottom: 0.4rem;
+}
+.nationalMain .propaganda:last-child{
+  margin-bottom: 1rem;
+}
+.nationalMain .propaganda a.propagendaBanner,
+.discount .memberDatil a.propagendaBanner{
+  width:7.02rem;
+  height: 2.8rem;
+  display: block;
+  position: relative;
+  margin:0 auto 0.15rem;
+  overflow:hidden;
+}
+.nationalMain .propaganda a.propagendaBanner img,
+.memberDatil a.propagendaBanner img{
+  width:100%;
+}
+.nationalMain .propaganda a.propagendaBanner .picTitle,
+.memberDatil a.propagendaBanner .picTitle{
+  width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 0.8rem;
+}
+.propaganda a .picTitle h3,
+.memberDatil a .picTitle h3{
+  font-size: 0.5rem;
+    color: #fff;
+    font-weight: bolder;
+}
+.propaganda a .picTitle span,
+.memberDatil a .picTitle span{
+  padding: 0.04rem 0.2rem;
+    border: 0.01rem solid #fff;
+    font-size: 0.24rem;
+    color: #fff;
+    display: inline-block;
+    margin-top: 0.1rem;
+}
+.nationalMain .propaganda em.triangle,
+.memberDatil em.triangle{
+  display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    border-bottom: 0.15rem solid transparent;
+    border-right: 0.15rem solid transparent;
+    border-top: 0.15rem solid transparent;
+    border-left: 0.15rem solid #fff;
+    width: 0;
+    height: 0;
+    transform:rotate(270deg);
+  -ms-transform:rotate(270deg);   
+  -moz-transform:rotate(270deg); 
+  -webkit-transform:rotate(270deg); 
+  -o-transform:rotate(270deg); 
+  margin-left: -0.1rem;
+}
+.propaganda .propagandaList,
+.memberDatil .propagandaList{
+  margin-left: 0.24rem;
+}
+.propaganda .propagandaList .swiper-slide,
+.memberDatil .propagandaList .swiper-slide{
+  width:1.92rem !important;
+  height: auto;
+  overflow:hidden;
+  margin-right: 0.09rem;
+}
+.propaganda .propagandaList a,
+.memberDatil .propagandaList a{
+  width: 1.92rem;
+  height: auto;
+  overflow:hidden;
+  display: block;
+}
+.propaganda .propagandaList .listPics,
+.memberDatil .propagandaList .listPics{
+  width:1.92rem;
+  height: 1.94rem;
+  background:#f7f7f7;
+}
+.propagandaList .listPics img{
+  height: 100%;
+  display: block;
+  margin:0 auto;
+}
+.propagandaList h4{
+  height: 0.65rem;
+  overflow:hidden;
+  line-height: 0.34rem;
+  font-size: 0.24rem;
+  color:#444;
+  margin:0.16rem 0 0.23rem 0;
+}
+.propagandaList .priceIng .newPrice{
+  font-size:0.18rem;
+  color:#ecbc68;
+}
+.propagandaList .priceIng .newPrice em{
+  font-size: 0.24rem;
+}
+.propagandaList .priceIng .membership{
+  padding:0.02rem 0.04rem;
+  display: inline-block;
+  background:#ecbc68;
+  font-size: 0.18rem;
+  color:#fff;
+}
+
+
+
+
+
+
+
 
 
 
@@ -756,14 +897,14 @@ header .releaseBtn{
     }
   }
 }
-@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){ 
     .footerNav,
     .memberFooter{
       height: 1.06rem;
     }
-
+    
 }
-@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){ 
     .footerNav,
     .memberFooter{
       height: 1rem;

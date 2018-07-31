@@ -722,6 +722,8 @@ export default {
   name: 'xingjiProduce'
 }
 </script>
-<style scoped src="../../style/common/common.css"></style>
-<style scoped src="../../style/other/secondLevel.css"></style>
-<style scoped src="../../style/plugins/swiper.min.css"></style>
+<style scoped src="">
+  @import "../../css/common/common.css";
+  @import "../../css/other/secondLevel.css";
+  @import "../../css/plugins/swiper.min.css";
+</style>

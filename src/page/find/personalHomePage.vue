@@ -215,10 +215,9 @@
 <script>
   import Vue from 'vue'
   import vuePhotoPreview from 'vue-photo-preview'
-  import 'vue-photo-preview/dist/skin.css'
   import {TouchSlide} from '../../js/plugins/TouchSlide.1.1.min'
   import Swiper from 'swiper'
-  import '../../js/other/releaseDynamics.js'
+  //import '../../js/other/releaseDynamics.js'
   var options={
     fullscreenEl:false //关闭全屏按钮
   }
@@ -273,4 +272,5 @@
   @import "../../css/common/common.css";
   @import "../../css/plugins/swiper.min.css";
   @import "../../css/other/index.css";
+  @import '../../../node_modules/vue-photo-preview/dist/skin.css';
 </style>

@@ -331,7 +331,6 @@
 </script>
 
 <style scoped>
-
 @import "../../css/common/common.css";
 @import "../../css/other/index.css";
 @import '../../css/plugins/swiper.min.css';

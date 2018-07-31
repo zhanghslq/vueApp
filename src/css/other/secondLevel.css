@@ -212,6 +212,9 @@
 	line-height: 0.64rem;
 	background:#fff;
 }
+.seriesMain .fix{
+	top:0.9rem;
+}
 .navMain .swiper-container .swiper-slide{
 	font-size:0.28rem;
 	color:#666;

@@ -178,6 +178,7 @@
     }
 </script>
 
-<style>
+<style scoped>
+  @import "../../css/common/common.css";
 @import "../../css/other/threeLevel.css";
 </style>

@@ -100,11 +100,925 @@
 .currencyMain .currencyMainBottom p a{
 	color:#ecbc68;
 }
-
-
-
-
-
-
-
 /*X币 结束*/
+/*兑换X币 开始*/
+.exchangeMain{
+	
+}
+.exchangeMain .exchangeNav,
+.collectionMain .collectionNav{
+	height: 0.8rem;
+	line-height: 0.8rem;
+	overflow: hidden;
+	background: #fff;
+}
+.exchangeMain .exchangeNav a,
+.collectionMain .collectionNav a{
+	height: 0.78rem;
+	line-height: 0.78rem;
+	border-bottom: 0.02rem solid #fff;
+	display: inline-block;
+	color:#747474;
+	float: left;
+	text-align: center;
+	font-size: 0.28rem;
+	margin:0 1.2rem 0 1.36rem;
+}
+.exchangeMain .exchangeNav a:last-child,
+.collectionMain .collectionNav a:last-child{
+	margin:0 0 0 1.36rem;
+}
+.exchangeMain .exchangeNav a.Cur,
+.collectionMain .collectionNav a.Cur{
+	border-bottom:0.02rem solid #ecbc68;
+	color:#ecbc68;
+}
+.exchangeMain .exchangeCont{
+	height: auto;
+	overflow: hidden;
+}
+.exchangeMain .exchangeCont .contInfo{
+	height: auto;
+	overflow: hidden;
+	display: none;
+}
+.contInfo .exchangeMoney{
+	width: 7.02rem;
+	height: 4rem;
+	overflow: hidden;
+	margin:0.15rem auto;
+	border-radius: 0.06rem;
+	background:#fff;
+}
+.contInfo .exchangeMoney p{
+	font-size: 0.3rem;
+	color:#444;
+	margin:0.58rem 0 0 0.23rem;
+}
+.contInfo .exchangeMoney input{
+	width: 6.5rem;
+	display: block;
+	margin:0 auto;
+	height: 1.58rem;
+	line-height: 1.58rem;
+	border:none;
+	border-bottom: 0.02rem solid #f4f5f7;
+	font-size: 0.55rem;
+}
+.contInfo .exchangeMoney .available{
+	height: auto;
+	overflow: hidden;
+	margin:0.4rem 0.23rem 0; 
+	font-size:0.27rem;
+	color:#666;
+}
+.exchangeMoney .available span{
+	display: inline-block;
+	float: left;
+}
+.exchangeMoney .available a{
+	display: inline-block;
+	font-size: 0.27rem;
+	color:#ecbc68;
+	float: left;
+	margin-left: 0.23rem;
+}
+.exchangeCont .contInfo .egulations{
+	font-size: 0.27rem;
+	color:#666;
+	margin:0 0.5rem;
+}
+.exchangeCont .contInfo .exchangeBtn{
+	width:7.02rem;
+	height: 0.9rem;
+	line-height: 0.9rem;
+	text-align: center;
+	color:#fff;
+	font-size:0.37rem;
+	display: block;
+	margin:0.6rem auto 0;
+	background: #ecbc68;
+}
+/*兑换Xp币 结束*/
+/*账号信息 开始*/
+.accountMain{
+	height: auto;
+	overflow: hidden;
+}
+.accountMain .accoutnInfo{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	margin:0.15rem 0;
+}
+.accountMain .accoutnInfo a,
+.personalMain .personalInfo a{
+	margin:0 0.22rem;
+	display: block;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	overflow:hidden;
+	border-bottom:0.02rem solid #f4f5f7;
+	position: relative;
+}
+.accountMain .accoutnInfo a .infoLeft,
+.personalMain .personalInfo a .infoLeft{
+	float: left;
+	font-size: 0.28rem;
+	color:#444;
+}
+.accountMain .accoutnInfo a .infoRight,
+.personalMain .personalInfo a .infoRight{
+	height: auto;
+	overflow: hidden;
+	float: right;
+}
+.accountMain .accoutnInfo a .infoRight img{
+	width:0.66rem;
+	height: 0.66rem;
+	display: block;
+	border-radius: 50%;
+	float: left;
+	margin-top: 0.08rem;
+}
+.accountMain .accoutnInfo a .infoRight em,
+.orderSituation .orderTitle .titleRight em,
+.personalMain .personalInfo a .infoRight em{
+	width:0.12rem;
+	height: 0.21rem;
+	display: inline-block;
+	float: right;
+	background: url(../../images/common/nextBtn.png) no-repeat;
+	background-size: 100%;
+	margin: 0.3rem 0 0 0.25rem;
+}
+.accountMain .accoutnInfo a .infoRight span,
+.orderSituation .orderTitle .titleRight span,
+.personalMain .personalInfo .infoRight span{
+	font-size: 0.24rem;
+	color:#7b7b7b;
+}
+.accountMain .accoutnInfo a:last-child,
+.personalMain .personalInfo a:last-child{
+	border:none;
+}
+/*账号信息 结束*/
+
+/*修改昵称 开始*/
+.modifyMain{
+	height: auto;
+	overflow: hidden;
+}
+.modifyMain .modifyInfo{
+	width: 100%;
+	height: 0.8rem;
+	margin:0.15rem 0;
+	background: #fff;
+}
+.modifyMain .modifyInfo input{
+	width:7rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	border:none;
+	display: block;
+	margin:0 auto;
+	font-size: 0.28rem;
+	color:#444;
+}
+.modifyMain p{
+	font-size: 0.2rem;
+	color:#7b7b7b;
+	margin:0 0.26rem;
+}
+.modifyMain .preservationBtn,
+.modifyMain .replaceBtn{
+	width:7.02rem;
+	height: 0.74rem;
+	line-height: 0.74rem;
+	text-align: center;
+	display: block;
+	margin:0.4rem auto;
+	font-size:0.36rem;
+	color:#fff;
+	background: #ecbc68;
+}
+/*修改昵称 结束*/
+/*手机号 开始*/
+.modifyMain .mobile{
+	text-align: center;
+	color:#666;
+	font-size: 0.28rem;
+	margin:0.76rem 0 0.9rem 0;
+}
+.modifyMain .replaceBtn{
+	height: 0.8rem;
+	line-height: 0.8rem;
+}
+/*手机号 结束*/
+/*关于我们 开始*/
+.aboutUs{
+	height: auto;
+	overflow: hidden;
+	margin:0.1rem 0 0 0;
+	text-align: center;
+}
+.aboutUs .aboutPic{
+	width: 7.5rem;
+	height: 7.46rem;
+	margin-bottom: 2rem;
+}
+.aboutUs h3{
+	font-size: 0.3rem;
+	color:#ecbc68;
+	margin-bottom: 0.5rem;
+}
+.aboutUs p{
+	font-size: 0.18rem;
+	color:#ecbc68;
+	margin-bottom: 0.03rem;
+}
+/*关于我们 结束*/
+/*明细 开始*/
+.detailedPage{
+	height: auto;
+	overflow: hidden;
+}
+.detailedPage p{
+	text-align: center;
+	color:#666;
+	font-size: 0.24rem;
+	margin-top: 0.7rem;
+}
+/*明细 结束*/
+/*退款进度 开始*/
+.refurdMain{
+	height: auto;
+	overflow: hidden;
+}
+.refurdMain .refurdNoPic{
+	width: 3.36rem;
+	height: 1.94rem;
+	margin:2.6rem auto 0.6rem;
+	display: block;
+}
+.refurdMain p{
+	text-align: center;
+	font-size:0.32rem;
+	color:#666;
+}
+/*退款进度 结束*/
+/*我的收藏 开始*/
+.collectionMain{
+
+}
+.collectionMain .collectionNav{
+	width: 100%;
+	position: fixed;
+	top:0.9rem;
+	z-index: 999;
+}
+.collectionMain .collectionList{
+	height: auto;
+	overflow: hidden;
+	margin:1.9rem 0 0.2rem;
+}
+.collectionList .listInfo{
+	display: none;
+	height: auto;
+	overflow: hidden;
+}
+.collectionList .listInfo .infoCont{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+}
+.listInfo .infoCont a{
+	width: 7.02rem;
+	margin:0 auto;
+	height: auto;
+	overflow: hidden;
+	padding:0.3rem 0;
+	display: block;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.listInfo .infoCont a:last-child{
+	border:none;
+}
+.listInfo .infoCont .infoContLeft{
+	width: 1.8rem;
+	height: 1.8rem;
+	overflow: hidden;
+	background: #f7f7f7;
+	float: left;
+	position: relative;
+}
+.listInfo .infoCont .infoContLeft span{
+	width: 100%;
+	padding:0.05rem 0;
+	display: block;
+	font-size: 0.18rem;
+	color:#fff;
+	text-align: center;
+	position: absolute;
+	bottom:0;
+	background: #ecbc68;
+}
+.listInfo .infoCont .infoContLeft img{
+	max-width: 100%;
+	height: 100%;
+	display: block;
+	margin:0.1rem auto;
+}
+.listInfo .infoCont .infoContRight{
+	width: 5.05rem;
+	float: right;
+}
+.listInfo .infoCont .infoContRight p{
+	font-size:0.26rem;
+	color:#444;
+	height: 0.7rem;
+	overflow: hidden;
+}
+.infoCont .infoContRight .similarPrice{
+	height: auto;
+	overflow: hidden;
+	margin-top: 0.56rem;
+}
+.infoContRight .similarPrice .priceNum{
+	float: left;
+	font-size: 0.2rem;
+	color:#f5500e;
+	margin-top: 0.05rem;
+}
+.infoContRight .similarPrice .priceNum em{
+	font-size: 0.3rem;
+}
+.infoContRight .similarPrice .similarBtn{
+	width: 1.26rem;
+	height: 0.48rem;
+	border:0.02rem solid #c2c2c2;
+	line-height: 0.48rem;
+	text-align: center;
+	font-size: 0.24rem;
+	color:#666;
+	display: inline-block;
+	float: right;
+}
+.collectionList .listInfo .displayAll{
+	width: 100%;
+	font-size: 0.24rem;
+	color:#adadad;
+	text-align: center;
+	margin:0.5rem 0;
+}
+.collectionMain .shoppBtn{
+	width: 0.59rem;
+	height: 0.64rem;
+	display: block;
+	background: url(../../images/threeLevel/shopIcon2.png) no-repeat;
+	background-size: 100%;
+	position: fixed;
+	left:0.38rem;
+	bottom: 0.7rem;
+}
+.collectionList .collectionEmpty{
+	height: auto;
+	overflow: hidden;
+}
+.collectionList .collectionEmpty img{
+	width:2.33rem;
+	height: 2.33rem;
+	display: block;
+	margin:1.36rem auto 0.36rem;
+}
+.collectionList .collectionEmpty p{
+	color:#666;
+	font-size: 0.32rem;
+	text-align: center;
+}
+/*我的收藏 结束*/
+/*设置 开始*/
+.accountMain .changeText{
+	margin:0.2rem 0.23rem;
+	font-size: 0.22rem;
+	color:#7b7b7b;
+	line-height: 0.36rem;
+}
+.accountMain .changeText a{
+	color:#ecbc68;
+	text-decoration: underline;
+}
+.accountMain .signOutBtn{
+	width: 100%;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	background:#fff;
+	text-align: center;
+	font-size: 0.3rem;
+	color:#e31717;
+	display: block;
+	margin-top: 0.3rem;
+}
+/*设置 结束*/
+/*提醒设置 开始*/
+.accountMain .tips{
+	font-size:0.22rem;
+	margin:0.1rem 0.23rem;
+	color:#7b7b7b;
+}
+/*提醒设置 结束*/
+/*个人主页 开始*/
+header .message {
+    float: left;
+    position: relative;
+    margin: 0.28rem 0.2rem 0 0.2rem;
+}
+header .message span {
+    width: 0.46rem;
+    height: 0.36rem;
+    display: block;
+    background: url(../../images/index/messageIcon.png) no-repeat;
+    background-size: 100%;
+}
+header .message em {
+    width: 0.27rem;
+    height: 0.27rem;
+    line-height: 0.27rem;
+    text-align: center;
+    display: block;
+    border-radius: 50%;
+    background: #c70b11;
+    position: absolute;
+    top: -0.1rem;
+    right: -0.1rem;
+    font-size: 0.15rem;
+    color: #fff;
+}
+header .setUpIcon{
+	width: 0.38rem;
+	height: 0.4rem;
+	display: block;
+	background: url(../../images/common/setUPIcon.png) no-repeat;
+	background-size: 100%;
+	float: right;
+	margin:0.27rem 0.46rem 0 0;
+}
+.personalMain{
+	height: auto;
+	overflow: hidden;
+	margin: 0.9rem 0 1.5rem 0;
+}
+.personalMain .personalBg{
+	width:7.5rem;
+	height: 2.96rem;
+	background: url(../../images/secondLevel/personalBg.png) no-repeat;
+	background-size:100%; 
+}
+.personalMain .accountName{
+	width: 6.94rem;
+	height: 2.68rem;
+	background:url(../../images/secondLevel/accountNameBg.png) no-repeat;
+	background-size: 100%;
+	margin:-2.1rem 0 0 0;
+	position: absolute;
+	left: 0.3rem;
+	z-index:99999;
+}
+.personalMain .accountName a{
+	display: block;
+	height: 100%;
+}
+.accountName .headPortrait{
+	margin:-0.7rem 0 0 2.65rem;
+	float: left;
+	position: relative;
+}
+.accountName .headPortrait span{
+	width: 1.65rem;
+	height: 1.65rem;
+	border-radius: 50%;
+	background:#f4f5f7;
+	opacity: 0.5;
+	display: block;
+}
+.accountName .headPortrait .heading{
+	width: 1.48rem;
+	height: 1.48rem;
+	position: absolute;
+	top:0.08rem;
+	left:0.08rem;
+}
+.accountName .headPortrait .heading img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.accountName p{
+	font-size: 0.34rem;
+	text-align: center;
+	width: 100%;
+	float: left;
+	color: #444;
+	margin:0.2rem 0 0.15rem 0;
+}
+.accountName em{
+	width: 1.26rem;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	text-align: center;
+	display: block;	
+	float: left;
+	font-size: 0.24rem;
+	color:#fff;
+	background: url(../../images/secondLevel/memberBg.png) no-repeat;
+	background-size: 100%;
+	margin-left: 2.85rem;
+}
+.personalMain .orderSituation{
+	height: auto;
+	overflow: hidden;
+	background:#fff;
+	margin:0.65rem 0 0 0;
+}
+.orderSituation .orderTitle{
+	margin:0 0.23rem;
+	height: 0.84rem;
+	line-height: 0.84rem;
+	display: block;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.orderSituation .orderTitle .titleLeft{
+	float: left;
+	color:#444;
+	font-size: 0.28rem;
+}
+.orderSituation .orderTitle .titleRight{
+	height: auto;
+	overflow: hidden;
+	float: right;
+}
+.orderSituation .orderOperation{
+	height: auto;
+	overflow: hidden;
+	margin:0 0.23rem;
+	padding-bottom: 0.2rem;
+}
+.orderSituation .orderOperation a{
+	width: 20%;
+	display: block;
+	float: left;
+	text-align: center;
+}
+.orderSituation .orderOperation .pendingPayment{
+	width: 0.52rem;
+	height: 0.42rem;
+	display: inline-block;
+	background: url(../../images/secondLevel/waifIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.3rem 0 0.2rem 0;
+}
+.orderSituation .orderOperation .PendingDelivery{
+	width: 0.48rem;
+	height: 0.42rem;
+	display: inline-block;
+	background: url(../../images/secondLevel/waifDeliver.png) no-repeat;
+	background-size: 100%;
+	margin:0.3rem 0 0.2rem 0;
+}
+.orderSituation .orderOperation .goodsReceived{
+	width: 0.63rem;
+	height: 0.43rem;
+	display: inline-block;
+	background: url(../../images/secondLevel/waifCollect.png) no-repeat;
+	background-size: 100%;
+	margin:0.3rem 0 0.2rem 0;
+}
+.orderSituation .orderOperation .succeTrade{
+	width: 0.31rem;
+	height: 0.43rem;
+	display: inline-block;
+	background: url(../../images/secondLevel/tradeSucc.png) no-repeat;
+	background-size: 100%;
+	margin:0.3rem 0 0.2rem 0;
+}
+.orderSituation .orderOperation .returnGoods{
+	width: 0.42rem;
+	height: 0.42rem;
+	display: inline-block;
+	background: url(../../images/secondLevel/goodsRejected.png) no-repeat;
+	background-size: 100%;
+	margin:0.3rem 0 0.2rem 0;
+}
+.orderSituation .orderOperation a span{
+	display: block;
+	font-size: 0.24rem;
+	color:#7b7b7b;
+}
+.personalMain .personalInfo{
+	height: auto;
+	overflow: hidden;
+	background:#fff;
+	margin:0.15rem 0;
+}
+/*个人主页 结束*/
+/*会员中心 开始*/
+.memberCenterMain{
+	height: auto;
+	overflow: hidden;
+	margin:0.9rem 0 0 0;
+}
+.memberCenterMain .memberInfo{
+	width: 7.5rem;
+	height: 4.92rem;
+	overflow: hidden;
+	background:#ecbc68;
+}
+.memberInfo .memberName{
+	width:7.02rem;
+	height: 1.46rem;
+	overflow: hidden;
+	display: block;
+	margin:0.4rem auto 0; 
+	background: url(../../images/threeLevel/memberNameBg.png) no-repeat;
+	background-size: 100%;	
+}
+.memberInfo .memberName .memberNameLeft{
+	float: left;
+	position: relative;
+}
+.memberNameLeft .leftHead{
+	width:0.91rem;
+	height: 0.91rem;
+	overflow: hidden;
+	margin:0.3rem 0 0 0.4rem;
+	position: absolute;
+}
+.memberNameLeft .leftHead img{
+	width:100%;
+	border-radius: 50%;
+}
+.memberNameLeft em{
+	width:0.6rem;
+	height: 0.58rem;
+	display: inline-block;
+	background: url(../../images/threeLevel/anCrownIcon.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top:0.07rem;
+	left:0.2rem;
+}
+.memberInfo .memberName .memberNameRight{
+	float: right;
+	color: #fff;
+	text-align: right;
+	margin:0.32rem 0.44rem 0 0;
+}
+.memberName .memberNameRight span{
+	font-size: 0.28rem;
+	display: block;
+	font-weight: bolder;
+}
+.memberName .memberNameRight em{
+	font-size: 0.22rem;
+}
+
+.memberCenterMain .selectionMembers{
+	height: auto;
+	overflow: hidden;
+	background-color: #fff;
+	margin:0.15rem 0;
+	padding-bottom: 0.2rem;
+}
+.selectionMembers .memberTitle,
+.discount .memberTitle{
+	height: 1.03rem;
+	line-height: 1.03rem;
+	margin:0 0.23rem;
+}
+.selectionMembers .memberTitle em,
+.discount .memberTitle em{
+	width: 0.54rem;
+	height: 0.54rem;
+	display: inline-block;
+	float: left;
+	background:url(../../images/threeLevel/selectedIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.25rem 0.2rem 0 0;
+}
+.selectionMembers .memberTitle span,
+.discount .memberTitle span{
+	font-size: 0.28rem;
+	color:#444;
+	font-weight: bolder;
+}
+.memberCenterMain .carouseContent{
+	width: 7.5rem;
+	margin:0 0 0 0.09rem;
+}
+.carouselBtn ul li{
+	width: 0.37rem;
+	background: #bd9653;
+	position: relative;
+}
+.carouselBtn ul li.on{
+	width: 0.37rem;
+}
+.carouseContent ul li .exTitle{
+	position: absolute;
+	bottom:1rem;
+	left:0.6rem;
+	color:#fff;
+}
+.carouseContent ul li .exTitle span{
+	font-size:0.26rem;
+	display: inline-block;
+	margin-bottom: 0.1rem;
+}
+.carouseContent ul li .exTitle h3{
+	font-size: 0.39rem;
+}
+.selectionMembers .memberList{
+	height: auto;
+	overflow: hidden;
+}
+.selectionMembers .memberList a {
+    background: #f7f7f7;
+}
+.selectionMembers .memberList .otherBg {
+    background: #fbfafa;
+    padding: 0.1rem 0;
+}
+.memberList .price .presentNum{
+	display: inline-block;
+	float: left;
+	color:#ecbc68;
+	font-size: 0.18rem;
+}
+.memberList .price .presentNum em{
+	font-size:0.26rem;
+}
+.memberList .price .member{
+	font-size: 0.14rem;
+	color:#fff;
+	padding:0.04rem 0.05rem;
+	background:#ecbc68;
+	display: inline-block;
+	float: left;
+	margin-left: 0.1rem;
+}
+.memberList .price .save{
+	display: inline-block;
+	float: right;
+	font-size:0.18rem;
+	color:#7b7b7b;
+	margin:0.05rem 0.23rem 0 0;
+}
+.memberCenterMain .discount{
+	height: auto;
+	overflow: hidden;
+	background-color: #fff;
+	margin:0.15rem 0;
+}
+.discount .memberTitle em{
+	background:url(../../images/threeLevel/discountIcon.png) no-repeat;
+	background-size: 100%;
+}
+.discount .memberDatil{
+	height: auto;
+	overflow: hidden;
+}
+.discount .toUpdate{
+	font-size: 0.24rem;
+	color:#ecbc68;
+	margin:0.3rem 0.23rem 0.15rem;
+}
+/*会员中心 结束*/
+
+/*优惠券 开始*/
+.couponMain .couponNav{
+	width:100%;
+	height: 0.8rem;
+    line-height: 0.8rem;
+    overflow: hidden;
+    background: #fff;
+}
+.couponMain .couponNav a{
+	height: 0.78rem;
+    line-height: 0.78rem;
+    border-bottom: 0.02rem solid #fff;
+    display: inline-block;
+    color: #747474;
+    float: left;
+    text-align: center;
+    font-size: 0.28rem;
+    margin: 0 0.42rem 0 1.08rem;
+}
+.couponMain .couponNav a.Cur{
+	border-bottom: 0.02rem solid #ecbc68;
+    color: #ecbc68;
+}
+.couponMain .couponContent{
+	height: auto;
+	overflow: hidden;
+}
+.couponContent .couponList{
+	height: auto;
+	overflow: hidden;
+	display: none;
+}
+.couponContent .couponList .notice{
+	text-align: center;
+	margin:0.2rem 0;
+}
+.couponList .notice em{
+	width:0.24rem;
+	height: 0.2rem;
+	display: inline-block;
+	background: url(../../images/threeLevel/noticePic.png) no-repeat;
+	background-size: 100%;
+}
+.couponList .notice p{
+	display: inline-block;
+	font-size: 0.23rem;
+	color:#727373;
+}
+.couponList .notice p span{
+	color:#ecc176;
+}
+.couponList .notUsed,
+.couponList .alreadyUsed,
+.couponList .runOut{
+	width:7.02rem;
+	height: 1.73rem;
+	display: block;
+	background: url(../../images/threeLevel/couponBg.png) no-repeat;
+	background-size: 100%;
+	margin:0.15rem auto;
+	color:#fff;
+}
+.couponList .alreadyUsed{
+	background: url(../../images/threeLevel/alreadyUsedBg.png) no-repeat;
+	background-size: 100%;
+}
+.couponList .runOut{
+	background: url(../../images/threeLevel/alreadyBg.png) no-repeat;
+	background-size: 100%;
+}
+.couponList .notUsed .notUsedLeft,
+.couponList .alreadyUsed .notUsedLeft,
+.couponList .runOut .notUsedLeft{
+	width:1.83rem;
+	height: 1.72rem;
+	overflow: hidden;
+	float: left;
+	text-align: center;
+}
+.notUsed .notUsedLeft span,
+.alreadyUsed .notUsedLeft span,
+.runOut .notUsedLeft span {
+	font-size: 0.22rem;
+	display: inline-block;
+	margin:0.4rem 0 0.08rem 0;
+}
+.notUsed .notUsedLeft span em,
+.alreadyUsed .notUsedLeft span em,
+.runOut .notUsedLeft span em{
+	font-size: 0.4rem;
+}
+.notUsed .notUsedLeft p,
+.alreadyUsed .notUsedLeft p,
+.runOut .notUsedLeft p{
+	font-size: 0.22rem;
+}
+.couponList .notUsed .notUsedRight,
+.alreadyUsed .notUsedRight,
+.runOut .notUsedRight{
+	width:4.86rem;
+	height: 1.71rem;
+	overflow: hidden;
+	float: right;
+}
+.notUsed .notUsedRight h3,
+.alreadyUsed .notUsedRight h3,
+.runOut .notUsedRight h3{
+	font-size: 0.29rem;
+	margin:0.26rem 0 0.2rem 0;
+}
+.notUsed .notUsedRight p,
+.alreadyUsed .notUsedRight p,
+.runOut .notUsedRight p{
+	font-size: 0.22rem;
+}
+.notUsed .notUsedRight span,
+.alreadyUsed .notUsedRight span,
+.runOut .notUsedRight span{
+	font-size: 0.2rem;
+}
+
+
+
+
+
+
+/*优惠券 结束*/
+
