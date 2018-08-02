@@ -118,7 +118,6 @@
 </template>
 
 <script>
-  import '../../js/plugins/ionic.bundle.min.js'
   //定义全局变量
   var i=0;
 

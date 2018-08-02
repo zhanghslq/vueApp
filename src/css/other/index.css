@@ -1417,6 +1417,19 @@ header .message em{
 	width:100%;
 	display: inline-block;
 }
+.shoppBagMain .recruitemnt{
+	background: #f4f5f7;
+	margin-top: 0.2rem;
+}
+.recruitemnt .lookOtherList .otherBg{
+	background:#fff;
+}
+.recruitemnt .lookOtherList a{
+	background:#fcfcfc;
+}
+.recruitemnt .lookOtherList{
+	margin:0;
+}
 /*购物车 结束*/
 
 

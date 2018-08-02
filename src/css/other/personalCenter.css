@@ -901,6 +901,7 @@ header .setUpIcon{
     line-height: 0.8rem;
     overflow: hidden;
     background: #fff;
+    top:0.9rem;
 }
 .couponMain .couponNav a{
 	height: 0.78rem;
@@ -920,6 +921,7 @@ header .setUpIcon{
 .couponMain .couponContent{
 	height: auto;
 	overflow: hidden;
+	margin-top: 1.8rem;
 }
 .couponContent .couponList{
 	height: auto;
@@ -1014,11 +1016,378 @@ header .setUpIcon{
 .runOut .notUsedRight span{
 	font-size: 0.2rem;
 }
-
-
-
-
-
-
 /*优惠券 结束*/
 
+/*帮助与客服 开始*/
+.helpService{
+	height: auto;
+	overflow: hidden;
+	/*margin-top: 0.9rem;*/
+}
+.helpService .helpTop{
+	width: 7.02rem;
+	height: 1.6rem;
+	margin:0.15rem auto;
+	background: #fff;
+	border-radius: 0.06rem;
+	-webkit-box-shadow: 0 0 0.2rem #efeff0;
+    -moz-box-shadow: 0 0 0.2rem #efeff0;
+    box-shadow: 0 0 0.2rem #efeff0;
+}
+.helpService .helpTop a{
+	width: 33%;
+	display: block;
+	float: left;
+	text-align: center;
+	font-size: 0.28rem;
+	color:#444;
+}
+.helpService .helpTop a em{
+	display: block;
+}
+.helpService .helpTop a .automatic,
+.helpService .helpTop a .progress{
+	width: 0.42rem;
+	height: 0.42rem;
+	background: url(../../images/secondLevel/refundIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.28rem auto;
+}
+.helpService .helpTop a .progress{
+	background: url(../../images/secondLevel/goodsRejected.png) no-repeat;
+	background-size: 100%;
+}
+.helpService .helpTop a .feedback{
+	width: 0.38rem;
+	height: 0.43rem;
+	background: url(../../images/secondLevel/feedbackIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.28rem auto;
+}
+.helpService .helpMiddle{
+	height: auto;
+	overflow: hidden;
+}
+.helpMiddle .middleInfo{
+	height: auto;
+	overflow: hidden;
+	background:#fff;
+	margin-bottom: 0.15rem;
+}
+.helpMiddle .middleInfo .middleLeft{
+	width: 1.74rem;
+	float: left;
+	padding-bottom: 0.26rem;
+	font-size: 0.28rem;
+	color:#ecbc68;
+	text-align: center;
+}
+.middleInfo .middleLeft em.place{
+	width: 0.59rem;
+	height: 0.67rem;
+	display: block;
+	background: url(../../images/secondLevel/placeOrder.png) no-repeat;
+	background-size: 100%;
+	margin:0.27rem auto 0.14rem;
+}
+.middleInfo .middleLeft em.logistics{
+	width: 0.6rem;
+	height: 0.56rem;
+	display: block;
+	background: url(../../images/secondLevel/logisticsIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.38rem auto 0.1rem;
+}
+.middleInfo .middleLeft em.afterSale{
+	width: 0.6rem;
+	height: 0.65rem;
+	display: block;
+	background: url(../../images/secondLevel/afterIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.38rem auto 0.1rem;
+}
+.middleInfo .middleLeft em.other{
+	width: 0.61rem;
+	height: 0.61rem;
+	display: block;
+	background: url(../../images/secondLevel/otherIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.38rem auto 0.1rem;
+}
+.middleInfo .middleRight{
+	width: 5.5rem;
+	float: left;
+	border-left:0.02rem solid #f4f5f7;
+}
+.middleInfo .middleRight a{
+	display: block;
+	font-size: 0.28rem;
+	color:#666;
+	padding:0.25rem 0.28rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.middleInfo .middleRight a:last-child{
+	border:none;
+}
+.helpService .helpFooter{
+	width: 7.5rem;
+	height: 0.98rem;	
+	background:#fff;
+	position: fixed;
+	bottom: 0;
+	box-shadow: 0.2rem 0.1rem 0.5rem #d3d4d7;
+}
+.helpService .helpFooter a{
+	width: 33%;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	display:block;
+	text-align: center;
+	margin:0.08rem 0;
+	font-size: 0.28rem;
+	float: left;
+	color:#444;
+	border-right: 0.02rem solid #f4f5f7;
+}
+.helpService .helpFooter a .online{
+	width: 0.29rem;
+	height: 0.31rem;
+	display: block;
+	float: left;
+	background: url(../../images/secondLevel/chatIconSm.png) no-repeat;
+	background-size: 100%;
+	margin:0.25rem 0.1rem 0 0.5rem;
+}
+.helpService .helpFooter a span{
+	display: inline-block;
+	float: left;
+}
+.helpService .helpFooter a .service{
+	width: 0.25rem;
+	height: 0.31rem;
+	display: block;
+	float: left;
+	background: url(../../images/secondLevel/hotIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.25rem 0.1rem 0 0.5rem;
+}
+.helpService .helpFooter a p{
+	display: block;
+	font-size: 0.2rem;
+	margin-top: 0.15rem;
+	line-height: 0.3rem !important;
+}
+.helpService .helpFooter a:last-child{
+	border:none;
+}
+/*帮助与客服 结束*/
+/*问题回答 开始*/
+.questionAnswer{
+	height: auto;
+	overflow: hidden;
+}
+.questionAnswer .answerCont{
+	margin:0.15rem 0;
+	background: #fff;
+}
+.answerCont .contText{
+	height: auto;
+	overflow: hidden;
+	margin:0 0.23rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+	padding:0.22rem 0;
+}
+.answerCont .contText:last-child{
+	border:none;
+}
+.answerCont .contText em{
+	width: 0.5rem;
+	display: inline-block;
+	float: left;
+	font-size: 0.28rem;
+	color:#ecbc68;
+}
+.answerCont .contText .qText,
+.answerCont .contText .aText{
+	width: 6.2rem;
+	float: left;
+}
+.answerCont .contText .qText p{
+	color:#666;
+	font-size: 0.28rem;
+}
+.answerCont .contText .aText p{
+	color:#666;
+	font-size: 0.24rem;
+	margin-bottom: 0.1rem;
+	line-height: 0.36rem;
+}
+.questionAnswer .contact,
+.questionMain .questionList a{
+	width: 7.5rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	display: block;
+	overflow: hidden;
+	background: #fff;
+	margin-top: 0.15rem;
+}
+.questionAnswer .contact span,
+.questionMain .questionList a span{
+	width: 6.58rem;
+	color:#666;
+	font-size: 0.28rem;
+	float: left;
+	display: inline-block;
+	margin-left: 0.23rem;
+}
+.questionAnswer .contact em,
+.questionMain .questionList a em{
+	width: 0.14rem;
+	height: 0.24rem;
+	display: inline-block;
+	float: right;
+	margin-right: 0.3rem;
+	margin-top: 0.27rem;
+	background: url(../../images/threeLevel/addreeInto.png) no-repeat;
+	background-size: 100%;
+}
+/*问题回答 结束*/
+/*问题列表 开始*/
+.questionMain{
+	height: auto;
+	overflow: hidden;
+}
+.questionMain .questionList{
+	width: 7.5rem;
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	margin:1.1rem 0 0 0;
+}
+.questionMain .questionList a{
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+/*问题列表 结束*/
+/*意见与反馈 开始*/
+.opinionMain{
+	height: auto;
+	overflow: hidden;
+	position: relative;
+}
+.opinionMain .questionType,
+.opinionMain .proposal,
+.opinionMain .contact{
+	width: 7.02rem;
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	margin:0.15rem auto 0;
+	-webkit-box-shadow: 0 0 0.2rem #efeff0;
+    -moz-box-shadow: 0 0 0.2rem #efeff0;
+    box-shadow: 0 0 0.2rem #efeff0;
+}
+.opinionMain .questionType .typeTitle,
+.opinionMain .proposal .proTitle,
+.opinionMain .contact .proTitle{
+	height: 0.93rem;
+	line-height: 0.93rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.questionType .typeTitle i,
+.proposal .proTitle i,
+.contact .proTitle i{
+	width: 0.08rem;
+	height: 0.27rem;
+	display: inline-block;
+	background: #ecbc68;
+	float: left;
+	margin:0.34rem 0.22rem 0 0;
+}
+.questionType .typeTitle p,
+.proposal .proTitle p,
+.contact .proTitle p{
+	display: inline-block;
+	float: left;
+	font-size:0.3rem;
+	color:#444;
+}
+.questionType .typeTitle em,
+.proposal .proTitle em,
+.contact .proTitle em{
+	font-size: 0.2rem;
+	color:#9b9b9b;
+}
+.questionType .typeCont{
+	height: auto;
+	overflow: hidden;
+	margin:0.17rem 0 0.15rem 0.33rem;
+}
+.questionType .typeCont span{
+	width: 2rem;
+	height: 0.5rem;
+	line-height: 0.5rem;
+	text-align: center;
+	background: #f0f0f0;
+	display: block;
+	float: left;
+	font-size: 0.24rem;
+	color:#444;
+	margin:0 0.15rem 0.15rem 0;
+}
+.questionType .typeCont span.on{
+	color:#fff;
+	background: #ecbc68;
+}
+.proposal .proInfo{
+	width: 6.16rem;
+	height: 1.22rem;
+	display: block;
+	background:#f4f5f7;
+	margin:0 auto 0.22rem;
+	border:none;
+	font-size: 0.24rem;
+	padding:0.1rem;
+	line-height: 0.38rem;
+}
+.opinionMain .contact .contactInfo{
+	width: 6.14rem;
+	height: 0.7rem;
+	line-height: 0.7rem;
+	border:none;
+	margin:0 auto 0.2rem;
+	display: block;
+	padding:0 0.1rem;
+	background: #f4f5f7;
+	font-size: 0.24rem;
+}
+.opinionMain .contact span{
+	font-size: 0.22rem;
+	color:#666;
+	display: block;
+	margin:0 0.3rem 0.3rem;
+}
+.opinionMain .subProposal{
+	width: 7.5rem;
+	height: 0.98rem;
+	line-height: 0.98rem;
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	color:#fff;
+	font-size: 0.36rem;
+	background:#ecbc68;
+}
+.opinionMain .serviceIcon{
+	width: 1.22rem;
+    height: 1.22rem;
+    display: block;
+    background: url(../../images/common/customerIcon.png) no-repeat;
+    background-size: 100%;
+    position: fixed;
+    bottom: 1.6rem;
+    right: 0.15rem;
+    z-index: 99;
+}
+
+/*意见与反馈 结束*/

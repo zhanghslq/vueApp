@@ -11,6 +11,8 @@ $(function(){
   timeLimit();         //限时抢购滑动图
   makeUpone();         //美妆护肤下面的滑动列表
   memberDatil();       //会员中心下面的滑动列表
+  explain();           //商品说明弹层
+  choiseShopp();       //商品选择弹层
 })
 
 /*滑动导航切换内容*/
@@ -243,3 +245,45 @@ function memberDatil(){
       },
     });
 }
+
+/*商品说明弹层 开始*/
+function explain(){
+    $(".choiceProduct #explain").on("click",function(){
+        $("body").css({"height":"100%","overflow":"hidden"})
+        $(".elasticBox").show();
+    });
+    $(".elasticBox .closeBtn").on("click",function(){
+      
+        $("body").css({"height":"auto","overflow":"auto"})
+        $(".elasticBox").hide();
+    })
+}
+/*商品说明弹层 结束*/
+
+/*商品选择弹层 开始*/
+function choiseShopp(){
+    $("#choisShopp").on("click",function(){
+        $("body").css({"height":"100%","overflow":"hidden"})
+        $(".choicElastic").show();
+        $(".minus").click(function() {
+            var t = $(this).parent().find('.num');
+            t.text(parseInt(t.text()) - 1);
+            if (t.text() <= 1) {
+              t.text(1);
+            }
+        });
+        $(".plus").click(function() {
+            var t = $(this).parent().find('.num');
+            t.text(parseInt(t.text()) + 1);
+            if (t.text() <= 1) {
+              t.text(1);
+            }
+          });
+    });
+    $(".choicElastic .closeBtning").on("click",function(){
+      
+        $("body").css({"height":"auto","overflow":"auto"})
+        $(".choicElastic").hide();
+    })
+}
+/*商品选择弹层 结束*/

@@ -107,6 +107,9 @@ body{
 .mt5{
   margin-top: 0.5rem;
 }
+.dnone{
+  border: none !important;
+}
 /*头部 开始*/
 header{
   width:7.5rem;
@@ -412,12 +415,14 @@ header .releaseBtn{
 }
 /*缩略图 结束*/
 /*商品弹层 开始*/
-.elasticBox{
+.elasticBox,
+.choicElastic{
   height: auto;
   overflow: hidden;
   display: none;
 }
-.elasticBox .blackBag{
+.elasticBox .blackBag,
+.choicElastic .choicblackBag{
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,.5);
@@ -428,7 +433,8 @@ header .releaseBtn{
     -webkit-transition: all .3s ease-out;
     transition: all .3s ease-out;
 }
-.elasticBox .boxContent{
+.elasticBox .boxContent,
+.choicElastic .choicCont{
     width: 100%;
     background-color: #fff;
     position: fixed;
@@ -807,25 +813,29 @@ header .releaseBtn{
   margin-left: -0.1rem;
 }
 .propaganda .propagandaList,
-.memberDatil .propagandaList{
+.memberDatil .propagandaList,
+.productDetail .propagandaList{
   margin-left: 0.24rem;
 }
 .propaganda .propagandaList .swiper-slide,
-.memberDatil .propagandaList .swiper-slide{
+.memberDatil .propagandaList .swiper-slide,
+.productDetail .propagandaList .swiper-slide{
   width:1.92rem !important;
   height: auto;
   overflow:hidden;
   margin-right: 0.09rem;
 }
 .propaganda .propagandaList a,
-.memberDatil .propagandaList a{
+.memberDatil .propagandaList a,
+.productDetail .propagandaList a{
   width: 1.92rem;
   height: auto;
   overflow:hidden;
   display: block;
 }
 .propaganda .propagandaList .listPics,
-.memberDatil .propagandaList .listPics{
+.memberDatil .propagandaList .listPics,
+.productDetail .propagandaList .listPics{
   width:1.92rem;
   height: 1.94rem;
   background:#f7f7f7;

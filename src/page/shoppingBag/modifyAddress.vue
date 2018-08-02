@@ -53,14 +53,13 @@
 
 <script>
   import  {city} from '../../js/plugins/city'
-  var Picker = require("../../js/plugins/picker.min");
   // import '../../js/other/login'
     export default {
       name: "modifyAddress",
       data (){
           return {
             city,
-            Picker
+
           }
       },
       components:{

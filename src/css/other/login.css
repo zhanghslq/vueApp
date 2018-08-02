@@ -73,9 +73,9 @@
   height: 1.02rem;
   background: #fff;
   margin:0 auto 0.2rem;
-  -webkit-box-shadow:0.2rem #c8c8c8;  
-  -moz-box-shadow:0.2rem #c8c8c8;  
-  box-shadow:0.2rem #c8c8c8;  
+  -webkit-box-shadow:0.1rem 0.05rem 0.1rem #ebebea;   
+  -moz-box-shadow:0.1rem 0.05rem 0.1rem #ebebea;   
+  box-shadow:0.1rem 0.05rem 0.1rem #ebebea; 
 }
 .mobileInfo #mobile-number{
   width:6.1rem;
@@ -154,6 +154,17 @@
   border:none;
   color:#666;
   font-size: 0.26rem;
+}
+.mobileMain .bindingBtn{
+  width: 6.72rem;
+  height: 0.8rem;
+  margin:2rem auto 0;
+  line-height: 0.8rem;
+  text-align: center;
+  background:#ecbc68;
+  display: block;
+  color:#fff;
+  font-size: 0.36rem;
 }
 /*选择国家*/
 .countryAreaMain{

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /**
-*零碎页面样式表
+*零碎页面与我是店主样式表
 *@file:fragmentary.css;
 *@create author:gj;
 *@create time 2018/07/13
@@ -211,10 +211,128 @@
 	position: fixed;
 	bottom: 0;
 }
-
-
-
-
-
-
 /*在线客户 结束*/
+/*任务明细 开始*/
+.rewardMain{
+	height: auto;
+	overflow: hidden;
+}
+.rewardMain .rewardNo{
+	width:2rem;
+	height: 2.03rem;
+	background: url(../../images/secondLevel/rewardIcon.png) no-repeat;
+	background-size: 100%;
+	margin:1.13rem auto 0;
+}
+/*任务明细 结束*/
+/*营销助手 开始*/
+.maketingMain{
+	margin:0.9rem 0 0.2rem 0;
+}
+.maketingMain .maketingNav{
+	width:100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    overflow: hidden;
+    background: #fff;
+    top:0.9rem;
+}
+.maketingMain .maketingNav a{
+	height: 0.78rem;
+    line-height: 0.78rem;
+    border-bottom: 0.02rem solid #fff;
+    display: inline-block;
+    color: #747474;
+    float: left;
+    text-align: center;
+    font-size: 0.28rem;
+    margin: 0 1.2rem 0 1.36rem;
+}
+.maketingMain .maketingNav a.Cur{
+	border-bottom: 0.02rem solid #ecbc68;
+    color: #ecbc68;
+
+}
+.maketingMain .maketingCont{
+	height: auto;
+	overflow: hidden;
+	margin:1.8rem 0 0 0;
+}
+.maketingCont .contInfo{
+	height: auto;
+	overflow: hidden;
+	display: none;
+}
+.maketingCont .contInfo a{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	display: block;
+	margin-top: 0.15rem;
+}
+.maketingCont .contInfo .infoLeft{
+	width: 1.66rem;
+	height: 1.66rem;
+	float: left;
+	margin:0.53rem 0.12rem 0 0.27rem;
+}
+.maketingCont .contInfo .infoLeft img{
+	height: 100%;
+	display: block;
+	margin:auto auto;
+}
+.maketingCont .contInfo .infoRight{
+	width: 5.1rem;
+	float: left;
+}
+.contInfo .infoRight .infoTitle{
+	height: auto;
+	overflow: hidden;
+	margin:0.35rem 0 0.2rem 0;
+}
+.infoRight .infoTitle p{
+	font-size: 0.28rem;
+	width: 3.93rem;
+	height: 0.75rem;
+	overflow: hidden;
+	float: left;
+	color:#666;
+	line-height: 0.38rem;
+}
+.infoRight .infoTitle span{
+	display: inline-block;
+	float: right;
+	font-size: 0.18rem;
+	color:#f5500e;
+}
+.infoRight .infoTitle span em{
+	font-size: 0.26rem;
+}
+.infoRight .promotion{
+	font-size: 0.24rem;
+	color:#fff;
+	display: inline-block;
+	padding:0.06rem 0.12rem;
+	background: #ecbc68;
+	margin-bottom: 0.25rem;
+}
+.infoRight .advantage{
+	font-size: 0.24rem;
+	color:#a9a9a9;
+	margin-bottom: 0.25rem;
+}
+.contInfo .noTime{
+	text-align: center;
+}
+.contInfo .noTime img{
+	width: 2.19rem;
+	height: 2.19rem;
+	display: block;
+	margin:1.8rem auto 0.4rem;
+}
+.contInfo .noTime p{
+	color:#666;
+	font-size: 0.32rem;
+} 
+
+/*营销助手 结束*/

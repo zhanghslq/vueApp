@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "pinyin": "^2.8.3",
+    "v-distpicker": "^1.0.17",
     "vue": "^2.5.2",
     "vue-easy-uploader": "^1.0.5",
     "vue-photo-preview": "^1.0.9",

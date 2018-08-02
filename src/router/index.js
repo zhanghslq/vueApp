@@ -39,11 +39,36 @@ import remindSetUp from '../page/personalCenter/remindSetUp'
 import selectCountryAreaPersonal from '../page/personalCenter/selectCountryArea'
 import setUp from '../page/personalCenter/setUp'
 import updateMobileLogin from '../page/personalCenter/updateMobileLogin'
+//import newlyAddress from '../page/shoppingBag/newlyAddress'
+import TestPost from '../page/demo/TestPost'
+import address from '../page/demo/address'
+import TestAddress from '../page/demo/TestAddress'
+import conventionalGood from '../page/shoppingBag/conventionalGood'
 Vue.use(Router)
 Vue.use(VueResource)
 export default new Router({
   routes: [
-    {
+    /*{
+      path:'/newlyAddress',
+      name:'newlyAddress',
+      component:newlyAddress
+    },*/{
+      path:'/TestPost',
+      name:'TestPost',
+      component:TestPost
+    },{
+      path:'/conventionalGood',
+      name:'conventionalGood',
+      component:conventionalGood
+    },{
+      path:'/TestAddress',
+      name:'TestAddress',
+      component:TestAddress
+    },{
+      path:'/address',
+      name:'address',
+      component:address
+    },{
       path:'/detailedPage',
       name:'detailedPage',
       component:detailedPage

@@ -171,11 +171,11 @@
 .introduce .checkUp .upText{
 	font-size:0.24rem;
 	color:#666;
-	line-height: 0.36rem;
+	line-height: 0.4rem;
 	text-indent: 2em;
 }
 .introduce .checkUp .upText p{
-	margin-bottom: 0.08rem;
+	margin-bottom: 0.12rem;
 }
 .introduce .checkUp .upBtn{
 	font-size: 0.24rem;
@@ -547,12 +547,589 @@
 	margin-bottom: 0.15rem;
 	line-height: 0.38rem;
 }
-
 /*修改收货地址 结束*/
 
+/*商品详情页 开始*/
+.conventionalContent{
+	height: auto;
+	overflow: hidden;
+	position: relative;
+}
+.transparent{
+	z-index: 99;
+}
+.transparent .detailTabNav{
+	width:4.5rem;
+	height: auto;
+	overflow: hidden;
+	margin-left: 1.2rem;
+	opacity: 0;
+}
+.transparent .detailTabNav li{
+	float: left;
+	width: 33%;
+	text-align: center;
+	color:#ffe6bb;
+}
+.transparent .detailTabNav li.on{
+	color:#fff;
+}
+.transparentCon .shareBtn{
+	width: 0.37rem;
+	height: 0.35rem;
+	background: url(../../images/common/shareIcon2.png) no-repeat;
+    background-size: 100%;
+}
+.transparentCon .likeIcon{
+	width: 0.4rem;
+	height: 0.36rem;
+	display: inline-block;
+	background: url(../../images/common/likeIcon.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top:50%;
+	right: 0.9rem;
+	margin:-0.18rem 0 0 0;
+}
+.conventionalMain{
+	height: auto;
+	overflow: hidden;
+}
+.conventionalMain .productDetail{
+	height: auto;
+	overflow: hidden;
+	background:#fff;
+	margin-bottom: 0.15rem;
+}
+.conventionalMain .productCarouse{
+	width: 7.5rem;
+	background: url(../../images/threeLevel/proBg.jpg) no-repeat;
+	background-size: 100%;
+	position: relative;
+}
+.productCarouse .carouseContent{
+	height: auto;
+}
+.carouseContent .tempWrap{
+	margin:0.7rem 0 0 0;
+	height: 5.8rem;
+}
+.tempWrap ul li a,
+.tempWrap ul,
+.tempWrap ul li{
+	height: 5.8rem !important;
+}
+.tempWrap ul li a{
+	margin-top: 0.1rem;
+}
+.tempWrap ul li img{
+	width: auto !important;
+	height: 100%;
+	display: block;
+	margin:0 auto;
+}
+.carouseContent .carouselBtn{
+	bottom:0;
+}
+.carouseContent .carouselBtn li{
+	width: 0.3rem;
+	height: 0.06rem;
+	background: #d1d1d1;
+}
+.carouseContent .carouselBtn li.on{
+	background:#ecbc68;
+}
+.productCarouse .salesNum{
+	padding:0.03rem 0.08rem;
+	background: #ecbc68;
+	position: absolute;
+	right: 0.1rem;
+	bottom: -0.1rem;
+	border-radius: 0.3rem;
+}
+.productCarouse .salesNum em{
+	width: 0.2rem;
+	height: 0.16rem;
+	display: inline-block;
+	background: url(../../images/threeLevel/salesIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0 0 0 0.1rem;
+}
+.productCarouse .salesNum span{
+	font-size:0.2rem;
+	color:#fff;
+	display: inline-block;
+	margin-right: 0.1rem;
+}
+.productDetail .productExplain{
+	height: auto;
+	overflow: hidden;
+	margin-top: 0.25rem;
+}
+.productExplain .priceContrast{
+	height: auto;
+	overflow: hidden;
+	margin:0.1rem 0 0.3rem 0;
+}
+.productExplain .priceContrast .presentPrice{
+	color: #f5500e;
+	font-size: 0.36rem;
+	display: inline-block;
+	margin:0 0.3rem 0 0.34rem;
+}
+.productExplain .priceContrast .presentPrice em{
+	font-size: 0.6rem;
+}
+.productExplain .priceContrast .marketValue{
+	font-size: 0.24rem;
+	color:#b1b1b1;
+}
+.productExplain .priceContrast .marketValue em{
+	text-decoration: line-through;
+}
+.productExplain h4{
+	font-size:0.3rem;
+	color:#444;
+	margin:0 0.24rem 0.15rem;
+	line-height: 0.46rem;
+}
+.productExplain p{
+	color:#7b7b7b;
+	font-size:0.24rem;
+	margin:0 0.24rem 0.25rem;
+	line-height: 0.38rem;
+}
+.productDetail .choiceProduct{
+	height: auto;
+	overflow: hidden;
+	border-top:0.15rem solid #f4f5f7;
+}
+.productDetail .choiceProduct a{
+	height: auto;
+	overflow: hidden;
+	margin:0 0.23rem;
+	display: block;
+	padding:0.3rem 0;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.productDetail .choiceProduct a:last-child{
+	border:none;
+}
+.productDetail .choiceProduct a span{
+	display: inline-block;
+	font-size: 0.28rem;
+	color:#666;
+	float: left;
+	margin-right: 0.1rem;
+}
+.productDetail .choiceProduct a .threePoints{
+	height: auto;
+	overflow: hidden;
+	float: right;
+}
+.choiceProduct a .threePoints i{
+	width: 0.06rem;
+	height: 0.06rem;
+	display: inline-block;
+	background: url(../../images/common/pointsIcon.png) no-repeat;
+	background-size: 100%;
+}
+.productDetail .choiceProduct a .distribution{
+	width: 5.3rem;
+	float: left;
+}
+.choiceProduct a .distribution h5{
+	font-size: 0.28rem;
+	color:#444;
+	font-weight: bolder;
+}
+.choiceProduct a .distribution em{
+	font-size: 0.24rem;
+	color:#666;
+	display: inline-block;
+	margin-top:0.08rem;
+}
+.productDetail .plateTitle{
+	font-size: 0.3rem;
+	color:#444;
+	margin:0.26rem 0.23rem 0.18rem;
+	font-weight: bolder;
+}
+.productDetail .propagandaList .listPics{
+	width:1.98rem;
+	height: 2rem;
+}
+.productDetail .propagandaList .priceIng{
+	margin-top: -0.1rem;
+}
+.productDetail .propagandaList .priceIng .newPrice{
+	color:#f5500e;
+	margin-right: 0.08rem;
+}
+.productDetail .propagandaList .priceIng .originalPrice{
+	font-size: 0.19rem;
+	color:#c2c2c2;
+	text-decoration: line-through;
+}
+ .productDetail .propagandaList .swiper-slide{
+ 	margin-right: 0.18rem;
+ }
+.productDetail .propagandaList{
+	padding-bottom: 0.27rem;
+}
+.productDetail .commodityInfo{
+	margin:0 0.23rem;
+	height: auto;
+	overflow: hidden;
+	border-top:0.02rem solid #efeeef;
+}
+.productDetail .commodityInfo li{
+	height: 0.7rem;
+	line-height: 0.7rem;
+}
+.productDetail .commodityInfo li label{
+	width:1.42rem;
+	display: block;
+	float: left;
+	font-size:0.24rem;
+	color:#444;
+}
+.productDetail .commodityInfo li span{
+	font-size:0.24rem;
+	color:#7b7b7b;
+}
+.productDetail .detailCont{
+	height: auto;
+	overflow: hidden;
+	margin-bottom: 1rem;
+	border-top: 0.15rem solid #f4f5f7;
+}
+.productDetail .detailCont img{
+	width: 100%;
+	display: block;
+	margin:0 auto;
+}
+.conventFooter{
+	width: 7.5rem;
+	height: 0.98rem;
+	background: #fff;
+	position: fixed;
+	bottom:0;
+	-webkit-box-shadow: 0 0 0.25rem #d3d4d7;
+    -moz-box-shadow: 0 0 0.25rem #d3d4d7;
+    box-shadow: 0 0 0.25rem #d3d4d7;
+    z-index: 99;
+}
+.conventFooter .shoppBox{
+	width: 1.24rem;
+	height: 0.76rem;
+	overflow: hidden;
+	display: inline-block;
+	float: left;
+	border-right: 0.02rem solid #eee;
+	margin-top: 0.12rem;
+}
+.conventFooter .shoppBox img{
+	width: 0.4rem;
+	height: 0.43rem;
+	display: block;
+	margin:0.16rem auto 0;
+}
+.conventFooter .chat{
+	display: inline-block;
+	float: left;
+	width: 1.29rem;
+	height: 0.76rem;
+	margin-top: 0.12rem;
+}
+.conventFooter .chat img{
+	width: 0.39rem;
+	height: 0.42rem;
+	display: block;
+	margin:0.16rem auto 0;
+}
+.conventFooter .join,
+.conventFooter .immediately{
+	width: 2.5rem;
+	height: 0.98rem;
+	line-height: 0.98rem;
+	display: inline-block;
+	float: left;
+	text-align: center;
+	background: #ecbc68;
+	color:#fff;
+	font-size: 0.32rem;
+}
+.conventFooter .immediately{
+	width: 2.45rem;
+	background: #ec7e68;
+}
+.conventionalContent .serviceIcon{
+	width: 1.22rem;
+	height: 1.22rem;
+	display: block;
+	background: url(../../images/common/customerIcon.png) no-repeat;
+	background-size: 100%;
+	position: fixed;
+	bottom: 4rem;
+	right: 0.15rem;
+	z-index: 99;
+}
+.boxContent .explainText{
+	height: auto;
+	overflow: hidden;
+	margin:0 0.23rem 1rem;
+}
+.explainText .textTitle{
+	height: 1.04rem;
+	line-height: 1.04rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+	text-align: center;
+	font-size: 0.32rem;
+	color:#444;
+	font-weight: bolder;
+	position: relative;
+	margin-bottom: 0.35rem;
+}
+.explainText .textTitle .closeBtn,
+.goodsPrice .closeBtning{
+	width: 0.23rem;
+	height: 0.23rem;
+	display: inline-block;
+	background: url(../../images/common/closeIcon.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	right: 0;
+	top:0.4rem;
+	z-index: 100;
+}
+.explainText h5{
+	font-size: 0.28rem;
+	color:#444;
+	font-weight: bolder;
+	margin-bottom: 0.15rem;
+}
+.explainText p{
+	font-size: 0.24rem;
+	color:#7b7b7b;
+	margin-bottom: 0.3rem;
+}
+.choicCont .choiceGoods{
+
+}
+.choiceGoods .goodsPrice{
+	height: auto;
+	overflow: hidden;
+	margin:-0.4rem 0.23rem 0;
+	padding-bottom: 0.25rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.choiceGoods .goodsPrice .goodsPLeft{
+	float: left;
+	width: 2.1rem;
+	height: 2.1rem;
+	float: left;
+	border:0.04rem solid #f4f5f7;
+	background: #fff;
+}
+.choiceGoods .goodsPrice .goodsPLeft img{
+	height: 100%;
+	display: block;
+	margin:0 auto;
+}
+.choiceGoods .goodsPrice .goodsright{
+	width: 4rem;
+	float: left;
+	margin:0.7rem 0 0 0.25rem;
+}
+.goodsPrice .goodsright .priceNum{
+	display: block;
+	color:#df3421;
+	font-size: 0.24rem;
+	margin-bottom: 0.2rem;
+}
+.goodsPrice .goodsright .priceNum em{
+	font-size: 0.4rem;
+}
+.goodsPrice .goodsright .pleasChoise{
+	font-size: 0.28rem;
+	color:#666;
+}
+.goodsPrice .closeBtning{
+	top:0.3rem;
+	right: 0.23rem;
+}
+.choiceGoods .colourInfo,
+.choiceGoods .numbers{
+	height: auto;
+	overflow: hidden;
+	margin:0 0.23rem;
+	border-bottom:0.02rem solid #f4f5f7;
+	padding-bottom: 0.08rem;
+}
+.choiceGoods .colourInfo .infoTitle{
+	padding-top: 0.28rem;
+	color:#666;
+	font-size: 0.26rem;
+}
+.choiceGoods .colourInfo ul{
+	height: auto;
+	overflow: hidden;
+	margin-top: 0.2rem;
+}
+.choiceGoods .colourInfo ul li{
+	font-size: 0.26rem;
+	color:#666;
+	padding:0.2rem 0.32rem;
+	float: left;
+	display: inline-block;
+	background: #f4f5f7;
+	margin:0 0.2rem 0.2rem 0;
+}
+.choiceGoods .colourInfo ul li.Cur{
+	color:#fff;
+	background: #ecbc68;
+}
+.choiceGoods .numbers .numLeft{
+	color:#666;
+	font-size: 0.26rem;
+	float: left;
+	margin:0.45rem 0 0.4rem 0;
+}
+.choiceGoods .numbers .numRight{
+	height: 0.64rem;
+	line-height: 0.64rem;
+	text-align: center;
+	border:0.02rem solid #ececec;
+	float: right;
+	margin-top: 0.33rem;
+}
+.numbers .numRight .minus{
+	width: 0.64rem;
+	height: 0.64rem;
+	display: inline-block;
+	line-height: 0.64rem;
+	text-align: center;
+	float: left;
+	font-size: 0.3rem;
+	color:#444;
+	border-right: 0.02rem solid #f4f5f7;
+}
+.numbers .numRight .num{
+	width: 0.86rem;
+	height: 0.64rem;
+	border-right: 0.02rem solid #f4f5f7;
+	line-height: 0.64rem;
+	text-align: center;
+	font-size: 0.26rem;
+	color:#444;
+	display: inline-block;
+	float: left;
+}
+.numbers .numRight .plus{
+	width: 0.64rem;
+	height: 0.64rem;
+	line-height: 0.64rem;
+	text-align: center;
+	display: inline-block;
+	float: left;
+	color:#444;
+	font-size: 0.3rem;
+}
+.choiceGoods .addCart{
+	width: 6.7rem;
+	height: 1rem;
+	line-height: 1rem;
+	text-align: center;
+	background: #ecbc68;
+	margin:0.3rem auto 0.4rem;
+	color:#fff;
+	font-size: 0.34rem;
+	display: block;
+}
+.productExplain .commodityPrice{
+	height: auto;
+	overflow: hidden;
+	margin-top: 0.1rem;
+}
+.commodityPrice .countDown{
+	width: 7.5rem;
+	height: 1rem;
+	background:#ecbc68;
+	color:#fff;
+	overflow: hidden;
+}
+.commodityPrice .countDown .now{
+	display: inline-block;
+	margin:0 0.2rem 0 0.25rem;
+	line-height: 1rem;
+	float: left;
+	font-size: 0.36rem;
+}
+.commodityPrice .countDown .now em{
+	font-size: 0.6rem;
+}
+.commodityPrice .countDown .member{
+	float: left;
+	margin-top: 0.2rem;
+}
+.commodityPrice .countDown .member span{
+	display: block;
+	font-size: 0.2rem;
+	margin-bottom: 0.05rem;
+}
+.commodityPrice .countDown .endTime{
+	float: right;
+	margin-right: 0.2rem;
+}
+.commodityPrice .countDown .endTime em{
+	display: inline-block;
+	line-height: 1rem;
+	font-size: 0.22rem;
+	float: left;
+}
+.countDown .endTime .times{
+	height: auto;
+	overflow: hidden;
+	float: left;
+	margin:0.3rem 0 0 0.13rem;
+}
+.countDown .endTime .times span{
+	width: 0.4rem;
+	height: 0.36rem;
+	line-height: 0.36rem;
+	text-align: center;
+	background: #fff;
+	font-size: 0.23rem;
+	color:#ecbc68;
+	display: inline-block;
+}
+.commodityPrice .earn{
+	font-size: 0.22rem;
+	color:#666;
+	margin:0.32rem 0 0.23rem 0.23rem;
+}
+.commodityPrice .voucher{
+	width: 7.02rem;
+	height: 0.46rem;
+	line-height: 0.46rem;
+	margin:0 auto 0.3rem;
+	background:#f3f3f3;
+	border-radius: 0.08rem;
+	font-size: 0.2rem;
+	color:#666;
+}
+.commodityPrice .voucher em{
+	width: 0.25rem;
+	height: 0.19rem;
+	display: inline-block;
+	background: url(../../images/common/voucherIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0 0.15rem;
+}
 
 
-
+/*商品详情页 结束*/
 
 
 
@@ -591,10 +1168,26 @@
 /*适配*/
 @media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
 	@media only screen and (max-device-width :480px){
-
+		.conventFooter .immediately{
+			width: 2.44rem;
+		}
+		.commodityPrice .countDown .member span{
+			margin-bottom: 0.02rem;
+		}
+		.commodityPrice .countDown .member{
+			margin-top: 0.15rem;
+		}
     }
 	@media only screen and (min-device-width :481px){
-
+		.conventFooter .immediately{
+			width: 2.44rem;
+		}
+		.commodityPrice .countDown .member span{
+			margin-bottom: 0.02rem;
+		}
+		.commodityPrice .countDown .member{
+			margin-top: 0.15rem;
+		}
 	}
 }
 @media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){ 

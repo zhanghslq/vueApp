@@ -9,6 +9,7 @@ $(function(){
    shoppSettlement(); //购物车结算
    collectionTab(); //我的收藏tab切换
    couponsTab();   //优惠券tab切换
+   markeingTab();    //营销助手tab切换
 })
 
 /*兑换tab切换*/
@@ -291,9 +292,8 @@ function shoppSettlement(){
             
         });
     /* 加减  */
-    function reducew(obj){
-        //减
-        var $this = $(obj);
+    $(".minus").click(function() {
+        var $this = $(this);
         var totalH = $("#total_price b").text(); /* 合计金额  */
         var ise = $this.siblings("span").text();
         var gc_id = $this.siblings("input").val();
@@ -315,12 +315,11 @@ function shoppSettlement(){
             }
             
         }
-        
-    };
+    });
     
-    function plusw(obj){
+    $(".plus").click(function(){
         //加
-        var $this = $(obj);
+        var $this = $(this);
         var totalH = $("#total_price b").text(); /* 合计金额  */
         var ise = $this.siblings("span").text();
         var gc_id = $this.siblings("input").val();
@@ -333,13 +332,13 @@ function shoppSettlement(){
             plusMod(mo,totalH,2,noX);
             noX=0;
         }
-        
-    }
+    })
+    
      //删除
-    function big_cart_remove(){
+     $("#confirm_cart1").click(function(){
         $(".commodity_list_term .pitch_on").parent().remove();
         $(".commodity_list .tite_tim > em.pitch_on").parents(".commodity_box").remove();    
-    }
+     })
 }
 
 /*我的收藏tab切换*/
@@ -370,5 +369,20 @@ function couponsTab(){
         $ul.css('display','none');
         $ul.eq($t).css('display','block');
         $("#navcon03").css('height',$ul.eq($t).height())
+    })
+}
+/*营销助手 tab切换*/
+function markeingTab(){
+    var $li = $('.maketingNav a');
+    var $ul = $('.maketingCont .contInfo');
+    $("#navcon04").css('height',$ul.eq(0).height())
+    $li.click(function(){
+        var $this = $(this);
+        var $t = $this.index();
+        $li.removeClass();
+        $this.addClass('Cur');
+        $ul.css('display','none');
+        $ul.eq($t).css('display','block');
+        $("#navcon04").css('height',$ul.eq($t).height())
     })
 }
