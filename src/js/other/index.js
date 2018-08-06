@@ -13,6 +13,7 @@ $(function(){
   memberDatil();       //会员中心下面的滑动列表
   explain();           //商品说明弹层
   choiseShopp();       //商品选择弹层
+  sharingLink();       //我是店主分享链接
 })
 
 /*滑动导航切换内容*/
@@ -287,3 +288,15 @@ function choiseShopp(){
     })
 }
 /*商品选择弹层 结束*/
+/*我是店主分享 开始*/
+function sharingLink(){
+    $(".shopkeeepNav #shareLike").on("click",function(){
+        $("body").css({"height":"100%","overflow":"hidden"})
+        $(".elasticBox").show();
+    });
+    $(".elasticBox .blackBag").on("click",function(){
+        $("body").css({"height":"auto","overflow":"auto"})
+        $(".elasticBox").hide();
+    })
+}
+/*我是店主分享 结束*/

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import Swiper from 'swiper'
+
   import VDistpicker from 'v-distpicker'
   export default {
     components: { VDistpicker },

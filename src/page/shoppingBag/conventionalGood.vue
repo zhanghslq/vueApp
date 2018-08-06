@@ -78,10 +78,12 @@
                   <i></i>
                 </div>
               </a>
-              <a href="#">
+              <a  @click="toShow">
                 <span>配送</span>
                 <div class="distribution">
-                  <h5 id="choiceCity">广州 至 北京北京东城区</h5>
+                  <h5 id="choiceCity" >
+                    {{res}}
+                  </h5>
                   <em>包邮</em>
                 </div>
                 <div class="threePoints">
@@ -220,6 +222,13 @@
         </div>
       </div>
       <!--弹层 结束-->
+      <vue-pickers
+        :show="show"
+        :link="link"
+        :columns="columns"
+        :selectData="pickData"
+        @cancel="close"
+        @confirm="confirmFn"></vue-pickers>
     </div>
 </template>
 
@@ -228,15 +237,42 @@
   import {TouchSlide} from "../../js/plugins/TouchSlide.1.1.min";
   import Swiper from 'swiper'
   import {city} from '../../js/plugins/city'
-//  import '../../js/other/selectAddress.js'
+  import vuePickers from 'vue-pickers'
+  import {provs_data, citys_data, dists_data} from 'vue-pickers/lib/areaData'
   export default {
         name: "conventionalGood",
     components:{
       Swiper,
       TouchSlide,
       city,
+      vuePickers
     },
-        methods:{
+    data() {
+      return {
+        isCopy: '',
+        res: '北京市',
+        show: false,
+        columns: 3,
+        link: true,
+        pickData: {
+          data1: provs_data,
+          data2: citys_data,
+          data3: dists_data
+        }
+      }
+    },
+    methods:{
+    close() {
+      this.show = false
+    },
+    confirmFn(val) {
+      this.show = false
+      this.res = val.select1.text+val.select2.text+val.select3.text
+      this.pickData.default = [val.select1, val.select2, val.select3]
+    },
+    toShow() {
+      this.show = true
+    },
     bannerFocusImg: function () {
     TouchSlide({
       slideCell: "#carouselMain",
@@ -276,11 +312,11 @@
   /*商品说明弹层 结束*/
         },
         mounted:function () {
-
           //////////////////////////////////
           this.bannerFocusImg()
           this.makeUpone()
           this.explain();
+          /////////////////
           $(window).scroll(function(){
             var $scrolltop=document.documentElement.scrollTop||document.body.scrollTop;
             var $tabScroll=$(".transparent").offset().top-200;
@@ -294,6 +330,8 @@
             }
 
           })
+
+
         }
     }
 </script>

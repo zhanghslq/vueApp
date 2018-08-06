@@ -226,10 +226,12 @@
 }
 /*任务明细 结束*/
 /*营销助手 开始*/
-.maketingMain{
+.maketingMain,
+.rewardTaskMain{
 	margin:0.9rem 0 0.2rem 0;
 }
-.maketingMain .maketingNav{
+.maketingMain .maketingNav,
+.rewardTaskMain .rewardNav{
 	width:100%;
     height: 0.8rem;
     line-height: 0.8rem;
@@ -237,7 +239,8 @@
     background: #fff;
     top:0.9rem;
 }
-.maketingMain .maketingNav a{
+.maketingMain .maketingNav a,
+.rewardTaskMain .rewardNav a{
 	height: 0.78rem;
     line-height: 0.78rem;
     border-bottom: 0.02rem solid #fff;
@@ -248,17 +251,20 @@
     font-size: 0.28rem;
     margin: 0 1.2rem 0 1.36rem;
 }
-.maketingMain .maketingNav a.Cur{
+.maketingMain .maketingNav a.Cur,
+.rewardTaskMain .rewardNav a.Cur{
 	border-bottom: 0.02rem solid #ecbc68;
     color: #ecbc68;
 
 }
-.maketingMain .maketingCont{
+.maketingMain .maketingCont,
+.rewardTaskMain .rewardCont{
 	height: auto;
 	overflow: hidden;
 	margin:1.8rem 0 0 0;
 }
-.maketingCont .contInfo{
+.maketingCont .contInfo,
+.rewardCon .confInfo{
 	height: auto;
 	overflow: hidden;
 	display: none;
@@ -334,5 +340,1154 @@
 	color:#666;
 	font-size: 0.32rem;
 } 
-
 /*营销助手 结束*/
+/*高收益商品 开始*/
+.highIncomeMain{
+	height: auto;
+	overflow: hidden;
+	margin-top: 0.9rem;
+}
+.highIncomeMain ul{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+}
+.highIncomeMain ul li{
+	height: auto;
+	overflow: hidden;
+	border-bottom: 0.02rem solid #f4f5f7;
+	margin:0 0.23rem;
+	padding:0.22rem 0 0.2rem 0;
+}
+.highIncomeMain ul li .highLeft{
+	width: 1.52rem;
+	height: 1.52rem;
+	float: left;
+}
+.highIncomeMain ul li .highLeft img{
+	max-width:100%;
+	height: 100%;
+	display: block;
+	margin:auto auto;
+}
+.highIncomeMain ul li .highRight{
+	width: 5.08rem;
+	float: left;
+	margin-left: 0.1rem;
+}
+.highIncomeMain ul li .highRight p{
+	font-size: 0.28rem;
+	color:#444;
+	height: 0.4rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 0.3rem;
+}
+.highIncomeMain ul li .highRight span{
+	display: block;
+	font-size: 0.24rem;
+	color:#666;
+	margin-bottom: 0.05rem;
+}
+/*高收益商品 结束*/
+/*我是店主 开始*/
+.shopkeeperMain{
+	height: auto;
+	overflow: hidden;
+	margin-bottom: 1rem;
+}
+.shopkeeperMain .shopPersonal{
+	width: 7.5rem;
+	height: 2.35rem;
+	overflow: hidden;
+	background: #ecbc68;
+	padding-top: 0.5rem;
+}
+.shopPersonal .perLeft{
+	width: 1.2rem;
+	height: 1.2rem;
+	overflow: hidden;
+	float: left;
+	margin:0 0.22rem;
+}
+.shopPersonal .perLeft img{
+	width: 1.1rem;
+	height: 1.1rem;
+	border-radius: 50%;
+	border:0.04rem solid #fff;
+}
+.shopPersonal .perMiddle{
+	float: left;
+	margin-top: 0.2rem;
+}
+.shopPersonal .perMiddle h3{
+	font-size: 0.3rem;
+	color:#fff;
+	font-weight: bolder;
+	margin-bottom: 0.06rem;
+}
+.shopPersonal .perMiddle span{
+	font-size: 0.22rem;
+	color:#fff;
+}
+.shopPersonal .perRight{
+	width: 0.41rem;
+	height: 0.41rem;
+	display: inline-block;
+	float: right;
+	background: url(../../images/index/shopkeeConde.png) no-repeat;
+	background-size: 100%;
+	margin:0.3rem 0.3rem 0 0;
+}
+.shopkeeperMain .shopkeeepNav{
+	width: 7.02rem;
+	height: 1.8rem;
+	margin:-0.9rem auto 0;
+	background:#fff;
+	border-radius: 0.06rem;
+	-webkit-box-shadow: 0 0 0.2rem #e9e9e8;
+    -moz-box-shadow: 0 0 0.2rem #e9e9e8;
+    box-shadow: 0 0 0.2rem #e9e9e8;
+}
+.shopkeeperMain .shopkeeepNav a{
+	width: 33%;
+	display: block;
+	float: left;
+	text-align: center;
+	font-size: 0.26rem;
+	color:#444;
+}
+.shopkeeperMain .shopkeeepNav span{
+	display: block;
+}
+.shopkeeperMain .shopkeeepNav em{
+	display: inline-block;
+}
+.shopkeeperMain .shopkeeepNav .selectedIcon{
+	width: 0.49rem;
+	height: 0.42rem;
+	background: url(../../images/index/selectedIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.47rem 0 0.18rem 0;
+}
+.shopkeeperMain .shopkeeepNav .invitationIcon{
+	width: 0.43rem;
+	height: 0.45rem;
+	background: url(../../images/index/invitationIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.47rem 0 0.17rem 0;
+}
+.shopkeeperMain .shopkeeepNav .shareIcon{
+	width: 0.51rem;
+	height: 0.45rem;
+	background: url(../../images/index/shareIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.47rem 0 0.16rem 0;
+}
+.shopkeeperMain .management,
+.shopkeeperMain .reward,
+.shopkeeperMain .businessSchool{
+	height: auto;
+	overflow: hidden;
+	background:#fff;
+	margin:0.15rem 0;
+}
+.shopkeeperMain .management .titleIng,
+.shopkeeperMain .reward .titleIng,
+.shopkeeperMain .businessSchool .titleIng{
+	height: auto;
+	overflow: hidden;
+}
+.management .titleIng h4,
+.reward .titleIng h4,
+.businessSchool .titleIng h4{
+	float: left;
+	margin:0.27rem 0 0 0.24rem;
+	font-size: 0.28rem;
+	color:#444;
+}
+.management .titleIng span{
+	color:#7b7b7b;
+	font-size: 0.24rem;
+	display: inline-block;
+	float: right;
+	margin:0.3rem 0 0 0;
+}
+.management .titleIng em,
+.reward .titleIng em,
+.businessSchool .titleIng em{
+	width: 0.14rem;
+	height: 0.24rem;
+	display: inline-block;
+	float: right;
+	background: url(../../images/threeLevel/addreeInto.png) no-repeat;
+	background-size: 100%;
+	margin:0.32rem 0.23rem 0 0.12rem;
+}
+.management .todaySituation{
+	height: auto;
+	overflow: hidden;
+	margin-top: 0.6rem;
+	margin-bottom: 0.4rem;
+}
+.todaySituation .todayInfo{
+	width: 33%;
+	float: left;
+	text-align: center;
+	color:#ecbc68;
+}
+.todaySituation .todayInfo span{
+	font-size: 0.4rem;
+}
+.todaySituation .todayInfo em{
+	font-size: 0.24rem;
+	display: block;
+	margin-top: 0.18rem;
+}
+.management .marketing{
+	height: auto;
+	overflow: hidden;
+	border-top:0.02rem solid #f4f5f7;
+} 
+.management .marketing a{
+	margin: 0.07rem 0;
+	display:block;
+	width: 49%;
+	float: left;
+	text-align: center;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	font-size: 0.28rem;
+	color:#444;
+	border-right: 0.02rem solid #f4f5f7;
+}
+.management .marketing a:last-child{
+	border:none;
+}
+.reward .carouseContent{
+	height: 1.92rem;
+	margin-top: 0.25rem;
+}
+.reward .tempWrap ul li{
+	height: 1.92rem;
+}
+.reward .carouselBtn ul li{
+	width: 0.32rem;
+	height: 0.04rem;
+	background:#3f424c;
+	margin-right: 0.1rem;
+	margin-left: 0;
+}
+.reward .carouselBtn ul li.on{
+	background: #fff;
+}
+.reward .carouseContent .carouselBtn{
+	width: auto;
+	margin-left: 0.5rem;
+}
+.shopkeeperMain .businessSchool{
+	height: auto;
+	overflow: hidden;
+}
+.businessSchool .schoolOper{
+	height: auto;
+	overflow: hidden;
+	margin:0.28rem 0 0.28rem 0.24rem;
+}
+.businessSchool .schoolOper a{
+	width: 1.68rem;
+	height: 1.02rem;
+	display: block;
+	float: left;
+	margin-right: 0.1rem;
+}
+.businessSchool .schoolOper a img{
+	width:100%;
+}
+.shopkeeperMain .moreOpera{
+	height: auto;
+	overflow: hidden;
+	background:#fff;
+	padding-bottom: 0.4rem;
+}
+.shopkeeperMain .moreOpera a{
+	width:25%;
+	text-align: center;
+	display: block;
+	float: left;
+	margin:0.5rem 0 0 0;
+	font-size: 0.24rem;
+	color:#444;
+}
+.shopkeeperMain .moreOpera a span{
+	display: block;
+}
+.moreOpera a .manageIcon{
+	width:0.4rem;
+	height: 0.35rem;
+	display:inline-block;
+	background: url(../../images/index/manageIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0 0 0.12rem 0;
+}
+.moreOpera a .saleIcon{
+	width:0.42rem;
+	height: 0.38rem;
+	display:inline-block;
+	background: url(../../images/index/saleIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0 0 0.1rem 0;
+}
+.moreOpera a .contactIcon{
+	width:0.4rem;
+	height: 0.33rem;
+	display:inline-block;
+	background: url(../../images/index/contactIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0 0 0.14rem 0;
+}
+.moreOpera a .forwardIcon{
+	width:0.44rem;
+	height: 0.44rem;
+	display:inline-block;
+	background: url(../../images/index/forwardIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0 0 0.08rem 0;
+}
+.moreOpera a .giftBagIcon{
+	width:0.41rem;
+	height: 0.41rem;
+	display:inline-block;
+	background: url(../../images/index/giftBagIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0 0 0.1rem 0;
+}
+.moreOpera a .downloadIcon{
+	width:0.4rem;
+	height: 0.31rem;
+	display:inline-block;
+	background: url(../../images/index/downloadIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0 0 0.18rem 0;
+}
+.elasticBox .sharingLinks{
+	height: 4.71rem;
+	overflow: hidden;
+	width: 6.12rem;
+	background:#fff;
+	position: fixed;
+	top:50%;
+	left:50%;
+	margin: -2.35rem 0 0 -3.05rem;
+	z-index: 999999;
+	border-radius: 0.08rem;
+	text-align: center;
+}
+.elasticBox .sharingLinks h4{
+	font-size: 0.3rem;
+	color:#7b7b7b;
+	margin:0.6rem 0 0.7rem 0;
+}
+.elasticBox .sharingLinks p{
+	width: 4.75rem;
+	margin:0 auto;
+	word-wrap:break-word;
+	text-align: left;
+	font-size: 0.28rem;
+	line-height: 0.4rem;
+}
+.elasticBox .sharingLinks a{
+	width: 4.8rem;
+	height: 0.86rem;
+	line-height: 0.86rem;
+	text-align: center;
+	background:#ecbc68;
+	color:#fff;
+	display: block;
+	margin:0.7rem auto 0;
+	font-size: 0.28rem;
+}
+
+/*我是店主 结束*/
+/*提现 开始*/
+.putForward{
+	height: auto;
+	overflow: hidden;
+}
+.putForward .putTop{
+	height: auto;
+	overflow: hidden;
+	margin:0.15rem 0;
+	background: #fff;
+	text-align: center;
+}
+.putForward .putTop span{
+	display: block;
+	margin:0 auto;
+	color:#ecbc68;
+	font-size: 0.6rem;
+}
+.putForward .putTop p{
+	font-size: 0.28rem;
+	color:#9b9b9b;
+	margin:0.42rem 0 0.3rem 0;
+}
+.putForward .putTop em{
+	font-size: 0.24rem;
+	color:#cacaca;
+	display: inline-block;
+	margin-bottom: 0.25rem;
+}
+.putForward .putMain{
+	height: auto;
+	overflow: hidden;
+	background:#fff;
+	margin-bottom: 0.15rem;
+}
+.putForward .putMain a{
+	height: 0.8rem;
+	line-height: 0.8rem;
+	overflow: hidden;
+	display: block;
+	border-bottom: 0.02rem solid #f4f5f7;
+	margin:0 0.23rem;
+}
+.putForward .putMain a:last-child{
+	border:none;
+}
+.putForward .putMain a h4{
+	width:4rem;
+	float: left;
+	font-size: 0.28rem;
+	color:#444;
+}
+.putForward .putMain a span{
+	display: inline-block;
+	float: right;
+	font-size: 0.24rem;
+	color:#666;
+}
+.putForward .putMain a em{
+	width:0.12rem;
+	height: 0.21rem;
+	display: inline-block;
+	background: url(../../images/common/nextBtn.png) no-repeat;
+	background-size: 100%;
+	float: right;
+	margin:0.32rem 0 0 0.18rem;
+}
+.putForward .putMain a i{
+	width:0.12rem;
+	height: 0.21rem;
+	display: inline-block;
+	float: right;
+	margin:0.32rem 0 0 0.18rem;
+}
+.putForward .putBtn{
+	width:7.5rem;
+	height: 0.82rem;
+	line-height: 0.82rem;
+	background: #ecbc68;
+	color:#fff;
+	text-align: center;
+	font-size:0.36rem;
+	display: block;
+	position: fixed;
+	bottom:0;
+}
+/*提现 结束*/
+/*奖励任务 开始*/
+.rewardTaskMain .rewardNav a{
+	margin:0 0.7rem 0 0.65rem;
+}
+.rewardTaskMain .rewardCont{
+	background: #fff;
+}
+.rewardCont .contInfo{
+	height: auto;
+	overflow: hidden;
+	display: none;
+}
+.rewardCont .rewardBanner{
+	width: 7.5rem;
+	height: 1.82rem;
+	display: block;
+}
+.rewardCont .rewardBanner img{
+	width: 100%;
+}
+.rewardCont .highestTime{
+	height: auto;
+	overflow: hidden;
+	margin:0.32rem 0.23rem 0 0.23rem;
+}
+.rewardCont .highestTime .timeLeft{
+	width: 4.3rem;
+	float: left;
+}
+.highestTime .timeLeft p{
+	font-size: 0.26rem;
+	color:#666;
+	margin-bottom: 0.08rem;
+}
+.highestTime .timeRight{
+	width: 2.36rem;
+	height: 0.36rem;
+	line-height: 0.36rem;
+	text-align: center;
+	float: right;
+	margin-top: 0.05rem;
+	border:0.02rem solid #ecbc68;
+	color:#ecbc68;
+	font-size: 0.26rem;
+}
+.rewardCont .currentSale{
+	height: auto;
+	overflow: hidden;
+	margin:0.26rem 0.23rem;
+	background:#f4f5f7;
+	padding:0.28rem 0.2rem;
+}
+.currentSale p{
+	font-size: 0.28rem;
+	color:#666;
+	margin-bottom: 0.2rem;
+}
+.currentSale .saleInfo{
+	height: auto;
+	overflow: hidden;
+}
+.currentSale .saleInfo li{
+	height: auto;
+	overflow: hidden;
+	margin-bottom: 0.18rem;
+}
+.currentSale .saleInfo li span{
+	width: 5rem;
+	float: left;
+	display: inline-block;
+	color:#9b9b9b;
+	font-size: 0.22rem;
+}
+.currentSale .saleInfo li em{
+	width: 1.4rem;
+	height: 0.2rem;
+	display: inline-block;
+	float: left;
+	background:#e0e0e0;
+	margin-top: 0.03rem;
+}
+.currentSale .wantBtn{
+	width: 3.06rem;
+	height: 0.48rem;
+	line-height: 0.48rem;
+	text-align: center;
+	background:#ecbc68;
+	font-size: 0.24rem;
+	color:#fff;
+	display: block;
+	margin:0.1rem auto 0;
+}
+.rewardCont .updateTime{
+	color:#9b9b9b;
+	font-size: 0.24rem;
+	margin:0 0.23rem 0.23rem;
+}
+.currentSale .haveHand{
+	font-size: 0.24rem;
+	color: #ecbc68;
+	display: inline-block;
+	margin:0.12rem 0;
+}
+.rewardCont .myReward{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+}
+.rewardCont .myReward li{
+	width: 33%;
+	height: 1.05rem;
+	border-right: 0.02rem solid #f4f5f7;
+	float: left;
+	margin:0.3rem 0;
+	text-align: center;
+}
+.rewardCont .myReward li:last-child{
+	border:none;
+}
+.rewardCont .myReward li p{
+	font-size: 0.26rem;
+	color:#444;
+}
+.rewardCont .myReward li p em{
+	font-size: 0.36rem;
+}
+.rewardCont .myReward li span{
+	color:#9b9b9b;
+	font-size: 0.24rem;
+	display: inline-block;
+	margin-top: 0.23rem;
+}
+/*奖励任务 结束*/
+/*新人手册 开始*/
+.brochureMain{
+	height: auto;
+	overflow: hidden;
+	margin-top: 0.9rem;
+}
+.brochureMain .guidance{
+	width: 100%;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	background:#fff;
+	display: block;
+}
+.brochureMain .guidance span{
+	padding:0 0.06rem;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	font-size: 0.22rem;
+	color:#e92514;
+	margin:0.23rem 0.23rem 0;
+	float: left;
+	border:0.02rem solid #e92514;
+}
+.brochureMain .guidance p{
+	width: 5.7rem;
+	float:left;
+	font-size: 0.28rem;
+	color:#444;
+}
+.brochureMain .guidance em{
+	width: 0.12rem;
+	height: 0.21rem;
+	display: inline-block;
+	float: right;
+	background: url(../../images/common/nextBtn.png) no-repeat;
+	background-size: 100%;
+	margin:0.3rem 0.23rem 0 0;
+}
+.brochureMain .brochureList,
+.schoolContent .schoolList{
+	height: auto;
+	overflow: hidden;
+	margin:0.15rem 0 0 0;
+	background:#fff;
+}
+.brochureMain .brochureList a,
+.schoolContent .schoolList a{
+	display: block;
+	height: auto;
+	overflow: hidden;
+	margin:0 0.23rem;
+	padding:0.28rem 0;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.brochureList a .listLeft,
+.schoolList a .listLeft{
+	width: 2.08rem;
+	height: 1.4rem;
+	float: left;
+	overflow: hidden;
+}
+.brochureList a .listLeft img,
+.schoolList a .listLeft img{
+	width: 100%;
+}
+.brochureList a .listRight,
+.schoolList a .listRight{
+	width: 4.6rem;
+	float: left;
+	margin-left: 0.2rem;
+}
+.brochureList a .listRight p,
+.schoolList a .listRight p{
+	font-size: 0.32rem;
+	color:#444;
+	line-height: 0.46rem;
+}
+.brochureList a .listRight span,
+.schoolList a .listRight span{
+	font-size: 0.24rem;
+	color:#9b9b9b;
+	display: inline-block;
+	margin-top: 0.15rem;
+}
+.brochureDetail{
+	height: auto;
+	overflow: hidden;
+	margin-top: 0.9rem;
+}
+.brochureDetail img{
+	max-width: 100%;
+	display: block;
+	margin:0 auto;
+}
+.brochureDetail h3{
+	font-size: 0.42rem;
+	color:#444;
+	margin:0.3rem 0.3rem 0.25rem 0.3rem;
+}
+.brochureDetail .times{
+	height: auto;
+	overflow: hidden;
+	margin:0 0.3rem 0.7rem;
+	font-size:0.22rem;
+	color:#666;
+}
+.brochureDetail .times span{
+	display: inline-block;
+	margin-right: 0.3rem;
+}
+.brochureDetail p{
+	margin:0 0.3rem 0.4rem;
+	font-size: 0.3rem;
+	color:#444;
+	line-height: 0.5rem;
+}
+/*新人手册 结束*/
+/*商学院 开始*/
+.schoolContent{
+	width:7.5rem;
+	height:auto;
+	overflow: hidden;
+	position: absolute;
+	top:0.9rem;
+}
+.schoolContent .carouseContent{
+	height: 2.93rem;
+}
+.schoolContent .tempWrap ul li{
+	height: 2.93rem;
+}
+.schoolContent .carouseContent .carouselBtn{
+	bottom:0.3rem;
+}
+.schoolContent .carouselBtn ul li{
+	border-radius: 0;
+	margin-right: 0.1rem;
+}
+.schoolContent .schoolNav{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	margin-bottom: 0.15rem;
+	padding:0.3rem 0 0.1rem 0.23rem;
+}
+.schoolContent .schoolNav a{
+	width: 2.26rem;
+	height: 1.18rem;
+	display: block;
+	overflow: hidden;
+	float: left;
+	margin:0 0.13rem 0.12rem 0;
+}
+.schoolContent .schoolNav a img{
+	width: 100%;
+}
+.schoolContent .schoolList{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+}
+/*商学院 结束*/
+/*店主精选 开始*/
+.shopSelection{
+	width: 7.5rem;
+	height: auto;
+	overflow: hidden;
+	position: absolute;
+	top:0.9rem;
+}
+.shopSelection .shopSelTop{
+	width: 7.5rem;
+	height: 2rem;
+	background: url(../../images/secondLevel/shopSelectionBg.jpg) no-repeat;
+	background-size: 100%;
+}
+.shopSelection .shopSelTop .topHead{
+	width: 1.44rem;
+	height: 1.44rem;
+	float: left;
+	margin:0.92rem 0 0 0.35rem;
+}
+.shopSelection .shopSelTop .topHead img{
+	width:100%;
+}
+.shopSelection .shopSelTop .replaceBtn{
+	width: 1.28rem;
+	height: 0.44rem;
+	line-height: 0.44rem;
+	text-align: center;
+	color:#fff;
+	font-size: 0.22rem;
+	display: block;
+	float: right;
+	background: #ecbc68;
+	margin:1.37rem 0.24rem 0 0;
+}
+.shopSelection .shopSelList{
+	height: auto;
+	overflow: hidden;
+	margin:0.6rem 0 0 0;
+	-moz-column-count:2; /* Firefox */
+    -webkit-column-count:2; /* Safari 和 Chrome */
+    column-count:2;
+    -moz-column-gap: 0rem;
+  	-webkit-column-gap: 0rem;
+  	column-gap: 0rem;
+  	padding-right: 0.2rem;
+}
+.shopSelection .shopSelList li{
+	-moz-page-break-inside: avoid;
+	-webkit-column-break-inside: avoid;
+	break-inside: avoid;
+	height: auto;
+	overflow: hidden;
+	float: left;
+	margin:0 0 0.2rem 0.23rem;
+}
+.shopSelList .months{
+	width: 3.38rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	text-align: center;
+	color:#fff;
+	font-size: 0.23rem;
+	background: #ecbc68;
+	margin-bottom: 0.15rem;
+}
+ .shopSelList li a{
+ 	margin:0;
+ }
+/*店主精选 结束*/
+/*分享我的店铺 开始*/
+.codeShareBg{
+	width: 7.5rem;
+	height:100%;
+	overflow: hidden;
+	background: url(../../images/secondLevel/cordShareBg.jpg) no-repeat !important;
+	background-size: cover !important;
+}
+.codeShare img{
+	width: 3.54rem;
+	height: 3.54rem;
+	display: block;
+	margin:4.8rem auto 0;
+}
+.boxContent .shareMain{
+	width:7.5rem;
+	padding-bottom: 0.34rem;
+	background: #fff;
+}
+.boxContent .shareMain .mainInfo{
+	height: auto;
+	overflow:hidden;
+	margin:0.7rem 0.23rem 0;
+	padding-bottom: 0.6rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.boxContent .shareMain .mainInfo a{
+	width: 25%;
+	text-align: center;
+	display: block;
+	float:left;
+	font-size: 0.28rem;
+	color:#444;
+}
+.boxContent .shareMain .mainInfo span{
+	display: block;
+}
+.boxContent .shareMain .mainInfo em{
+	display: inline-block;
+}
+.boxContent .shareMain .mainInfo .friendsIcon{
+	width: 0.45rem;
+	height: 0.45rem;
+	background: url(../../images/secondLevel/friendsIcon.png) no-repeat;
+	background-size: 100%;
+	margin-bottom: 0.25rem;
+}
+.boxContent .shareMain .mainInfo .copyIcon{
+	width: 0.37rem;
+	height: 0.43rem;
+	background: url(../../images/secondLevel/copyIcon.png) no-repeat;
+	background-size: 100%;
+	margin-bottom: 0.27rem;
+}
+.boxContent .shareMain .mainInfo .wechatIcon{
+	width: 0.55rem;
+	height: 0.45rem;
+	background: url(../../images/secondLevel/wechatIcon.png) no-repeat;
+	background-size: 100%;
+	margin-bottom: 0.24rem;
+}
+.boxContent .shareMain .mainInfo .graphicIcon{
+	width: 0.43rem;
+	height: 0.43rem;
+	background: url(../../images/secondLevel/graphicIcon.png) no-repeat;
+	background-size: 100%;
+	margin-bottom: 0.24rem;
+}
+.boxContent .shareMain .cancelBtn{
+	display: block;
+	text-align: center;
+	font-size: 0.36rem;
+	color:#444;
+	margin-top: 0.3rem;
+}
+
+/*分享我的店铺 结束*/
+
+/*我的客户 开始*/
+.myClient{
+	width:7.5rem;
+	height: auto;
+	overflow: hidden;
+	position: absolute;
+	top:0.9rem;
+}
+.myClient .searchMain{
+	width: 100%;
+	height: 0.88rem;
+	line-height: 0.88rem;
+	overflow: hidden;
+	background: #fff;
+	margin-bottom: 0.15rem;
+}
+.myClient .searchMain input{
+	width: 5.94rem;
+	height: 0.56rem;
+	line-height: 0.56rem;
+	background: #f4f5f7;
+	border:none;
+	font-size: 0.26rem;
+	padding:0 0.15rem;
+	margin:0 0.24rem;
+}
+.myClient .searchMain a{
+	font-size: 0.26rem;
+	color:#444;
+}
+.myClient .ordinaryUser{
+	height: 0.8rem;
+	line-height: 0.8rem;
+	background: #fff;
+	margin:0 0 0.15rem 0;
+}
+.ordinaryUser h4{
+	font-size: 0.28rem;
+	color:#444;
+	float: left;
+	margin-left: 0.24rem;
+}
+.ordinaryUser span{
+	float: right;
+	font-size: 0.24rem;
+	color:#444;
+}
+.ordinaryUser em{
+	width: 0.14rem;
+	height: 0.24rem;
+	display: inline-block;
+	float: right;
+	background: url(../../images/threeLevel/addreeInto.png) no-repeat;
+	background-size: 100%;
+	margin:0.28rem 0.24rem 0 0.1rem;
+}
+.myClient .clientMain{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+}
+.myClient .clientMain .clientNum{
+	margin:0 0.23rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+	text-align: center;
+	color:#9b9b9b;
+	font-size: 0.28rem;
+}
+.myClient .clientMain ul{
+	height: auto;
+	overflow: hidden;
+	margin:0 0.23rem;
+}
+.myClient .clientMain ul li{
+	height: auto;
+	overflow: hidden;
+	padding:0.43rem 0 0.3rem 0;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.myClient .clientMain ul li .listLeft{
+	width: 1.36rem;
+	height: 1.36rem;
+	overflow: hidden;
+	float: left;
+	margin-right: 0.26rem;
+}
+.myClient .clientMain ul li .listLeft img{
+	width:100%;
+	border-radius: 50%;
+}
+.myClient .clientMain ul li .listRight{
+	width: 5.38rem;
+	float: left;
+}
+.clientMain ul li .listRight .listTop{
+	height: auto;
+	overflow: hidden;
+	margin-bottom: 0.2rem;
+}
+.clientMain .listRight .listTop .names{
+	height: auto;
+	overflow:hidden;
+}
+.clientMain .listTop .names span{
+	font-size: 0.28rem;
+	color:#444;
+	font-weight:bolder;
+	display: inline-block;
+	float: left;
+}
+.clientMain .listTop .names em{
+	display: inline-block;
+	float: right;
+	font-size:0.2rem;
+	color:#9b9b9b;
+	margin-top: 0.02rem;
+}
+.clientMain .listTop p{
+	font-size: 0.22rem;
+	color:#444;
+	margin-top: 0.08rem;
+}
+.clientMain .listBottom{
+	height: auto;
+	overflow: hidden;
+}
+.clientMain .listBottom span{
+	display: block;
+	float: left;
+	width: 2.5rem;
+	margin-right: 0.15rem;
+	font-size: 0.22rem;
+	color:#9b9b9b;
+	margin-bottom: 0.1rem;
+}
+.clientMain .noMore{
+	color:#7b7b7b;
+	font-size: 0.28rem;
+	text-align: center;
+	margin:0.47rem 0;
+}
+/*我的客户 结束*/
+/*联系我们 开始*/
+.contactUs{
+	height: auto;
+	overflow: hidden;
+	position: absolute;
+	top:0.9rem;
+}
+.contactUs .contactUsInfo{
+	width: 7.02rem;
+	height: auto;
+	margin:0.15rem 0 0 0.23rem;
+	background: #fff;
+	border-bottom: 0.06rem solid #ecbc68;
+	-webkit-box-shadow: 0 0 0.2rem #eeefef;
+    -moz-box-shadow: 0 0 0.2rem #eeefef;
+    box-shadow: 0 0 0.2rem #eeefef;
+}
+.contactUsInfo .infoTop{
+	height: auto;
+	overflow: hidden;
+	border-bottom: 0.02rem solid #f4f5f7;
+	text-align: center;
+	padding-bottom: 0.4rem;
+}
+.contactUsInfo .infoTop h3{
+	font-size: 0.3rem;
+	color:#444;
+	margin:0.6rem 0 0.2rem 0;
+}
+.contactUsInfo .infoTop p{
+	font-size: 0.24rem;
+	color:#9b9b9b;
+}
+.contactUsInfo .infoBottom{
+	height: 1.06rem;
+	line-height: 1.06rem;
+	overflow: hidden;
+	margin:0 0.2rem 0 0.53rem;
+	font-size: 0.28rem;
+	color:#444;
+}
+.contactUsInfo .infoBottom em{
+	display: inline-block;
+	float: left;
+}
+.contactUsInfo .infoBottom input{
+	width: 4.48rem;
+	display:inline-block;
+	float: left;
+	line-height: 1.06rem;
+	border:none;
+}
+.contactUsInfo .infoBottom i{
+	width: 0.27rem;
+	height: 0.27rem;
+	display: inline-block;
+	float: right;
+	background: url(../../images/secondLevel/penIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.38rem 0.2rem 0 0;
+}
+.contactUs .justTo{
+	width: 2.46rem;
+	height: 0.78rem;
+	line-height: 0.78rem;
+	overflow: hidden;
+	font-size: 0.24rem;
+	color:#9b9b9b;
+	margin:0 auto;
+}
+.contactUs .justTo em{
+	width: 0.11rem;
+	height: 0.01rem;
+	background: #b4b4b5;
+	overflow: hidden;
+	display: inline-block;
+	float: left;
+	margin:0.4rem 0 0 0;
+}
+.contactUs .justTo span{
+	display: inline-block;
+	float: left;
+	margin:0 0.15rem;
+}
+.contactUs .infoTop .headImg{
+	width: 1.4rem;
+	height: 1.4rem;
+	overflow: hidden;
+	margin:0.4rem auto 0.2rem;
+}
+.contactUs .infoTop .headImg img{
+	width: 100%;
+	border-radius: 50%;
+}
+.contactUs .infoTop span{
+	font-size: 0.3rem;
+	color:#444;
+}
+.contactUs .bottomText{
+	width: 2.9rem;
+	float: left;
+	margin-right: 0.2rem;
+}
+
+
+
+/*联系我们 结束*/

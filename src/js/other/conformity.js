@@ -10,6 +10,8 @@ $(function(){
    collectionTab(); //我的收藏tab切换
    couponsTab();   //优惠券tab切换
    markeingTab();    //营销助手tab切换
+   rewardTab();      //奖励任务tab切换
+   show_time();      //奖励任务时间倒计时
 })
 
 /*兑换tab切换*/
@@ -385,4 +387,56 @@ function markeingTab(){
         $ul.eq($t).css('display','block');
         $("#navcon04").css('height',$ul.eq($t).height())
     })
+}
+/*奖励任务 tab切换*/
+function rewardTab(){
+    var $li = $('.rewardNav a');
+    var $ul = $('.rewardCont .contInfo');
+    $("#rewardTaskNav").css('height',$ul.eq(0).height())
+    $li.click(function(){
+        var $this = $(this);
+        var $t = $this.index();
+        $li.removeClass();
+        $this.addClass('Cur');
+        $ul.css('display','none');
+        $ul.eq($t).css('display','block');
+        $("#rewardTaskNav").css('height',$ul.eq($t).height())
+    })
+} 
+/*奖励任务时间倒计时*/
+function show_time() {
+    $(".highestTime .timeRight").each(function() {
+        var endtime = $(this).prop("title");
+        var time_start = new Date().getTime(); //设定当前时间
+        var time_end = new Date(endtime).getTime(); //设定目标时间
+        var time_distance = time_end - time_start;
+        var timer;
+        if (time_distance >= 0) {
+            var int_day = Math.floor(time_distance / 86400000)
+            time_distance -= int_day * 86400000;
+            var int_hour = Math.floor(time_distance / 3600000)
+            time_distance -= int_hour * 3600000;
+            var int_minute = Math.floor(time_distance / 60000)
+            time_distance -= int_minute * 60000;
+            var int_second = Math.floor(time_distance / 1000)
+            if (int_day < 10) {
+                int_day = "0" + int_day;
+            }
+            if (int_hour < 10) {
+                int_hour = "0" + int_hour;
+            }
+            if (int_minute < 10) {
+                int_minute = "0" + int_minute;
+            }
+            if (int_second < 10) {
+                int_second = "0" + int_second;
+            }
+            $(this).html("剩" + int_hour + "：" + int_minute + "：" + int_second);
+        }else{
+            clearInterval(timer);
+            $(this).html('00：00：00');
+        }
+
+    })
+    timer = setTimeout("show_time()", 1000);
 }

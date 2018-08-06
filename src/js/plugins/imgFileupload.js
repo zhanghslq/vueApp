@@ -4,12 +4,11 @@
 				'    <ul>'+
 				'       <li class="imgClick">'+
 				'       </li>'+
-				'    </ul>'				
+				'    </ul>'
 				'</div>';
 	var ImgUploadeFiles = function(obj,fn){
 		var _this = this;
 		this.bom = document.querySelector(obj);
-		
 		if(fn) fn.call(_this);
 		this.ready();
 
@@ -29,7 +28,7 @@
 			this.bom.appendChild(this.dom);
 			this.files = this.bom.querySelector('.imgFiles');
 			this.fileClick = this.bom.querySelector('.imgClick');
-			this.fileBtn(this.fileClick,this.files);			
+			this.fileBtn(this.fileClick,this.files);
 		},
 		fileBtn : function(c,f){
 			var _self = this;
@@ -50,7 +49,7 @@
 			_dataArr.length = 0;
 			var _this = this;
 			var fileImgArr = [];
-			
+
 			if(files.length > MAX ){
 				alert('不能大于'+MAX+'张');
 				return false;
@@ -63,15 +62,15 @@
 
 			for(var i=0,file;file=files[i++];){
 
-				
+
 				var reader = new FileReader();
 				reader.onload = (function(file){
 					return function(ev){
-						var image = new Image();  
-						image.onload=function(){  
-					          var width = image.width;  
-					          var height = image.height;  
-					            
+						var image = new Image();
+						image.onload=function(){
+					          var width = image.width;
+					          var height = image.height;
+
 					        fileImgArr.push({
 								fileSrc : ev.target.result,
 								fileName : file.name,
@@ -79,10 +78,10 @@
 								height : height,
 								width : width
 							});
-					    };  
-					     image.src= ev.target.result; 
+					    };
+					     image.src= ev.target.result;
 
-						
+
 					};
 				})(file);
 				reader.readAsDataURL(file);
@@ -131,12 +130,12 @@
 		_delId++;
 		var _self = this;
 		this.dom = document.createElement('li');
-		this.dom.innerHTML = 
+		this.dom.innerHTML =
 							'    <img src="../../images/common/login.gif" alt="" data-src="'+this.imgSrc +'" class="imsg">'+
 							'    <i class="delImg">'+
 							'        X'+
 							'    </i>';
-		$(this.dom).attr({'data-delId':_delId,'data-delName':this.imgName});				
+		$(this.dom).attr({'data-delId':_delId,'data-delName':this.imgName});
 		$(this.b).prepend(this.dom);
 		var _Img = new Image();
 		_Img.src = $(this.dom).find('img').attr('data-src');
@@ -160,7 +159,7 @@
 				}
 				_self.callback(_dataArr)
 				// $(this.b).parent().parent().parent().attr('data-dataImgs',JSON.stringify(_dataArr))
-				
+
 			});
 		};
 		var _Imgpreview = $(this.b).find('img');
@@ -169,8 +168,9 @@
 				console.log($(this).attr('src'))
 			})
 		}
-		
+
 	}
 
 	win.ImgUploadeFiles = ImgUploadeFiles;
+
 })(window);

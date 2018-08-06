@@ -43,7 +43,16 @@ import updateMobileLogin from '../page/personalCenter/updateMobileLogin'
 import TestPost from '../page/demo/TestPost'
 import address from '../page/demo/address'
 import TestAddress from '../page/demo/TestAddress'
+import TestAlert from '../page/demo/TestAlert'
 import conventionalGood from '../page/shoppingBag/conventionalGood'
+import commodityPage from '../page/shoppingBag/commodityPage'
+import highlncome from '../page/shopkeeper/highlncome'
+import marketing from '../page/shopkeeper/marketing'
+import putForward from '../page/shopkeeper/putForward'
+import recruitment from '../page/shopkeeper/recruitment'
+import rewardDetails from '../page/shopkeeper/rewardDetails'
+import shopkeeperPage from '../page/shopkeeper/shopkeeperPage'
+import rewardTask from '../page/shopkeeper/rewardTask'
 Vue.use(Router)
 Vue.use(VueResource)
 export default new Router({
@@ -53,9 +62,45 @@ export default new Router({
       name:'newlyAddress',
       component:newlyAddress
     },*/{
+      path:'/rewardTask',
+      name:'rewardTask',
+      component:rewardTask
+    },{
+      path:'/shopkeeperPage',
+      name:'shopkeeperPage',
+      component:shopkeeperPage
+    },{
+      path:'/rewardDetails',
+      name:'rewardDetails',
+      component:rewardDetails
+    },{
+      path:'/recruitment',
+      name:'recruitment',
+      component:recruitment
+    },{
+      path:'/putForward',
+      name:'putForward',
+      component:putForward
+    },{
+      path:'/marketing',
+      name:'marketing',
+      component:marketing
+    },{
+      path:'/highlncome',
+      name:'highlncome',
+      component:highlncome
+    },{
+      path:'/commodityPage',
+      name:'commodityPage',
+      component:commodityPage
+    },{
       path:'/TestPost',
       name:'TestPost',
       component:TestPost
+    },{
+      path:'/TestAlert',
+      name:'TestAlert',
+      component:TestAlert
     },{
       path:'/conventionalGood',
       name:'conventionalGood',
@@ -235,7 +280,5 @@ export default new Router({
       name: 'hotTopic',
       component: hotTopic
     }
-
-
   ]
 })

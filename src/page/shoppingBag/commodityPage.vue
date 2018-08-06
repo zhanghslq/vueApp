@@ -95,10 +95,10 @@
                   <i></i>
                 </div>
               </a>
-              <a href="#">
+              <a @click="toShow">
                 <span>配送</span>
                 <div class="distribution">
-                  <h5 id="choiceCity">广州 至 北京北京东城区</h5>
+                  <h5 id="choiceCity">{{res}}</h5>
                   <em>包邮</em>
                 </div>
                 <div class="threePoints">
@@ -281,6 +281,13 @@
           </div>
         </div>
       </div>
+      <vue-pickers
+        :show="show"
+        :link="link"
+        :columns="columns"
+        :selectData="pickData"
+        @cancel="close"
+        @confirm="confirmFn"></vue-pickers>
     </div>
 </template>
 
@@ -289,51 +296,104 @@
   import {TouchSlide} from "../../js/plugins/TouchSlide.1.1.min";
   import Swiper from 'swiper'
   import {city} from "../../js/plugins/city";
-  import {Picker}
-  // import '../../js/other/index.js'
-  // import '../../js/other/selectAddress.js'
+  import vuePickers from 'vue-pickers'
+  import {provs_data, citys_data, dists_data} from 'vue-pickers/lib/areaData'
+
 export default {
   name: "commodityPage",
   components:{
-
+    Swiper,
+    TouchSlide,
+    city,
+    vuePickers
   },
-  methods:{
-
+  data() {
+    return {
+      isCopy: '',
+      res: '北京市',
+      show: false,
+      columns: 3,
+      link: true,
+      pickData: {
+        data1: provs_data,
+        data2: citys_data,
+        data3: dists_data
+      }
+    }
   },
-  mounted:function () {
-    //自带js
-    $(window).scroll(function(){
-      var $scrolltop=document.documentElement.scrollTop||document.body.scrollTop;
-      var $tabScroll=$(".transparent").offset().top-200;
-      if($scrolltop>=$tabScroll){
-        $(".transparent .transparentBg").css({"opacity":"1"});
-        $(".detailTabNav").css({"opacity":"1"});
-        if($tabScroll<0){
-          $(".transparent .transparentBg").css({"opacity":"0"});
-          $(".detailTabNav").css({"opacity":"0"});
+  methods: {
+    close() {
+      this.show = false
+    },
+    confirmFn(val) {
+      this.show = false
+      this.res = val.select1.text + val.select2.text + val.select3.text
+      this.pickData.default = [val.select1, val.select2, val.select3]
+    },
+    toShow() {
+      this.show = true
+    },
+    bannerFocusImg: function () {
+      TouchSlide({
+        slideCell: "#carouselMain",
+        titCell: ".carouselBtn ul",
+        mainCell: ".img",
+        effect: "leftLoop",
+        autoPlay: true,
+        autoPage: true,
+        interTime: 3000
+      });
+      var width = $(window).width();
+      var height = parseInt(width / 3 * 2);
+      $("#carouselMain li a").css("max-height", height);
+    },
+    makeUpone: function (){
+      var swiper1 = new Swiper('.swiper-container2', {
+        slidesPerView: 3.5,
+        pagination: {
+          el: '.swiper-pagination2',
+          clickable: true,
+        },
+      });
+    },
+  },
+    mounted: function () {
+      this.bannerFocusImg()
+      this.makeUpone()
+      //自带js
+      $(window).scroll(function () {
+        var $scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+        var $tabScroll = $(".transparent").offset().top - 200;
+        if ($scrolltop >= $tabScroll) {
+          $(".transparent .transparentBg").css({"opacity": "1"});
+          $(".detailTabNav").css({"opacity": "1"});
+          if ($tabScroll < 0) {
+            $(".transparent .transparentBg").css({"opacity": "0"});
+            $(".detailTabNav").css({"opacity": "0"});
+          }
         }
-      }
 
-    });
-    /*滚动*/
-    var nav=$(".conventTab"); //得到导航对象
-    var relevant = $("#pro_relevant").offset().top;
-    var shopinfo=$("#pro_shopInfo").offset().top; //得到导航对象
-    var win=$(window); //得到窗口对象
-    var sc=$(document);//得到document文档对象。
-    win.scroll(function(){
-      if($(".productDetail:eq(0)").is(":visible")){
-        if(sc.scrollTop()>shopinfo-200){
-          $(".conventTab li:eq(2)").addClass("on").siblings().removeClass("on");
-        }else if(sc.scrollTop()>relevant-100){
-          $(".conventTab li:eq(1)").addClass("on").siblings().removeClass("on");
-        }else{
-          $(".conventTab li:eq(0)").addClass("on").siblings().removeClass("on");
+      });
+      /*滚动*/
+      var nav = $(".conventTab"); //得到导航对象
+      var relevant = $("#pro_relevant").offset().top;
+      var shopinfo = $("#pro_shopInfo").offset().top; //得到导航对象
+      var win = $(window); //得到窗口对象
+      var sc = $(document);//得到document文档对象。
+      win.scroll(function () {
+        if ($(".productDetail:eq(0)").is(":visible")) {
+          if (sc.scrollTop() > shopinfo - 200) {
+            $(".conventTab li:eq(2)").addClass("on").siblings().removeClass("on");
+          } else if (sc.scrollTop() > relevant - 100) {
+            $(".conventTab li:eq(1)").addClass("on").siblings().removeClass("on");
+          } else {
+            $(".conventTab li:eq(0)").addClass("on").siblings().removeClass("on");
+          }
         }
-      }
-    });
-    //还需要引入的js
-  }
+      });
+      //还需要引入的js
+    }
+
 
 
 }
