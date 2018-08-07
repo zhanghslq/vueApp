@@ -9,27 +9,52 @@
       <!--中间 开始-->
       <main>
         <div class="addressCorrel">
-          <a href="#" class="receiving">
+
+          <a v-for="address in addresses" class="receiving">
             <div class="receivingLeft">
               <div class="leftName">
                 <span>李宗森</span>
                 <em>13811203297</em>
               </div>
-              <p><em>[默认地址] </em>北京市北京市朝阳区百子湾32号院北区3号楼B座505</p>
+              <p>
+
+                <em v-if="address.isDefault">[默认地址] </em>{{address.provinceName+address.cityName+address.areaName+address.detailAddress}}</p>
             </div>
             <div class="receivingRight">
               <em></em>
             </div>
           </a>
-          <a href="#" class="newlyAdded">+ 新增收货地址</a>
+
+          <router-link to="/newlyAddress">
+            <a  class="newlyAdded">+ 新增收货地址</a>
+          </router-link>
         </div>
       </main>
     </div>
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
-        name: "receivingAddress"
+        name: "receivingAddress",
+      data(){
+          return{
+            addresses:[]
+          }
+      },
+      mounted:function () {
+        var _this=this
+        axios.post('/api//api/wxapp/deliveryAddress/list',{
+          "uid":1
+        })
+          .then(function (response) {
+              _this.addresses=response.data.list
+          })
+          .catch(function (error) {
+              console.log("请检查重试")
+          })
+
+      }
     }
 </script>
 

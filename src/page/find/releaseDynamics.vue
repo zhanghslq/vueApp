@@ -31,9 +31,11 @@
 </template>
 
 <script>
-  import ImgUploadeFiles from '../../js/plugins/imgFileupload.js'
-    export default {
+
+
+  export default {
         name: "releaseDynamics",
+
       methods:{
         /*监听字数*/
         controlNum: function (){
@@ -70,15 +72,7 @@
       },
       mounted:function () {
         this.controlNum()
-        var imgFile = new ImgUploadeFiles('.uploadPic',function(e){
-          e.init({
-            MAX : "n", //限制个数
-            MH : 5800, //像素限制高度
-            MW : 5900, //像素限制宽度
-            callback : function(arr){
-            }
-          });
-        });
+
 
 
       }

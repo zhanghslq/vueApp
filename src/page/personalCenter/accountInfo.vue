@@ -13,35 +13,35 @@
             <a href="#">
               <span class="infoLeft">头像</span>
               <div class="infoRight">
-                <img src="../../images/temporary/7.jpg">
+                <img :src="imageUrl">
                 <em></em>
               </div>
             </a>
             <a href="#">
               <span class="infoLeft">昵称</span>
               <div class="infoRight">
-                <span>李宗森</span>
+                <span>{{username}}</span>
                 <em></em>
               </div>
             </a>
             <a href="#">
               <span class="infoLeft">微信号</span>
               <div class="infoRight">
-                <span>dfadf</span>
+                <span>{{wechat}}</span>
                 <em></em>
               </div>
             </a>
             <a href="#">
               <span class="infoLeft">个性签名</span>
               <div class="infoRight">
-                <span>去设置</span>
+                <span>{{sign}}</span>
                 <em></em>
               </div>
             </a>
             <a href="#">
               <span class="infoLeft">手机号</span>
               <div class="infoRight">
-                <span>13876667877</span>
+                <span>{{mobile}}</span>
                 <em></em>
               </div>
             </a>
@@ -50,13 +50,13 @@
             <a href="javascript:void(0);">
               <span class="infoLeft">ID</span>
               <div class="infoRight">
-                <span>13876667877</span>
+                <span>{{id}}</span>
               </div>
             </a>
             <a href="javascript:void(0);">
               <span class="infoLeft">累计消费</span>
               <div class="infoRight">
-                <span>0元</span>
+                <span>{{consumption}}元</span>
               </div>
             </a>
           </div>
@@ -67,9 +67,37 @@
 </template>
 
 <script>
-  // import '../../js/other/conformity.js'
+  import axios from 'axios'
     export default {
-        name: "accountInfo"
+        name: "accountInfo",
+        data(){
+          return{
+            username:'',
+            imageUrl:'',
+            wechat:'',
+            sign:'',
+            mobile:'',
+            id:'',
+            consumption:0//累计消费
+          }
+        },
+      mounted:function () {
+        var _this=this
+        axios.post('/api//api/wxapp/account/info',{
+          "uid":1
+        })
+          .then(function (response) {
+            _this.username=response.data.data.nickName
+            _this.imageUrl=response.data.data.photo
+            _this.sign=response.data.data.personalitySignature
+            _this.mobile=response.data.data.mobile
+            _this.id=response.data.data.ucode
+            _this.consumption=response.data.data.consumeTotal
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+      }
     }
 </script>
 

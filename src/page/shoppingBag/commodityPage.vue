@@ -295,7 +295,6 @@
   import $ from 'jquery'
   import {TouchSlide} from "../../js/plugins/TouchSlide.1.1.min";
   import Swiper from 'swiper'
-  import {city} from "../../js/plugins/city";
   import vuePickers from 'vue-pickers'
   import {provs_data, citys_data, dists_data} from 'vue-pickers/lib/areaData'
 
@@ -304,7 +303,6 @@ export default {
   components:{
     Swiper,
     TouchSlide,
-    city,
     vuePickers
   },
   data() {

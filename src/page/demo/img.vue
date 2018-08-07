@@ -102,5 +102,5 @@
 <style>
   *{padding:0;margin:0}
   img{height: 60px;width: 60px}
-  .image_upload{  height: 60px; width: 60px;background: red}
+  .image_upload{  height: 60px; width: 60px;background: skyblue}
 </style>

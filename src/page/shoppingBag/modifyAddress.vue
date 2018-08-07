@@ -24,7 +24,7 @@
             <div class="fillInfo">
               <i>*</i>
               <span>所在地区：</span>
-              <a href="javascript:void(0);" class="choiceCity" id="choiceCity">请点击选择省市区</a>
+              <a @click="toShow" class="choiceCity" id="choiceCity">{{res}}</a>
             </div>
             <div class="fillInfo">
               <i>*</i>
@@ -48,126 +48,53 @@
         </div>
       </main>
       <!--中间 结束-->
+      <vue-pickers
+        :show="show"
+        :link="link"
+        :columns="columns"
+        :selectData="pickData"
+        @cancel="close"
+        @confirm="confirmFn"></vue-pickers>
     </div>
 </template>
 
 <script>
-  import  {city} from '../../js/plugins/city'
-  // import '../../js/other/login'
+  import vuePickers from 'vue-pickers'
+  import {provs_data, citys_data, dists_data} from 'vue-pickers/lib/areaData'
     export default {
       name: "modifyAddress",
-      data (){
-          return {
-            city,
-
+      data() {
+        return {
+          isCopy: '',
+          res: '请点击选择省市区',
+          show: false,
+          columns: 3,
+          link: true,
+          pickData: {
+            data1: provs_data,
+            data2: citys_data,
+            data3: dists_data
           }
+        }
       },
       components:{
+        vuePickers
       },
       methods:{
-
+        close() {
+          this.show = false
+        },
+        confirmFn(val) {
+          this.show = false
+          this.res = val.select1.text + val.select2.text + val.select3.text
+          this.pickData.default = [val.select1, val.select2, val.select3]
+        },
+        toShow() {
+          this.show = true
+        },
       },
       mounted:function () {
-          var nameEl = document.getElementById('choiceCity');
-          var first = []; /* 省，直辖市 */
-          var second = []; /* 市 */
-          var third = []; /* 镇 */
-          var selectedIndex = [0, 0, 0]; /* 默认选中的地区 */
-          var checked = [0, 0, 0]; /* 已选选项 */
-          function creatList(obj, list){
-            obj.forEach(function(item, index, arr){
-              var temp = new Object();
-              temp.text = item.name;
-              temp.value = index;
-              list.push(temp);
-            })
-          }
 
-          creatList(city, first);
-
-          if (city[selectedIndex[0]].hasOwnProperty('sub')) {
-            creatList(city[selectedIndex[0]].sub, second);
-          } else {
-            second = [{text: '', value: 0}];
-          }
-
-          if (city[selectedIndex[0]].sub[selectedIndex[1]].hasOwnProperty('sub')) {
-            creatList(city[selectedIndex[0]].sub[selectedIndex[1]].sub, third);
-          } else {
-            third = [{text: '', value: 0}];
-          }
-
-          var picker = new Picker({
-            data: [first, second, third],
-            selectedIndex: selectedIndex,
-            title: '地址选择'
-          });
-
-          picker.on('picker.select', function (selectedVal, selectedIndex) {
-            var text1 = first[selectedIndex[0]].text;
-            var text2 = second[selectedIndex[1]].text;
-            var text3 = third[selectedIndex[2]] ? third[selectedIndex[2]].text : '';
-
-            nameEl.innerText = text1 + ' ' + text2 + ' ' + text3;
-          });
-
-          picker.on('picker.change', function (index, selectedIndex) {
-            if (index === 0){
-              firstChange();
-            } else if (index === 1) {
-              secondChange();
-            }
-
-            function firstChange() {
-              second = [];
-              third = [];
-              checked[0] = selectedIndex;
-              var firstCity = city[selectedIndex];
-              if (firstCity.hasOwnProperty('sub')) {
-                creatList(firstCity.sub, second);
-
-                var secondCity = city[selectedIndex].sub[0]
-                if (secondCity.hasOwnProperty('sub')) {
-                  creatList(secondCity.sub, third);
-                } else {
-                  third = [{text: '', value: 0}];
-                  checked[2] = 0;
-                }
-              } else {
-                second = [{text: '', value: 0}];
-                third = [{text: '', value: 0}];
-                checked[1] = 0;
-                checked[2] = 0;
-              }
-
-              picker.refillColumn(1, second);
-              picker.refillColumn(2, third);
-              picker.scrollColumn(1, 0)
-              picker.scrollColumn(2, 0)
-            }
-
-            function secondChange() {
-              third = [];
-              checked[1] = selectedIndex;
-              var first_index = checked[0];
-              if (city[first_index].sub[selectedIndex].hasOwnProperty('sub')) {
-                var secondCity = city[first_index].sub[selectedIndex];
-                creatList(secondCity.sub, third);
-                picker.refillColumn(2, third);
-                picker.scrollColumn(2, 0)
-              } else {
-                third = [{text: '', value: 0}];
-                checked[2] = 0;
-                picker.refillColumn(2, third);
-                picker.scrollColumn(2, 0)
-              }
-            }
-
-          });
-
-          nameEl.addEventListener('click', function () {
-            picker.show();
-          });
       }
     }
 </script>

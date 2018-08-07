@@ -39,11 +39,12 @@ import remindSetUp from '../page/personalCenter/remindSetUp'
 import selectCountryAreaPersonal from '../page/personalCenter/selectCountryArea'
 import setUp from '../page/personalCenter/setUp'
 import updateMobileLogin from '../page/personalCenter/updateMobileLogin'
-//import newlyAddress from '../page/shoppingBag/newlyAddress'
+import newlyAddress from '../page/shoppingBag/newlyAddress'
 import TestPost from '../page/demo/TestPost'
 import address from '../page/demo/address'
 import TestAddress from '../page/demo/TestAddress'
 import TestAlert from '../page/demo/TestAlert'
+import img from '../page/demo/img'
 import conventionalGood from '../page/shoppingBag/conventionalGood'
 import commodityPage from '../page/shoppingBag/commodityPage'
 import highlncome from '../page/shopkeeper/highlncome'
@@ -53,18 +54,77 @@ import recruitment from '../page/shopkeeper/recruitment'
 import rewardDetails from '../page/shopkeeper/rewardDetails'
 import shopkeeperPage from '../page/shopkeeper/shopkeeperPage'
 import rewardTask from '../page/shopkeeper/rewardTask'
+import business from '../page/shopkeeper/business'
+import businessSchool from '../page/shopkeeper/businessSchool'
+import shopkeeperContactUs from '../page/shopkeeper/contactUs'
+import managementInfo from '../page/shopkeeper/managementInfo'
+import myClient from '../page/shopkeeper/myClient'
+import myNotice from '../page/shopkeeper/myNotice'
+import newBrochure from '../page/shopkeeper/newBrochure'
+import newBrochureDetail from '../page/shopkeeper/newBrochureDetail'
+import outorder from '../page/shopkeeper/outorder'
+import shopKeepSelection from '../page/shopkeeper/shopKeepSelection'
+import receivingAddress from '../page/shoppingBag/receivingAddress'
 Vue.use(Router)
 Vue.use(VueResource)
 export default new Router({
   routes: [
-    /*{
+    {
       path:'/newlyAddress',
       name:'newlyAddress',
       component:newlyAddress
-    },*/{
+    },{
+      path:'/receivingAddress',
+      name:'receivingAddress',
+      component:receivingAddress
+    },{
+      path:'/business',
+      name:'business',
+      component:business
+    },{
+      path:'/businessSchool',
+      name:'businessSchool',
+      component:businessSchool
+    },{
+      path:'/shopkeeperContactUs',
+      name:'shopkeeperContactUs',
+      component:shopkeeperContactUs
+    },{
+      path:'/managementInfo',
+      name:'managementInfo',
+      component:managementInfo
+    },{
+      path:'/myNotice',
+      name:'myNotice',
+      component:myNotice
+    },{
+      path:'/myClient',
+      name:'myClient',
+      component:myClient
+    },{
+      path:'/newBrochure',
+      name:'newBrochure',
+      component:newBrochure
+    },{
+      path:'/newBrochureDetail',
+      name:'newBrochureDetail',
+      component:newBrochureDetail
+    },{
+      path:'/outorder',
+      name:'outorder',
+      component:outorder
+    },{
+      path:'/shopKeepSelection',
+      name:'shopKeepSelection',
+      component:shopKeepSelection
+    },{
       path:'/rewardTask',
       name:'rewardTask',
       component:rewardTask
+    },{
+      path:'/img',
+      name:'img',
+      component:img
     },{
       path:'/shopkeeperPage',
       name:'shopkeeperPage',

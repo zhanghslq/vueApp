@@ -20,7 +20,7 @@
           <em class="invitationIcon"></em>
           <span>邀请店主</span>
         </a>
-        <a href="#">
+        <a href="#" id="shareLike">
           <em class="shareIcon"></em>
           <span>分享店铺</span>
         </a>
@@ -107,7 +107,6 @@
         <a href="#"><em class="saleIcon"></em><span>销售订单</span></a>
         <a href="#"><em class="contactIcon"></em><span>联系我们</span></a>
         <a href="#"><em class="forwardIcon"></em><span>提现</span></a>
-        <a href="#"><em class="giftBagIcon"></em><span>我的礼包</span></a>
         <a href="#"><em class="downloadIcon"></em><span>下载APP</span></a>
       </div>
     </div>
@@ -122,6 +121,16 @@
     <a href="#" class="active"><i class="shopkeeper"></i><span>我是店主</span></a>
   </footer>
   <!--底部 结束-->
+  <!--弹层 开始-->
+  <div class="elasticBox">
+    <div class="blackBag"></div>
+    <div class="sharingLinks">
+      <h4>分享链接已生成</h4>
+      <p>https://modao.cc/app/O8jQukf7ctRL22MkXRNEF1qEctv</p>
+      <a href="javascript:void(0);">复制链接</a>
+    </div>
+  </div>
+  <!--弹层 结束-->
 </div>
 </template>
 
@@ -150,10 +159,22 @@
       var height = parseInt(width / 3 * 2);
       $("#carouselMain li a").css("max-height", height);
     },
+      /*我是店主分享 开始*/
+      sharingLink:function (){
+    $(".shopkeeepNav #shareLike").on("click",function(){
+      $("body").css({"height":"100%","overflow":"hidden"})
+      $(".elasticBox").show();
+    });
+    $(".elasticBox .blackBag").on("click",function(){
+      $("body").css({"height":"auto","overflow":"auto"})
+      $(".elasticBox").hide();
+    })
+  }
 
   },
     mounted:function () {
-      this.bannerFocusImg()
+      this.bannerFocusImg(),
+      this.sharingLink()
     }
 }
 </script>
