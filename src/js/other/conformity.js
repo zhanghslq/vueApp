@@ -27,7 +27,14 @@ function exchangeTab(){
         $ul.css('display','none');
         $ul.eq($t).css('display','block');
         $("#navcon02").css('height',$ul.eq($t).height())
-    })
+    });
+
+    $(".onceAgain #gotit").on("click",function(){
+        $(".elasticBox").hide();
+    });
+    $(".onceAgain #noLonger").on("click",function(){
+        $(".elasticBox").hide();
+    });
 }
 
 /*搜索列表 tab切换*/

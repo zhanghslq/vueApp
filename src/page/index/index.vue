@@ -1938,7 +1938,6 @@
 <script>
 /* eslint-disable */
 import $ from 'jquery'
-import '../../js/libs/public'
 import {TouchSlide} from '../../js/plugins/TouchSlide.1.1.min'
 import Swiper from 'swiper'
 import 'vue-scroller'
@@ -2184,6 +2183,7 @@ export default {
 }
 </script>
 <style scoped>
+  @import "../../css/common/common.css";
   @import '../../css/plugins/swiper.min.css';
   @import '../../css/plugins/plugIn.css';
   @import '../../css/other/index.css';

@@ -45,6 +45,11 @@ import address from '../page/demo/address'
 import TestAddress from '../page/demo/TestAddress'
 import TestAlert from '../page/demo/TestAlert'
 import img from '../page/demo/img'
+import img2 from '../page/demo/img2'
+import regShop from '../page/demo/regShop'
+import regShopImg from '../page/demo/regShopImg'
+import imageUploader from '../page/demo/ImageUploader'
+
 import conventionalGood from '../page/shoppingBag/conventionalGood'
 import commodityPage from '../page/shoppingBag/commodityPage'
 import highlncome from '../page/shopkeeper/highlncome'
@@ -63,16 +68,58 @@ import myNotice from '../page/shopkeeper/myNotice'
 import newBrochure from '../page/shopkeeper/newBrochure'
 import newBrochureDetail from '../page/shopkeeper/newBrochureDetail'
 import outorder from '../page/shopkeeper/outorder'
+import putForwardRecord from '../page/shopkeeper/putForwardRecord'
 import shopKeepSelection from '../page/shopkeeper/shopKeepSelection'
+import newBrochureInfo from '../page/shopkeeper/newBrochureInfo'
+import putForwardAdminist from '../page/shopkeeper/putForwardAdminist'
+import salesOrder from '../page/shopkeeper/salesOrder'
+import shopkeSelection from '../page/shopkeeper/shopkeSelection'
+
 import receivingAddress from '../page/shoppingBag/receivingAddress'
 Vue.use(Router)
 Vue.use(VueResource)
 export default new Router({
   routes: [
     {
+      path:'/imageUploader',
+      name:'imageUploader',
+      component:imageUploader
+    }, {
+      path:'/newBrochureInfo',
+      name:'newBrochureInfo',
+      component:newBrochureInfo
+    },{
+      path:'/putForwardAdminist',
+      name:'putForwardAdminist',
+      component:putForwardAdminist
+    },{
+      path:'/salesOrder',
+      name:'salesOrder',
+      component:salesOrder
+    },{
+      path:'/shopkeSelection',
+      name:'shopkeSelection',
+      component:shopkeSelection
+    },{
+      path:'/putForwardRecord',
+      name:'putForwardRecord',
+      component:putForwardRecord
+    },{
+      path:'/regShopImg',
+      name:'regShopImg',
+      component:regShopImg
+    },{
+      path:'/regShop',
+      name:'regShop',
+      component:regShop
+    },{
       path:'/newlyAddress',
       name:'newlyAddress',
       component:newlyAddress
+    },{
+      path:'/img2',
+      name:'img2',
+      component:img2
     },{
       path:'/receivingAddress',
       name:'receivingAddress',

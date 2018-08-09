@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+
+    <img :src="image.src" alt="" v-for="(image , i) in images" @click="bingtap_preview(i)">
     <image-upload
       class="image_upload"
       url='https://tsesb.yunjuhe.com.cn/medicalServer/doctor/uploadServerImage'
@@ -12,8 +13,14 @@
       @chooseImages='bindtap_chooseImages'
     />
 
-    <img :src="image.src" alt="" v-for="(image , i) in images" @click="bingtap_preview(i)">
 
+    <!--<input type="file" name="" id="" class="imgFiles" style="display: none" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" multiple>'+
+    '<div class="imgAll">'+
+    '    <ul>'+
+      '       <li class="imgClick">'+
+        '       </li>'+
+      '    </ul>'
+    '</div>-->
     <!-- 图片预览 -->
     <image-preview
       style="z-index:200"
@@ -32,6 +39,7 @@
 </template>
 
 <script>
+  //import '../../js/plugins/imgFileupload.js'
   import {ImageUpload , ImagePreview} from 'vue-image-upload-preview'
   export default {
     name: 'img',
@@ -102,5 +110,11 @@
 <style>
   *{padding:0;margin:0}
   img{height: 60px;width: 60px}
-  .image_upload{  height: 60px; width: 60px;background: skyblue}
+  .image_upload{ width: 1.44rem;
+    height: 1.44rem;
+    border: none;
+    cursor: pointer;
+    display: block;
+    background: url(../../images/common/addPicbtn.png) no-repeat;
+    background-size: 100%;}
 </style>

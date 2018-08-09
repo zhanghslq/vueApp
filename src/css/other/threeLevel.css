@@ -463,7 +463,7 @@
 	color:#9d9d9d;
 }
 .identification .idRight,
-.identification .idCur{
+.addressCorrel .active em.idRight{
 	width: 0.2rem;
 	height: 0.11rem;
 	display: inline-block;
@@ -473,7 +473,7 @@
 	background-size:100%;
 	margin-top: 0.35rem;
 }
-.identification .idCur{
+.addressCorrel .active em.idRight{
 	background: url(../../images/common/updownIcon.png) no-repeat 0 -0.19rem;
 	background-size:100%;
 }
@@ -500,6 +500,7 @@
 .identification .idBottom{
 	border-top:0.02rem solid #f4f5f7;
 	padding-top: 0.23rem;
+	display: none;
 }
 .identification .idBottom p{
 	font-size: 0.24rem;
