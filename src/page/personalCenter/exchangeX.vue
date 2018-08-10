@@ -31,7 +31,6 @@
 </template>
 
 <script>
-  import '../../js/other/conformity.js'
     export default {
         name: "exchangeX",
       methods:{

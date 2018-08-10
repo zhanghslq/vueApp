@@ -21,6 +21,6 @@ export default {
   }
 }
 </script>
-<style>
+<style >
 @import './css/common/common.css';
 </style>

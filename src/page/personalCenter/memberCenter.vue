@@ -206,7 +206,6 @@
 <script>
   import {TouchSlide} from "../../js/plugins/TouchSlide.1.1.min";
   import Swiper from 'swiper'
-  import '../../js/other/index.js'
     export default {
         name: "memberCenter",
       methods:{

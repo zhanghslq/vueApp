@@ -85,3 +85,6 @@ export default {
   @import "../../css/common/common.css";
   @import "../../css/other/login.css";
 </style>
+<style scoped>
+
+</style>

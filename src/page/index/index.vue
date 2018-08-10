@@ -1,5 +1,5 @@
 <template>
-<scroller>
+<div>
   <div id="top">
     <div class="addr">
       <div class="message"><span></span><em>5</em></div>
@@ -26,7 +26,8 @@
       </div>
     </div>
   </div>
-  <div class="swiper-container" id="page">
+
+  <scroller class="swiper-container" id="page">
     <div class="swiper-wrapper">
       <div class="swiper-slide slidepage">
         <div class="swiper-container scroll">
@@ -1921,18 +1922,21 @@
         </div>
       </div>
     </div>
-  </div>
+  </scroller>
+
   <!--底部 开始-->
   <footer class="memberFooter">
-    <a href="index.html" class="active"><i class="homePage"></i><span>首页</span></a>
-    <a href="#"><i class="find"></i><span>发现</span></a>
-    <a href="#"><i class="shopp"></i><span>购物袋</span></a>
-    <a href="#"><i class="personal"></i><span>个人中心</span></a>
+
+    <a  class="active"><i class="homePage"></i><span>首页</span></a>
+    <a ><i class="find"></i><span>发现</span></a>
+    <a ><i class="shopp"></i><span>购物袋</span></a>
+    <a ><i class="personal"></i><span>个人中心</span></a>
+
     <a href="#"><i class="shopkeeper"></i><span>我是店主</span></a>
   </footer>
   <!--底部 结束-->
-</scroller>
 
+    </div>
 </template>
 
 <script>
@@ -1940,7 +1944,10 @@
 import $ from 'jquery'
 import {TouchSlide} from '../../js/plugins/TouchSlide.1.1.min'
 import Swiper from 'swiper'
-import 'vue-scroller'
+
+import Vue from 'vue'
+import VueScroller from 'vue-scroller'
+Vue.use(VueScroller);
 export default {
   name: 'index',
   data () {
@@ -1950,6 +1957,7 @@ export default {
   components: {
     Swiper,
     TouchSlide,
+    VueScroller
   },
   methods: {
     /*滑动导航切换内容*/
@@ -2046,6 +2054,7 @@ export default {
     })
 
   //内容滚动
+    var startY,startX,endX,endY;
     var scrollSwiper = new Swiper('.scroll', {
       //65是头部的高
       //36是top地址和搜索的高
@@ -2058,6 +2067,41 @@ export default {
       mousewheel: {
         releaseOnEdges: true,
       },
+      onSlideChangeEnd:function(swiper){
+        alert(swiper.activeIndex+'');
+        // swiper.activeIndex 这个就是索引， 从 0 开始！ 可看一共有多少元素！
+      },
+      onTouchStart: function(swiper,event){
+        var touch = event.touches[0];
+        startY = touch.pageY;
+        startX = touch.pageX;
+      },
+      onTouchMove: function(swiper,event){
+        var touch = event.touches[0];
+        endX = touch.pageX-startX;
+        endY = touch.pageY-startY;
+      },
+      onTouchEnd: function(swiper){
+        if(Math.abs(endX)>5){
+          endX=0;
+          return false;
+        }else{
+          var href;
+          switch (swiper.index){
+            case 1:
+              href = "https://m.jrj.com.cn/yi/prd/prdxq?type=sr";
+            case 2:
+              href = "https://m.jrj.com.cn/yi/prd/prdxq?type=sr";
+            case 3:
+              href = "https://m.jrj.com.cn/yi/prd/prdxq?type=sr";
+            case 4:
+              href = "https://m.jrj.com.cn/yi/prd/prdxq?type=sr";
+          }
+          self.location = href;
+          endX=0;
+        }
+      },
+
       on: {
         touchMove: function() {
 
