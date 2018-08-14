@@ -83,7 +83,7 @@ header .message em{
 	display: inline-block;
 	float: left;
 }
-.addr .cityCode .triangle{
+.addr .cityCode >>> .triangle{
 	width:0.12rem;
 	height: 0.1rem;
 	display: inline-block;
@@ -697,7 +697,7 @@ header .message em{
 }
 .infoHead .infoHeadLeft .headName{
 	float: left;
-}	
+}
 .infoHeadLeft .headName p{
 	font-size:0.3rem;
 	color:#262626;
@@ -924,7 +924,7 @@ header .message em{
 	height: 4.72rem;
 	background:url(../../images/index/personalBg.jpg) no-repeat;
 	background-size: 100%;
-	
+
 }
 .personalInfo .personalHead{
 	width:1.58rem;
@@ -1080,7 +1080,7 @@ header .message em{
 }
 .topicMain .tabList{
 	padding-bottom: 1.2rem;
-} 
+}
 .topicMain .topicDetail{
 	position: relative;
 }
@@ -1412,7 +1412,7 @@ header .message em{
 }
 .lookOtherTitle span{
 	font-size:0.32rem;
-	color:#444;	
+	color:#444;
 	text-align: center;
 	width:100%;
 	display: inline-block;
@@ -1461,7 +1461,7 @@ header .message em{
 		margin:0.17rem 0 0 0 !important;
 	}
 }
-@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){ 
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
   	.addr{
   		height: 46px !important;
   		line-height: 46px !important;
@@ -1474,7 +1474,7 @@ header .message em{
 		padding-top: 5px;
 	}
 }
-@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){ 
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
 	.addr{
   		height: 50px !important;
   		line-height: 50px !important;

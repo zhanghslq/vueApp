@@ -611,19 +611,26 @@
 .productCarouse .carouseContent{
 	height: auto;
 }
-.carouseContent .tempWrap{
+.carouseContent .tempWrap,
+.productCarouse .carouseContent .swiper-wrapper{
 	margin:0.7rem 0 0 0;
+	height: 5.8rem;
+}
+.productCarouse .carouseContent .swiper-wrapper li{
 	height: 5.8rem;
 }
 .tempWrap ul li a,
 .tempWrap ul,
-.tempWrap ul li{
-	height: 5.8rem !important;
+.tempWrap ul li,
+.productCarouse .carouseContent .swiper-wrapper li a{
+	height: 5.2rem !important;
+	display: block;
 }
 .tempWrap ul li a{
 	margin-top: 0.1rem;
 }
-.tempWrap ul li img{
+.tempWrap ul li img,
+.productCarouse .carouseContent .swiper-wrapper li img{
 	width: auto !important;
 	height: 100%;
 	display: block;
@@ -637,6 +644,21 @@
 	height: 0.06rem;
 	background: #d1d1d1;
 }
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+	bottom: 0;
+}
+.swiper-pagination-bullet{
+	width: 0.3rem;
+	height: 0.06rem;
+	background: #d1d1d1;
+	display: inline-block;
+    text-indent: -9999rem;
+    border-radius: 0.06rem;
+    margin: 0.03rem 0 0 0.05rem;
+}
+.swiper-pagination-bullet-active{
+	background: #ecbc68;
+}
 .carouseContent .carouselBtn li.on{
 	background:#ecbc68;
 }
@@ -647,6 +669,7 @@
 	right: 0.1rem;
 	bottom: -0.1rem;
 	border-radius: 0.3rem;
+	z-index: 99;
 }
 .productCarouse .salesNum em{
 	width: 0.2rem;
@@ -1128,9 +1151,160 @@
 	background-size: 100%;
 	margin:0 0.15rem;
 }
-
-
 /*商品详情页 结束*/
+/*交易详情 开始*/
+.tradeMain{
+	width: 7.5rem;
+	height: auto;
+	overflow: hidden;
+}
+.tradeMain .tradeTop{
+	height: 1.6rem;
+	background: #fff;
+	margin:0 0 0.15rem 0;
+}
+.tradeMain .tradeTop .trTLeft{
+	width: 0.56rem;
+	height: 0.56rem;
+	float: left;
+	margin:0.4rem 0.15rem 0 0.24rem;
+}
+.tradeMain .tradeTop .trTRight{
+	width: 6.25rem;
+	float: left;
+}
+.tradeMain .tradeTop .trTRight h3{
+	font-size: 0.36rem;
+	color:#ecbc68;
+	margin:0.32rem 0 0.13rem 0;
+}
+.tradeMain .tradeTop .trTRight p{
+	font-size: 0.24rem;
+	color:#666;
+}
+.tradeMain .tradeTop .trTRight p span{
+	color:#ecbc68;
+}
+.tradeMain .tradeOrder{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	padding:0.2rem 0.23rem 0 0.23rem;
+}
+.tradeMain .tradeOrder li{
+	height: auto;
+	overflow: hidden;
+	font-size: 0.26rem;
+	color:#7b7b7b;
+	margin-bottom: 0.24rem;
+}
+.tradeMain .tradeOrder li span{
+	display: inline-block;
+	float: left;
+}
+.tradeMain .tradeOrder li em{
+	display: inline-block;
+	float: right;
+}
+.tradeMain .tradeOrder .price{
+	color:#f5500e;
+}
+.tradeMain .tradeOperation{
+	height: auto;
+	overflow: hidden;
+	margin:0.75rem 0 0 0.7rem;
+}
+.tradeMain .tradeOperation a{
+	width: 2.82rem;
+	height: 0.66rem;
+	line-height: 0.66rem;
+	text-align: center;
+	background: #ecbc68;
+	color:#fff;
+	display: inline-block;
+	font-size: 0.34rem;
+	margin-right: 0.3rem;
+}
+.tradeMain .amountMoney{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	margin:0.15rem 0;
+	text-align: center;
+	padding-top: 0.3rem;
+}
+.tradeMain .amountMoney p{
+	font-size: 0.36rem;
+	color:#444;
+	margin-bottom: 0.2rem;
+}
+.tradeMain .amountMoney span{
+	display: block;
+	color:#7b7b7b;
+	font-size: 0.26rem;
+	margin-bottom: 0.2rem;
+}
+.tradeMain .paymentMain{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+}
+.tradeMain .paymentMain .payTitle{
+	height: 0.8rem;
+	line-height: 0.8rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+	margin:0 0.23rem;
+	font-size: 0.28rem;
+	color:#444;
+}
+.tradeMain .paymentMain .payCont{
+	height: auto;
+	overflow: hidden;
+	margin:0 0.23rem;
+}
+.paymentMain .payCont .payLeft{
+	float: left;
+}
+.paymentMain .payCont .payLeft span{
+	width: 0.51rem;
+	height: 0.51rem;
+	display: inline-block;
+	float: left;
+	background: url(../../images/secondLevel/paymentIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.13rem 0.17rem 0.15rem 0;
+}
+.paymentMain .payCont .payLeft em{
+	display: inline-block;
+	font-size: 0.26rem;
+	color: #7b7b7b;
+	float: left;
+	line-height: 0.8rem;
+}
+.paymentMain .payCont .payRight{
+	width: 0.38rem;
+	height: 0.38rem;
+	display: block;
+	float: right;
+	display: inline-block;
+	background: url(../../images/secondLevel/selIcon.png) no-repeat;
+	background-size: 100%;
+	margin-top: 0.2rem;
+}
+.tradeMain .paymentBtn{
+	width: 7.5rem;
+	height: 0.98rem;
+	line-height: 0.98rem;
+	color:#fff;
+	font-size: 0.36rem;
+	display: block;
+	text-align: center;
+	background: #ecbc68;
+	position: fixed;
+	bottom: 0;
+}
+/*交易详情 结束*/
+
 
 
 

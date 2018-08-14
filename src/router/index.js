@@ -12,6 +12,9 @@ import catcherRecommend from '../page/find/catcherRecommend'
 import classification from '../page/index/classification'
 import classificationTwoPage from '../page/index/classificationTwoPage'
 import popularBrand from '../page/index/popularBrand'
+import searchList from '../page/index/searchList'
+import selecTregion from '../page/index/selecTregion'
+
 import dynamicDetails from '../page/find/dynamicDetails'
 import demo from '../page/demo/demo'
 import findPage from '../page/find/findPage'
@@ -49,6 +52,8 @@ import img2 from '../page/demo/img2'
 import regShop from '../page/demo/regShop'
 import regShopImg from '../page/demo/regShopImg'
 import imageUploader from '../page/demo/ImageUploader'
+import swiper from '../page/demo/swiper'
+
 
 import conventionalGood from '../page/shoppingBag/conventionalGood'
 import commodityPage from '../page/shoppingBag/commodityPage'
@@ -74,13 +79,40 @@ import newBrochureInfo from '../page/shopkeeper/newBrochureInfo'
 import putForwardAdminist from '../page/shopkeeper/putForwardAdminist'
 import salesOrder from '../page/shopkeeper/salesOrder'
 import shopkeSelection from '../page/shopkeeper/shopkeSelection'
+import dataCenter from '../page/shopkeeper/dataCenter'
 
 import receivingAddress from '../page/shoppingBag/receivingAddress'
+import tradeFail from '../page/shoppingBag/tradeFail'
+import tradeSuccessful from '../page/shoppingBag/tradeSuccessful'
 Vue.use(Router)
 Vue.use(VueResource)
 export default new Router({
   routes: [
     {
+      path:'/swiper',
+      name:'swiper',
+      component:swiper
+    },{
+      path:'/tradeFail',
+      name:'tradeFail',
+      component:tradeFail
+    },{
+      path:'/tradeSuccessful',
+      name:'tradeSuccessful',
+      component:tradeSuccessful
+    },{
+      path:'/selecTregion',
+      name:'selecTregion',
+      component:selecTregion
+    },{
+      path:'/dataCenter',
+      name:'dataCenter',
+      component:dataCenter
+    },{
+      path:'/searchList',
+      name:'searchList',
+      component:searchList
+    },{
       path:'/imageUploader',
       name:'imageUploader',
       component:imageUploader

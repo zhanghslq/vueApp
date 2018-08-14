@@ -403,10 +403,22 @@
 	font-size:0.32rem;
 	color:#666;
 }
+.refurdMain .opContInfo li{
+	background:#fff;
+	height: auto;
+	overflow: hidden;
+	margin-bottom: 0.15rem;
+}
+.refurdMain .opContInfo .infoBottom {
+    float: right;
+    margin: 0.15rem 0 0.2rem 0;
+}
 /*退款进度 结束*/
 /*我的收藏 开始*/
 .collectionMain{
-
+	width: 100%;
+	position: absolute;
+	top:0.9rem;
 }
 .collectionMain .collectionNav{
 	width: 100%;
@@ -417,7 +429,7 @@
 .collectionMain .collectionList{
 	height: auto;
 	overflow: hidden;
-	margin:1.9rem 0 0.2rem;
+	margin:0.9rem 0 0.2rem;
 }
 .collectionList .listInfo{
 	display: none;
@@ -932,6 +944,11 @@ header .setUpIcon{
 /*会员中心 结束*/
 
 /*优惠券 开始*/
+.couponMain{
+	width: 100%;
+	position: absolute;
+	top:0.9rem;
+}
 .couponMain .couponNav{
 	width:100%;
 	height: 0.8rem;
@@ -958,7 +975,7 @@ header .setUpIcon{
 .couponMain .couponContent{
 	height: auto;
 	overflow: hidden;
-	margin-top: 1.8rem;
+	margin-top: 0.9rem;
 }
 .couponContent .couponList{
 	height: auto;
@@ -1426,5 +1443,97 @@ header .setUpIcon{
     right: 0.15rem;
     z-index: 99;
 }
-
 /*意见与反馈 结束*/
+/*我的订单 开始*/
+.myOrderMain{
+	width:100%;
+	position: absolute;
+	top:0.9rem;
+}
+.orderOption .optionNav{
+	top:0.9rem;
+}
+.orderOption .optionNav a{
+	margin:0;
+	width: 20%;
+	text-align: center;
+}
+.orderOption .optionCont{
+	margin-top: 0.8rem;
+}
+.opContInfo li .infoBottom .cancelBtn,
+.opContInfo li .infoBottom .secondBtn{
+	width: 1.16rem;
+	height: 0.52rem;
+	line-height: 0.52rem;
+	text-align: center;
+	border: 0.02rem solid #c2c2c2;
+	display: inline-block;
+	font-size: 0.24rem;
+	color:#7b7b7b;
+}
+.opContInfo li .infoBottom .toPay{
+	width: 1.86rem;
+	height: 0.52rem;
+	line-height: 0.52rem;
+	text-align: center;
+	border:0.02rem solid #ecbc68;
+	color:#ecbc68;
+	display: inline-block;
+	margin:0 0.23rem 0 0.12rem;
+
+}
+.opContInfo li .infoBottom .toPay span{
+	display: inline-block;
+	margin-right: 0.1rem;
+}
+.opContInfo li .infoBottom .secondBtn{
+	border:0.02rem solid #ecbc68;
+	color:#ecbc68;
+	margin-right: 0.23rem;
+}
+.opContInfo li .infoBottom .thirdBtn,
+.opContInfo li .infoBottom .fourthBtn{
+	width: 1.28rem;
+	height: 0.52rem;
+	line-height: 0.52rem;
+	display: inline-block;
+	text-align: center;
+	border:0.02rem solid #c2c2c2;
+	color:#7b7b7b;
+	margin-right: 0.1rem;
+}
+.opContInfo li .infoBottom .fourthBtn{
+	border:0.02rem solid #ecbc68;
+	color:#ecbc68;
+	margin-right: 0.23rem;
+}
+.optionCont .whole{
+	font-size: 0.24rem;
+	color: #adadad;
+	text-align: center;
+	margin:0.4rem 0 1.3rem 0;
+}
+.optionCont .optionMain{
+	display: none;
+}
+.optionCont .opContInfo{
+	display: block;
+}
+.opContInfo .infoTop .checkIng,
+.opContInfo .infoTop .checkCur{
+	width: 0.44rem;
+	height: 0.44rem;
+	display: inline-block;
+	background: url(../../images/threeLevel/waitIcon.png) no-repeat;
+	background-size: 100%;
+	float: left;
+	margin:-0.05rem 0.2rem 0 0;
+}
+.opContInfo .infoTop .checkCur{
+	background: url(../../images/threeLevel/waitIconCur.png) no-repeat;
+	background-size: 100%;
+}
+
+
+/*我的订单 结束*/

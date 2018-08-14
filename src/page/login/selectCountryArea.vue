@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!--头部 开始-->
     <header class="fix">
       <a href="javascript:history.go(-1);" class="returnBtn"></a>
       选择国家/地区
@@ -36,21 +35,19 @@
         </div>
       </div>
     </main>
+    <!--中间 结束-->
   </div>
 </template>
 
 <script>
 /* eslint-disable */
-
+import $ from 'jquery'
 export default {
-  name: 'selectCountryArea'
-}
-window.onload = function (ev) {
-  phone_json();
-};
-function phone_json() {
-  var data = mobileArray();
-  var letterArray = generateSmall();
+  name: 'selectCountryArea',
+  methods:{
+    phone_json:function () {
+  var data = this.mobileArray();
+  var letterArray = this.generateSmall();
   var phone_list = [];
   $.each(letterArray, function (index_z, item_z) {
     var phoneArray = [];
@@ -66,46 +63,37 @@ function phone_json() {
       phone_list.push(phone);
     }
   });
-  phone_view(phone_list);
-}
-function generateSmall() {
+  this.phone_view(phone_list);
+},
+    generateSmall:function () {
   var str = [];
   for (var i = 0; i < 26; i++) {
     str.push(String.fromCharCode((65 + i)));
   }
   return str;
-}
+},
 
-function phone_view(phone_list) {
+    phone_view:function (phone_list) {
   var map = '';
   $.each(phone_list, function (index_h, item_h) {
     var item = 'item' + index_h;
     map += "<li class='letter item' id=" + item + ">" + item_h.letter + "</li>";
     $.each(item_h.list, function (index_l, item_l) {
       map += "<li class='phone'>";
-      map += "<span>" + item_l.name + "</span>";
-      map += "<em>" + item_l.code + "</em>";
+      map += "<span class='span'>" + item_l.name + "</span>";
+      map += "<em class='em'>" + item_l.code + "</em>";
       map += "</li>";
     });
   });
   $('#phone').append(map);
+  var _this=this;
   $(".phone").on("click", function (e) {
     var hao = $(this).children('em').text();
-    this.$router.push({ name: '/mobileLogin', params: { mobile: hao }})
+    console.log(hao)
+    _this.$router.push({ name: 'mobileLogin', params: { mobileAddress: hao }})
   });
-}
-
-$(".letterList em").click(function () {
-  var oA = $(this);
-  var index = oA.attr("title");
-  console.log();
-  var h = $(".item").eq(index).offset().top;
-  if (oA.attr("class") !== "current") {
-    var h = h - $("header").height() +'px';
-    $('html,body').animate({scrollTop: h}, 300);
-  }
-});
-function mobileArray() {
+},
+    mobileArray:function () {
   var mobileArray = {
     "0": {
       "name": "安哥拉",
@@ -1262,9 +1250,84 @@ function mobileArray() {
   };
   return mobileArray;
 }
+  },
+
+  mounted:function () {
+    this.phone_json();
+    $(".letterList em").click(function () {
+      var oA = $(this);
+      var index = oA.attr("title");
+      var h = $(".item").eq(index).offset().top;
+      if (oA.attr("class") !== "current") {
+        var h = h - $("header").height() +'px';
+        $('html,body').animate({scrollTop: h}, 300);
+      }
+    });
+  }
+}
+
+
+
+
 </script>
-<style scoped src="">
+<style scoped>
+  @import "../../css/common/common.css";
   @import "../../css/other/login.css";
 </style>
+<style scoped>
+  .countryAreaMain{
+    height: auto;
+    overflow:hidden;
+    position: relative;
+    margin-top: 0.9rem;
+  }
+  .countryAreaMain ul{
+    height: auto;
+    overflow:hidden;
+    background: #fff;
+  }
+  .letter,
+  .phone{
+    height: 0.72rem;
+    line-height: 0.72rem;
+    overflow:hidden;
+    margin:0 0.4rem;
+    padding:0 0.06rem;
+    border-bottom: 0.01rem solid #f6f6f6;
+  }
+  .span{
+    font-size: 0.26rem;
+    color:#000;
+    display: block;
+    float: left;
+  }
+  .em{
+    display: block;
+    float: right;
+    color:#969696;
+    font-size: 0.26rem;
+  }
+  .letter{
+    margin:0;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    background:#f7f7f7;
+    padding-left: 0.5rem;
+    color:#898989;
+  }
+  .countryAreaMain .letterList{
+    width:0.2rem;
+    text-align: center;
+    height: auto;
+    overflow:hidden;
+    position: fixed;
+    top:30%;
+    right: 0.08rem;
+    z-index: 99;
+    font-size: 0.12rem;
+  }
+
+</style>
+
 
 

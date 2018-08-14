@@ -73,7 +73,7 @@ export default {
 
   },
   mounted: function() {
-      var mobile = this.$route.params.paicheNo
+      var mobile = this.$route.params.mobileAddress
       if(mobile){
         $('.areaCode').empty()
         this.mobile_view(mobile)

@@ -12,6 +12,8 @@ $(function(){
    markeingTab();    //营销助手tab切换
    rewardTab();      //奖励任务tab切换
    show_time();      //奖励任务时间倒计时
+   orderOpTab();     //销售订单tab切换
+   myOrderTab();     //我的订单tab切换
 })
 
 /*兑换tab切换*/
@@ -446,4 +448,35 @@ function show_time() {
 
     })
     timer = setTimeout("show_time()", 1000);
+};
+
+/*销售订单*/
+function orderOpTab(){
+    var $li = $('.orderOption .optionNav a');
+    var $ul = $('.orderOption .optionCont .opContInfo');
+    $("#orderOption").css('height',$ul.eq(0).height())
+    $li.click(function(){
+        var $this = $(this);
+        var $t = $this.index();
+        $li.removeClass();
+        $this.addClass('Cur');
+        $ul.css('display','none');
+        $ul.eq($t).css('display','block');
+        $("#orderOption").css('height',$ul.eq($t).height())
+    })
+}
+/*我的订单*/
+function myOrderTab(){
+    var $li = $('.orderOption .optionNav a');
+    var $ul = $('.orderOption .optionCont .optionMain');
+    $("#optionTab").css('height',$ul.eq(0).height())
+    $li.click(function(){
+        var $this = $(this);
+        var $t = $this.index();
+        $li.removeClass();
+        $this.addClass('Cur');
+        $ul.css('display','none');
+        $ul.eq($t).css('display','block');
+        $("#optionTab").css('height',$ul.eq($t).height())
+    })
 }
