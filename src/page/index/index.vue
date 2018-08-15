@@ -1,5 +1,5 @@
 <template>
-<scroller>
+<div>
   <div id="top">
     <div class="addr">
       <div class="message"><span></span><em>5</em></div>
@@ -1939,7 +1939,7 @@
   </footer>
   <!--底部 结束-->
 
-    </scroller>
+    </div>
 </template>
 
 <script>
@@ -1947,24 +1947,17 @@
 import $ from 'jquery'
 import {TouchSlide} from '../../js/plugins/TouchSlide.1.1.min'
 import Swiper from 'swiper'
-
-import Vue from 'vue'
-import VueScroller from 'vue-scroller'
-Vue.use(VueScroller);
 export default {
   name: 'index',
   data () {
     return {
-      pageSwiper :null,
-      navSwiper :null,
-      scrollSwiper:null
+
 
     }
   },
   components: {
     Swiper,
     TouchSlide,
-    VueScroller
   },
   methods: {
     /*滑动导航切换内容*/
@@ -2029,15 +2022,18 @@ export default {
 },
   mounted: function () {
     //暂时设计每个slide大小需要一致
-    var barwidth = 36 //导航粉色条的长度px
-    var tSpeed = 300 //切换速度300ms
-    console.log("navTab")
+    let barwidth = 36 //导航粉色条的长度px
+    let tSpeed = 300 //切换速度300ms
     var navSwiper = new Swiper('#nav', {
       slidesPerView: 5,
       freeMode: true,
-        onInit: function() {
-          console.log("init===========")
-          navSlideWidth = this.slides.eq(0).css('width'); //导航字数需要统一,每个导航宽度一致
+      on: {
+        init: function(e) {
+          console.log("this"+this)
+          console.log("e"+e)
+          console.log("this.el"+this.$el)
+          console.log(e.$el)
+          let navSlideWidth = this.slides.eq(0).css('width'); //导航字数需要统一,每个导航宽度一致
           bar = this.$el.find('.bar')
           bar.css('width', navSlideWidth)
           bar.transition(tSpeed)
@@ -2048,19 +2044,19 @@ export default {
           for (i = 0; i < this.slides.length; i++) {
             navWidth += parseInt(this.slides.eq(i).css('width'))
           }
+
           topBar = this.$el.parents('body').find('#top') //页头
 
         },
 
-
+      },
     });
 
-    this.pageSwiper = new Swiper('#page', {
+    var pageSwiper = new Swiper('#page', {
       watchSlidesProgress: true,
       resistanceRatio: 0,
-
-        onTouchMove: function() {
-          console.log("进入touchMove")
+      on: {
+        touchMove: function() {
           progress = this.progress
           bar.transition(0)
           bar.transform('translateX(' + navSum * progress + 'px)')
@@ -2075,8 +2071,7 @@ export default {
             }
           }
         },
-        onTransitionStart: function() {
-          console.log("进入transitionStart")
+        transitionStart: function() {
           activeIndex = this.activeIndex
           activeSlidePosition = navSwiper.slides[activeIndex].offsetLeft
           //释放时导航粉色条移动过渡
@@ -2104,20 +2099,19 @@ export default {
           } else {
             navSwiper.setTranslate((clientWidth - parseInt(navSlideWidth)) / 2 - navActiveSlideLeft)
           }
+
         },
-
+      }
     });
-
-    this.navSwiper.on('tap', function(e) {
+    navSwiper.on('tap', function(e) {
       clickIndex = this.clickedIndex
       clickSlide = this.slides.eq(clickIndex)
       pageSwiper.slideTo(clickIndex, 0);
       this.slides.find('span').css('color', 'rgba(102,102,102,1)');
       clickSlide.find('span').css('color', 'rgba(235,189,104,1)');
     })
-
     //内容滚动
-    this.scrollSwiper = new Swiper('.scroll', {
+    var scrollSwiper = new Swiper('.scroll', {
       //65是头部的高
       //36是top地址和搜索的高
 
@@ -2129,18 +2123,18 @@ export default {
       mousewheel: {
         releaseOnEdges: true,
       },
-
-        onTouchMove: function() {
+      on: {
+        touchMove: function() {
 
           if (this.translate > 72 - 36 && this.translate < 72) {
             // topBar.transform('translateY(' + (this.translate - 72) + 'px)');
           }
 
         },
-        onTouchStart: function() {
+        touchStart: function() {
           startPosition = this.translate
         },
-        onTouchEnd: function() {
+        touchEnd: function() {
           topBar.transition(tSpeed)
           if (this.translate > 36 && this.translate < 72 && this.translate < startPosition) {
             // topBar.transform('translateY(-36px)');
@@ -2162,7 +2156,7 @@ export default {
           }
         },
 
-        onTransitionStart: function() {
+        transitionStart: function() {
 
           topBar.transition(tSpeed)
           if (this.translate) {
@@ -2188,8 +2182,9 @@ export default {
             }
           }
         },
-    })
+      }
 
+    })
     this.timeLimit();         //限时抢购滑动图
     this.makeUpone();         //美妆护肤下面的滑动列表
     this.beautyImg();
