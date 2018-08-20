@@ -1534,6 +1534,471 @@ header .setUpIcon{
 	background: url(../../images/threeLevel/waitIconCur.png) no-repeat;
 	background-size: 100%;
 }
-
-
 /*我的订单 结束*/
+/*查看物流 开始*/
+.logisticsMain{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	position: absolute;
+	top:0.9rem;
+}
+.logisticsMain .transportation{
+	width:100%;
+	margin:0.15rem 0;
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+}
+.transportation .transporLeft{
+	width: 1.22rem;
+	height: 1.22rem;
+	background: #f4f5f7;
+	float: left;
+	margin:0.23rem 0.2rem 0.18rem 0.23rem;
+}
+.transportation .transporLeft img{
+	height: 100%;
+	display: block;
+	margin:0 auto;
+}
+.transportation .transporRight{
+	width: 4.52rem;
+	height: auto;
+	overflow: hidden;
+	float: left;
+	margin-top: 0.1rem;
+}
+.transportation .transporRight p{
+	margin-top: 0.11rem;
+	font-size: 0.24rem;
+	color:#666;
+}
+.transportation .transporRight p em{
+	color:#ecbc68;
+}
+.logisticsMain .logisticsCont{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+}
+.logisticsMain .logisticsCont ul{
+	margin-left:0.68rem;
+	padding-left: 0.68rem;
+	border-left: 0.02rem solid #f4f5f7;
+	margin-top: 0.19rem;
+}
+.logisticsMain .logisticsCont ul li:first-child{
+	padding-top: 0;
+}
+.logisticsMain .logisticsCont ul li{
+	border-bottom: 0.02rem solid #f4f4f4;
+	padding-bottom: 0.22rem;
+	padding-top: 0.2rem;
+	position: relative;
+}
+.logisticsMain .logisticsCont ul li:last-child{
+	border:none;
+}
+.logisticsMain .logisticsCont ul li p{
+	font-size: 0.28rem;
+	color:#7b7b7b;
+	margin-bottom: 0.18rem;
+}
+.logisticsMain .logisticsCont ul li span{
+	font-size: 0.24rem;
+	color:#c2c2c2;
+}
+.logisticsMain .logisticsCont ul li p.Cur{
+	color:#ecbc68;
+}
+.logisticsMain .logisticsCont ul li em{
+	width: 0.16rem;
+	height: 0.16rem;
+	display: inline-block;
+	background: #f4f4f4;
+	border-radius: 50%;
+	position: absolute;
+	top:0.3rem;
+	left: -0.76rem;
+}
+.logisticsMain .logisticsCont ul li em.Cur{
+	width: 0.28rem;
+	height: 0.28rem;
+	display: inline-block;
+	background: url(../../images/threeLevel/circleIcon.png) no-repeat;
+	background-size: 100%;
+	border-radius: 0;
+	top:0.1rem;
+	left:-0.84rem;
+}
+/*查看物流 结束*/
+/*订单详情 开始*/
+.orderDetails{
+	width: 100%;
+	position: absolute;
+	top:0.9rem;
+}
+.orderDetails .orderDetTop{
+	height: 2rem;
+	overflow: hidden;
+	background: #ecbc68;
+	margin:0.15rem 0;
+	color:#fff;
+	padding:0 0.22rem 0 0.32rem;
+	position: relative;
+}
+.orderDetails .refund{
+	height: 1.68rem;
+}
+.orderDetails .orderDetTop .topTitle{
+	height: auto;
+	overflow: hidden;
+	margin-bottom: 0.18rem;
+	margin-top: 0.4rem;
+}
+.orderDetTop .topTitle em.goodsIcon,
+.orderDetTop .topTitle em.paymentInco,
+.orderDetTop .topTitle em.collectIcon,
+.orderDetTop .topTitle em.transactionIcon{
+	width: 0.44rem;
+	height: 0.4rem;
+	display: inline-block;
+	float: left;
+	margin-right: 0.2rem;
+	background: url(../../images/threeLevel/goodsIcon.png) no-repeat 0 0;
+	background-size: 100%;
+}
+.orderDetTop .topTitle em.paymentInco{
+	background: url(../../images/threeLevel/goodsIcon.png) no-repeat 0 -0.71rem;
+	background-size: 100%;
+}
+.orderDetTop .topTitle em.collectIcon{
+	background: url(../../images/threeLevel/goodsIcon.png) no-repeat 0 -1.41rem;
+	background-size: 100%;
+}
+.orderDetTop .topTitle em.transactionIcon{
+	width: 0.39rem;
+	height: 0.38rem;
+	background: url(../../images/threeLevel/tranIcon.png) no-repeat;
+	background-size: 100%;
+}
+.orderDetTop .topTitle span{
+	display: inline-block;
+	float: left;
+	font-size: 0.3rem;
+	color:#fff;
+}
+.orderDetTop .orderNum{
+	height: auto;
+	overflow: hidden;
+}
+.orderDetTop p{
+	color:#fff;
+	font-size: 0.24rem;
+	margin-bottom: 0.12rem;
+	float: left;
+}
+.orderDetTop .copy{
+	width: 0.8rem;
+	height: 0.32rem;
+	border:0.02rem solid #fff;
+	line-height: 0.32rem;
+	text-align: center;
+	display: block;
+	color:#fff;
+	font-size: 0.2rem;
+	float: right;
+}
+.orderDetails .addressInfo{
+	display:block;
+	min-height: 1.75rem;
+	overflow: hidden;
+	background:#fff url(../../images/secondLevel/addBg.jpg) no-repeat 0 bottom;
+	background-size: 100%;
+	margin-bottom: 0.15rem;
+}
+.orderDetails .addressInfo .addreeIcon{
+	width:0.31rem;
+	height: 0.37rem;
+	display: inline-block;
+	float: left;
+	margin:0.69rem 0 0 0.23rem;
+	background: url(../../images/secondLevel/addressIcon.png) no-repeat;
+	background-size: 100%;
+}
+.orderDetails .addressInfo .addreeText{
+	width: 6rem;
+	height: auto;
+	float: left;
+	overflow: hidden;
+	margin:0 0.25rem 0 0.2rem;
+}
+.orderDetails .addressInfo .addreeText .textName{
+	height: auto;
+	overflow: hidden;
+	margin:0.25rem 0 0.1rem 0;
+}
+.orderDetails .addreeText .textName em{
+	font-size: 0.32rem;
+	color:#444;
+	font-weight: bolder;
+	display: inline-block;
+	float: left;
+}
+.orderDetails .addreeText .textName span{
+	display: inline-block;
+	float: right;
+	font-size: 0.28rem;
+	color:#444;
+}
+.orderDetails .addressInfo .addreeText p{
+	font-size:0.26rem;
+	color:#444;
+}
+.orderDetails .commodity{
+	height: auto;
+	overflow: hidden;
+	margin-bottom: 0.15rem;
+	background: #fff;
+}
+.orderDetails .commodity .commodityTitle{
+	font-size: 0.24rem;
+	color:#444;
+	margin:0.26rem;
+}
+.commodity .commodDetail{
+	height: auto;
+	overflow: hidden;
+	background: #f7f7f7;
+	margin-bottom: 0.4rem;
+	padding:0.23rem 0 0.18rem 0;
+}
+.commodity .commodDetail .detailLeft{
+	width:1.2rem;
+	height: 1.2rem;
+	background:#fff;
+	float:left;
+	margin:0 0.1rem 0 0.24rem;
+}
+.commodity .commodDetail .detailLeft img{
+	max-width: 100%;
+	height: 100%;
+	display: block;
+	margin:0 auto;
+}
+.commodity .commodDetail .detailRight{
+	width:5.8rem;
+	height: auto;
+	overflow: hidden;
+	float: left;
+} 
+.commodDetail .detailRight .rightTop{
+	height: auto;
+	overflow: hidden;
+}
+.commodDetail .detailRight .rightTop p{
+	width:4.7rem;
+	font-size:0.26rem;
+	color:#444;
+	height: 0.75rem;
+	overflow: hidden;
+	line-height: 0.38rem;
+	float: left;
+}
+.commodDetail .detailRight .rightTop span{
+	display: inline-block;
+	float: right;
+	font-size: 0.18rem;
+	color:#f55f2d;
+	margin:0.02rem 0 0 0;
+}
+.commodDetail .detailRight .rightTop span em{
+	font-size: 0.26rem;
+}
+.commodDetail .detailRight .rightNum{
+	text-align: right;
+	font-size: 0.22rem;
+	color:#7b7b7b;
+	margin:0.1rem 0 0 0;
+}
+.commodity p{
+	font-size: 0.26rem;
+	color:#7b7b7b;
+	margin-bottom: 0.26rem;
+	height: auto;
+	overflow: hidden;
+}
+.commodity p span{
+	display: inline-block;
+	margin-left: 0.24rem;
+	float: left;
+}
+.commodity p em{
+	display: inline-block;
+	margin-right: 0.24rem;
+	float: right;
+}
+.commodity p em.priceNum{
+	color:#f5500e;
+}
+.orderDetails .contactService{
+	width: 100%;
+	height: 0.98rem;
+	line-height: 0.98rem;
+	text-align: center;
+	background:#fff;
+	border-top:0.02rem solid #ededed;
+	display: block;
+	position: fixed;
+	bottom:0;
+	font-size: 0.36rem;
+	color:#666;
+}
+.orderDetails .timeEnd{
+	height: 0.5rem;
+	line-height: 0.5rem;
+	background: #fff;
+}
+.orderDetails .timeEnd em{
+	width: 0.18rem;
+	height: 0.18rem;
+	display: inline-block;
+	float: left;
+	margin:0.17rem 0.1rem 0 0.3rem;
+	background: url(../../images/threeLevel/timesIcon2.png) no-repeat;
+	background-size: 100%;
+}
+.orderDetails .timeEnd p{
+	font-size: 0.18rem;
+	color:#7b7b7b;
+	float: left;
+}
+.orderDetails .timeEnd p span{
+	color:#ecbc68;
+	display: inline-block;
+	margin:0 0.03rem;
+}
+.orderDetails .expressMain{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	margin:-0.15rem 0 0.15rem 0;
+	padding:0.24rem 0.23rem 0.28rem 0.3rem;
+}
+.orderDetails .expressMain a{
+	height: auto;
+	overflow: hidden;
+	display: block;
+}
+.orderDetails .expressMain .expressMainLeft{
+	width: 5.3rem;
+	float: left;
+	border-left:0.02rem solid #d1d1d1;
+	padding-left: 0.24rem;
+	margin-left: 0.1rem;
+	position: relative;
+}
+.expressMain .expressMainLeft em{
+	width: 0.22rem;
+	height: 0.22rem;
+	display: block;
+	background: url(../../images/threeLevel/circleIcon2.png) no-repeat;
+	background-size: 100%;
+	position: absolute;
+	top:0;
+	left:-0.12rem;
+}
+.expressMain .expressMainLeft p{
+	font-size: 0.24rem;
+	color:#ecbc68;
+	line-height: 0.36rem;
+	margin-bottom: 0.2rem;
+	margin-top: -0.03rem;
+}
+.expressMain .expressMainLeft span{
+	font-size: 0.2rem;
+	color:#c2c2c2;
+}
+.expressMain .expressMainRight{
+	width: 0.12rem;
+	height: 0.2rem;
+	display: block;
+	background: url(../../images/common/intoIcon.png) no-repeat;
+	background-size: 100%;
+	float: right;
+	margin-top: 0.4rem;
+}
+.orderDetails .refundMoney{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	margin-bottom: 0.15rem;
+}
+.orderDetails .refundMoney li{
+	height: 0.8rem;
+	line-height: 0.8rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+	margin:0 0.23rem;
+}
+.orderDetails .refundMoney li:last-child{
+	border:none;
+}
+.orderDetails .refundMoney li span{
+	font-size: 0.26rem;
+	color:#7b7b7b;
+	display: inline-block;
+	float: left;
+}
+.orderDetails .refundMoney li em{
+	float: right;
+	font-size: 0.26rem;
+	color:#7b7b7b;
+}
+.orderDetails .refundMoney li .total{
+	font-size: 0.3rem;
+	color:#f5500e;
+}
+.orderDetails .refundBtn{
+	width: 100%;
+	height: 0.98rem;
+	border-top:0.02rem solid #ededed;
+	background: #fff;
+	display: block;
+	position: fixed;
+	bottom: 0;
+}
+.orderDetails .refundBtn a{
+	width: 49.8%;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	float: left;
+	display: block;
+	text-align: center;
+	margin-top: 0.07rem;
+	font-size: 0.28rem;
+	color:#444;
+	border-right: 0.02rem solid #f4f5f7;
+}
+.orderDetails .refundBtn a:last-child{
+	border:none;
+}
+.orderDetails .refundBtn .seller{
+	width: 0.31rem;
+	height: 0.31rem;
+	display:inline-block;
+	background: url(../../images/threeLevel/sellerIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.03rem 0.07rem 0 0;
+}
+.orderDetails .refundBtn .onLine{
+	width: 0.29rem;
+	height: 0.31rem;
+	display:inline-block;
+	background: url(../../images/threeLevel/onLinePic.png) no-repeat;
+	background-size: 100%;
+	margin:0.06rem 0.07rem 0 0;
+}
+
+
+/*订单详情 结束*/

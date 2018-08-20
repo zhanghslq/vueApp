@@ -107,11 +107,22 @@
       <!--中间 结束-->
       <!--底部 开始-->
       <footer class="memberFooter">
-        <a href="index.html"><i class="homePage"></i><span>首页</span></a>
-        <a href="findPage.html"><i class="find"></i><span>发现</span></a>
-        <a href="#" class="active"><i class="shopp"></i><span>购物袋</span><em>99</em></a>
-        <a href="#"><i class="personal"></i><span>个人中心</span></a>
-        <a href="#"><i class="shopkeeper"></i><span>我是店主</span></a>
+        <router-link to="/index">
+          <i class="homePage"></i><span>首页</span>
+        </router-link>
+        <router-link to="/findPage" >
+          <i class="find"></i><span>发现</span>
+        </router-link>
+        <router-link to="/shopIndex" class="active">
+          <i class="shopp"></i><span>购物袋</span><em>99</em>
+        </router-link>
+        <router-link to="/personalPage">
+          <i class="personal"></i><span>个人中心</span>
+        </router-link>
+        <router-link to="/shopkeeperPage" >
+          <i class="shopkeeper"></i><span>我是店主</span>
+        </router-link>
+
       </footer>
       <!--底部 结束-->
     </div>

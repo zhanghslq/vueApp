@@ -198,7 +198,7 @@
   color:#969696;
   font-size: 0.26rem;
 }
-.countryAreaMain ul li >>> .letter{
+.countryAreaMain ul li.letter{
   margin:0;
   height: 0.5rem;
   line-height: 0.5rem;
@@ -206,7 +206,7 @@
   padding-left: 0.5rem;
   color:#898989;
 }
-.countryAreaMain >>> .letterList{
+.countryAreaMain .letterList{
   width:0.2rem;
   text-align: center;
   height: auto;
@@ -220,6 +220,7 @@
 .tregionList{
   top:38% !important;
 }
+
 .promptText{
   height: 0.64rem;
   line-height: 0.64rem;

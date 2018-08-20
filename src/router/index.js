@@ -84,11 +84,17 @@ import dataCenter from '../page/shopkeeper/dataCenter'
 import receivingAddress from '../page/shoppingBag/receivingAddress'
 import tradeFail from '../page/shoppingBag/tradeFail'
 import tradeSuccessful from '../page/shoppingBag/tradeSuccessful'
+
+import testSwiper from '../page/复杂/test'
 Vue.use(Router)
 Vue.use(VueResource)
 export default new Router({
   routes: [
     {
+      path:'/testSwiper',
+      name:'testSwiper',
+      component:testSwiper
+    },{
       path:'/swiper',
       name:'swiper',
       component:swiper
