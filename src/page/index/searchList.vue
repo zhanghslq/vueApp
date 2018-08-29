@@ -6,7 +6,10 @@
         <div class="searchHead searchList">
           <div class="search">
             <em></em>
-            <input type="text" placeholder="搜索喜欢的宝贝">
+            <router-link to="search">
+              <input type="text" placeholder="搜索喜欢的宝贝">
+            </router-link>
+
           </div>
         </div>
       </header>
@@ -94,6 +97,9 @@
                 </div>
               </a>
             </div>
+
+
+
             <div class="searchContInfo">
               <a href="#">
                 <div class="infoPic"><img src="../../images/temporary/commodity12.png"></div>
@@ -150,7 +156,13 @@
 
 <script>
     export default {
-        name: "searchList",
+      name: "searchList",
+      data(){
+        return{
+          //搜索得到的商品集合
+          productList:[]
+        }
+      },
       methods:{
         searchTab:function (){
     var $li = $('.tabNav a');
@@ -166,9 +178,34 @@
       $("#navcon01").css('height',$ul.eq($t).height())
     })
   },
+        querySearchList(){
+          let _this=this
+          axios.post('/api//api/wxapp/product/list',{
+            "kw":_this.kw,
+            "page":1,
+            "limit":10
+          })
+            .then(function (response) {
+              console.log(response)
+              if(response.data.code==200){
+
+              }else{
+
+              }
+
+            })
+            .catch(function (error) {
+              console.log(error);
+            })
+        },
+      },updated(){
+        this.searchTab();
       },
       mounted:function () {
-        this.searchTab();
+        let _this=this;
+        let kw = this.$route.params.kw
+
+
       }
     }
 </script>

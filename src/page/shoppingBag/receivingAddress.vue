@@ -13,8 +13,8 @@
           <a v-for="address in addresses" class="receiving">
             <div class="receivingLeft">
               <div class="leftName">
-                <span>李宗森</span>
-                <em>13811203297</em>
+                <span>{{address.consignee}}</span>
+                <em>{{address.mobile}}</em>
               </div>
               <p>
 
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+  import store from '../../service/store'
   import axios from 'axios'
     export default {
         name: "receivingAddress",
@@ -45,9 +46,11 @@
       mounted:function () {
         var _this=this
         axios.post('/api//api/wxapp/deliveryAddress/list',{
-          "uid":1
+          "uid":store.fetch("uid")
         })
           .then(function (response) {
+            console.log(response)
+            console.log(response.data.list)
               _this.addresses=response.data.list
           })
           .catch(function (error) {

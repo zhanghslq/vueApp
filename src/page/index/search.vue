@@ -4,12 +4,12 @@
   <header>
     <div class="searchHead">
       <div class="search">
-        <em></em>
-        <input type="text" placeholder="搜索喜欢的宝贝">
+        <em v-on:click="searchList"></em>
+        <input type="text" v-model="kw" placeholder="搜索喜欢的宝贝">
       </div>
-      <router-link to="-1">
-        <a href="#" class="cancelBtn">取消</a>
-      </router-link>
+
+        <a  class="cancelBtn" @click="$router.back(-1)">取消</a>
+
     </div>
   </header>
   <!--头部 结束-->
@@ -28,7 +28,17 @@
 
 <script>
 export default {
-  name: 'search'
+  name: 'search',
+  data(){
+    return{
+      kw:''
+    }
+  },
+  methods:{
+    searchList(){
+      this.$router.push({ name: 'searchList', params: { kw: this.kw }})
+    }
+  }
 }
 </script>
 <style scoped >

@@ -6,7 +6,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-Vue.config.productionTip = false
+import layer from 'vue-layer-mobile'
+Vue.use(layer)
 /* eslint-disable */
 import $ from 'jquery'
 /* eslint-disable no-new */

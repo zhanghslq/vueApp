@@ -37,7 +37,7 @@
   line-height: 0.76rem;
   margin:0.2rem auto;
 }
-.logoMain .authorization em{
+.logoMain .authorization >>> em{
   width:0.44rem;
   height: 0.37rem;
   display: inline-block;
@@ -46,7 +46,7 @@
   background: url(../../images/common/weChatIcon.png) no-repeat;
   background-size:100%;
 }
-.logoMain .authorization span{
+.logoMain .authorization >>> span{
   color:#fff;
   font-size: 0.38rem;
   display: inline-block;
@@ -136,7 +136,7 @@
   float: left;
   position: relative;
 }
-.mobileInfo .areaCode em{
+.mobileInfo .areaCode >>> em{
   width: 0.13rem;
   height: 0.11rem;
   display: block;
@@ -198,7 +198,7 @@
   color:#969696;
   font-size: 0.26rem;
 }
-.countryAreaMain ul li.letter{
+.countryAreaMain ul li >>> .letter{
   margin:0;
   height: 0.5rem;
   line-height: 0.5rem;
@@ -206,7 +206,7 @@
   padding-left: 0.5rem;
   color:#898989;
 }
-.countryAreaMain .letterList{
+.countryAreaMain >>> .letterList{
   width:0.2rem;
   text-align: center;
   height: auto;

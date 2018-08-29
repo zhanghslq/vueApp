@@ -13,7 +13,7 @@
             <div class="fillInfo">
               <i>*</i>
               <span>收货人：</span>
-              <input type="text" name="" placeholder="请输入姓名">
+              <input v-model="consignee" type="text" name="" placeholder="请输入姓名">
             </div>
             <div class="fillInfo">
               <i>*</i>
@@ -50,20 +50,15 @@
                     <div class="img-uploader"
                          @drop="handleDrop"
                          ref="uploader">
-
-                      <!--没有图片显示点击上传-->
-                      <p class="img-uploader-placeholder" v-if="!hasImages">{{placeholder}}</p>
-
                       <!--图片预览列表-->
                       <div v-if="hasImages" class="img-uploader-preview-list">
                         <div v-for="(data,index) in imageDataList" class="img-uploader-preview">
-
                           <div class="preview-img">
                             <img :src="data"/>
                           </div>
                           <!--信息窗-->
                           <div class="img-uploader-mask" v-if="hasImages">
-                            <!--<p class="img-uploader-file-size">10MB</p>-->
+
                             <p class="img-uploader-file-name" @click='openInput()'>{{fileNameList[index]}}</p>
                           </div>
                           <img src="../../assets/round_close.svg" class="img-uploader-delete-btn" @click="deleteImg(index)"/>
@@ -83,12 +78,45 @@
                       <!--错误提示-->
                       <div class="img-uploader-error" v-if="errorText.length">{{errorText}}</div>
 
-
-
                     </div>
                   </div>
-                  <div class="photoRight">
 
+
+                  <!--Right-->
+                  <div class="photoRight">
+                    <div class="img-uploader"
+                         @drop="handleDrop2"
+                         ref="uploader">
+
+                      <!--图片预览列表-->
+                      <div v-if="hasImages2" class="img-uploader-preview-list">
+                        <div v-for="(data,index) in imageDataList2" class="img-uploader-preview">
+                          <div class="preview-img">
+                            <img :src="data"/>
+                          </div>
+                          <!--信息窗-->
+                          <div class="img-uploader-mask" v-if="hasImages2">
+
+                            <p class="img-uploader-file-name" @click='openInput2()'>{{fileNameList2[index]}}</p>
+                          </div>
+                          <img src="../../assets/round_close.svg" class="img-uploader-delete-btn" @click="deleteImg2(index)"/>
+                        </div>
+                      </div>
+                      <label for="inputId2"  class="img-uploader-label" v-if="!hasImages2"></label>
+                      <!-- input-->
+                      <input
+                        style="display: none"
+                        id="inputId2"
+                        ref="input2"
+                        type="file"
+                        accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"
+                        multiple="multiple"
+                        @change="handleFileChange2"/>
+
+                      <!--错误提示-->
+                      <div class="img-uploader-error" v-if="errorText2.length">{{errorText2}}</div>
+
+                    </div>
                   </div>
                 </div>
                 <p>若您已上传过当前身份证对应的照片 <a href="#">立即同步</a></p>
@@ -102,10 +130,10 @@
           <div class="default">
             <div class="defaultLeft"><span>设置为默认地址</span><em>(注:每次下单时都会使用该地址)</em></div>
             <label class="ui-switch" >
-              <input type="checkbox"   id="test">
+              <input type="checkbox"   id="test" v-on:click="isCheckDefault">
             </label>
           </div>
-          <a href="#" class="preservation">保存</a>
+          <a  class="preservation" v-on:click="submitAddress">保存</a>
         </div>
       </main>
       <!--中间 结束-->
@@ -123,20 +151,26 @@
   import vuePickers from 'vue-pickers'
   import {provs_data, citys_data, dists_data} from 'vue-pickers/lib/areaData'
   import resizeImage from '@/components/resize';
+  import store from '../../service/store'
+  import axios from 'axios'
   export default {
     name: "newlyAddress",
     props: {
       // 占位文字
-      placeholder: {
-        default: '点击上传图片',
-        type: String
-      },
       // 文件更改回调
       onChange: {
         type: Function
       },
       // 图片大小的最大值(KB)
       maxSize: {
+        default: 3072,
+        type: Number
+      },
+      onChange2: {
+        type: Function
+      },
+      // 图片大小的最大值(KB)
+      maxSize2: {
         default: 3072,
         type: Number
       }
@@ -165,31 +199,87 @@
         // 错误提示
         errorText: '',
         // 图片计数
-        countText: ''
+        countText: '',
 
+        inputId2: '',
+        // 预览图片地址
+        imageDataList2: [],
+        // 文件名
+        fileNameList2: [],
+        // 错误提示
+        errorText2: '',
+        // 图片计数
+        countText2: '',
+        //用户姓名
+        consignee:'',
+        //手机号
+        mobile:'',
+        //省份编码
+        provinceCode:'',
+        //城市编码
+        cityCode:'',
+        //区编码
+        areaCode:'',
+        //详细地址
+        detailAddress:'',
+        //身份证号码
+        idNumber:'',
+        //正反面照片路径
+        frontOfIdCard:'',
+        reverseSideOfIdCard:'',
+        isDefault:'',
       }
     },
 
       methods:{
-      test(){
-        console.log("进入test")
-        if(document.getElementById("test").checked){
-          console.log("选中")
-        }else {
-          console.log("this")
-        }
-      },
+     /*选择地址的方法*/
+        submitAddress(){
+          let _this=this;
+          axios.post('/api//api/wxapp/deliveryAddress/add',{
+            "uid":store.fetch("uid"),
+            "consignee":this.consignee,
+            "mobile":this.mobile,
+            "provinceCode":this.provinceCode,
+            "cityCode":this.cityCode,
+            "areaCode":this.areaCode,
+            "detailAddress":this.detailAddress,
+            "idNumber":this.idNumber,
+            "isDefault":this.isDefault,
+          }).then(function (response) {
+              console.log(response)
+              if (response.data.code == 200) {
+                console.log(response)
+                _this.$router.push("receivingAddress")
+              } else {
+
+
+              }
+            }).catch(function (error) {
+            console.log(error);
+          })
+        },
+        isCheckDefault(){
+          if(document.getElementById("test").checked){
+            this.isDefault=1;
+          }else {
+            this.isDefault=0;
+          }
+        },
         close() {
           this.show = false
         },
         confirmFn(val) {
           this.show = false
           this.res = val.select1.text + val.select2.text + val.select3.text
+          this.provinceCode=val.select1.value;
+          this.cityCode=val.select2.value;
+          this.areaCode=val.select3.value;
           this.pickData.default = [val.select1, val.select2, val.select3]
         },
         toShow() {
           this.show = true
         },
+        //选择图片
         handleFileChange(){
           let input = this.$refs.input;
           let files = input.files;
@@ -256,6 +346,69 @@
             };
             reader.readAsDataURL(file);
           }
+        },
+        handleFileChange2(){
+          let input = this.$refs.input2;
+          let files = input.files;
+          this.handleFile2(files);
+        },
+        handleDrop2 (e) {
+          // 获取文件列表
+          let files = e.dataTransfer.files;
+          this.handleFile2(files);
+        },
+
+        openInput2(){
+          document.getElementById("inputId2").click();
+        },
+        deleteImg2(index){
+          this.imageDataList2.splice(index, 1);
+          this.countText2 = `${this.imageDataList2.length}张图片`;
+        },
+        // 处理图片
+        handleFile2(files) {
+
+          if (files && files.length > 0) {
+            this.fileNameList2.length = 0;
+            this.imageDataList2.length = 0;
+          }
+
+          for (let i = 0; i < files.length; i++) {
+            let file = files[i];
+            let size = Math.floor(file.size / 1024);
+            if (size > this.maxSize) {
+              this.errorText = `文件大小不能超过${this.sizeFormatted2}`;
+              return false;
+            }
+            this.fileNameList2.push(file.name);
+          }
+
+          if (files && files.length > 0) {
+            this.countText2 = `${files.length}张图片`;
+          }
+          // 文件选择事件
+//        this.onChange && this.onChange(files)
+          this.$emit('onChange', files);
+
+          this.preview2(files);
+        },
+        // 预览图片
+        preview2 (files) {
+          let _this = this;
+          if (!files || !window.FileReader) return;
+
+          for (let i = 0; i < files.length; i++) {
+            let file = files[i];
+            let reader = new FileReader();
+            reader.onload = function (e) {
+
+              resizeImage(e.target.result, 150, 150, function (result) {
+                _this.imageDataList2.push(result);
+              });
+
+            };
+            reader.readAsDataURL(file);
+          }
         }
       },
     computed: {
@@ -272,9 +425,25 @@
           result = (this.maxSize / 1024).toFixed(this.maxSize % 1024 > 0 ? 2 : 0) + 'M';
         }
         return result;
+      },
+
+      hasImages2 () {
+        return this.imageDataList2.length > 0;
+      },
+      // 格式化的文件大小，可读的
+      sizeFormatted2 () {
+        let result = 0;
+        if (this.maxSize < 1024) {
+          result = this.maxSize + 'K';
+        } else {
+          result = (this.maxSize / 1024).toFixed(this.maxSize % 1024 > 0 ? 2 : 0) + 'M';
+        }
+        return result;
       }
     },
       mounted:function () {
+      console.log(this.$refs.input);
+      console.log(this.$refs.uploader2);
         $(".identification .idTop").on("click",function(){
           if (!$('.nav').hasClass('nav-mini')) {
             if ($(this).next().css('display') == "none") {

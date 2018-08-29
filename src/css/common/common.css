@@ -21,7 +21,7 @@ address, caption, cite, code, dfn, em, th, var, optgroup {
 del, ins {
   text-decoration: none;
 }
-li {
+>>> li {
   list-style: none;
 }
 h1, h2, h3, h4, h5, h6 {

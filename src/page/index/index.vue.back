@@ -5,9 +5,7 @@
       <div class="message"><span></span><em>5</em></div>
       <div class="search">
         <em></em>
-        <router-link to="search">
-          <input type="text" placeholder="搜索喜欢的宝贝">
-        </router-link>
+        <input type="text" placeholder="搜索喜欢的宝贝">
       </div>
 <router-link to="selecTregion">
   <a  class="cityCode">北京市 <em class="triangle"></em></a>
@@ -16,8 +14,18 @@
     </div>
     <div class="swiper-container swiper-container-horizontal swiper-container-free-mode swiper-container-ios" id="nav">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" ><span>首页</span></div>
-        <div class="swiper-slide" v-for="item in topList"><span>{{item.name}}</span></div>
+        <div class="swiper-slide"><span>首页</span></div>
+        <div class="swiper-slide"><span>美妆护肤</span></div>
+        <div class="swiper-slide"><span>百货轻奢</span></div>
+        <div class="swiper-slide"><span>母婴玩具</span></div>
+        <div class="swiper-slide"><span>滋补保健</span></div>
+        <div class="swiper-slide"><span>休闲零食</span></div>
+        <div class="swiper-slide"><span>乳饮酒速食</span></div>
+        <div class="swiper-slide"><span>水果蔬菜</span></div>
+        <div class="swiper-slide"><span>百货家居</span></div>
+        <div class="swiper-slide"><span>服饰箱包</span></div>
+        <div class="swiper-slide"><span>生鲜肉类</span></div>
+        <div class="swiper-slide"><span>猩际物料</span></div>
       </div>
     </div>
   </div>
@@ -1976,14 +1984,12 @@
 import $ from 'jquery'
 import {TouchSlide} from '../../js/plugins/TouchSlide.1.1.min'
 import Swiper from 'swiper'
-
-import axios from 'axios'
 export default {
   name: 'index',
   data () {
     return {
-      topList:[],
-      pageList:[]
+      msg:'测试使用'
+
     }
   },
   components: {
@@ -2149,7 +2155,7 @@ export default {
     //36是top地址和搜索的高
     autoHeight: true, //高度随内容变化
     scrollbar: '.swiper-container-scrollbar .swiper-scrollbar',
-
+    autoHeight: true,
     slidesOffsetBefore: 72,
     direction: 'vertical',
     freeMode: true,
@@ -2170,31 +2176,12 @@ export default {
   $('.cityCode').append(mobile);
 }
 },
-  updated(){
+  mounted: function () {
     this.navTab()
     this.timeLimit();         //限时抢购滑动图
     this.makeUpone();         //美妆护肤下面的滑动列表
     this.beautyImg();
     this.bannerFocusImg();
-  },
-  mounted () {
-    let _this=this;
-    axios.post('/api//api/wxapp/category/listTop',{
-
-    }).then(function (response) {
-      console.log(response)
-      if (response.data.code == 200) {
-        console.log(response)
-        _this.topList=response.data.list
-      } else {
-
-
-      }
-    }).catch(function (error) {
-      console.log(error);
-    })
-
-
     $("#two2").attr("height",$("#two").attr("height"))
     var mobile = this.$route.params.city
     if(mobile){

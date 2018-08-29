@@ -80,8 +80,8 @@ export default {
     map += "<li class='letter item' id=" + item + ">" + item_h.letter + "</li>";
     $.each(item_h.list, function (index_l, item_l) {
       map += "<li class='phone'>";
-      map += "<span class='span'>" + item_l.name + "</span>";
-      map += "<em class='em'>" + item_l.code + "</em>";
+      map += "<span >" + item_l.name + "</span>";
+      map += "<em>" + item_l.code + "</em>";
       map += "</li>";
     });
   });
@@ -1273,60 +1273,6 @@ export default {
 <style scoped>
   @import "../../css/common/common.css";
   @import "../../css/other/login.css";
-</style>
-<style scoped>
-  .countryAreaMain{
-    height: auto;
-    overflow:hidden;
-    position: relative;
-    margin-top: 0.9rem;
-  }
-  .countryAreaMain ul{
-    height: auto;
-    overflow:hidden;
-    background: #fff;
-  }
-  .letter,
-  .phone{
-    height: 0.72rem;
-    line-height: 0.72rem;
-    overflow:hidden;
-    margin:0 0.4rem;
-    padding:0 0.06rem;
-    border-bottom: 0.01rem solid #f6f6f6;
-  }
-  .span{
-    font-size: 0.26rem;
-    color:#000;
-    display: block;
-    float: left;
-  }
-  .em{
-    display: block;
-    float: right;
-    color:#969696;
-    font-size: 0.26rem;
-  }
-  .letter{
-    margin:0;
-    height: 0.5rem;
-    line-height: 0.5rem;
-    background:#f7f7f7;
-    padding-left: 0.5rem;
-    color:#898989;
-  }
-  .countryAreaMain .letterList{
-    width:0.2rem;
-    text-align: center;
-    height: auto;
-    overflow:hidden;
-    position: fixed;
-    top:30%;
-    right: 0.08rem;
-    z-index: 99;
-    font-size: 0.12rem;
-  }
-
 </style>
 
 

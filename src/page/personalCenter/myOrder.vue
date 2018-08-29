@@ -284,7 +284,6 @@
 </template>
 
 <script>
-  import '../../js/other/conformity'
     export default {
         name: "myOrder",
       methods:{

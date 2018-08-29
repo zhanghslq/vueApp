@@ -42,7 +42,18 @@ import remindSetUp from '../page/personalCenter/remindSetUp'
 import selectCountryAreaPersonal from '../page/personalCenter/selectCountryArea'
 import setUp from '../page/personalCenter/setUp'
 import updateMobileLogin from '../page/personalCenter/updateMobileLogin'
+import myOrder from '../page/personalCenter/myOrder'
+import lookLogistics from '../page/personalCenter/lookLogistics'
+import orderDetailsTransaction from '../page/personalCenter/orderDetailsTransaction'
+import orderDetails from '../page/personalCenter/orderDetails'
+import orderDetailsCollect from '../page/personalCenter/orderDetailsCollect'
+import orderDetailsGoods from '../page/personalCenter/orderDetailsGoods'
+import orderDetailsPayment from '../page/personalCenter/orderDetailsPayment'
+import orderDetailsRefund from '../page/personalCenter/orderDetailsRefund'
+
 import newlyAddress from '../page/shoppingBag/newlyAddress'
+
+
 import TestPost from '../page/demo/TestPost'
 import address from '../page/demo/address'
 import TestAddress from '../page/demo/TestAddress'
@@ -53,6 +64,8 @@ import regShop from '../page/demo/regShop'
 import regShopImg from '../page/demo/regShopImg'
 import imageUploader from '../page/demo/ImageUploader'
 import swiper from '../page/demo/swiper'
+import carrousel from '../page/demo/carrousel'
+import demoSwiper from '../page/demo/demoSwiper'
 
 
 import conventionalGood from '../page/shoppingBag/conventionalGood'
@@ -91,9 +104,49 @@ Vue.use(VueResource)
 export default new Router({
   routes: [
     {
+      path:'/demoSwiper',
+      name:'demoSwiper',
+      component:demoSwiper
+    },{
+      path:'/orderDetailsRefund',
+      name:'orderDetailsRefund',
+      component:orderDetailsRefund
+    },{
+      path:'/orderDetailsPayment',
+      name:'orderDetailsPayment',
+      component:orderDetailsPayment
+    },{
+      path:'/orderDetailsGoods',
+      name:'orderDetailsGoods',
+      component:orderDetailsGoods
+    },{
+      path:'/orderDetailsCollect',
+      name:'orderDetailsCollect',
+      component:orderDetailsCollect
+    },{
+      path:'/orderDetails',
+      name:'orderDetails',
+      component:orderDetails
+    },{
+      path:'/orderDetailsTransaction',
+      name:'orderDetailsTransaction',
+      component:orderDetailsTransaction
+    },{
+      path:'/lookLogistics',
+      name:'lookLogistics',
+      component:lookLogistics
+    },{
+      path:'/carrousel',
+      name:'carrousel',
+      component:carrousel
+    },{
       path:'/testSwiper',
       name:'testSwiper',
       component:testSwiper
+    },{
+      path:'/myOrder',
+      name:'myOrder',
+      component:myOrder
     },{
       path:'/swiper',
       name:'swiper',
