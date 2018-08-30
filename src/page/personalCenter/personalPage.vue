@@ -14,7 +14,9 @@
             <a href="#">
               <div class="headPortrait">
                 <span></span>
-                <div class="heading"><img src="../../images/temporary/7.jpg"></div>
+                <router-link to="accountInfo">
+                  <div class="heading"><img src="../../images/temporary/7.jpg"></div>
+                </router-link>
               </div>
               <p>李宗森</p>
               <em>猩际会员</em>

@@ -24,10 +24,11 @@
 
   <div class="swiper-container  swiper-container-horizontal swiper-container-ios" id="page">
     <div class="swiper-wrapper">
-      <div class="swiper-slide slidepage">
+      <div class="swiper-slide slidepage swiper-slide-active">
+
         <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
           <div class="swiper-wrapper">
-            <div class="swiper-slide slidescroll" style="height: auto">
+            <div class="swiper-slide slidescroll">
               <!--首页-->
               <div class="homePageMain">
                 <!--轮播图-->
@@ -167,14 +168,12 @@
                 </div>
               </div>
             </div>
-            <div class="swiper-slide slidescroll" style="height: auto">
-              <div style="height: 5000px; width: auto; background-color: red"></div>
-            </div>
+
 
           </div>
         </div>
       </div>
-      <div class="swiper-slide slidepage">
+      <div class="swiper-slide slidepage swiper-slide-next">
         <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
           <div class="swiper-wrapper">
             <div class="swiper-slide slidescroll">
@@ -2211,13 +2210,8 @@ export default {
   @import "../../css/common/common.css";
   @import '../../css/other/index.css';
 </style>
-<style>
-  .swiper-slide{
-    height:10px
-  }
-  .swiper-slide-active{
-    height:auto
-  }
+<style scoped>
+
   .scroll {
     height:100%;
   }
