@@ -14,7 +14,7 @@
               </ul>
             </div>
             <a href="javascript:void(0);" class="likeIcon"></a>
-            <a href="#" class="shareBtn"></a>
+            <a  class="shareBtn"></a>
           </div>
         </div>
         <!--头部 结束-->
@@ -27,22 +27,22 @@
                   <div class="tempWrap">
                     <ul class="img">
                       <li>
-                        <a href="#">
+                        <a >
                           <img src="../../images/temporary/commodity8.png">
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a >
                           <img src="../../images/temporary/10.png">
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a >
                           <img src="../../images/temporary/commodity9.png">
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a >
                           <img src="../../images/temporary/10.png">
                         </a>
                       </li>
@@ -87,7 +87,7 @@
               <p>含3大秀发营养层层浸透抵御干燥毛发，从根本解决外油内干让秀发具有柔韧、弹性、莹亮。内涵气质花果香调植物护发精油修护毛糙补充水分，香味保持超过12小时（实际效果因人而异）让您每天散发自然迷人香氛。</p>
             </div>
             <div class="choiceProduct">
-              <a href="#" id="choisShopp">
+              <a  id="choisShopp">
                 <span>选择 颜色</span>
                 <div class="threePoints">
                   <i></i>
@@ -107,7 +107,7 @@
                   <i></i>
                 </div>
               </a>
-              <a href="#" id="explain">
+              <a  id="explain">
                 <span>说明</span>
                 <div class="distribution">
                   <h5>精选臻品|中国人寿保障|超市赔付</h5>
@@ -125,7 +125,7 @@
             <div class="swiper-container2 propagandaList">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <a href="#">
+                  <a >
                     <div class="listPics">
                       <img src="../../images/temporary/commodity9.png">
                     </div>
@@ -137,7 +137,7 @@
                   </a>
                 </div>
                 <div class="swiper-slide">
-                  <a href="#">
+                  <a >
                     <div class="listPics">
                       <img src="../../images/temporary/commodity9.png">
                     </div>
@@ -149,7 +149,7 @@
                   </a>
                 </div>
                 <div class="swiper-slide">
-                  <a href="#">
+                  <a >
                     <div class="listPics">
                       <img src="../../images/temporary/commodity9.png">
                     </div>
@@ -161,7 +161,7 @@
                   </a>
                 </div>
                 <div class="swiper-slide">
-                  <a href="#">
+                  <a >
                     <div class="listPics">
                       <img src="../../images/temporary/commodity9.png">
                     </div>
@@ -173,7 +173,7 @@
                   </a>
                 </div>
                 <div class="swiper-slide">
-                  <a href="#">
+                  <a >
                     <div class="listPics">
                       <img src="../../images/temporary/commodity9.png">
                     </div>
@@ -185,7 +185,7 @@
                   </a>
                 </div>
                 <div class="swiper-slide">
-                  <a href="#">
+                  <a >
                     <div class="listPics">
                       <img src="../../images/temporary/commodity9.png">
                     </div>
@@ -219,13 +219,13 @@
         <!--中间 结束-->
         <!--底部 开始-->
         <div class="conventFooter">
-          <a href="#" class="shoppBox"><img src="../../images/common/shoppBoxIcon.png"></a>
-          <a href="#" class="chat"><img src="../../images/common/chatIcon.png"></a>
+          <a  class="shoppBox"><img src="../../images/common/shoppBoxIcon.png"></a>
+          <a  class="chat"><img src="../../images/common/chatIcon.png"></a>
           <a href="javascript:void(0);" class="join">加入购物袋</a>
-          <a href="#" class="immediately">立即购买</a>
+          <a  class="immediately">立即购买</a>
         </div>
         <!--底部 结束-->
-        <a href="#" class="serviceIcon"></a>
+        <a  class="serviceIcon"></a>
       </div>
       <!--说明弹层 开始-->
       <div class="elasticBox">
@@ -277,7 +277,7 @@
                 <a href="javascript:void(0);" class="plus">+</a>
               </div>
             </div>
-            <a href="#" class="addCart">加入购物袋</a>
+            <a  class="addCart">加入购物袋</a>
           </div>
         </div>
       </div>
@@ -320,6 +320,45 @@ export default {
     }
   },
   methods: {
+    /*商品说明弹层 开始*/
+     explain(){
+    $(".choiceProduct #explain").on("click",function(){
+      $("body").css({"height":"100%","overflow":"hidden"})
+      $(".elasticBox").show();
+    });
+    $(".elasticBox .closeBtn").on("click",function(){
+      $("body").css({"height":"auto","overflow":"auto"})
+      $(".elasticBox").hide();
+    })
+  },
+  /*商品说明弹层 结束*/
+
+  /*商品选择弹层 开始*/
+   choiseShopp(){
+    $("#choisShopp").on("click",function(){
+      $("body").css({"height":"100%","overflow":"hidden"})
+      $(".choicElastic").show();
+      $(".minus").click(function() {
+        var t = $(this).parent().find('.num');
+        t.text(parseInt(t.text()) - 1);
+        if (t.text() <= 1) {
+          t.text(1);
+        }
+      });
+      $(".plus").click(function() {
+        var t = $(this).parent().find('.num');
+        t.text(parseInt(t.text()) + 1);
+        if (t.text() <= 1) {
+          t.text(1);
+        }
+      });
+    });
+    $(".choicElastic .closeBtning").on("click",function(){
+
+      $("body").css({"height":"auto","overflow":"auto"})
+      $(".choicElastic").hide();
+    })
+  },
     close() {
       this.show = false
     },
@@ -356,6 +395,8 @@ export default {
     },
   },
     mounted: function () {
+    this.explain();
+    this.choiseShopp();
       this.bannerFocusImg()
       this.makeUpone()
       //自带js

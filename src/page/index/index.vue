@@ -169,7 +169,11 @@
               </div>
             </div>
 
-
+            <div class="swiper-slide slidescroll" >
+              <div style="height: 100px; width: auto; background-color: red"></div>
+              <div style="height: 100px; width: auto; background-color: black"></div>
+              <div style="height: 100px; width: auto; background-color: blue"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -602,8 +606,8 @@
                 </div>
               </div>
             </div>
-            <div class="swiper-slide slidescroll" style="height: auto">
-              <div style="height: 3000px; width: auto; background-color: red"></div>
+            <div class="swiper-slide slidescroll" >
+              <div style="height: 10px; width: auto; background-color: red"></div>
             </div>
           </div>
         </div>
@@ -2078,6 +2082,7 @@ export default {
   });
   let progress;
   var pageSwiper = new Swiper('#page', {
+    autoHeight: true, //高度随内容变化
     watchSlidesProgress: true,
     resistanceRatio: 0,
     on: {
@@ -2147,21 +2152,12 @@ export default {
     //65是头部的高
     //36是top地址和搜索的高
     autoHeight: true, //高度随内容变化
-    scrollbar: '.swiper-container-scrollbar .swiper-scrollbar',
 
     slidesOffsetBefore: 72,
     direction: 'vertical',
     freeMode: true,
-    slidesPerView: 'auto',
-    mousewheel: {
-      releaseOnEdges: true,
-    },
-    observer:true,
-    observeParents:true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+    slidesPerView: 1,
+
   })
 },
   mobile_view: function (mobile) {
@@ -2178,7 +2174,7 @@ export default {
   },
   mounted () {
     let _this=this;
-    axios.post('/api//api/wxapp/category/listTop',{
+    axios.post('/api/api/wxapp/category/listTop',{
 
     }).then(function (response) {
       console.log(response)

@@ -186,7 +186,7 @@
   padding:0 0.06rem;
   border-bottom: 0.01rem solid #f6f6f6;
 }
-.countryAreaMain ul li >>> span{
+.countryAreaMain ul >>> li >>> span{
   font-size: 0.26rem;
   color:#000;
   display: block;

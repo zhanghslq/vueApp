@@ -41,6 +41,7 @@
 </template>
 
 <script>
+  import $ from 'jquery'
     export default {
     name: "selectCountryArea",
       methods:{
@@ -84,10 +85,10 @@
         });
       });
       $('#phone').append(map);
+      var  _this=this;
       $(".phone").on("click", function (e) {
         var hao = $(this).children('em').text();
-        //window.location.href = "updateMobileLogin.html?mobile=" + hao;
-
+        _this.$router.push({ name: 'updateMobileLogin', params: { mobileAddress: hao }})
       });
     },
     mobileArray:function () {
@@ -1254,7 +1255,7 @@
         $(".letterList em").click(function () {
           var oA = $(this);
           var index = oA.attr("title");
-          console.log();
+
           var h = $(".item").eq(index).offset().top;
           if (oA.attr("class") !== "current") {
             var h = h - $("header").height() +'px';

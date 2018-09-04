@@ -69,8 +69,8 @@
               <h4>爱敬KCS魅力香水洗发水护发素套装清爽柔顺持久留香女士1200ML</h4>
               <p>含3大秀发营养层层浸透抵御干燥毛发，从根本解决外油内干让秀发具有柔韧、弹性、莹亮。内涵气质花果香调植物护发精油修护毛糙补充水分，香味保持超过12小时（实际效果因人而异）让您每天散发自然迷人香氛。</p>
             </div>
-            <div class="choiceProduct">
-              <a href="#">
+            <div class="choiceProduct" >
+              <a id="choisShopp">
                 <span>选择 颜色</span>
                 <div class="threePoints">
                   <i></i>
@@ -92,7 +92,7 @@
                   <i></i>
                 </div>
               </a>
-              <a href="#" id="explain">
+              <a  id="explain">
                 <span>说明</span>
                 <div class="distribution">
                   <h5>精选臻品|中国人寿保障|超市赔付</h5>
@@ -212,16 +212,61 @@
         <!--底部 结束-->
         <a href="#" class="serviceIcon"></a>
       </div>
-      <!--弹层 开始-->
+      <!--说明弹层 开始-->
       <div class="elasticBox">
         <div class="blackBag"></div>
         <div class="boxContent">
-          <div class="">
-
+          <!--说明弹层-->
+          <div class="explainText">
+            <div class="textTitle">
+              猩际优选品牌承诺
+              <em class="closeBtn"></em>
+            </div>
+            <h5>精选臻品</h5>
+            <p>源头品质甄选，原产地直供，专业团队品鉴采集</p>
+            <h5>中国人寿保障</h5>
+            <p>猩际优选已投保中国人寿财产保险股份有限公司食品安全责任险</p>
+            <h5>超时赔付</h5>
+            <p>2-4天发出。如订单5天内未从仓库发出，每延迟一天赔偿订单金额的10%直至赔满单价。</p>
           </div>
         </div>
       </div>
-      <!--弹层 结束-->
+      <!--说明弹层 结束-->
+      <!--选择弹层 开始-->
+      <div class="choicElastic">
+        <div class="choicblackBag"></div>
+        <div class="choicCont">
+          <!--选择弹层-->
+          <div class="choiceGoods">
+            <div class="goodsPrice">
+              <div class="goodsPLeft"><img src="../../images/temporary/commodity9.png"></div>
+              <div class="goodsright">
+                <span class="priceNum">￥<em>94</em>.00</span>
+                <span class="pleasChoise">请选择：颜色</span>
+              </div>
+              <a href="javascript:void(0);" class="closeBtning"></a>
+            </div>
+            <div class="colourInfo">
+              <div class="infoTitle">颜色</div>
+              <ul>
+                <li class="Cur">黑色</li>
+                <li>黑色</li>
+                <li>黑色</li>
+              </ul>
+            </div>
+            <div class="numbers">
+              <div class="numLeft">数量</div>
+              <div class="numRight">
+                <a href="javascript:void(0);" class="minus">-</a>
+                <span class="num">1</span>
+                <a href="javascript:void(0);" class="plus">+</a>
+              </div>
+            </div>
+            <a href="#" class="addCart">加入购物袋</a>
+          </div>
+        </div>
+      </div>
+      <!--选择弹层 结束-->
       <vue-pickers
         :show="show"
         :link="link"
@@ -262,6 +307,44 @@
       }
     },
     methods:{
+      explain(){
+        $(".choiceProduct #explain").on("click",function(){
+          $("body").css({"height":"100%","overflow":"hidden"})
+          $(".elasticBox").show();
+        });
+        $(".elasticBox .closeBtn").on("click",function(){
+          $("body").css({"height":"auto","overflow":"auto"})
+          $(".elasticBox").hide();
+        })
+      },
+      /*商品说明弹层 结束*/
+
+      /*商品选择弹层 开始*/
+      choiseShopp(){
+        $("#choisShopp").on("click",function(){
+          $("body").css({"height":"100%","overflow":"hidden"})
+          $(".choicElastic").show();
+          $(".minus").click(function() {
+            var t = $(this).parent().find('.num');
+            t.text(parseInt(t.text()) - 1);
+            if (t.text() <= 1) {
+              t.text(1);
+            }
+          });
+          $(".plus").click(function() {
+            var t = $(this).parent().find('.num');
+            t.text(parseInt(t.text()) + 1);
+            if (t.text() <= 1) {
+              t.text(1);
+            }
+          });
+        });
+        $(".choicElastic .closeBtning").on("click",function(){
+
+          $("body").css({"height":"auto","overflow":"auto"})
+          $(".choicElastic").hide();
+        })
+      },
     close() {
       this.show = false
     },
@@ -274,48 +357,40 @@
       this.show = true
     },
     bannerFocusImg: function () {
-    TouchSlide({
-      slideCell: "#carouselMain",
-      titCell: ".carouselBtn ul",
-      mainCell: ".img",
-      effect: "leftLoop",
-      autoPlay: true,
-      autoPage: true,
-      interTime: 3000
-    });
-    var width = $(window).width();
-    var height = parseInt(width / 3 * 2);
-    $("#carouselMain li a").css("max-height", height);
+      TouchSlide({
+        slideCell: "#carouselMain",
+        titCell: ".carouselBtn ul",
+        mainCell: ".img",
+        effect: "leftLoop",
+        autoPlay: true,
+        autoPage: true,
+        interTime: 3000
+      });
+      var width = $(window).width();
+      var height = parseInt(width / 3 * 2);
+      $("#carouselMain li a").css("max-height", height);
   },
           /*美妆护肤下面的滑动列表*/
           makeUpone: function (){
-    var swiper1 = new Swiper('.swiper-container2', {
-      slidesPerView: 3.5,
-      pagination: {
-        el: '.swiper-pagination2',
-        clickable: true,
-      },
-    });
-  },
-  /*商品说明弹层 开始*/
-  explain:function (){
-    $(".choiceProduct #explain").on("click",function(){
-      $("body").css({"height":"100%","overflow":"hidden"})
-      $(".elasticBox").show();
-    });
-    $(".elasticBox .blackBag").on("click",function(){
-      $("body").css({"height":"auto","overflow":"auto"})
-      $(".elasticBox").hide();
-    })
+            var swiper1 = new Swiper('.swiper-container2', {
+              slidesPerView: 3.5,
+              pagination: {
+                el: '.swiper-pagination2',
+                clickable: true,
+              },
+            });
   },
 
-  /*商品说明弹层 结束*/
+
+
         },
         mounted:function () {
+          this.explain();
+          this.choiseShopp();
           //////////////////////////////////
           this.bannerFocusImg()
           this.makeUpone()
-          this.explain();
+
           /////////////////
           $(window).scroll(function(){
             var $scrolltop=document.documentElement.scrollTop||document.body.scrollTop;
@@ -329,7 +404,24 @@
               }
             }
 
-          })
+          });
+          /*滚动*/
+          var nav=$(".conventTab"); //得到导航对象
+          var relevant = $("#pro_relevant").offset().top;
+          var shopinfo=$("#pro_shopInfo").offset().top; //得到导航对象
+          var win=$(window); //得到窗口对象
+          var sc=$(document);//得到document文档对象。
+          win.scroll(function(){
+            if($(".productDetail:eq(0)").is(":visible")){
+              if(sc.scrollTop()>shopinfo-200){
+                $(".conventTab li:eq(2)").addClass("on").siblings().removeClass("on");
+              }else if(sc.scrollTop()>relevant-100){
+                $(".conventTab li:eq(1)").addClass("on").siblings().removeClass("on");
+              }else{
+                $(".conventTab li:eq(0)").addClass("on").siblings().removeClass("on");
+              }
+            }
+          });
 
 
         }

@@ -129,12 +129,7 @@ export default {
       var mobile = '+'+ mobile+'  <em></em>';
       $('.areaCode').append(mobile);
     },
-    GetQueryString: function (name) {
-      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i')
-      var r = window.location.search.substr(1).match(reg)
-      if(r != null) return decodeURI(r[2]);
-      return null;
-    }
+
 
   },
   mounted: function() {

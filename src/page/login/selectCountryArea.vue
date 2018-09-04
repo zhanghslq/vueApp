@@ -89,8 +89,9 @@ export default {
   var _this=this;
   $(".phone").on("click", function (e) {
     var hao = $(this).children('em').text();
-    console.log(hao)
+
     _this.$router.push({ name: 'mobileLogin', params: { mobileAddress: hao }})
+
   });
 },
     mobileArray:function () {

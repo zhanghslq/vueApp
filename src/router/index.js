@@ -50,6 +50,8 @@ import orderDetailsCollect from '../page/personalCenter/orderDetailsCollect'
 import orderDetailsGoods from '../page/personalCenter/orderDetailsGoods'
 import orderDetailsPayment from '../page/personalCenter/orderDetailsPayment'
 import orderDetailsRefund from '../page/personalCenter/orderDetailsRefund'
+import modifyAutograph from '../page/personalCenter/modifyAutograph'
+import modifyWechat from '../page/personalCenter/modifyWechat'
 
 import newlyAddress from '../page/shoppingBag/newlyAddress'
 
@@ -66,6 +68,8 @@ import imageUploader from '../page/demo/ImageUploader'
 import swiper from '../page/demo/swiper'
 import carrousel from '../page/demo/carrousel'
 import demoSwiper from '../page/demo/demoSwiper'
+import AweSwiper from '../page/demo/AweSwiper'
+import Testqiniu from '../page/demo/Testqiniu'
 
 
 import conventionalGood from '../page/shoppingBag/conventionalGood'
@@ -104,6 +108,22 @@ Vue.use(VueResource)
 export default new Router({
   routes: [
     {
+      path:'/modifyWechat',
+      name:'modifyWechat',
+      component:modifyWechat
+    },{
+      path:'/modifyAutograph',
+      name:'modifyAutograph',
+      component:modifyAutograph
+    },{
+      path:'/Testqiniu',
+      name:'Testqiniu',
+      component:Testqiniu
+    },{
+      path:'/AweSwiper',
+      name:'AweSwiper',
+      component:AweSwiper
+    },{
       path:'/demoSwiper',
       name:'demoSwiper',
       component:demoSwiper

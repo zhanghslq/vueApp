@@ -10,10 +10,10 @@
       <main>
         <div class="modifyMain">
           <div class="textareaBox">
-            <textarea class="wishContent" maxlength="40"></textarea>
+            <textarea class="wishContent" maxlength="40" v-model="personalitySignature"></textarea>
             <span class="wordsNum">0/40</span>
           </div>
-          <a href="javascript:void(0);" class="preservationBtn">保存</a>
+          <a v-on:click="updateSign()" class="preservationBtn">保存</a>
         </div>
       </main>
       <!--中间 结束-->
@@ -21,8 +21,67 @@
 </template>
 
 <script>
+  import store from '../../service/store'
+  import axios from 'axios'
     export default {
-        name: "modifyAutograph"
+        name: "modifyAutograph",
+      data(){
+          return{
+            personalitySignature:''
+          }
+      },
+      methods:{
+      autographNum(){
+      //封装一个限制字数方法
+      var checkStrLengths = function (str, maxLength) {
+        var maxLength = maxLength;
+        var result = 0;
+        if (str && str.length > maxLength) {
+          result = maxLength;
+        } else {
+          result = str.length;
+        }
+        return result;
+      }
+
+      //监听输入
+      $(".wishContent").on('input propertychange', function () {
+
+        //获取输入内容
+        var userDesc = $(this).val();
+
+        //判断字数
+        var len;
+        if (userDesc) {
+          len = checkStrLengths(userDesc, 40);
+        } else {
+          len = 0
+        }
+
+        //显示字数
+        $(".wordsNum").html(len + '/40');
+      });
+    },
+        updateSign(){
+          let self=this;
+          axios.post("/api/api/wxapp/account/update",
+            {"uid":store.fetch("uid"),"personalitySignature":self.personalitySignature})
+            .then(function(resp) {
+              console.log(resp)
+              if(resp.data.code==200){
+                self.$router.push("accountInfo")
+              }else {
+                console.log(resp)
+              }
+            }).catch(function (err) {
+            console.log(err)
+          })
+        }
+      },
+      mounted(){
+          this.autographNum();
+          this.personalitySignature=this.$route.query.personalitySignature
+      }
     }
 </script>
 

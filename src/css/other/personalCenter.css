@@ -339,6 +339,33 @@
 	color:#fff;
 	background: #ecbc68;
 }
+.modifyMain .textareaBox{
+	width: 7.5rem;
+	height: 1.6rem;
+	overflow: hidden;
+	position: relative;
+	background: #fff;
+	margin-top: 0.1rem;
+}
+.modifyMain .textareaBox .wishContent{
+	width: 6.9rem;
+    height: 0.9rem;
+    margin: 0 auto;
+    border: none;
+    display: block;
+    text-align: left;
+    font-size: 0.26rem;
+    line-height: 0.34rem;
+    margin-top: 0.1rem;
+}
+.modifyMain .wordsNum {
+    position: absolute;
+    bottom: 0.15rem;
+    right: 0.1rem;
+    color: #B3B3B3;
+    font-size: 0.22rem;
+    color: #e0e0e0;
+}
 /*修改昵称 结束*/
 /*手机号 开始*/
 .modifyMain .mobile{

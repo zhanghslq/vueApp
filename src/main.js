@@ -5,9 +5,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import layer from 'vue-layer-mobile'
 Vue.use(layer)
+Vue.use(VueAwesomeSwiper)
 /* eslint-disable */
 import $ from 'jquery'
 /* eslint-disable no-new */
