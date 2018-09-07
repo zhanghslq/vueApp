@@ -26,26 +26,12 @@
                 <div id="carouselMain">
                   <div class="tempWrap">
                     <ul class="img">
-                      <li>
+                      <li v-for="(imageTop ,index ) in detailsImg" :key="index">
                         <a >
-                          <img src="../../images/temporary/commodity8.png">
+                          <img :src="imageTop">
                         </a>
                       </li>
-                      <li>
-                        <a >
-                          <img src="../../images/temporary/10.png">
-                        </a>
-                      </li>
-                      <li>
-                        <a >
-                          <img src="../../images/temporary/commodity9.png">
-                        </a>
-                      </li>
-                      <li>
-                        <a >
-                          <img src="../../images/temporary/10.png">
-                        </a>
-                      </li>
+
                     </ul>
                   </div>
                   <div class="carouselBtn">
@@ -83,8 +69,8 @@
                 <div class="earn">推广赚<em>7.52</em>元</div>
                 <div class="voucher"><em></em><span>您有一张10元满减劵，下单即可使用</span></div>
               </div>
-              <h4>爱敬KCS魅力香水洗发水护发素套装清爽柔顺持久留香女士1200ML</h4>
-              <p>含3大秀发营养层层浸透抵御干燥毛发，从根本解决外油内干让秀发具有柔韧、弹性、莹亮。内涵气质花果香调植物护发精油修护毛糙补充水分，香味保持超过12小时（实际效果因人而异）让您每天散发自然迷人香氛。</p>
+              <h4>{{productTitle}}</h4>
+              <p>{{productLongTitle}}</p>
             </div>
             <div class="choiceProduct">
               <a  id="choisShopp">
@@ -202,26 +188,29 @@
           <div class="productDetail" id="pro_shopInfo">
             <div class="plateTitle">商品信息</div>
             <ul class="commodityInfo">
-              <li><label>品牌</label><span>age 20’s/爱敬</span></li>
+              <li><label>品牌</label><span>{{brandName}}</span></li>
               <li><label>国家</label><span>韩国</span></li>
               <li><label>保质期</label><span>3年</span></li>
-              <li><label>规格</label><span>600ml</span></li>
+              <li><label>规格</label><span>{{currentSku.skuName}}</span></li>
               <li><label>产地</label><span>富川</span></li>
               <li><label>快递信息</label><span>全国发货</span></li>
               <li><label>服务信息</label><span>有商家从山东威海发货</span></li>
             </ul>
-            <div class="detailCont">
-              <img src="../../images/temporary/12.jpg">
-              <img src="../../images/temporary/12.jpg">
+            <div class="detailCont" v-html="detailsContent">
+              <!--<img src="../../images/temporary/12.jpg">
+              <img src="../../images/temporary/12.jpg">-->
             </div>
           </div>
         </div>
         <!--中间 结束-->
         <!--底部 开始-->
         <div class="conventFooter">
-          <a  class="shoppBox"><img src="../../images/common/shoppBoxIcon.png"></a>
+          <router-link to="shopIndex">
+            <a  class="shoppBox"><img src="../../images/common/shoppBoxIcon.png"></a>
+          </router-link>
+
           <a  class="chat"><img src="../../images/common/chatIcon.png"></a>
-          <a href="javascript:void(0);" class="join">加入购物袋</a>
+          <a v-on:click="addShopCart()" class="join">加入购物袋</a>
           <a  class="immediately">立即购买</a>
         </div>
         <!--底部 结束-->
@@ -273,7 +262,7 @@
               <div class="numLeft">数量</div>
               <div class="numRight">
                 <a href="javascript:void(0);" class="minus">-</a>
-                <span class="num">1</span>
+                <span class="num" v-html="quantity"></span>
                 <a href="javascript:void(0);" class="plus">+</a>
               </div>
             </div>
@@ -293,13 +282,16 @@
 
 <script>
   import $ from 'jquery'
+  import store from '../../service/store'
+  import axios from 'axios'
   import {TouchSlide} from "../../js/plugins/TouchSlide.1.1.min";
   import Swiper from 'swiper'
   import vuePickers from 'vue-pickers'
-  import {provs_data, citys_data, dists_data} from 'vue-pickers/lib/areaData'
+
 
 export default {
   name: "commodityPage",
+
   components:{
     Swiper,
     TouchSlide,
@@ -307,19 +299,51 @@ export default {
   },
   data() {
     return {
+      quantity:1,//商品数量
       isCopy: '',
       res: '北京市',
       show: false,
       columns: 3,
       link: true,
       pickData: {
-        data1: provs_data,
-        data2: citys_data,
-        data3: dists_data
-      }
+        data1: [],
+        data2: [],
+        data3: []
+      },
+      productId:'',//商品id
+      skuId:'',
+      productTitle:'',
+      productTitleImage:'',
+      productLongTitle:'',
+      detailsImg:[],
+      detailsContent:'',
+      brandId:'',
+      brandName:'',
+      categoryName:'',
+      currentSku:{},//当前sku规格
+
     }
   },
   methods: {
+    //加入购物车
+    addShopCart(){
+      let self=this;
+      axios.post("/api/api/wxapp/cart/add",{"uid":store.fetch("uid"),"items":JSON.stringify([{"productId":self.productId,"quantity":self.quantity,"skuId":self.currentSku.skuId}])})
+        .then(function (responese) {
+          console.log(responese)
+          let msg="添加购物车成功";
+          if(responese.data.code!=200){
+            msg="添加购物车失败";
+          }
+          self.$layer.toast({
+            icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+            content: msg,
+            time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+          })
+        })
+
+
+    },
     /*商品说明弹层 开始*/
      explain(){
     $(".choiceProduct #explain").on("click",function(){
@@ -335,21 +359,22 @@ export default {
 
   /*商品选择弹层 开始*/
    choiseShopp(){
+     let self=this;
     $("#choisShopp").on("click",function(){
       $("body").css({"height":"100%","overflow":"hidden"})
       $(".choicElastic").show();
       $(".minus").click(function() {
-        var t = $(this).parent().find('.num');
-        t.text(parseInt(t.text()) - 1);
-        if (t.text() <= 1) {
-          t.text(1);
+
+        self.quantity=self.quantity-1;
+
+        if (self.quantity <= 1) {
+          self.quantity=1;
         }
       });
       $(".plus").click(function() {
-        var t = $(this).parent().find('.num');
-        t.text(parseInt(t.text()) + 1);
-        if (t.text() <= 1) {
-          t.text(1);
+        self.quantity=self.quantity + 1
+        if (self.quantity <= 1) {
+          self.quantity=1;
         }
       });
     });
@@ -363,8 +388,15 @@ export default {
       this.show = false
     },
     confirmFn(val) {
-      this.show = false
-      this.res = val.select1.text + val.select2.text + val.select3.text
+     var _this=this;
+     this.show = false
+      if(val.select2!=undefined){
+        _this.res = val.select1.text+val.select2.text
+      }
+      if(val.select3!=undefined){
+       _this.res+=val.select3.text
+      }
+
       this.pickData.default = [val.select1, val.select2, val.select3]
     },
     toShow() {
@@ -394,11 +426,44 @@ export default {
       });
     },
   },
+  updated(){
+    this.bannerFocusImg()
+  },
     mounted: function () {
+      var _this=this;
+    store.checkAreaData();
+    this.pickData.data1=store.fetch("prov_ids")
+    this.pickData.data2=store.fetch("city_ids")
+    this.pickData.data3=store.fetch("area_ids")
+
+    this.productId=this.$route.params.id
+      this.skuId=this.$route.params.skuId
+      axios.post('/api/api/wxapp/product/details',{
+        "productId":_this.productId,
+        "skuId":_this.skuId
+      }).then(function (responese) {
+        if(responese.data.code==200){
+          _this.productLongTitle=responese.data.data.productLongTitle
+          _this.detailsImg=responese.data.data.detailsImg
+          _this.detailsContent=responese.data.data.detailsContent
+          _this.productTitle=responese.data.data.productTitle
+          _this.brandName=responese.data.data.brandName
+          _this.currentSku=responese.data.data.currentSku
+
+
+
+          console.log(responese)
+
+        }else {
+          console.log("服务器正忙")
+        }
+      }).catch(function (err) {
+        console.log(err)
+      })
     this.explain();
     this.choiseShopp();
-      this.bannerFocusImg()
-      this.makeUpone()
+
+    this.makeUpone()
       //自带js
       $(window).scroll(function () {
         var $scrolltop = document.documentElement.scrollTop || document.body.scrollTop;

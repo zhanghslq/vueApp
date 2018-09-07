@@ -30,72 +30,18 @@
           </div>
           <div class="searchCont">
             <div class="searchContInfo" style="display: block;">
-              <a href="#">
-                <div class="infoPic"><img src="../../images/temporary/commodity12.png"></div>
-                <p>【任选】【百草味-手剥小白杏200g】坚果干果</p>
+              <router-link :to="{name:'commodityPage',params:{'id':product.id,'skuId':product.skuId}}" v-for="(product,index) in productList" :key="index">
+                <div class="infoPic"><img :src="product.titleImage"></div>
+                <p>{{product.title}}</p>
                 <div class="price">
-                  <span class="presentNum">￥<em>19</em>.9</span>
-                  <span class="timePri">￥<em>19</em>.9</span>
+                  <span class="presentNum">￥<em>{{product.actualPrice}}</em></span>
+                  <span class="timePri">￥<em>{{product.price}}</em></span>
                 </div>
                 <div class="discount">
                   <span class="limit">限时直降</span>
                 </div>
-              </a>
-              <a href="#">
-                <div class="infoPic"><img src="../../images/temporary/commodity12.png"></div>
-                <p>【任选】【百草味-手剥小白杏200g】坚果干果</p>
-                <div class="price">
-                  <span class="presentNum">￥<em>19</em>.9</span>
-                  <span class="timePri">￥<em>19</em>.9</span>
-                </div>
-                <div class="discount">
-                  <span class="limit">限时直降</span>
-                </div>
-              </a>
-              <a href="#">
-                <div class="infoPic"><img src="../../images/temporary/commodity12.png"></div>
-                <p>【任选】【百草味-手剥小白杏200g】坚果干果</p>
-                <div class="price">
-                  <span class="presentNum">￥<em>19</em>.9</span>
-                  <span class="timePri">￥<em>19</em>.9</span>
-                </div>
-                <div class="discount">
-                  <span class="limit">限时直降</span>
-                </div>
-              </a>
-              <a href="#">
-                <div class="infoPic"><img src="../../images/temporary/commodity12.png"></div>
-                <p>【任选】【百草味-手剥小白杏200g】坚果干果</p>
-                <div class="price">
-                  <span class="presentNum">￥<em>19</em>.9</span>
-                  <span class="timePri">￥<em>19</em>.9</span>
-                </div>
-                <div class="discount">
-                  <span class="limit">限时直降</span>
-                </div>
-              </a>
-              <a href="#">
-                <div class="infoPic"><img src="../../images/temporary/commodity12.png"></div>
-                <p>【任选】【百草味-手剥小白杏200g】坚果干果</p>
-                <div class="price">
-                  <span class="presentNum">￥<em>19</em>.9</span>
-                  <span class="timePri">￥<em>19</em>.9</span>
-                </div>
-                <div class="discount">
-                  <span class="limit">限时直降</span>
-                </div>
-              </a>
-              <a href="#">
-                <div class="infoPic"><img src="../../images/temporary/commodity12.png"></div>
-                <p>【任选】【百草味-手剥小白杏200g】坚果干果</p>
-                <div class="price">
-                  <span class="presentNum">￥<em>19</em>.9</span>
-                  <span class="timePri">￥<em>19</em>.9</span>
-                </div>
-                <div class="discount">
-                  <span class="limit">限时直降</span>
-                </div>
-              </a>
+              </router-link>
+
             </div>
 
 
@@ -155,12 +101,15 @@
 </template>
 
 <script>
+  import axios from 'axios'
+  import store from '../../service/store'
     export default {
       name: "searchList",
       data(){
         return{
           //搜索得到的商品集合
-          productList:[]
+          productList:[],
+          kw:''
         }
       },
       methods:{
@@ -188,6 +137,7 @@
             .then(function (response) {
               console.log(response)
               if(response.data.code==200){
+                _this.productList=response.data.list
 
               }else{
 
@@ -203,7 +153,8 @@
       },
       mounted:function () {
         let _this=this;
-        let kw = this.$route.params.kw
+        _this.kw = this.$route.params.kw
+        this.querySearchList();
 
 
       }

@@ -72,11 +72,12 @@
                         ref="input"
                         type="file"
                         accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"
-                        multiple="multiple"
+
                         @change="handleFileChange"/>
 
-                      <!--错误提示-->
-                      <div class="img-uploader-error" v-if="errorText.length">{{errorText}}</div>
+                      <mt-progress v-if="!(progress==0||progress==100)" :value="progress" :bar-height="5"
+                                   class="progress"></mt-progress>
+
 
                     </div>
                   </div>
@@ -110,7 +111,6 @@
                         ref="input2"
                         type="file"
                         accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"
-                        multiple="multiple"
                         @change="handleFileChange2"/>
 
                       <!--错误提示-->
@@ -149,10 +149,12 @@
 
 <script>
   import vuePickers from 'vue-pickers'
-  import {provs_data, citys_data, dists_data} from 'vue-pickers/lib/areaData'
   import resizeImage from '@/components/resize';
+  import Progress from 'mint-ui/lib/progress';
+  import 'mint-ui/lib/Progress/style.css';
   import store from '../../service/store'
   import axios from 'axios'
+  const axiosInstance = axios.create({});
   export default {
     name: "newlyAddress",
     props: {
@@ -176,7 +178,8 @@
       }
     },
     components: {
-      vuePickers
+      vuePickers,
+      [Progress.name]: Progress,   //mint-ui引入组件的方法
     },
     data() {
       return {
@@ -186,9 +189,9 @@
         columns: 3,
         link: true,
         pickData: {
-          data1: provs_data,
-          data2: citys_data,
-          data3: dists_data
+          data1: [],
+          data2: [],
+          data3: [],
         },
         // input 的id
         inputId: '',
@@ -228,6 +231,9 @@
         frontOfIdCard:'',
         reverseSideOfIdCard:'',
         isDefault:'',
+        uploadToken:'',
+        progress:0,//上传进度
+        progress2:0,//上传进度
       }
     },
 
@@ -245,6 +251,8 @@
             "detailAddress":this.detailAddress,
             "idNumber":this.idNumber,
             "isDefault":this.isDefault,
+            "frontOfIdCard":this.frontOfIdCard,
+            "reverseSideOfIdCard":this.reverseSideOfIdCard,
           }).then(function (response) {
               console.log(response)
               if (response.data.code == 200) {
@@ -268,6 +276,17 @@
         close() {
           this.show = false
         },
+        getToken(){
+          var  self=this;
+          axios.post(
+            '/api/api/wxapp/qiniu/upToken'
+          ).then(function (response) {
+            self.uploadToken=response.data.data.upToken
+          })
+            .catch(function (error) {
+              console.log(error);
+            });
+        },
         confirmFn(val) {
           this.show = false
           this.res = val.select1.text + val.select2.text + val.select3.text
@@ -284,6 +303,31 @@
           let input = this.$refs.input;
           let files = input.files;
           this.handleFile(files);
+          let self = this;
+          if(files[0]!=undefined){
+            var data = new FormData();
+            data.append('token', self.uploadToken);
+            data.append('file', files[0]);
+            axiosInstance({
+              method: 'POST',
+              url: 'http://up.qiniu.com',
+              data: data,
+              onUploadProgress: function(progressEvent) {
+                var percentCompleted = Math.round(progressEvent.loaded * 100 / progressEvent.total);
+                //console.log(percentCompleted)
+                //对应上传进度条
+                self.progress = percentCompleted;
+              },
+            })
+              .then(function(res) {
+                 self.frontOfIdCard=res.data.key
+              })
+              .catch(function(err) {
+                console.log('err', err);
+              });
+          }
+
+
         },
         handleDrop (e) {
           // 获取文件列表
@@ -320,9 +364,7 @@
             this.fileNameList.push(file.name);
           }
 
-          if (files && files.length > 0) {
-            this.countText = `${files.length}张图片`;
-          }
+
           // 文件选择事件
 //        this.onChange && this.onChange(files)
           this.$emit('onChange', files);
@@ -351,6 +393,29 @@
           let input = this.$refs.input2;
           let files = input.files;
           this.handleFile2(files);
+          let self = this;
+          if(files[0]!=undefined){
+            var data = new FormData();
+            data.append('token', self.uploadToken);
+            data.append('file', files[0]);
+            axiosInstance({
+              method: 'POST',
+              url: 'http://up.qiniu.com',
+              data: data,
+              onUploadProgress: function(progressEvent) {
+                var percentCompleted = Math.round(progressEvent.loaded * 100 / progressEvent.total);
+                //console.log(percentCompleted)
+                //对应上传进度条
+                self.progress2 = percentCompleted;
+              },
+            })
+              .then(function(res) {
+                self.reverseSideOfIdCard=res.data.key
+              })
+              .catch(function(err) {
+                console.log('err', err);
+              });
+          }
         },
         handleDrop2 (e) {
           // 获取文件列表
@@ -442,8 +507,14 @@
       }
     },
       mounted:function () {
-      console.log(this.$refs.input);
-      console.log(this.$refs.uploader2);
+        this.getToken();
+        var _this=this;
+        store.checkAreaData();
+        this.pickData.data1=store.fetch("prov_ids")
+        this.pickData.data2=store.fetch("city_ids")
+        this.pickData.data3=store.fetch("area_ids")
+
+
         $(".identification .idTop").on("click",function(){
           if (!$('.nav').hasClass('nav-mini')) {
             if ($(this).next().css('display') == "none") {
@@ -586,5 +657,6 @@
 <style scoped>
 @import "../../css/common/common.css";
   @import "../../css/other/threeLevel.css";
+
 </style>
 

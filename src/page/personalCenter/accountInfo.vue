@@ -10,7 +10,7 @@
       <main>
         <div class="accountMain">
           <div class="accoutnInfo">
-            <input type="file" id="imageFile" style="display: none" ref="upload"/>
+            <input type="file" id="imageFile" style="display: none" ref="upload" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"/>
             <label for="imageFile">
               <a>
                 <span class="infoLeft">头像</span>
@@ -144,40 +144,42 @@
         //页面加载 拉去token
         this.$refs.upload.addEventListener('change', function() {
           //console.log(this.files)
-          var data = new FormData();
-          data.append('token', self.uploadToken);
-          data.append('file', this.files[0]);
-          axiosInstance({
-            method: 'POST',
-            url: 'http://up.qiniu.com',
-            data: data,
-            onUploadProgress: function(progressEvent) {
-              var percentCompleted = Math.round(progressEvent.loaded * 100 / progressEvent.total);
-              //console.log(percentCompleted)
-              //对应上传进度条
-              self.progress = percentCompleted;
-            },
-          })
-            .then(function(res) {
-              console.log(res)
-              //console.log('res',res)
-              axios.post('/api/api/wxapp/account/update',{
-                "uid":store.fetch("uid"),
-                "photo":res.data.key
-              }).then(function(re){
-                  self.getMessage()
-              }
+          console.log(this.files[0])
+          if(this.files[0]!=undefined){//判断文件是否为空，空的就不上传，不更新
+            var data = new FormData();
+            data.append('token', self.uploadToken);
+            data.append('file', this.files[0]);
+            axiosInstance({
+              method: 'POST',
+              url: 'http://up.qiniu.com',
+              data: data,
+              onUploadProgress: function(progressEvent) {
+                var percentCompleted = Math.round(progressEvent.loaded * 100 / progressEvent.total);
+                //console.log(percentCompleted)
+                //对应上传进度条
+                self.progress = percentCompleted;
+              },
+            })
+              .then(function(res) {
+                console.log(res)
+                //console.log('res',res)
+                axios.post('/api/api/wxapp/account/update',{
+                  "uid":store.fetch("uid"),
+                  "photo":res.data.key
+                }).then(function(re){
+                    self.getMessage()
+                  }
 
-              ).catch(function(err) {
+                ).catch(function(err) {
+                  console.log('err', err);
+                });
+
+              })
+              .catch(function(err) {
                 console.log('err', err);
               });
+          }
 
-
-
-            })
-            .catch(function(err) {
-              console.log('err', err);
-            });
         });
 
       }
@@ -185,6 +187,5 @@
 </script>
 
 <style scoped>
-
 @import "../../css/other/personalCenter.css";
 </style>

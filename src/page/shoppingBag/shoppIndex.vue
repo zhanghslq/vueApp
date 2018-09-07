@@ -15,17 +15,19 @@
               <div class="commodity_box">
                 <div class="commodity_list">
                   <!--店名信息-->
-                  <div class="tite_tim select" style="display: none;">
+                  <!--<div class="tite_tim select" style="display: none;">
                     <em aem="1" cart_id="84"></em>
-                  </div>
+                  </div>-->
 
                   <ul class="commodity_list_term" v-for="product in productList">
+
                     <li class="select">
-                      <em aem="0" cart_id="84" class="choiceIcon"></em>
+                      <em aem="0" cart_id="84" class="choiceIcon"> </em>
+                      <div >{{product.id}}</div>
                       <div class="listPic"><img v-bind:src=product.productTitleImg ></div>
                       <p class="copywriting">{{product.productName}}</p>
                       <div class="price now_value">
-                        <p class="now_value"><i>￥</i><b class="qu_su"><small>{{product.price}}</small>.00</b></p>
+                        <p class="now_value"><i>￥</i><b class="qu_su"><small>{{product.price}}</small></b></p>
                       </div>
                       <div class="quantity div_right">
                         <i class="minus">-</i>
@@ -228,8 +230,12 @@
   },
         //删除
         big_cart_remove:function (){
-    $(".commodity_list_term .pitch_on").parent().remove();
-    $(".commodity_list .tite_tim > em.pitch_on").parents(".commodity_box").remove();
+          $(".commodity_list_term .pitch_on").parent().remove();
+
+
+
+
+   /* $(".commodity_list .tite_tim > em.pitch_on").parents(".commodity_box").remove();*/
   },
         reduceMod:function (e,totalH,mod){
     var tn = e.siblings().find(".qu_su").text(); /* 当前选中商品  */
@@ -497,8 +503,14 @@
 
         //删除
         $("#confirm_cart1").click(function(){
+          let t=$(".commodity_list_term .pitch_on").next("div").text()
+
+          console.log(t)
           $(".commodity_list_term .pitch_on").parent().remove();
-          $(".commodity_list .tite_tim > em.pitch_on").parents(".commodity_box").remove();
+
+          /*$(".commodity_list .tite_tim > em.pitch_on").parents(".commodity_box").remove();*/
+
+
         })
       },
       mounted:function () {

@@ -10,7 +10,7 @@
       <main>
         <div class="addressCorrel">
 
-          <a v-for="address in addresses" class="receiving">
+          <a v-for="address in addresses" class="receiving" v-on:click="editAddress(address.id)">
             <div class="receivingLeft">
               <div class="leftName">
                 <span>{{address.consignee}}</span>
@@ -42,6 +42,11 @@
           return{
             addresses:[]
           }
+      },
+      methods:{
+        editAddress(id){
+          this.$router.push({ name: 'modifyAddress', params: { id: id }})
+        }
       },
       mounted:function () {
         var _this=this
