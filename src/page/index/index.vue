@@ -79,22 +79,7 @@
                   <h2>超值热卖</h2>
                   <div class="hotMain">
                     <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
+
                   </div>
                 </div>
                 <div class="guessLike">
@@ -140,22 +125,7 @@
                         <span class="original">￥<em>76.</em> 00 </span>
                       </div>
                     </a>
-                    <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
-                      <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
-                      <div class="price">
-                        <span class="now">￥<em>65.</em> 00 </span>
-                        <span class="original">￥<em>76.</em> 00 </span>
-                      </div>
-                    </a>
-                    <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
-                      <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
-                      <div class="price">
-                        <span class="now">￥<em>65.</em> 00 </span>
-                        <span class="original">￥<em>76.</em> 00 </span>
-                      </div>
-                    </a>
+
                     <a href="#">
                       <img src="../../images/temporary/commodity8.jpg">
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
@@ -171,8 +141,6 @@
 
             <div class="swiper-slide slidescroll" >
               <div style="height: 100px; width: auto; background-color: red"></div>
-              <div style="height: 100px; width: auto; background-color: black"></div>
-              <div style="height: 100px; width: auto; background-color: blue"></div>
             </div>
           </div>
         </div>
@@ -1976,6 +1944,7 @@
 
 <script>
 /* eslint-disable */
+import store from '../../service/store'
 import $ from 'jquery'
 import {TouchSlide} from '../../js/plugins/TouchSlide.1.1.min'
 import Swiper from 'swiper'
@@ -1986,7 +1955,8 @@ export default {
   data () {
     return {
       topList:[],
-      pageList:[]
+      pageList:[],
+
     }
   },
   components: {
@@ -2085,6 +2055,7 @@ export default {
     autoHeight: true, //高度随内容变化
     watchSlidesProgress: true,
     resistanceRatio: 0,
+    //slidesPerView: 'auto',
     on: {
       slideChange: function () {
         console.log(this.activeIndex);
@@ -2107,7 +2078,12 @@ export default {
       },
       transitionStart: function() {
         let activeIndex = this.activeIndex
+        console.log(activeIndex)
+        console.log(navSwiper.slides[activeIndex])
+        console.log(navSwiper)
+        console.log(this)
         let activeSlidePosition = navSwiper.slides[activeIndex].offsetLeft
+
         //释放时导航粉色条移动过渡
         bar.transition(tSpeed)
         bar.transform('translateX(' + activeSlidePosition + 'px)')
@@ -2146,18 +2122,18 @@ export default {
     clickSlide.find('span').css('color', 'rgba(235,189,104,1)');
   })
 
-  //内容滚动
-  let startPosition;
-  var scrollSwiper = new Swiper('.scroll', {
+
+
+
+    var scrollSwiper = new Swiper('.scroll', {
     //65是头部的高
     //36是top地址和搜索的高
-    autoHeight: true, //高度随内容变化
-
+    observer:true,
+    observerParents:true,
     slidesOffsetBefore: 72,
     direction: 'vertical',
     freeMode: true,
-    slidesPerView: 1,
-
+    slidesOffsetAfter: -document.documentElement.clientHeight,
   })
 },
   mobile_view: function (mobile) {
@@ -2165,29 +2141,55 @@ export default {
   $('.cityCode').append(mobile);
 }
 },
+  beforeRouteEnter(to,from,next){
+
+    next()
+  },
   updated(){
-    this.navTab()
+    this.navTab();
     this.timeLimit();         //限时抢购滑动图
     this.makeUpone();         //美妆护肤下面的滑动列表
     this.beautyImg();
     this.bannerFocusImg();
   },
-  mounted () {
-    let _this=this;
+  activated(){
+    var mobile = this.$route.params.city
+    if(mobile){
+      $('.cityCode').empty()
+      this.mobile_view(mobile)
+    }
+  },
+  created(){
     axios.post('/api/api/wxapp/category/listTop',{
-
     }).then(function (response) {
       console.log(response)
       if (response.data.code == 200) {
-        console.log(response)
-        _this.topList=response.data.list
+        store.save("topList",response.data.list)
       } else {
-
 
       }
     }).catch(function (error) {
       console.log(error);
     })
+  },
+  mounted () {
+    let _this=this;
+    if(store.fetch("topList")!=null){
+      _this.topList=store.fetch("topList")
+    }else {
+      axios.post('/api/api/wxapp/category/listTop',{
+      }).then(function (response) {
+        console.log(response)
+        if (response.data.code == 200) {
+          _this.topList=response.data.list
+        } else {
+
+        }
+      }).catch(function (error) {
+        console.log(error);
+      })
+
+    }
 
 
     $("#two2").attr("height",$("#two").attr("height"))
@@ -2201,17 +2203,8 @@ export default {
 </script>
 <style scoped>
 
-  @import '../../css/plugins/swiper.min.css';
+  /*@import '../../css/plugins/swiper.min.css';*/
   @import '../../css/plugins/plugIn.css';
   @import "../../css/common/common.css";
   @import '../../css/other/index.css';
-</style>
-<style scoped>
-
-  .scroll {
-    height:100%;
-  }
-  .slidescroll {
-    height:auto;
-  }
 </style>

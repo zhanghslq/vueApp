@@ -2,9 +2,9 @@
     <div>
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">Slide 1</div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
+          <div class="swiper-slide" style="height: 500px; background-color: red">Slide 1</div>
+          <div class="swiper-slide" style="height: 800px; background-color: grey">Slide 2</div>
+          <div class="swiper-slide" style="height: 1200px; background-color: green">Slide 3</div>
         </div>
         <!-- 如果需要分页器 -->
         <div class="swiper-pagination"></div>
@@ -29,14 +29,10 @@
       mounted:function () {
         var mySwiper = new Swiper ('.swiper-container', {
           direction: 'vertical',
+          autoHeight:true
         })
       }
     }
 </script>
 
-<style scoped>
-  .swiper-container {
-    width: 600px;
-    height: 300px;
-  }
-</style>
+

@@ -26,7 +26,7 @@
                 <div id="carouselMain">
                   <div class="tempWrap">
                     <ul class="img">
-                      <li v-for="(imageTop ,index ) in detailsImg" :key="index">
+                      <li v-for="(imageTop,index)  in detailsImg" :key="index">
                         <a >
                           <img :src="imageTop">
                         </a>
@@ -299,6 +299,7 @@ export default {
   },
   data() {
     return {
+      isFirst:0,
       quantity:1,//商品数量
       isCopy: '',
       res: '北京市',
@@ -324,6 +325,7 @@ export default {
 
     }
   },
+
   methods: {
     //加入购物车
     addShopCart(){
@@ -401,20 +403,26 @@ export default {
     },
     toShow() {
       this.show = true
+      console.log(this.detailsImg)
     },
     bannerFocusImg: function () {
-      TouchSlide({
-        slideCell: "#carouselMain",
-        titCell: ".carouselBtn ul",
-        mainCell: ".img",
-        effect: "leftLoop",
-        autoPlay: true,
-        autoPage: true,
-        interTime: 3000
-      });
-      var width = $(window).width();
-      var height = parseInt(width / 3 * 2);
-      $("#carouselMain li a").css("max-height", height);
+     if(this.isFirst==0){
+       this.isFirst=1;
+       TouchSlide({
+         slideCell: "#carouselMain",
+         titCell: ".carouselBtn ul",
+         mainCell: ".img",
+         effect: "leftLoop",
+         autoPlay: true,
+         autoPage: true,
+         interTime: 3000
+       });
+       var width = $(window).width();
+       var height = parseInt(width / 3 * 2);
+       $("#carouselMain li a").css("max-height", height);
+     }
+     console.log("进入bannerFocusImg")
+
     },
     makeUpone: function (){
       var swiper1 = new Swiper('.swiper-container2', {
@@ -429,6 +437,19 @@ export default {
   updated(){
     this.bannerFocusImg()
   },
+  destroyed(){
+      $(window).unbind(scroll())
+  },
+  deactivated(){
+    this.$destroy(true)
+  },
+  /*beforeRouteLeave(to,from,next){
+    if(to.name=='searchList'){
+      to.meta.keepAlive=true
+    }
+    next()
+  },*/
+
     mounted: function () {
       var _this=this;
     store.checkAreaData();
@@ -438,6 +459,13 @@ export default {
 
     this.productId=this.$route.params.id
       this.skuId=this.$route.params.skuId
+      if(this.productId==undefined){
+          this.productId=store.fetch("commodityproductId")
+          this.skuId=store.fetch("commodityskuId")
+      }else {
+        store.save("commodityproductId",this.productId)
+        store.save("commodityskuId",this.skuId)
+      }
       axios.post('/api/api/wxapp/product/details',{
         "productId":_this.productId,
         "skuId":_this.skuId
@@ -460,24 +488,12 @@ export default {
       }).catch(function (err) {
         console.log(err)
       })
+
     this.explain();
     this.choiseShopp();
 
     this.makeUpone()
       //自带js
-      $(window).scroll(function () {
-        var $scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
-        var $tabScroll = $(".transparent").offset().top - 200;
-        if ($scrolltop >= $tabScroll) {
-          $(".transparent .transparentBg").css({"opacity": "1"});
-          $(".detailTabNav").css({"opacity": "1"});
-          if ($tabScroll < 0) {
-            $(".transparent .transparentBg").css({"opacity": "0"});
-            $(".detailTabNav").css({"opacity": "0"});
-          }
-        }
-
-      });
       /*滚动*/
       var nav = $(".conventTab"); //得到导航对象
       var relevant = $("#pro_relevant").offset().top;
@@ -494,17 +510,25 @@ export default {
             $(".conventTab li:eq(0)").addClass("on").siblings().removeClass("on");
           }
         }
+
+        var $scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+        var $tabScroll = $(".transparent").offset().top - 200;
+        if ($scrolltop >= $tabScroll) {
+          $(".transparent .transparentBg").css({"opacity": "1"});
+          $(".detailTabNav").css({"opacity": "1"});
+          if ($tabScroll < 0) {
+            $(".transparent .transparentBg").css({"opacity": "0"});
+            $(".detailTabNav").css({"opacity": "0"});
+          }
+        }
       });
       //还需要引入的js
     }
-
-
-
 }
 </script>
 
 <style scoped>
 @import "../../css/common/common.css";
-  @import "../../css/plugins/swiper.min.css";
-  @import "../../css/other/threeLevel.css";
+@import "../../css/plugins/swiper.min.css";
+@import "../../css/other/threeLevel.css";
 </style>

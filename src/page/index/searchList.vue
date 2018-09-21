@@ -2,13 +2,13 @@
     <div>
       <!--头部 开始-->
       <header class="fix">
-        <a href="javascript:history.go(-1);" class="returnBtn"></a>
+        <a href="javascript:history.go(-2);" class="returnBtn"></a>
         <div class="searchHead searchList">
           <div class="search">
-            <em></em>
-            <router-link to="search">
-              <input type="text" placeholder="搜索喜欢的宝贝">
-            </router-link>
+            <em v-on:click="querySearchList()"></em>
+
+              <input type="text" v-model="kw" placeholder="搜索喜欢的宝贝">
+
 
           </div>
         </div>
@@ -28,7 +28,7 @@
               </div>
             </a>
           </div>
-          <div class="searchCont">
+          <scroller class="searchCont" :on-infinite="infinite"  :on-refresh = "refresh" ref="my_scroller" :noDataText="noDataText">
             <div class="searchContInfo" style="display: block;">
               <router-link :to="{name:'commodityPage',params:{'id':product.id,'skuId':product.skuId}}" v-for="(product,index) in productList" :key="index">
                 <div class="infoPic"><img :src="product.titleImage"></div>
@@ -44,8 +44,6 @@
 
             </div>
 
-
-
             <div class="searchContInfo">
               <a href="#">
                 <div class="infoPic"><img src="../../images/temporary/commodity12.png"></div>
@@ -71,45 +69,25 @@
                   <span class="limit">限时直降</span>
                 </div>
               </a>
-              <a href="#">
-                <div class="infoPic"><img src="../../images/temporary/commodity12.png"></div>
-                <p>【任选】【百草味-手剥小白杏200g】坚果干果</p>
-                <div class="price">
-                  <span class="presentNum">￥<em>19</em>.9</span>
-                  <span class="timePri">￥<em>19</em>.9</span>
-                </div>
-                <div class="discount">
-                  <span class="limit">限时直降</span>
-                </div>
-              </a>
-              <a href="#">
-                <div class="infoPic"><img src="../../images/temporary/commodity12.png"></div>
-                <p>【任选】【百草味-手剥小白杏200g】坚果干果</p>
-                <div class="price">
-                  <span class="presentNum">￥<em>19</em>.9</span>
-                  <span class="timePri">￥<em>19</em>.9</span>
-                </div>
-                <div class="discount">
-                  <span class="limit">限时直降</span>
-                </div>
-              </a>
             </div>
-          </div>
+          </scroller>
         </div>
       </main>
     </div>
 </template>
-
 <script>
   import axios from 'axios'
   import store from '../../service/store'
+
     export default {
+
       name: "searchList",
       data(){
         return{
           //搜索得到的商品集合
           productList:[],
-          kw:''
+          kw:'',
+          noDataText:'我也是有底线的',
         }
       },
       methods:{
@@ -128,6 +106,7 @@
     })
   },
         querySearchList(){
+          store.save("kw",this.kw)
           let _this=this
           axios.post('/api//api/wxapp/product/list',{
             "kw":_this.kw,
@@ -148,15 +127,29 @@
               console.log(error);
             })
         },
-      },updated(){
+        infinite(){
+          console.log("加载更多")//加载更多，即往数据里面push新的数据，需要在原来的基础上继续加载剩余的数据
+          this.$refs.my_scroller.finishInfinite(true);
+        },
+        refresh(){
+          console.log("重新加载")
+          this.$refs.my_scroller.finishPullToRefresh()//结束动作，在完成调用时执行
+
+        }
+
+      },
+      updated(){
         this.searchTab();
+      },
+
+
+      destroyed(){
+        console.log("销毁searchList")
       },
       mounted:function () {
         let _this=this;
-        _this.kw = this.$route.params.kw
+        _this.kw = store.fetch("kw")
         this.querySearchList();
-
-
       }
     }
 </script>

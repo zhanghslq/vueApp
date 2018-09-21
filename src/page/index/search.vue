@@ -27,6 +27,7 @@
 </template>
 
 <script>
+  import store from '../../service/store'
 export default {
   name: 'search',
   data(){
@@ -36,9 +37,13 @@ export default {
   },
   methods:{
     searchList(){
+      store.save("kw",this.kw)
       this.$router.push({ name: 'searchList', params: { kw: this.kw }})
     }
-  }
+  },
+
+
+
 }
 </script>
 <style scoped >

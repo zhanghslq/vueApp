@@ -7,6 +7,9 @@ import App from './App'
 import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import layer from 'vue-layer-mobile'
+import VueScroller from 'vue-scroller'
+
+Vue.use(VueScroller)
 Vue.use(layer)
 Vue.use(VueAwesomeSwiper)
 /* eslint-disable */
@@ -15,6 +18,7 @@ import $ from 'jquery'
 new Vue({
   el: '#app',
   router,
+
   components: { App },
   template: '<App/>'
 })

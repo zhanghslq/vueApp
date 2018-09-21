@@ -54,6 +54,8 @@ import modifyAutograph from '../page/personalCenter/modifyAutograph'
 import modifyWechat from '../page/personalCenter/modifyWechat'
 
 import newlyAddress from '../page/shoppingBag/newlyAddress'
+import editAddress from '../page/shoppingBag/editAddress'
+import placeOrder from '../page/shoppingBag/placeOrder'
 
 
 import TestPost from '../page/demo/TestPost'
@@ -108,6 +110,17 @@ Vue.use(VueResource)
 export default new Router({
   routes: [
     {
+      path:'/editAddress',
+      meta:{
+        keepAlive:true
+      },
+      name:'editAddress',
+      component:editAddress
+    },{
+      path:'/placeOrder',
+      name:'placeOrder',
+      component:placeOrder
+    },{
       path:'/modifyWechat',
       name:'modifyWechat',
       component:modifyWechat
@@ -468,6 +481,7 @@ export default new Router({
     {
       path: '/index',
       name: 'index',
+      meta:{keepAlive:true},
       component: index
     },
     {

@@ -14,7 +14,7 @@
               <span>专题精选</span>
               <em></em>
             </a>
-            <div class="swiper-container">
+            <div class="swiper-container1">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <a href="#">
@@ -236,13 +236,12 @@
 <script>
   import Vue from 'vue'
   import vuePhotoPreview from 'vue-photo-preview'
-  import 'vue-photo-preview/dist/skin.css'
+
   import {TouchSlide} from '../../js/plugins/TouchSlide.1.1.min'
   import Swiper from 'swiper'
-  var options={
+  Vue.use(vuePhotoPreview,{
     fullscreenEl:false //关闭全屏按钮
-  }
-  Vue.use(vuePhotoPreview,options)
+  })
 
 
     export default {
@@ -251,26 +250,38 @@
         TouchSlide,
         Swiper
       },
+      data(){
+          return{
+              swiper1:{},
+              swiper2:{}
+          }
+      },
       methods:{
         /*发现首页左右滑动*/
         findSlide1:function (){
-    var swiper1 = new Swiper('.swiper-container', {
+      this.swiper1 = new Swiper('.swiper-container1', {
       slidesPerView: 2.2,
       spaceBetween: 8,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
       },
+        onDestroy(swiper){
+            console.log("swiper1销毁了")
+        },
     });
   },
         findSlide2:function (){
-    var swiper1 = new Swiper('.swiper-container2', {
+      this.swiper2 = new Swiper('.swiper-container2', {
       slidesPerView: 3.4,
       spaceBetween: 8,
       pagination: {
         el: '.swiper-pagination2',
         clickable: true,
       },
+        onDestroy(swiper){
+          console.log("swiper2销毁了")
+        },
     });
   },
   /*发现首页tab切换*/
@@ -315,16 +326,26 @@
     })
   }
       },
+      destroyed(){
+        $(window).unbind(scroll())
+        console.log("findPage  销毁了")
+        this.swiper1.destory
+        this.swiper2.destory
+      },
+      deactivated(){
+        this.$destroy(true)
+
+      },
       mounted:function(){
         this.findSlide1(); //专题左右滑动内容
         this.findSlide2();
         this.findPageTab();//tab切换
         this.commodity();  //商品弹层
         this.topicTab();   //话题tab切换
-
+/*
         setTimeout(() => {
           this.$previewRefresh()
-        }, 2000);
+        }, 2000);*/
         $(window).scroll(function(){
           var $scrolltop=document.documentElement.scrollTop||document.body.scrollTop;
           var $tabScroll=$("#jq_tabNav").offset().top-90;
@@ -341,7 +362,9 @@
 </script>
 
 <style scoped>
+  @import '../../../node_modules/vue-photo-preview/dist/skin.css';
 @import "../../css/common/common.css";
 @import "../../css/other/index.css";
 @import '../../css/plugins/swiper.min.css';
+
 </style>

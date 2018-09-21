@@ -67,18 +67,18 @@
     width: 0;
     height: 0;
     transform:rotate(270deg);
-	-ms-transform:rotate(270deg);
-	-moz-transform:rotate(270deg);
-	-webkit-transform:rotate(270deg);
-	-o-transform:rotate(270deg);
+	-ms-transform:rotate(270deg); 	
+	-moz-transform:rotate(270deg); 
+	-webkit-transform:rotate(270deg); 
+	-o-transform:rotate(270deg); 
 }
 .arrayNav .sortIcon em:last-child{
 	transform:rotate(90deg);
-	-ms-transform:rotate(90deg);
-	-moz-transform:rotate(90deg);
-	-webkit-transform:rotate(90deg);
+	-ms-transform:rotate(90deg); 	
+	-moz-transform:rotate(90deg); 
+	-webkit-transform:rotate(90deg); 
 	-o-transform:rotate(90deg);
-	margin-top: 0.05rem;
+	margin-top: 0.05rem; 
 }
 .arrayNav .sortIcon em.Cur{
 	border-left: 0.08rem solid #000;
@@ -380,6 +380,15 @@
 	background-size: 100%;
 	margin:0.4rem 0 0 0;
 }
+.receiving .receivingRight em.selectCircle{
+	width: 0.38rem;
+	height: 0.38rem;
+	display: inline-block;
+	float: right;
+	background: url(../../images/secondLevel/selIcon.png) no-repeat;
+	background-size: 100%;
+	margin:0.4rem 0 0 0;
+}
 .addressCorrel .newlyAdded{
 	width: 7.5rem;
 	height: 0.98rem;
@@ -452,7 +461,7 @@
 .addressCorrel .default .defaultLeft{
 	height: 0.8rem;
 	line-height: 0.8rem;
-	float: left;
+	float: left; 
 	margin-left: 0.23rem;
 	font-size: 0.28rem;
 	color:#444;
@@ -516,16 +525,14 @@
 	height: auto;
 	overflow: hidden;
 }
-.idPhoto .idPhotoInfo .photoLeft,
-.idPhoto .idPhotoInfo .photoLeft label{
+.idPhoto .idPhotoInfo .photoLeft{
 	width: 3.36rem;
 	height: 2.26rem;
 	background: url(../../images/threeLevel/idJust.png) no-repeat;
 	background-size: 100%;
 	float: left;
 }
-.idPhoto .idPhotoInfo .photoRight,
-.idPhoto .idPhotoInfo .photoRight label{
+.idPhoto .idPhotoInfo .photoRight{
 	width: 3.36rem;
 	height: 2.26rem;
 	background: url(../../images/threeLevel/idBack.png) no-repeat;
@@ -1367,7 +1374,7 @@
 		}
 	}
 }
-@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){ 
 	.addr{
   		height: 42px !important;
   		line-height: 42px !important;
@@ -1380,7 +1387,7 @@
 		padding-top: 5px;
 	}
 }
-@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){ 
 	.addr{
   		height: 46px !important;
   		line-height: 46px !important;

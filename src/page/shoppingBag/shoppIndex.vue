@@ -23,7 +23,7 @@
 
                     <li class="select">
                       <em aem="0" cart_id="84" class="choiceIcon"> </em>
-                      <div >{{product.id}}</div>
+                      <div style="display: none">{{product.id}}</div>
                       <div class="listPic"><img v-bind:src=product.productTitleImg ></div>
                       <p class="copywriting">{{product.productName}}</p>
                       <div class="price now_value">
@@ -504,13 +504,35 @@
         //删除
         $("#confirm_cart1").click(function(){
           let t=$(".commodity_list_term .pitch_on").next("div").text()
+          $(".commodity_list_term .pitch_on").each(function(){
+            axios.post("/api/api/wxapp/cart/delete",{"id":$(this).next("div").text()})
+              .then(function (responese) {
+                console.log(responese)
 
-          console.log(t)
+              }).catch(function (err) {
+                console.log(err)
+            })
+
+          });
           $(".commodity_list_term .pitch_on").parent().remove();
-
           /*$(".commodity_list .tite_tim > em.pitch_on").parents(".commodity_box").remove();*/
+        })
 
 
+        //去结算,到生成订单页
+        $("#confirm_cart").click(function(){
+          var ids=[];
+          $(".commodity_list_term .pitch_on").each(function(){
+            ids.push($(this).next("div").text())
+            //存入localstorage，然后在下个页面取出
+            store.save("placeOrderChooseIds",ids)
+            _this.$router.push("placeOrder")
+
+          });
+
+
+          $(".commodity_list_term .pitch_on").parent().remove();
+          /*$(".commodity_list .tite_tim > em.pitch_on").parents(".commodity_box").remove();*/
         })
       },
       mounted:function () {
@@ -524,12 +546,7 @@
             console.log(response)
             _this.productList=response.data.list
 
-
-
-
-
           } else {
-
 
           }
         }).catch(function (error) {

@@ -35,16 +35,7 @@
                 <div class="rightNum">X 1</div>
               </div>
             </div>
-            <div class="orderDetail">
-              <div class="detailLeft"><img src="../../images/temporary/9.jpg"></div>
-              <div class="detailRight">
-                <div class="rightTop">
-                  <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
-                  <span>￥<em>19</em>.90</span>
-                </div>
-                <div class="rightNum">X 1</div>
-              </div>
-            </div>
+
             <div class="orderMode">
               <div class="modeLeft">发货方式</div>
               <span class="express">快递（包邮）：<em>0</em>元</span>
@@ -108,7 +99,7 @@
           </div>
           <div class="settlement">
             <span class="setTitle">支付宝支付</span>
-            <p>总计<span>￥<em>139</em>.99</span></p>
+            <p>总计<span>￥<em>139.99</em></span></p>
             <a href="#">去付款</a>
           </div>
         </div>
@@ -118,8 +109,23 @@
 </template>
 
 <script>
+  import store from '../../service/store'
     export default {
-        name: "placeOrder"
+      name: "placeOrder",
+      data(){
+          return{
+
+          }
+      },
+      methods:{
+
+      },
+      mounted(){
+          let ids=store.fetch("placeOrderChooseIds");
+          for (let id of ids) {
+
+          }
+      }
     }
 </script>
 
