@@ -122,7 +122,7 @@
                     </div>
                     <div class="infoBottom">
                       <a href="javascript:void(0);" class="cancelBtn">取消</a>
-                      <a href="#" class="toPay"><span>去付款</span><em id="btn1">30:00</em></a>
+                      <a href="#" class="toPay"><span>去付款</span><em id="btn">30:00</em></a>
                     </div>
                   </li>
                   <li>
@@ -330,5 +330,6 @@
 </script>
 
 <style scoped>
-
+@import "../../css/common/common.css";
+  @import "../../css/other/personalCenter.css";
 </style>

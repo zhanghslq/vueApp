@@ -505,7 +505,7 @@
         $("#confirm_cart1").click(function(){
           let t=$(".commodity_list_term .pitch_on").next("div").text()
           $(".commodity_list_term .pitch_on").each(function(){
-            axios.post("/api/api/wxapp/cart/delete",{"id":$(this).next("div").text()})
+            axios.post(store.getAddress()+"/api/wxapp/cart/delete",{"id":$(this).next("div").text()})
               .then(function (responese) {
                 console.log(responese)
 
@@ -537,7 +537,7 @@
       },
       mounted:function () {
         let _this=this;
-        axios.post('/api//api/wxapp/cart/list',{
+        axios.post(store.getAddress()+'/api/wxapp/cart/list',{
           "uid":store.fetch("uid"),
 
         }).then(function (response) {

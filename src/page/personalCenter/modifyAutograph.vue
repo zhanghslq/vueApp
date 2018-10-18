@@ -64,7 +64,7 @@
     },
         updateSign(){
           let self=this;
-          axios.post("/api/api/wxapp/account/update",
+          axios.post(store.getAddress()+"/api/wxapp/account/update",
             {"uid":store.fetch("uid"),"personalitySignature":self.personalitySignature})
             .then(function(resp) {
               console.log(resp)

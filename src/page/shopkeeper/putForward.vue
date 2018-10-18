@@ -20,25 +20,25 @@
               <i></i>
               <span>0元</span>
             </a>
-            <a href="javascript:void(0)">
+            <router-link to="rewardTask">
               <h4>任务奖励</h4>
               <em></em>
               <span>0元</span>
-            </a>
+            </router-link>
+
           </div>
           <div class="putMain">
-            <a href="javascript:void(0)">
-              <h4>已提现金额</h4>
-              <em></em>
-              <span>0元</span>
-            </a>
+           <router-link to="putForwardRecord">
+             <h4>已提现金额</h4>
+             <em></em>
+             <span>0元</span>
+           </router-link>
           </div>
           <div class="putMain">
-            <a href="javascript:void(0)">
-              <h4>提现信息补全</h4>
-              <em></em>
-              <span>0元</span>
-            </a>
+           <router-link to="putForwardAdminist">
+             <h4>提现信息补全</h4>
+             <em></em>
+           </router-link>
           </div>
           <a href="#" class="putBtn">提现</a>
         </div>

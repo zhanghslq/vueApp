@@ -654,7 +654,7 @@
 .management .marketing a{
 	margin: 0.07rem 0;
 	display:block;
-	width: 49%;
+	width: 33.1%;
 	float: left;
 	text-align: center;
 	height: 0.8rem;
@@ -2272,25 +2272,167 @@ header .remind{
 	color:#666;
 	margin-bottom: 0.25rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*数据中心 结束*/
+/*管理系统 开始*/
+.manageSystem{
+	width: 7.5rem;
+	height: auto;
+	overflow: hidden;
+	position: absolute;
+	top:0.9rem;
+	padding-bottom: 1.2rem;
+}
+.manageSystem .manageInfo{
+	display: none;
+}
+.manageSystem .systemInfo{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	-webkit-box-shadow: 0 0 0.3rem #e9eaeb;
+    -moz-box-shadow: 0 0 0.3rem #e9eaeb;
+    box-shadow: 0 0 0.3rem #e9eaeb;
+    margin:0.15rem auto 0;
+}
+.systemInfo .sysTitle{
+	height: 0.92rem;
+	line-height: 0.92rem;
+	overflow: hidden;
+	display: block;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.systemInfo .sysTitle em{
+	width: 0.08rem;
+	height: 0.27rem;
+	display: inline-block;
+	float: left;
+	background: #ecbc68;
+	margin:0.35rem 0.15rem 0 0.23rem;
+}
+.systemInfo .sysTitle h3{
+	font-size: 0.3rem;
+	color:#444;
+	float: left;
+	margin-right: 0.15rem;
+}
+.systemInfo .sysTitle span{
+	display: inline-block;
+	float: right;
+	width: 0.14rem;
+	height: 0.24rem;
+	background:url(../../images/threeLevel/addreeInto.png) no-repeat;
+	background-size: 100%;
+	margin:0.32rem 0.23rem 0 0;
+}
+.systemInfo .sysTaber{
+	height: auto;
+	overflow: hidden;
+	margin:0.3rem 0;
+}
+.systemInfo .sysTaber .systaberLeft,
+.systemInfo .sysTaber .systaberRight{
+	width: 49.8%;
+	text-align: center;
+	float: left;
+	border-right: 0.01rem solid #f4f5f7;
+}
+.sysTaber .systaberLeft .priceing,
+.sysTaber .systaberRight .priceing{
+	font-size: 0.4rem;
+	color:#ecbc68;
+}
+.sysTaber .systaberLeft .priceing em,
+.sysTaber .systaberRight .priceing em{
+	font-size: 0.24rem;
+}
+.sysTaber .systaberLeft span,
+.sysTaber .systaberRight span{
+	font-size: 0.24rem;
+	color:#7b7b7b;
+	display: inline-block;
+	margin-top: 0.2rem;
+}
+.systemInfo .sysTaber .systaberRight{
+	float: right;
+	border:none;
+}
+.manageBottom{
+	width: 7.5rem;
+    height: 0.98rem;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    -webkit-box-shadow: 0 0 0.25rem #d3d4d7;
+    -moz-box-shadow: 0 0 0.25rem #d3d4d7;
+    box-shadow: 0 0 0.25rem #d3d4d7;
+    z-index: 99;
+}
+.manageBottom a{
+	width: 50%;
+	height: 0.98rem;
+	line-height: 0.98rem;
+	display: inline-block;
+	float: left;
+	text-align: center;
+	font-size: 0.3rem;
+	color:#9b9b9b;
+}
+.manageBottom a.Cur{
+	color:#fff;
+	background: #ecbc68;
+}
+.manageInfo .myAttention{
+	width: 7.5rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	background: #fff;
+	display: block;
+	margin:0.15rem 0;
+}
+.manageInfo .myAttention span{
+	display: inline-block;
+	float: left;
+	font-size: 0.28rem;
+	color:#444;
+	margin-left: 24px;
+}
+.manageInfo .myAttention em{
+	display: inline-block;
+    float: right;
+    width: 0.14rem;
+    height: 0.24rem;
+    background: url(../../images/threeLevel/addreeInto.png) no-repeat;
+    background-size: 100%;
+    margin: 0.32rem 0.23rem 0 0;
+}
+.manageInfo .screenMain{
+	width: 7.5rem;
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+}
+.manageInfo .screenMain .screenSearch{
+	height: 0.56rem;
+	padding-bottom: 0.14rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+
+
+
+
+
+
+
+
+/*管理系统 结束*/
+
+
+
+
+
+
+
+
 
 
 

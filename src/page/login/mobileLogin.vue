@@ -4,6 +4,7 @@
       <a href="javascript:history.go(-1);" class="returnBtn"></a>
       登录
     </header>
+
     <!--头部 结束-->
     <!--中间 开始-->
     <main>
@@ -46,7 +47,7 @@ export default {
   methods: {
     login:function(){
       let _this=this;
-      axios.post('/api//api/wxapp/sms/validCode',{
+      axios.post(store.getAddress()+'/api/wxapp/sms/validCode',{
         "mobile":this.phoneNumInput,
         "code":this.securityCode
       })
@@ -74,7 +75,7 @@ export default {
     },
     getCode: function(){
       let _this=this;
-      axios.post('/api//api/wxapp/sms/sendAuthCode',{
+      axios.post(store.getAddress()+'/api/wxapp/sms/sendAuthCode',{
         "mobile":this.phoneNumInput
       })
         .then(function (response) {

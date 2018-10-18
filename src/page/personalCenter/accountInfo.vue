@@ -107,7 +107,7 @@
         getToken(){
           var  self=this;
           axios.post(
-            '/api/api/wxapp/qiniu/upToken'
+            store.getAddress()+'/api/wxapp/qiniu/upToken'
           ).then(function (response) {
             console.log(response)
             self.uploadToken=response.data.data.upToken
@@ -163,7 +163,7 @@
               .then(function(res) {
                 console.log(res)
                 //console.log('res',res)
-                axios.post('/api/api/wxapp/account/update',{
+                axios.post(store.getAddress()+'/api/wxapp/account/update',{
                   "uid":store.fetch("uid"),
                   "photo":res.data.key
                 }).then(function(re){

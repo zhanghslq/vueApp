@@ -279,7 +279,7 @@
         getToken(){
           var  self=this;
           axios.post(
-            '/api/api/wxapp/qiniu/upToken'
+            store.getAddress()+'/api/wxapp/qiniu/upToken'
           ).then(function (response) {
             self.uploadToken=response.data.data.upToken
           })

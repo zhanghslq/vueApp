@@ -83,7 +83,7 @@ header .message em{
 	display: inline-block;
 	float: left;
 }
-.addr .cityCode >>> .triangle{
+.addr .cityCode .triangle{
 	width:0.12rem;
 	height: 0.1rem;
 	display: inline-block;
@@ -540,6 +540,66 @@ header .message em{
 	margin:0.05rem 0 0.05rem 0.3rem;
 	font-size:0.16rem;
 }
+.secKill .secKillMain{
+	height: auto;
+	overflow: hidden;
+	margin-top:-0.15rem;
+}
+.secKill .secKillMain .bursNav{
+	width: 2rem !important; 
+	height: 0.65rem;
+	line-height:0.65rem;
+	text-align: center;
+	border-bottom: 0.02rem solid #fff;
+	font-size: 0.28rem;
+	margin-left: 0.1rem;
+	color:#666;
+}
+.secKill .secKillMain .burCur{
+	width: 1.5rem !important; 
+	height: 0.65rem;
+	line-height:0.65rem;
+	border-bottom: 0.02rem solid #ecbc68;
+	color:#ecbc68;
+}
+.secKill .secKillMain .burstCont{
+	width:100%;
+}
+.secKill .secKillMain .burstCont .bursInfo{
+	display: none;
+}
+.burstCont .bursInfo a{
+	width: 32%;
+	float: left;
+	display: block;
+	margin-left: 0.1rem;
+	margin-top: 0.3rem;
+	text-align: center;
+}
+.burstCont .bursInfo a .burPic{
+	width: 2.26rem;
+	height: 2.36rem;
+	overflow: hidden;
+}
+.burstCont .bursInfo a .burPic img{
+	max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto auto;
+}
+.burstCont .bursInfo a h5{
+	font-size: 0.27rem;
+	color:#444;
+	margin:0.3rem 0 0.08rem 0;
+}
+.burstCont .bursInfo a span{
+	font-size: 0.18rem;
+	color:#f6602f;
+}
+.burstCont .bursInfo a span em{
+	font-size: 0.24rem;
+}
+
 /*首页 结束*/
 /*发现 开始*/
 .findPageMain{
@@ -697,7 +757,7 @@ header .message em{
 }
 .infoHead .infoHeadLeft .headName{
 	float: left;
-}
+}	
 .infoHeadLeft .headName p{
 	font-size:0.3rem;
 	color:#262626;
@@ -924,7 +984,7 @@ header .message em{
 	height: 4.72rem;
 	background:url(../../images/index/personalBg.jpg) no-repeat;
 	background-size: 100%;
-
+	
 }
 .personalInfo .personalHead{
 	width:1.58rem;
@@ -1080,7 +1140,7 @@ header .message em{
 }
 .topicMain .tabList{
 	padding-bottom: 1.2rem;
-}
+} 
 .topicMain .topicDetail{
 	position: relative;
 }
@@ -1412,7 +1472,7 @@ header .message em{
 }
 .lookOtherTitle span{
 	font-size:0.32rem;
-	color:#444;
+	color:#444;	
 	text-align: center;
 	width:100%;
 	display: inline-block;
@@ -1461,7 +1521,7 @@ header .message em{
 		margin:0.17rem 0 0 0 !important;
 	}
 }
-@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){ 
   	.addr{
   		height: 46px !important;
   		line-height: 46px !important;
@@ -1474,7 +1534,7 @@ header .message em{
 		padding-top: 5px;
 	}
 }
-@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){ 
 	.addr{
   		height: 50px !important;
   		line-height: 50px !important;

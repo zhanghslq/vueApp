@@ -16,55 +16,15 @@
             <em></em>
           </a>
           <div class="brochureList">
-            <a href="#">
+            <router-link to="newBrochureDetail">
               <div class="listLeft"><img src="../../images/temporary/3.jpg"></div>
               <div class="listRight">
                 <p>【管理篇】余雯：找到团队持续发展的动力</p>
                 <span>2018-06025 新人手册</span>
               </div>
-            </a>
-            <a href="#">
-              <div class="listLeft"><img src="../../images/temporary/3.jpg"></div>
-              <div class="listRight">
-                <p>【管理篇】余雯：找到团队持续发展的动力</p>
-                <span>2018-06025 新人手册</span>
-              </div>
-            </a>
-            <a href="#">
-              <div class="listLeft"><img src="../../images/temporary/3.jpg"></div>
-              <div class="listRight">
-                <p>【管理篇】余雯：找到团队持续发展的动力</p>
-                <span>2018-06025 新人手册</span>
-              </div>
-            </a>
-            <a href="#">
-              <div class="listLeft"><img src="../../images/temporary/3.jpg"></div>
-              <div class="listRight">
-                <p>【管理篇】余雯：找到团队持续发展的动力</p>
-                <span>2018-06025 新人手册</span>
-              </div>
-            </a>
-            <a href="#">
-              <div class="listLeft"><img src="../../images/temporary/3.jpg"></div>
-              <div class="listRight">
-                <p>【管理篇】余雯：找到团队持续发展的动力</p>
-                <span>2018-06025 新人手册</span>
-              </div>
-            </a>
-            <a href="#">
-              <div class="listLeft"><img src="../../images/temporary/3.jpg"></div>
-              <div class="listRight">
-                <p>【管理篇】余雯：找到团队持续发展的动力</p>
-                <span>2018-06025 新人手册</span>
-              </div>
-            </a>
-            <a href="#">
-              <div class="listLeft"><img src="../../images/temporary/3.jpg"></div>
-              <div class="listRight">
-                <p>【管理篇】余雯：找到团队持续发展的动力</p>
-                <span>2018-06025 新人手册</span>
-              </div>
-            </a>
+
+            </router-link>
+
             <a href="#">
               <div class="listLeft"><img src="../../images/temporary/3.jpg"></div>
               <div class="listRight">

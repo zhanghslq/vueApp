@@ -330,7 +330,7 @@ export default {
     //加入购物车
     addShopCart(){
       let self=this;
-      axios.post("/api/api/wxapp/cart/add",{"uid":store.fetch("uid"),"items":JSON.stringify([{"productId":self.productId,"quantity":self.quantity,"skuId":self.currentSku.skuId}])})
+      axios.post(store.getAddress()+"/api/wxapp/cart/add",{"uid":store.fetch("uid"),"items":JSON.stringify([{"productId":self.productId,"quantity":self.quantity,"skuId":self.currentSku.skuId}])})
         .then(function (responese) {
           console.log(responese)
           let msg="添加购物车成功";
@@ -466,7 +466,7 @@ export default {
         store.save("commodityproductId",this.productId)
         store.save("commodityskuId",this.skuId)
       }
-      axios.post('/api/api/wxapp/product/details',{
+      axios.post(store.getAddress()+'/api/wxapp/product/details',{
         "productId":_this.productId,
         "skuId":_this.skuId
       }).then(function (responese) {

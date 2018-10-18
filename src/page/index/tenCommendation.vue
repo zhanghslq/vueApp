@@ -3,7 +3,7 @@
     <!--头部 开始-->
     <header>
       <a href="javascript:history.go(-1);" class="returnBtn"></a>
-      每日十荐
+        每日十荐
       <a href="#" class="shareBtn"></a>
     </header>
     <!--头部 结束-->

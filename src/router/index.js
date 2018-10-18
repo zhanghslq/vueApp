@@ -52,6 +52,7 @@ import orderDetailsPayment from '../page/personalCenter/orderDetailsPayment'
 import orderDetailsRefund from '../page/personalCenter/orderDetailsRefund'
 import modifyAutograph from '../page/personalCenter/modifyAutograph'
 import modifyWechat from '../page/personalCenter/modifyWechat'
+import helpService from '../page/personalCenter/helpService'
 
 import newlyAddress from '../page/shoppingBag/newlyAddress'
 import editAddress from '../page/shoppingBag/editAddress'
@@ -104,7 +105,6 @@ import receivingAddress from '../page/shoppingBag/receivingAddress'
 import tradeFail from '../page/shoppingBag/tradeFail'
 import tradeSuccessful from '../page/shoppingBag/tradeSuccessful'
 
-import testSwiper from '../page/复杂/test'
 Vue.use(Router)
 Vue.use(VueResource)
 export default new Router({
@@ -120,6 +120,10 @@ export default new Router({
       path:'/placeOrder',
       name:'placeOrder',
       component:placeOrder
+    },{
+      path:'/helpService',
+      name:'helpService',
+      component:helpService
     },{
       path:'/modifyWechat',
       name:'modifyWechat',
@@ -172,10 +176,6 @@ export default new Router({
       path:'/carrousel',
       name:'carrousel',
       component:carrousel
-    },{
-      path:'/testSwiper',
-      name:'testSwiper',
-      component:testSwiper
     },{
       path:'/myOrder',
       name:'myOrder',

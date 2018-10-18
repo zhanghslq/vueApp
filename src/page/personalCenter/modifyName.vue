@@ -34,7 +34,7 @@
           updateName(){
             console.log("jinru ")
             let self=this;
-            axios.post("/api/api/wxapp/account/update",
+            axios.post(store.getAddress()+"/api/wxapp/account/update",
               {"uid":store.fetch("uid"),"nickName":self.username})
               .then(function(resp) {
                 console.log(resp)

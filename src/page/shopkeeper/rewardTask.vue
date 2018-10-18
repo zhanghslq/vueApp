@@ -101,10 +101,26 @@
       }
       },
       methods:{
+        /*奖励任务 tab切换*/
+    rewardTab: function (){
+    var $li = $('.rewardNav a');
+    var $ul = $('.rewardCont .contInfo');
+    $("#rewardTaskNav").css('height',$ul.eq(0).height())
+    $li.click(function(){
+      var $this = $(this);
+      var $t = $this.index();
+      $li.removeClass();
+      $this.addClass('Cur');
+      $ul.css('display','none');
+      $ul.eq($t).css('display','block');
+      $("#rewardTaskNav").css('height',$ul.eq($t).height())
+    })
+  },
+  /*奖励任务时间倒计时*/
         show_time: function () {
           var vm=this
         $(".highestTime .timeRight").each(function() {
-          var endtime = '2018/08/03 17:51:00';
+          var endtime = '2018/12/03 17:51:00';
           var time_start = new Date().getTime(); //设定当前时间
           var time_end = new Date(endtime).getTime(); //设定目标时间
           var time_distance = time_end - time_start;
@@ -137,6 +153,7 @@
       },
       },
       mounted:function () {
+      this.rewardTab();
         this.timer = setInterval(this.show_time,1000);
       }
     }

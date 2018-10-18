@@ -23,34 +23,38 @@
             </a>
           </div>
           <div class="orderSituation">
-            <a href="#" class="orderTitle">
+            <router-link to="myOrder">
+
+
+            <a  class="orderTitle">
               <span class="titleLeft">我的订单</span>
               <div class="titleRight">
                 <span>全部订单</span>
                 <em></em>
               </div>
             </a>
+            </router-link>
             <div class="orderOperation">
-              <a href="#">
+              <a >
                 <em class="pendingPayment"></em>
                 <span>待付款</span>
               </a>
-              <a href="#">
+              <a >
                 <em class="PendingDelivery"></em>
                 <span>待发货</span>
               </a>
-              <a href="#">
+              <a >
                 <em class="goodsReceived"></em>
                 <span>待收货</span>
               </a>
-              <a href="#">
+              <a >
                 <em class="succeTrade"></em>
                 <span>交易成功</span>
               </a>
-              <a href="#">
+             <router-link to="refundProgress">
                 <em class="returnGoods"></em>
                 <span>退货/退款</span>
-              </a>
+             </router-link>
             </div>
           </div>
           <div class="personalInfo">
@@ -60,39 +64,39 @@
                 <em></em>
               </div>
             </a>
-            <a href="#">
+            <router-link to="exchangeX">
               <span class="infoLeft">猩际X币</span>
               <div class="infoRight">
                 <em></em>
               </div>
-            </a>
-            <a href="#">
+            </router-link>
+           <router-link to="coupon">
               <span class="infoLeft">优惠券</span>
               <div class="infoRight">
                 <span>10张</span>
                 <em></em>
               </div>
-            </a>
-            <a href="#">
+           </router-link>
+            <router-link to="myCollection">
               <span class="infoLeft">我的收藏</span>
               <div class="infoRight">
                 <em></em>
               </div>
-            </a>
-            <a href="#">
+            </router-link>
+            <router-link to="memberCenter">
               <span class="infoLeft">会员中心</span>
               <div class="infoRight">
                 <em></em>
               </div>
-            </a>
+            </router-link>
           </div>
           <div class="personalInfo">
-            <a href="#">
+            <router-link to="helpService">
               <span class="infoLeft">帮助与客服</span>
               <div class="infoRight">
                 <em></em>
               </div>
-            </a>
+            </router-link>
             <a href="#">
               <span class="infoLeft">给我评分</span>
               <div class="infoRight">

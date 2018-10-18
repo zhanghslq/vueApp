@@ -10,7 +10,7 @@
       <main>
         <div class="findPageMain">
           <div class="special">
-            <a href="../index/newGrowGrass.html" class="specialTitle">
+            <a  class="specialTitle">
               <span>专题精选</span>
               <em></em>
             </a>
@@ -50,10 +50,12 @@
             </div>
           </div>
           <div class="hotTopic">
-            <a href="hotTopic.html" class="specialTitle">
-              <span>热门话题</span>
-              <em></em>
-            </a>
+            <router-link to="hottopic">
+              <a  class="specialTitle">
+                <span>热门话题</span>
+                <em></em>
+              </a>
+            </router-link>
             <div class="swiper-container2">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -170,7 +172,10 @@
 
             </div>
           </div>
-          <a href="releaseDynamics.html" class="releaseBtn"></a>
+          <router-link to="releaseDynamics" class="releaseBtn">
+
+          </router-link>
+
         </div>
       </main>
       <!--中间 结束-->
@@ -193,43 +198,7 @@
         </router-link>
       </footer>
       <!--底部 结束-->
-      <!--缩略图点开大图 开始 -->
-      <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="pswp__bg"></div>
-        <div class="pswp__scroll-wrap">
-          <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-          </div>
-          <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-              <div class="pswp__counter"></div>
-              <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-              <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-              <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-              <div class="pswp__preloader">
-                <div class="pswp__preloader__icn">
-                  <div class="pswp__preloader__cut">
-                    <div class="pswp__preloader__donut"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-              <div class="pswp__share-tooltip"></div>
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-              <div class="pswp__caption__center"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--缩略图点开大图 结束 -->
+
     </div>
 </template>
 

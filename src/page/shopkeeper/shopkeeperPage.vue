@@ -26,11 +26,14 @@
         </a>
       </div>
       <div class="management">
-        <div class="titleIng">
-          <h4>经营数据</h4>
-          <em></em>
-          <span>更多数据</span>
-        </div>
+        <router-link to="dataCenter">
+          <div class="titleIng">
+            <h4>经营数据</h4>
+            <em></em>
+            <span>更多数据</span>
+          </div>
+        </router-link>
+
         <div class="todaySituation">
           <div class="todayInfo">
             <span>0笔</span>
@@ -46,8 +49,14 @@
           </div>
         </div>
         <div class="marketing">
-          <a href="#">营销助手</a>
-          <a href="#">高收益商品</a>
+          <router-link to="marketing">
+            营销助手
+          </router-link>
+          <router-link to="highlncome">
+            高收益商品
+          </router-link>
+
+
         </div>
       </div>
       <div class="reward">
@@ -91,22 +100,35 @@
         </div>
       </div>
       <div class="businessSchool">
-        <div class="titleIng">
+
+        <router-link to="businessSchool">
+          <div class="titleIng">
           <h4>商学院</h4>
           <em></em>
-        </div>
+          </div>
+        </router-link>
+
         <div class="schoolOper">
-          <a href="#"><img src="../../images/index/newBrochure.jpg"></a>
+          <router-link to="newBrochureInfo">
+            <img src="../../images/index/newBrochure.jpg">
+          </router-link>
           <a href="#"><img src="../../images/index/classMust.jpg"></a>
           <a href="#"><img src="../../images/index/demeanor.jpg"></a>
           <a href="#"><img src="../../images/index/activityInfo.jpg"></a>
         </div>
       </div>
       <div class="moreOpera">
-        <a href="#"><em class="manageIcon"></em><span>客户管理</span></a>
+        <router-link to="myClient">
+          <em class="manageIcon"></em><span>客户管理</span>
+        </router-link>
         <a href="#"><em class="saleIcon"></em><span>销售订单</span></a>
-        <a href="#"><em class="contactIcon"></em><span>联系我们</span></a>
-        <a href="#"><em class="forwardIcon"></em><span>提现</span></a>
+
+        <router-link to="shopkeeperContactUs">
+          <em class="contactIcon"></em><span>联系我们</span>
+        </router-link>
+        <router-link to="putForward">
+          <em class="forwardIcon"></em><span>提现</span>
+        </router-link>
         <a href="#"><em class="downloadIcon"></em><span>下载APP</span></a>
       </div>
     </div>

@@ -9,7 +9,6 @@
 
               <input type="text" v-model="kw" placeholder="搜索喜欢的宝贝">
 
-
           </div>
         </div>
       </header>
@@ -88,6 +87,7 @@
           productList:[],
           kw:'',
           noDataText:'我也是有底线的',
+          pageNumber:1,
         }
       },
       methods:{
@@ -110,14 +110,34 @@
           let _this=this
           axios.post('/api//api/wxapp/product/list',{
             "kw":_this.kw,
-            "page":1,
-            "limit":10
+            "page":_this.pageNumber,
+            "limit":2
+          })
+            .then(function (response) {
+              console.log(response)
+              if(response.data.code==200){
+                _this.productList=_this.productList.concat(response.data.list)
+              }else{
+
+              }
+
+            })
+            .catch(function (error) {
+              console.log(error);
+            })
+        },
+        refreshData(){
+          store.save("kw",this.kw)
+          let _this=this
+          axios.post(store.getAddress()+'/api/wxapp/product/list',{
+            "kw":_this.kw,
+            "page":_this.pageNumber,
+            "limit":2
           })
             .then(function (response) {
               console.log(response)
               if(response.data.code==200){
                 _this.productList=response.data.list
-
               }else{
 
               }
@@ -128,11 +148,16 @@
             })
         },
         infinite(){
+          this.pageNumber ++;
           console.log("加载更多")//加载更多，即往数据里面push新的数据，需要在原来的基础上继续加载剩余的数据
+          this.querySearchList();
           this.$refs.my_scroller.finishInfinite(true);
+          this.$refs.my_scroller.resize()
         },
         refresh(){
+          this.pageNumber = 1;
           console.log("重新加载")
+          this.refreshData();
           this.$refs.my_scroller.finishPullToRefresh()//结束动作，在完成调用时执行
 
         }
@@ -140,6 +165,7 @@
       },
       updated(){
         this.searchTab();
+
       },
 
 

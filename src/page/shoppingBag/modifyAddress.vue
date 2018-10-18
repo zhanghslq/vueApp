@@ -102,7 +102,7 @@
       methods:{
         deleteAddress(){
           var self =this;
-          axios.post('/api/api/wxapp/deliveryAddress/delete',{
+          axios.post(store.getAddress()+'/api/wxapp/deliveryAddress/delete',{
             "id":self.address_id
           }).then(function (responese) {
             let msg="删除成功";
@@ -122,7 +122,7 @@
         },
         updateAddress(){//提交更新
           var _this=this;
-          axios.post('/api/api/wxapp/deliveryAddress/add',{
+          axios.post(store.getAddress()+'/api/wxapp/deliveryAddress/add',{
             "id":_this.address_id,
             "uid":store.fetch("uid"),
             "consignee":_this.consignee,
@@ -172,7 +172,7 @@
 
         this.address_id=this.$route.params.id;
 
-        axios.post('/api/api/wxapp/deliveryAddress/item',{
+        axios.post(store.getAddress()+'/api/wxapp/deliveryAddress/item',{
          "id":_this.address_id
         }).then(function (responese) {
             console.log(responese)

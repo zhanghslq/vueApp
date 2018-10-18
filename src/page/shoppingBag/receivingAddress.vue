@@ -50,7 +50,7 @@
       },
       mounted:function () {
         var _this=this
-        axios.post('/api//api/wxapp/deliveryAddress/list',{
+        axios.post(store.getAddress()+'/api/wxapp/deliveryAddress/list',{
           "uid":store.fetch("uid")
         })
           .then(function (response) {

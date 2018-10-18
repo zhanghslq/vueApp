@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="overflow-y: hidden">
   <div id="top">
     <div class="addr">
       <div class="message"><span></span><em>5</em></div>
@@ -9,9 +9,9 @@
           <input type="text" placeholder="搜索喜欢的宝贝">
         </router-link>
       </div>
-<router-link to="selecTregion">
-  <a  class="cityCode">北京市 <em class="triangle"></em></a>
-</router-link>
+    <router-link to="selecTregion">
+      <a  class="cityCode">北京 <em class="triangle"></em></a>
+    </router-link>
 
     </div>
     <div class="swiper-container swiper-container-horizontal swiper-container-free-mode swiper-container-ios" id="nav">
@@ -25,7 +25,6 @@
   <div class="swiper-container  swiper-container-horizontal swiper-container-ios" id="page">
     <div class="swiper-wrapper">
       <div class="swiper-slide slidepage swiper-slide-active">
-
         <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
           <div class="swiper-wrapper">
             <div class="swiper-slide slidescroll">
@@ -36,10 +35,11 @@
                   <div id="carouselMain">
                     <div class="tempWrap">
                       <ul class="img">
-                        <li><a href="#"><img src="../../images/temporary/banner1.jpg"></a></li>
-                        <li><a href="#"><img src="../../images/temporary/banner2.jpg"></a></li>
-                        <li><a href="#"><img src="../../images/temporary/banner3.jpg"></a></li>
-                        <li><a href="#"><img src="../../images/temporary/banner4.jpg"></a></li>
+
+                        <li v-for="img in topImageList" :key="img.id">
+                          <a ><img :src="img.imgUrl"></a>
+                        </li>
+
                       </ul>
                     </div>
                     <div class="carouselBtn">
@@ -54,10 +54,19 @@
                 </div>
                 <!--二级导航-->
                 <div class="classification">
-                  <a href="tenCommendation.html"><em class="everydayIcon"></em> 每日十荐</a>
-                  <a href="newGrowGrass.html"><em class="shareIcon"></em> 新品种草</a>
-                  <a href="xingjiProduce.html"><em class="productIcon"></em> 猩际出品</a>
-                  <a href="#"><em class="classificaIcon"></em> 分类</a>
+                  <router-link to="tenCommendation">
+                    <em class="everydayIcon"></em> 每日十荐
+                  </router-link>
+                  <router-link to="newGrowGrass">
+
+                    <em class="shareIcon"></em> 新品种草
+                  </router-link>
+                  <router-link to="xingjiProduce" >
+
+                    <em class="productIcon"></em> 猩际出品
+                  </router-link>
+
+                  <a ><em class="classificaIcon"></em> 分类</a>
                 </div>
                 <div class="recommend">
                   <a href="#" class="recommendLeft"><img src="../../images/temporary/commodity1.jpg"></a>
@@ -72,7 +81,46 @@
                 <!--爆品秒杀-->
                 <div class="secKill">
                   <h2>爆品秒杀</h2>
+                  <div class="secKillMain">
+                    <div class="swiper-container1 flashSaleList">
+                      <div class="swiper-wrapper" id="bursting">
+                        <div class="swiper-slide bursNav burCur">昨日15:00</div>
+                        <div class="swiper-slide bursNav">昨日16:00</div>
 
+                      </div>
+                      <div class="burstCont">
+                        <div class="bursInfo" style="display: block;">
+
+                          <a href="#">
+                            <div class="burPic"><img src="../../images/temporary/commodity6.png"></div>
+                            <h5>美国儿童防晒霜</h5>
+                            <span>￥<em>79</em>.00</span>
+                          </a>
+
+                        </div>
+                        <div class="bursInfo">
+
+                          <a href="#">
+                            <div class="burPic"><img src="../../images/temporary/commodity6.png"></div>
+                            <h5>美国儿童防晒霜</h5>
+                            <span>￥<em>79</em>.00</span>
+                          </a>
+
+                        </div>
+                        <div class="bursInfo">
+
+                          <a href="#">
+                            <div class="burPic"><img src="../../images/temporary/commodity6.png"></div>
+                            <h5>美国儿童防晒霜</h5>
+                            <span>￥<em>79</em>.00</span>
+                          </a>
+
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <!--超值热卖-->
                 <div class="hotSelling">
@@ -145,6 +193,7 @@
           </div>
         </div>
       </div>
+
       <div class="swiper-slide slidepage swiper-slide-next">
         <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
           <div class="swiper-wrapper">
@@ -574,6 +623,7 @@
                 </div>
               </div>
             </div>
+
             <div class="swiper-slide slidescroll" >
               <div style="height: 10px; width: auto; background-color: red"></div>
             </div>
@@ -581,6 +631,7 @@
         </div>
       </div>
       <div class="swiper-slide slidepage">
+
         <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
           <div class="swiper-wrapper" style="height: auto">
             <div class="swiper-slide slidescroll" style="height: auto">
@@ -599,6 +650,9 @@
             </div>
           </div>
         </div>
+
+
+
       </div>
       <div class="swiper-slide slidepage">
         <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
@@ -742,7 +796,8 @@
                 </div>
               </div>
             </div>
-            <div  id="two2" class="swiper-slide slidescroll" > </div>
+            <div  id="two2" class="swiper-slide slidescroll" style="height: 500px; background-color: black"> </div>
+            <div  id="two3" class="swiper-slide slidescroll" > </div>
           </div>
         </div>
       </div>
@@ -1948,7 +2003,7 @@ import store from '../../service/store'
 import $ from 'jquery'
 import {TouchSlide} from '../../js/plugins/TouchSlide.1.1.min'
 import Swiper from 'swiper'
-
+import {swiper} from 'vue-awesome-swiper'
 import axios from 'axios'
 export default {
   name: 'index',
@@ -1956,17 +2011,19 @@ export default {
     return {
       topList:[],
       pageList:[],
+      topImageList:[],
+      listRecommendSpecial:[],
+      listSecKillSpecial:[],//爆款秒杀
 
     }
   },
+
   components: {
     Swiper,
     TouchSlide,
   },
   methods: {
     /*滑动导航切换内容*/
-
-
     bannerFocusImg: function () {
       TouchSlide({
         slideCell: '#carouselMain',
@@ -2032,7 +2089,7 @@ export default {
     freeMode: true,
     on: {
       init: function() {
-        console.log(this)
+
         navSlideWidth = this.slides.eq(0).css('width'); //导航字数需要统一,每个导航宽度一致
         bar = this.$el.find('.bar')
         bar.css('width', navSlideWidth)
@@ -2078,10 +2135,8 @@ export default {
       },
       transitionStart: function() {
         let activeIndex = this.activeIndex
-        console.log(activeIndex)
-        console.log(navSwiper.slides[activeIndex])
-        console.log(navSwiper)
-        console.log(this)
+
+
         let activeSlidePosition = navSwiper.slides[activeIndex].offsetLeft
 
         //释放时导航粉色条移动过渡
@@ -2128,11 +2183,26 @@ export default {
     var scrollSwiper = new Swiper('.scroll', {
     //65是头部的高
     //36是top地址和搜索的高
-    observer:true,
-    observerParents:true,
-    slidesOffsetBefore: 72,
-    direction: 'vertical',
-    freeMode: true,
+      observer:true,
+      slidesOffsetBefore: 72,
+      direction: 'vertical',
+      freeMode: true,
+      slidesPerView:1,
+      /*autoHeight:true,
+      slidesOffsetBefore: 72,
+      direction: 'vertical',
+      freeMode: true,
+      slidesPerView: 'auto',
+      nested:true,*/
+
+
+
+      mousewheel: {
+        releaseOnEdges: true,
+      },
+
+
+
     slidesOffsetAfter: -document.documentElement.clientHeight,
   })
 },
@@ -2147,10 +2217,13 @@ export default {
   },
   updated(){
     this.navTab();
+
     this.timeLimit();         //限时抢购滑动图
     this.makeUpone();         //美妆护肤下面的滑动列表
     this.beautyImg();
     this.bannerFocusImg();
+
+
   },
   activated(){
     var mobile = this.$route.params.city
@@ -2160,7 +2233,7 @@ export default {
     }
   },
   created(){
-    axios.post('/api/api/wxapp/category/listTop',{
+    axios.post(store.getAddress()+'/api/wxapp/category/listTop',{
     }).then(function (response) {
       console.log(response)
       if (response.data.code == 200) {
@@ -2171,13 +2244,44 @@ export default {
     }).catch(function (error) {
       console.log(error);
     })
+
+  },
+  destroyed(){
+    $('#bursting .swiper-slide').unbind("click")
   },
   mounted () {
+    //爆口秒杀 通过lass调取，一句可以搞定，用于页面中可能有多个导航的情况
+    $('#bursting .swiper-slide').click(function(){
+      var i=$(this).index();
+      var $this = $(this);
+      $("#bursting .swiper-slide").removeClass("burCur");
+      $this.addClass('burCur');
+      $(".burstCont .bursInfo:eq("+i+")").show().siblings().hide();
+    });
+
     let _this=this;
+    axios.post(store.getAddress()+'/api/wxapp/home/listTopSpecial',{
+    }).then(function (response) {
+      console.log(response)
+      if (response.data.code == 200) {
+        console.log(response)
+        _this.topImageList=response.data.list
+
+
+
+      } else {
+
+      }
+    }).catch(function (error) {
+      console.log(error);
+    })
+
+
+
     if(store.fetch("topList")!=null){
       _this.topList=store.fetch("topList")
     }else {
-      axios.post('/api/api/wxapp/category/listTop',{
+      axios.post(store.getAddress()+'/api/wxapp/category/listTop',{
       }).then(function (response) {
         console.log(response)
         if (response.data.code == 200) {
@@ -2202,9 +2306,17 @@ export default {
 }
 </script>
 <style scoped>
-
-  /*@import '../../css/plugins/swiper.min.css';*/
+  @import '../../css/plugins/swiper.min.css';
   @import '../../css/plugins/plugIn.css';
   @import "../../css/common/common.css";
   @import '../../css/other/index.css';
 </style>
+<style scoped>
+  .swiper-slide {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    overflow: auto;
+  }
+</style>
+

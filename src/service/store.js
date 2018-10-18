@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import {getAddress} from "./getData";
 Vue.use(Vuex)
 export default {
 
@@ -12,7 +13,10 @@ export default {
     return window.JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
 
   },
-
+  getAddress: function() {//获取域名，浏览器测试的时候，跨域访问，真机的时候直接配置地址
+    //return "https://xj.api.rovectin.cn";
+     return "/api";
+  },
   save: function(STORAGE_KEY,items) {
 
     window.localStorage.setItem(STORAGE_KEY, window.JSON.stringify(items))
@@ -22,7 +26,7 @@ export default {
       var self=this;
       if(self.fetch("prov_ids")==null){
         console.log("获取省份")
-        axios.post("/api/api/wxapp/district/listProvinceForH5")
+        axios.post(getAddress+"/api/wxapp/district/listProvinceForH5")
           .then(function (responese) {
             if(responese.data.code==200){
               self.save("prov_ids",responese.data.list)
@@ -34,7 +38,7 @@ export default {
         })
       }
       if(self.fetch("city_ids")==null){
-        axios.post("/api/api/wxapp/district/listCityForH5")
+        axios.post(getAddress+"/api/wxapp/district/listCityForH5")
           .then(function (responese) {
             if(responese.data.code==200){
               self.save("city_ids",window.JSON.parse(responese.data.list))
@@ -46,7 +50,7 @@ export default {
         })
       }
       if(self.fetch("area_ids")==null){
-        axios.post("/api/api/wxapp/district/listDistForH5")
+        axios.post(getAddress+"/api/wxapp/district/listDistForH5")
           .then(function (responese) {
             if(responese.data.code==200){
               self.save("area_ids",window.JSON.parse(responese.data.list))
@@ -57,7 +61,7 @@ export default {
             console.log(err)
         })
       }
-  }
+  },
 
 
 
