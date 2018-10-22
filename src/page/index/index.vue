@@ -69,12 +69,12 @@
                   <a ><em class="classificaIcon"></em> 分类</a>
                 </div>
                 <div class="recommend">
-                  <a href="#" class="recommendLeft"><img src="../../images/temporary/commodity1.jpg"></a>
+                  <a  class="recommendLeft" v-if="listRecommendSpecial[0]!=undefined" ><img :src="listRecommendSpecial[0].imgUrl"></a>
                   <div class="recommendRight">
-                    <a href="#" class="rightOne"><img src="../../images/temporary/commodity2.jpg"></a>
+                    <a class="rightOne" v-if="listRecommendSpecial[1]!=undefined"><img :src="listRecommendSpecial[1].imgUrl"></a>
                     <div class="rightTwo">
-                      <a href="#" class="rightTwoLeft"><img src="../../images/temporary/commodity3.jpg"></a>
-                      <a href="#" class="rightTwoRight"><img src="../../images/temporary/commodity4.jpg"></a>
+                      <a  class="rightTwoLeft" v-if="listRecommendSpecial[2]!=undefined"><img :src="listRecommendSpecial[2].imgUrl"></a>
+                      <a  class="rightTwoRight" v-if="listRecommendSpecial[3]!=undefined"><img :src="listRecommendSpecial[3].imgUrl"></a>
                     </div>
                   </div>
                 </div>
@@ -83,40 +83,37 @@
                   <h2>爆品秒杀</h2>
                   <div class="secKillMain">
                     <div class="swiper-container1 flashSaleList">
-                      <div class="swiper-wrapper" id="bursting">
-                        <div class="swiper-slide bursNav burCur">昨日15:00</div>
-                        <div class="swiper-slide bursNav">昨日16:00</div>
+                      <div class="swiper-wrapper" id="bursting" >
+
+                          <div v-for="(items ,index) in listSecKillSpecial"  :class="index === 0?'swiper-slide bursNav burCur ':'swiper-slide bursNav'" >
+
+                            {{items.name}}
+
+                          </div>
+
+
+
 
                       </div>
-                      <div class="burstCont">
-                        <div class="bursInfo" style="display: block;">
-
-                          <a href="#">
-                            <div class="burPic"><img src="../../images/temporary/commodity6.png"></div>
-                            <h5>美国儿童防晒霜</h5>
-                            <span>￥<em>79</em>.00</span>
-                          </a>
-
+                      <div class="burstCont" v-for="(items ,index) in listSecKillSpecial">
+                        <div v-if="index==0">
+                          <div class="bursInfo" style="display: block;"  v-for="item in items.list">
+                            <a>
+                              <div class="burPic"><img :src="item.productTitleImage"></div>
+                              <h5>{{item.productTitle}}</h5>
+                              <span>￥<em>{{item.msPrice}}</em>.00</span>
+                            </a>
+                          </div>
                         </div>
-                        <div class="bursInfo">
-
-                          <a href="#">
-                            <div class="burPic"><img src="../../images/temporary/commodity6.png"></div>
-                            <h5>美国儿童防晒霜</h5>
-                            <span>￥<em>79</em>.00</span>
-                          </a>
-
+                        <div v-else>
+                          <div class="bursInfo" v-for="item in items.list">
+                            <a >
+                              <div class="burPic"><img :src="item.productTitleImage"></div>
+                              <h5>{{item.productTitle}}</h5>
+                              <span>￥<em>{{item.msPrice}}</em>.00</span>
+                            </a>
+                          </div>
                         </div>
-                        <div class="bursInfo">
-
-                          <a href="#">
-                            <div class="burPic"><img src="../../images/temporary/commodity6.png"></div>
-                            <h5>美国儿童防晒霜</h5>
-                            <span>￥<em>79</em>.00</span>
-                          </a>
-
-                        </div>
-
 
                       </div>
                     </div>
@@ -126,7 +123,7 @@
                 <div class="hotSelling">
                   <h2>超值热卖</h2>
                   <div class="hotMain">
-                    <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
+                    <a v-for="item in listHotSellSpecial"><img :src="item.imgUrl"></a>
 
                   </div>
                 </div>
@@ -2003,17 +2000,18 @@ import store from '../../service/store'
 import $ from 'jquery'
 import {TouchSlide} from '../../js/plugins/TouchSlide.1.1.min'
 import Swiper from 'swiper'
-import {swiper} from 'vue-awesome-swiper'
+
 import axios from 'axios'
 export default {
   name: 'index',
   data () {
     return {
-      topList:[],
+      topList:[],//首页置顶导航
       pageList:[],
-      topImageList:[],
-      listRecommendSpecial:[],
+      topImageList:[],//首页轮播
+      listRecommendSpecial:[],//推荐
       listSecKillSpecial:[],//爆款秒杀
+      listHotSellSpecial:[],//热卖
 
     }
   },
@@ -2056,14 +2054,14 @@ export default {
 },
     /*限时抢购*/
     timeLimit: function (){
-  var swiper1 = new Swiper('.swiper-container1', {
-    slidesPerView: 3,
-    pagination: {
-      el: '.swiper-pagination1',
-      clickable: true,
+      var swiper1 = new Swiper('.swiper-container1', {
+        slidesPerView: 3,
+        pagination: {
+          el: '.swiper-pagination1',
+          clickable: true,
+        },
+      });
     },
-  });
-},
     /*美妆护肤下面的滑动列表*/
     makeUpone: function (){
     var swiper1 = new Swiper('.swiper-container2', {
@@ -2085,6 +2083,8 @@ export default {
   let navSlideWidth;
   let  navWidth;
   var navSwiper = new Swiper('#nav', {
+    //observer:true,//修改swiper自己或子元素时，自动初始化swiper
+    //observeParents:true,//修改swiper的父元素时，自动初始化swiper
     slidesPerView: 5,
     freeMode: true,
     on: {
@@ -2109,6 +2109,8 @@ export default {
   });
   let progress;
   var pageSwiper = new Swiper('#page', {
+    observer:true,//修改swiper自己或子元素时，自动初始化swiper
+    //observeParents:true,//修改swiper的父元素时，自动初始化swiper
     autoHeight: true, //高度随内容变化
     watchSlidesProgress: true,
     resistanceRatio: 0,
@@ -2183,7 +2185,9 @@ export default {
     var scrollSwiper = new Swiper('.scroll', {
     //65是头部的高
     //36是top地址和搜索的高
-      observer:true,
+      observer:true,//修改swiper自己或子元素时，自动初始化swiper
+      //observeParents:true,//修改swiper的父元素时，自动初始化swiper
+
       slidesOffsetBefore: 72,
       direction: 'vertical',
       freeMode: true,
@@ -2194,13 +2198,6 @@ export default {
       freeMode: true,
       slidesPerView: 'auto',
       nested:true,*/
-
-
-
-      mousewheel: {
-        releaseOnEdges: true,
-      },
-
 
 
     slidesOffsetAfter: -document.documentElement.clientHeight,
@@ -2215,14 +2212,15 @@ export default {
 
     next()
   },
+  watch:{
+    /*topList:function (value,oldValue) {
+      this.navTab();
+    }*/
+  },
   updated(){
-    this.navTab();
 
     this.timeLimit();         //限时抢购滑动图
     this.makeUpone();         //美妆护肤下面的滑动列表
-    this.beautyImg();
-    this.bannerFocusImg();
-
 
   },
   activated(){
@@ -2233,32 +2231,14 @@ export default {
     }
   },
   created(){
-    axios.post(store.getAddress()+'/api/wxapp/category/listTop',{
-    }).then(function (response) {
-      console.log(response)
-      if (response.data.code == 200) {
-        store.save("topList",response.data.list)
-      } else {
 
-      }
-    }).catch(function (error) {
-      console.log(error);
-    })
 
   },
   destroyed(){
     $('#bursting .swiper-slide').unbind("click")
   },
   mounted () {
-    //爆口秒杀 通过lass调取，一句可以搞定，用于页面中可能有多个导航的情况
-    $('#bursting .swiper-slide').click(function(){
-      var i=$(this).index();
-      var $this = $(this);
-      $("#bursting .swiper-slide").removeClass("burCur");
-      $this.addClass('burCur');
-      $(".burstCont .bursInfo:eq("+i+")").show().siblings().hide();
-    });
-
+    this.beautyImg();
     let _this=this;
     axios.post(store.getAddress()+'/api/wxapp/home/listTopSpecial',{
     }).then(function (response) {
@@ -2267,7 +2247,10 @@ export default {
         console.log(response)
         _this.topImageList=response.data.list
 
+        _this.$nextTick(function () {
 
+          _this.bannerFocusImg();
+        })
 
       } else {
 
@@ -2277,15 +2260,14 @@ export default {
     })
 
 
-
-    if(store.fetch("topList")!=null){
-      _this.topList=store.fetch("topList")
-    }else {
       axios.post(store.getAddress()+'/api/wxapp/category/listTop',{
       }).then(function (response) {
         console.log(response)
         if (response.data.code == 200) {
           _this.topList=response.data.list
+          _this.$nextTick(function () {
+            _this.navTab();
+          })
         } else {
 
         }
@@ -2293,7 +2275,59 @@ export default {
         console.log(error);
       })
 
-    }
+    //推荐
+    axios.post(store.getAddress()+'/api/wxapp/home/listRecommendSpecial',{
+    }).then(function (response) {
+      console.log(response)
+      if (response.data.code == 200) {
+        _this.listRecommendSpecial=response.data.list
+
+      } else {
+
+      }
+    }).catch(function (error) {
+      console.log(error);
+    })
+    axios.post(store.getAddress()+'/api/wxapp/home/listHotSellSpecial',{
+    }).then(function (response) {
+      console.log(response)
+      if (response.data.code == 200) {
+        _this.listHotSellSpecial=response.data.list
+
+      } else {
+
+      }
+    }).catch(function (error) {
+      console.log(error);
+    })
+
+    //爆款秒杀
+    axios.post(store.getAddress()+'/api/wxapp/home/listSecKillSpecial',{
+    }).then(function (response) {
+      console.log(response)
+      if (response.data.code == 200) {
+        _this.listSecKillSpecial=response.data.list
+        _this.$nextTick(function () {
+          //爆口秒杀 通过lass调取，一句可以搞定，用于页面中可能有多个导航的情况
+          _this.timeLimit();
+          $('#bursting .swiper-slide').click(function(){
+            var i=$(this).index();
+            var $this = $(this);
+            $("#bursting .swiper-slide").removeClass("burCur");
+            $this.addClass('burCur');
+            $(".burstCont .bursInfo:eq("+i+")").show().siblings().hide();
+          });
+        })
+      } else {
+
+      }
+    }).catch(function (error) {
+      console.log(error);
+    })
+
+
+
+
 
 
     $("#two2").attr("height",$("#two").attr("height"))

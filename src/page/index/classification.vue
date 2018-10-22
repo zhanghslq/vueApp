@@ -1056,24 +1056,29 @@
 
 <script>
 
-  window.onload = function()
-  {
-    var $li = $('.leftnavList a');
-    var $ul = $('.rightContent .contentIng');
-    $li.click(function(){
-      var $this = $(this);
-      var $t = $this.index();
-      $li.removeClass();
-      $this.addClass('Cur');
-      $ul.css('display','none');
-      $ul.eq($t).css('display','block');
-    })
-  }
+ import $ from 'jquery'
     export default {
-        name: "classification"
+        name: "classification",
+      mounted(){
+        var $li = $('.leftnavList a');
+        var $ul = $('.rightContent .contentIng');
+        $li.click(function(){
+          var $this = $(this);
+          var $t = $this.index();
+          $li.removeClass();
+          $this.addClass('Cur');
+          $ul.css('display','none');
+          $ul.eq($t).css('display','block');
+        })
+      },
+      destroyed(){
+        $('.leftnavList a').unbind("click")
+      }
     }
 </script>
 
 <style scoped>
+  @import "../../css/plugins/swiper.min.css";
+  @import "../../css/common/common.css";
 @import "../../css/other/secondLevel.css";
 </style>

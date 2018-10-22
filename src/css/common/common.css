@@ -446,6 +446,14 @@ header .releaseBtn{
     left: 0;
     z-index: 99999;
 }
+.elasticBox .boxContent{
+  height: 6.5rem;
+  overflow-y: auto;
+}
+.choicElastic .choicCont .choicMain{
+  height: 5rem;
+  overflow-y: auto;
+}
 .boxContent .boxMain{
   height: 6rem;
   overflow-y: auto;

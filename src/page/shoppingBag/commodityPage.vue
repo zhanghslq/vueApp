@@ -189,12 +189,12 @@
             <div class="plateTitle">商品信息</div>
             <ul class="commodityInfo">
               <li><label>品牌</label><span>{{brandName}}</span></li>
-              <li><label>国家</label><span>韩国</span></li>
+              <li><label>国家</label><span>{{locality}}</span></li>
               <li><label>保质期</label><span>3年</span></li>
-              <li><label>规格</label><span>{{currentSku.skuName}}</span></li>
+              <li><label>规格</label><span></span></li>
               <li><label>产地</label><span>富川</span></li>
-              <li><label>快递信息</label><span>全国发货</span></li>
-              <li><label>服务信息</label><span>有商家从山东威海发货</span></li>
+              <li><label>快递信息</label><span>{{expressInfo}}</span></li>
+              <li><label>服务信息</label><span>{{serviceInfo}}</span></li>
             </ul>
             <div class="detailCont" v-html="detailsContent">
               <!--<img src="../../images/temporary/12.jpg">
@@ -250,14 +250,16 @@
               </div>
               <a href="javascript:void(0);" class="closeBtning"></a>
             </div>
-            <div class="colourInfo">
-              <div class="infoTitle">颜色</div>
+            <div class="choicMain">
+            <div class="colourInfo" v-for="skuItem in skuTags">
+              <div class="infoTitle">{{skuItem.tagsName}}</div>
               <ul>
-                <li class="Cur">黑色</li>
-                <li>黑色</li>
-                <li>黑色</li>
+                <li  v-for="(ite,index) in skuItem.tagsValue" :class="{'Cur' : index == 0 }" >{{ite}}</li>
+
               </ul>
             </div>
+
+
             <div class="numbers">
               <div class="numLeft">数量</div>
               <div class="numRight">
@@ -267,6 +269,7 @@
               </div>
             </div>
             <a  class="addCart">加入购物袋</a>
+            </div>
           </div>
         </div>
       </div>
@@ -322,6 +325,13 @@ export default {
       brandName:'',
       categoryName:'',
       currentSku:{},//当前sku规格
+      locality:'',//国家
+      expressInfo:'',
+      serviceInfo:'',
+      //先暂定颜色规格需要选择
+      colorValueId:'',//颜色id
+      specificationValueId:'',//规格id
+      skuTags:[],//商品的所有规格
 
     }
   },
@@ -477,8 +487,10 @@ export default {
           _this.productTitle=responese.data.data.productTitle
           _this.brandName=responese.data.data.brandName
           _this.currentSku=responese.data.data.currentSku
-
-
+          _this.locality=responese.data.data.locality
+          _this.expressInfo=responese.data.data.expressInfo
+          _this.serviceInfo=responese.data.data.serviceInfo
+          _this.skuTags=responese.data.data.skuTags
 
           console.log(responese)
 

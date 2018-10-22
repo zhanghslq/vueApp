@@ -28,6 +28,7 @@
             </a>
           </div>
           <scroller class="searchCont" :on-infinite="infinite"  :on-refresh = "refresh" ref="my_scroller" :noDataText="noDataText">
+
             <div class="searchContInfo" style="display: block;">
               <router-link :to="{name:'commodityPage',params:{'id':product.id,'skuId':product.skuId}}" v-for="(product,index) in productList" :key="index">
                 <div class="infoPic"><img :src="product.titleImage"></div>
@@ -111,7 +112,7 @@
           axios.post('/api//api/wxapp/product/list',{
             "kw":_this.kw,
             "page":_this.pageNumber,
-            "limit":2
+            "limit":10
           })
             .then(function (response) {
               console.log(response)
@@ -132,7 +133,7 @@
           axios.post(store.getAddress()+'/api/wxapp/product/list',{
             "kw":_this.kw,
             "page":_this.pageNumber,
-            "limit":2
+            "limit":10
           })
             .then(function (response) {
               console.log(response)
@@ -167,8 +168,6 @@
         this.searchTab();
 
       },
-
-
       destroyed(){
         console.log("销毁searchList")
       },

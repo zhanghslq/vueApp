@@ -246,6 +246,7 @@
               </div>
               <a href="javascript:void(0);" class="closeBtning"></a>
             </div>
+          <div class="choicMain">
             <div class="colourInfo">
               <div class="infoTitle">颜色</div>
               <ul>
@@ -263,6 +264,7 @@
               </div>
             </div>
             <a href="#" class="addCart">加入购物袋</a>
+          </div>
           </div>
         </div>
       </div>

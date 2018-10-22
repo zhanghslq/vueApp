@@ -14,6 +14,7 @@ import classificationTwoPage from '../page/index/classificationTwoPage'
 import popularBrand from '../page/index/popularBrand'
 import searchList from '../page/index/searchList'
 import selecTregion from '../page/index/selecTregion'
+import xingjiProduce from '../page/index/xingjiProduce'
 
 import dynamicDetails from '../page/find/dynamicDetails'
 import demo from '../page/demo/demo'
@@ -100,6 +101,7 @@ import putForwardAdminist from '../page/shopkeeper/putForwardAdminist'
 import salesOrder from '../page/shopkeeper/salesOrder'
 import shopkeSelection from '../page/shopkeeper/shopkeSelection'
 import dataCenter from '../page/shopkeeper/dataCenter'
+import manageSystem from '../page/shopkeeper/manageSystem'
 
 import receivingAddress from '../page/shoppingBag/receivingAddress'
 import tradeFail from '../page/shoppingBag/tradeFail'
@@ -116,6 +118,14 @@ export default new Router({
       },
       name:'editAddress',
       component:editAddress
+    },{
+      path:'/manageSystem',
+      name:'manageSystem',
+      component:manageSystem
+    },{
+      path:'/xingjiProduce',
+      name:'xingjiProduce',
+      component:xingjiProduce
     },{
       path:'/placeOrder',
       name:'placeOrder',
