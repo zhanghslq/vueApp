@@ -12,7 +12,10 @@
           <div class="helpTop">
             <a href="#"><em class="automatic"></em>自动退款</a>
             <a href="#"><em class="progress"></em>退款进度</a>
-            <a href="#"><em class="feedback"></em>问题反馈</a>
+            <router-link to="opinionFeedback">
+              <em class="feedback"></em>问题反馈
+            </router-link>
+
           </div>
           <div class="helpMiddle">
             <div class="middleInfo">
@@ -21,7 +24,10 @@
                 <span>购物下单</span>
               </a>
               <div class="middleRight">
-                <a href="#">多笔订单能否一起发货</a>
+                <router-link to="questionAnswer">
+                  多笔订单能否一起发货
+                </router-link>
+
                 <a href="#">为什么要提供身份信息</a>
               </div>
             </div>

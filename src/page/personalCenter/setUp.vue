@@ -21,38 +21,38 @@
             如果你要关闭或开启消息提醒，请在“设置”-“通知”功能中，找到“猩际优选”更改 <a href="#">去更改</a>
           </div>
           <div class="accoutnInfo">
-            <a href="javascript:void(0);">
+            <router-link to="accountInfo">
               <span class="infoLeft">账号信息</span>
               <div class="infoRight">
                 <em></em>
               </div>
-            </a>
+            </router-link>
           </div>
           <div class="accoutnInfo">
-            <a href="javascript:void(0);">
+            <router-link to="receivingAddress">
               <span class="infoLeft">收货管理地址</span>
               <div class="infoRight">
                 <em></em>
               </div>
-            </a>
+            </router-link>
           </div>
-          <div class="accoutnInfo">
+          <!--<div class="accoutnInfo">
             <a href="javascript:void(0);">
               <span class="infoLeft">清除缓存</span>
               <div class="infoRight">
                 <span>325M</span>
               </div>
             </a>
-          </div>
+          </div>-->
           <div class="accoutnInfo">
-            <a href="javascript:void(0);">
+            <router-link to="aboutUS">
               <span class="infoLeft">关于我们</span>
               <div class="infoRight">
                 <em></em>
               </div>
-            </a>
+            </router-link>
           </div>
-          <a href="javascript:void(0);" class="signOutBtn">退出当前账号</a>
+          <a v-on:click="logOut()" class="signOutBtn">退出当前账号</a>
         </div>
       </main>
       <!--中间 结束-->
@@ -60,8 +60,14 @@
 </template>
 
 <script>
+
     export default {
-        name: "setUp"
+        name: "setUp",
+        methods:{
+            logOut(){
+             localStorage.removeItem("uid")
+            }
+        }
     }
 </script>
 

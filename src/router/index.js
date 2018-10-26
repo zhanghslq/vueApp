@@ -54,6 +54,8 @@ import orderDetailsRefund from '../page/personalCenter/orderDetailsRefund'
 import modifyAutograph from '../page/personalCenter/modifyAutograph'
 import modifyWechat from '../page/personalCenter/modifyWechat'
 import helpService from '../page/personalCenter/helpService'
+import opinionFeedback from '../page/personalCenter/opinionFeedback'
+import questionAnswer from '../page/personalCenter/questionAnswer'
 
 import newlyAddress from '../page/shoppingBag/newlyAddress'
 import editAddress from '../page/shoppingBag/editAddress'
@@ -102,6 +104,7 @@ import salesOrder from '../page/shopkeeper/salesOrder'
 import shopkeSelection from '../page/shopkeeper/shopkeSelection'
 import dataCenter from '../page/shopkeeper/dataCenter'
 import manageSystem from '../page/shopkeeper/manageSystem'
+import codeShare from '../page/shopkeeper/codeShare'
 
 import receivingAddress from '../page/shoppingBag/receivingAddress'
 import tradeFail from '../page/shoppingBag/tradeFail'
@@ -122,6 +125,18 @@ export default new Router({
       path:'/manageSystem',
       name:'manageSystem',
       component:manageSystem
+    },{
+      path:'/questionAnswer',
+      name:'questionAnswer',
+      component:questionAnswer
+    },{
+      path:'/codeShare',
+      name:'codeShare',
+      component:codeShare
+    },{
+      path:'/opinionFeedback',
+      name:'opinionFeedback',
+      component:opinionFeedback
     },{
       path:'/xingjiProduce',
       name:'xingjiProduce',

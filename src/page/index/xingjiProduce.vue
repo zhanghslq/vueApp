@@ -1,15 +1,15 @@
 <template>
 <div>
-  <header>
+  <header class="fix">
     <a href="javascript:history.go(-1);" class="returnBtn"></a>
     猩际出品
     <a href="#" class="shareBtn"></a>
   </header>
   <!--头部 结束-->
   <!--中间 开始-->
-  <main>
+  <main >
     <!--轮播图-->
-    <div class="carouseContent">
+    <div class="carouseContent" style="margin-top: 0.9rem;">
       <div id="carouselMain">
         <div class="tempWrap">
           <ul class="img">
@@ -116,11 +116,14 @@
           <div class="swiper-container swiper-container-horizontal swiper-container-free-mode swiper-container-ios" id="nav">
             <div class="swiper-wrapper">
               <div class="swiper-slide swiper-slide-active"><span>精致生活</span></div>
-              <div class="swiper-slide"><span>中国美食</span></div>
+              <div class="swiper-slide " ><span>中国美食</span></div>
               <div class="swiper-slide"><span>手工之美</span></div>
               <div class="swiper-slide"><span>舒适生活</span></div>
               <div class="swiper-slide"><span>进口滋补</span></div>
               <div class="swiper-slide"><span>健康生活</span></div>
+              <div class="bar">
+                <div class="color"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -321,6 +324,7 @@
               </ul>
             </div>
             <div class="swiper-slide slidepage swiper-slide-active topDistance">
+
               <div class="describeInfo">
                 <h4>手/工/之/美</h4>
                 <p>爱自己爱生活</p>
@@ -754,8 +758,7 @@
    let  navWidth;
 
   //暂时设计每个slide大小需要一致
-  barwidth = 36 //导航粉色条的长度px
-  tSpeed = 300 //切换速度300ms
+
   var navSwiper = new Swiper('#nav', {
     slidesPerView: 4.5,
     freeMode: true,
@@ -769,7 +772,7 @@
 
         clientWidth = parseInt(this.$wrapperEl.css('width')) //Nav的可视宽度
         navWidth = 0
-        for (i = 0; i < this.slides.length; i++) {
+        for (let i = 0; i < this.slides.length; i++) {
           navWidth += parseInt(this.slides.eq(i).css('width'))
         }
 
@@ -779,6 +782,7 @@
 
     },
   });
+  let progress;
 
   var pageSwiper = new Swiper('#page', {
     watchSlidesProgress: true,
@@ -789,19 +793,19 @@
         bar.transition(0)
         bar.transform('translateX(' + navSum * progress + 'px)')
         //粉色255,72,145灰色51,51,51
-        for (i = 0; i < this.slides.length; i++) {
-          slideProgress = this.slides[i].progress
+        for (let i = 0; i < this.slides.length; i++) {
+         let  slideProgress = this.slides[i].progress
           if (Math.abs(slideProgress) < 1) {
-            r = Math.floor((102 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
-            g = Math.floor((102 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
-            b = Math.floor((102 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
+            let r = Math.floor((102 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
+            let g = Math.floor((102 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
+            let b = Math.floor((102 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
             navSwiper.slides.eq(i).find('span').css('color', 'rgba(' + r + ',' + g + ',' + b + ',1)')
           }
         }
       },
       transitionStart: function() {
-        activeIndex = this.activeIndex
-        activeSlidePosition = navSwiper.slides[activeIndex].offsetLeft
+        let activeIndex = this.activeIndex
+        let activeSlidePosition = navSwiper.slides[activeIndex].offsetLeft
         //释放时导航粉色条移动过渡
         bar.transition(tSpeed)
         bar.transform('translateX(' + activeSlidePosition + 'px)')
@@ -817,7 +821,7 @@
           navSwiper.slides.eq(activeIndex + 1).find('span').css('color', 'rgba(102,102,102,1)')
         }
         //导航居中
-        navActiveSlideLeft = navSwiper.slides[activeIndex].offsetLeft //activeSlide距左边的距离
+       let  navActiveSlideLeft = navSwiper.slides[activeIndex].offsetLeft //activeSlide距左边的距离
 
         navSwiper.setTransition(tSpeed)
         if (navActiveSlideLeft < (clientWidth - parseInt(navSlideWidth)) / 2) {
@@ -837,92 +841,18 @@
   })
   navSwiper.on('tap', function(e) {
 
-    clickIndex = this.clickedIndex
-    clickSlide = this.slides.eq(clickIndex)
+    let clickIndex = this.clickedIndex
+    let clickSlide = this.slides.eq(clickIndex)
     pageSwiper.slideTo(clickIndex, 0);
     this.slides.find('span').css('color', 'rgba(102,102,102,1)');
     clickSlide.find('span').css('color', 'rgba(102,102,102,1)');
   })
-
-  //内容滚动
-  var scrollSwiper = new Swiper('.scroll', {
-    //65是头部的高
-    //36是top地址和搜索的高
-
-    slidesOffsetBefore: 72,
-    direction: 'vertical',
-    freeMode: true,
-    slidesPerView: 'auto',
-
-    mousewheel: {
-      releaseOnEdges: true,
-    },
-    on: {
-      touchMove: function() {
-
-        if (this.translate > 72 - 36 && this.translate < 72) {
-          topBar.transform('translateY(' + (this.translate - 72) + 'px)');
-        }
-
-      },
-      touchStart: function() {
-        startPosition = this.translate
-      },
-      touchEnd: function() {
-        topBar.transition(tSpeed)
-        if (this.translate > 36 && this.translate < 72 && this.translate < startPosition) {
-          topBar.transform('translateY(-36px)');
-          for (sc = 0; sc < scrollSwiper.length; sc++) {
-            if (scrollSwiper[sc].translate > 36) {
-              scrollSwiper[sc].setTransition(tSpeed);
-              scrollSwiper[sc].setTranslate(36)
-            }
-          }
-        }
-        if (this.translate > 36 && this.translate < 72 && this.translate > startPosition) {
-          topBar.transform('translateY(0px)');
-          for (sc = 0; sc < scrollSwiper.length; sc++) {
-            if (scrollSwiper[sc].translate < 72 && scrollSwiper[sc].translate > 0) {
-              scrollSwiper[sc].setTransition(tSpeed);
-              scrollSwiper[sc].setTranslate(72)
-            }
-          }
-        }
-      },
-
-      transitionStart: function() {
-
-        topBar.transition(tSpeed)
-        if (this.translate < 72 - 36) {
-          topBar.transform('translateY(-36px)');
-          if (scrollSwiper) {
-            for (sc = 0; sc < scrollSwiper.length; sc++) {
-              if (scrollSwiper[sc].translate > 36) {
-                scrollSwiper[sc].setTransition(tSpeed);
-                scrollSwiper[sc].setTranslate(36)
-              }
-            }
-          }
-
-        } else {
-          topBar.transform('translateY(0px)');
-
-          if (scrollSwiper) {
-            for (sc = 0; sc < scrollSwiper.length; sc++) {
-              if (scrollSwiper[sc].translate < 72 && scrollSwiper[sc].translate > 0) {
-                scrollSwiper[sc].setTransition(tSpeed);
-                scrollSwiper[sc].setTranslate(72)
-              }
-            }
-          }
-        }
-      },
-    }
-
-  })
 }
 
 },
+    destroyed(){
+      $(window).unbind()
+    },
   mounted(){
     this.bannerFocusImg();
     this.produceList();
@@ -939,7 +869,7 @@
   }
 }
 </script>
-<style scoped src="">
+<style scoped>
   @import "../../css/common/common.css";
   @import "../../css/other/secondLevel.css";
   @import "../../css/plugins/swiper.min.css";

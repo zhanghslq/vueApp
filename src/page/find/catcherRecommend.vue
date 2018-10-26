@@ -90,6 +90,9 @@
           })
         }
       },
+      destroyed(){
+        $(window).unbind("scroll")
+      },
       mounted: function () {
         this.commodity();
         $(window).scroll(function(){

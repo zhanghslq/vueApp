@@ -10,10 +10,11 @@
       <main>
         <div class="findPageMain">
           <div class="special">
-            <a  class="specialTitle">
+            <router-link class="specialTitle" to="newGrowGrass">
               <span>专题精选</span>
               <em></em>
-            </a>
+            </router-link>
+
             <div class="swiper-container1">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">

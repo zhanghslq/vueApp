@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--头部 开始-->
-    <header>
+    <header class="fix">
       <a href="javascript:history.go(-1);" class="returnBtn"></a>
         每日十荐
       <a href="#" class="shareBtn"></a>

@@ -13,8 +13,9 @@ export default {
     return window.JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
 
   },
+
   getAddress: function() {//获取域名，浏览器测试的时候，跨域访问，真机的时候直接配置地址
-    //return "https://xj.api.rovectin.cn";
+    //return "https://api.xingjiyouxuan.com";
      return "/api";
   },
   save: function(STORAGE_KEY,items) {

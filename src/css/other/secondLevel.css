@@ -543,7 +543,7 @@
 /*搜索 结束*/
 /*搜索列表 开始*/
 .searchListMain{
-	position: relative;
+	/*position: relative;*/
 }
 .searchListMain .sortIcon{
 	width:0.11rem;

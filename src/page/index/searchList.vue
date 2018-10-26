@@ -93,19 +93,19 @@
       },
       methods:{
         searchTab:function (){
-    var $li = $('.tabNav a');
-    var $ul = $('.searchCont .searchContInfo');
-    $("#navcon01").css('height',$ul.eq(0).height())
-    $li.click(function(){
-      var $this = $(this);
-      var $t = $this.index();
-      $li.removeClass();
-      $this.addClass('Cur');
-      $ul.css('display','none');
-      $ul.eq($t).css('display','block');
-      $("#navcon01").css('height',$ul.eq($t).height())
-    })
-  },
+          var $li = $('.tabNav a');
+          var $ul = $('.searchCont .searchContInfo');
+          $("#navcon01").css('height',$ul.eq(0).height())
+          $li.click(function(){
+            var $this = $(this);
+            var $t = $this.index();
+            $li.removeClass();
+            $this.addClass('Cur');
+            $ul.css('display','none');
+            $ul.eq($t).css('display','block');
+            $("#navcon01").css('height',$ul.eq($t).height())
+          })
+        },
         querySearchList(){
           store.save("kw",this.kw)
           let _this=this

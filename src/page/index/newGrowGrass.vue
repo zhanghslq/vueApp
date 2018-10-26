@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--头部 开始-->
-    <header>
+    <header class="fix">
       <a href="javascript:history.go(-1);" class="returnBtn"></a>
       新品种草
     </header>
@@ -9,7 +9,9 @@
     <!--中间 开始-->
     <main>
       <div class="growGrassMain">
-        <a href="#">
+
+
+        <router-link to="catcherRecommend">
           <div class="picInfo">
             <img src="../../images/temporary/3.jpg">
             <div class="picTitle">
@@ -21,7 +23,7 @@
             <h3>猩际合作品牌</h3>
             <span>专注正品，不是说说而已</span>
           </div>
-        </a>
+        </router-link>
       </div>
     </main>
   </div>

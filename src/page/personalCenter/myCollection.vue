@@ -90,7 +90,10 @@
               <p class="displayAll">已显示全部内容</p>
             </div>
           </div>
-          <a href="#" class="shoppBtn"></a>
+          <router-link to="shopIndex" class="shoppBtn">
+
+          </router-link>
+
         </div>
       </main>
       <!--中间 结束-->

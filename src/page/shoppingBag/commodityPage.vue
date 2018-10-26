@@ -69,8 +69,8 @@
                 <div class="earn">推广赚<em>7.52</em>元</div>
                 <div class="voucher"><em></em><span>您有一张10元满减劵，下单即可使用</span></div>
               </div>
-              <h4>{{productTitle}}</h4>
-              <p>{{productLongTitle}}</p>
+              <h4>{{goodsTitle}}</h4>
+              <p>{{goodsLongTitle}}</p>
             </div>
             <div class="choiceProduct">
               <a  id="choisShopp">
@@ -243,23 +243,21 @@
           <!--选择弹层-->
           <div class="choiceGoods">
             <div class="goodsPrice">
-              <div class="goodsPLeft"><img src="../../images/temporary/commodity9.png"></div>
+              <div class="goodsPLeft"><img :src="goodsTitleImg"></div>
               <div class="goodsright">
-                <span class="priceNum">￥<em>94</em>.00</span>
-                <span class="pleasChoise">请选择：颜色</span>
+                <span class="priceNum">￥{{actualPrice}}</span>
+                <span class="pleasChoise" >请选择：颜色</span>
               </div>
               <a href="javascript:void(0);" class="closeBtning"></a>
             </div>
             <div class="choicMain">
             <div class="colourInfo" v-for="skuItem in skuTags">
-              <div class="infoTitle">{{skuItem.tagsName}}</div>
+              <div class="infoTitle" :aria-valuetext="skuItem.tagsId">{{skuItem.tagsName}}</div>
               <ul>
-                <li  v-for="(ite,index) in skuItem.tagsValue" :class="{'Cur' : index == 0 }" >{{ite}}</li>
+                <li v-on:click="chooseTag($event)" v-for="(ite,index) in skuItem.tagsValue" :class="{'Cur' : index == 0 }" :value="ite.valueId" >{{ite.valueName}}</li>
 
               </ul>
             </div>
-
-
             <div class="numbers">
               <div class="numLeft">数量</div>
               <div class="numRight">
@@ -314,17 +312,18 @@ export default {
         data2: [],
         data3: []
       },
-      productId:'',//商品id
+      goodsId:'',//商品id
       skuId:'',
-      productTitle:'',
-      productTitleImage:'',
-      productLongTitle:'',
+      actualPrice:'',//商品实际价格
+      goodsTitle:'',
+      goodsTitleImg:'',
+      goodsLongTitle:'',
       detailsImg:[],
       detailsContent:'',
       brandId:'',
       brandName:'',
       categoryName:'',
-      currentSku:{},//当前sku规格
+      currentSku:'',//准备作为当前选中的sku
       locality:'',//国家
       expressInfo:'',
       serviceInfo:'',
@@ -337,22 +336,42 @@ export default {
   },
 
   methods: {
+    chooseTag(e){
+      var lis=$(e.target).parent().children();
+
+      for (let i=0;i<lis.length;i++) {
+        $(lis[i]).removeClass("Cur")
+      }
+      $(e.target).addClass("Cur")
+
+    },
     //加入购物车
     addShopCart(){
       let self=this;
-      axios.post(store.getAddress()+"/api/wxapp/cart/add",{"uid":store.fetch("uid"),"items":JSON.stringify([{"productId":self.productId,"quantity":self.quantity,"skuId":self.currentSku.skuId}])})
-        .then(function (responese) {
-          console.log(responese)
-          let msg="添加购物车成功";
-          if(responese.data.code!=200){
-            msg="添加购物车失败";
-          }
-          self.$layer.toast({
-            icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
-            content: msg,
-            time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+      if(self.skuTags.length=0){//证明可以直接添加购物车
+        axios.post(store.getAddress()+"/api/wxapp/cart/add",{"uid":store.fetch("uid"),"items":JSON.stringify([{"productId":self.productId,"quantity":self.quantity,"skuId":self.skuId}])})
+          .then(function (responese) {
+            console.log(responese)
+            let msg="添加购物车成功";
+            if(responese.data.code!=200){
+              msg="添加购物车失败";
+            }
+            self.$layer.toast({
+              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+              content: msg,
+              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+            })
           })
+      }else{//证明需要选择规格
+        $("#choisShopp").click();
+        self.$layer.toast({
+          icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+          content: "请先选择商品规格",
+          time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
         })
+      }
+
+
 
 
     },
@@ -481,16 +500,19 @@ export default {
         "skuId":_this.skuId
       }).then(function (responese) {
         if(responese.data.code==200){
-          _this.productLongTitle=responese.data.data.productLongTitle
+
+          _this.goodsLongTitle=responese.data.data.goodsLongTitle
+          _this.goodsTitleImg=responese.data.data.goodsTitleImg
           _this.detailsImg=responese.data.data.detailsImg
           _this.detailsContent=responese.data.data.detailsContent
-          _this.productTitle=responese.data.data.productTitle
+          _this.goodsTitle=responese.data.data.goodsTitle
           _this.brandName=responese.data.data.brandName
-          _this.currentSku=responese.data.data.currentSku
+          _this.skuId=responese.data.data.skuId
           _this.locality=responese.data.data.locality
           _this.expressInfo=responese.data.data.expressInfo
           _this.serviceInfo=responese.data.data.serviceInfo
           _this.skuTags=responese.data.data.skuTags
+          _this.actualPrice=responese.data.data.actualPrice
 
           console.log(responese)
 

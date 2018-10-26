@@ -22,18 +22,18 @@
                   <ul class="commodity_list_term" v-for="product in productList">
 
                     <li class="select">
-                      <em aem="0" cart_id="84" class="choiceIcon"> </em>
-                      <div style="display: none">{{product.id}}</div>
-                      <div class="listPic"><img v-bind:src=product.productTitleImg ></div>
-                      <p class="copywriting">{{product.productName}}</p>
+                      <em aem="0" cart_id="84" class="choiceIcon" v-bind:class="{pitch_on:product.isSelected}"> </em>
+                      <div style="display: none">{{product.skuId}}</div>
+                      <div class="listPic"><img v-bind:src=product.goodsTitleImg ></div>
+                      <p class="copywriting">{{product.goodsTitle}}</p>
                       <div class="price now_value">
                         <p class="now_value"><i>￥</i><b class="qu_su"><small>{{product.price}}</small></b></p>
                       </div>
                       <div class="quantity div_right">
-                        <i class="minus">-</i>
-                        <span class="zi">1</span>
+                        <i class="minus" v-on:click="minusOnServer(product.skuId,$event)">-</i>
+                        <span class="zi">{{product.quantity}}</span>
                         <input type="hidden" value="84">
-                        <i class="plus">+</i>
+                        <i class="plus" v-on:click="addOnServer(product.skuId,$event)">+</i>
                       </div>
                     </li>
                   </ul>
@@ -185,6 +185,41 @@
         }
       },
       methods:{
+        minusOnServer(id,e){
+          if($(e.target).next("span").html()-1>0){
+            axios.post(store.getAddress()+'/api/wxapp/cart/changeNum',{
+              "uid":store.fetch("uid"),"quantity":$(e.target).next("span").html()-1,"skuId":id
+
+            }).then(function (response) {
+              console.log(response)
+              if (response.data.code == 200) {
+
+              } else {
+
+              }
+            }).catch(function (error) {
+              console.log(error);
+            })
+          }
+        },
+        addOnServer(id,e){
+          console.log($(e.target).prev().prev().html())
+          axios.post(store.getAddress()+'/api/wxapp/cart/changeNum',{
+            "uid":store.fetch("uid"),"quantity":parseInt($(e.target).prev().prev().html())+1,"skuId":id
+
+          }).then(function (response) {
+
+            if (response.data.code == 200) {
+              console.log(response)
+
+            } else {
+
+            }
+          }).catch(function (error) {
+            console.log(error);
+          })
+
+        },
         reducew:function (obj){
     //减
     var $this = $(obj);
@@ -545,7 +580,9 @@
           if (response.data.code == 200) {
             console.log(response)
             _this.productList=response.data.list
-
+            _this.$nextTick(function () {
+              _this.commodityWhole();
+            })
           } else {
 
           }

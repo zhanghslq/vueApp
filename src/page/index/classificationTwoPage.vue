@@ -301,9 +301,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="swiper-slide slidescroll" style="height: 100px;background-color: red">
+                <!--<div class="swiper-slide slidescroll" style="height: 100px;background-color: red">
                   我也是有底线的
-                </div>
+                </div>-->
               </div>
             </div>
           </div>
@@ -468,71 +468,12 @@
       slidesOffsetBefore: 72,
       direction: 'vertical',
       freeMode: true,
-      slidesPerView: 'auto',
+      slidesPerView: 1,
 
       mousewheel: {
         releaseOnEdges: true,
       },
-      on: {
-        touchMove: function() {
 
-          if (this.translate > 72 - 36 && this.translate < 72) {
-            // topBar.transform('translateY(' + (this.translate - 72) + 'px)');
-          }
-
-        },
-        touchStart: function() {
-          startPosition = this.translate
-        },
-        touchEnd: function() {
-          topBar.transition(tSpeed)
-          if (this.translate > 36 && this.translate < 72 && this.translate < startPosition) {
-            // topBar.transform('translateY(-36px)');
-            for (sc = 0; sc < scrollSwiper.length; sc++) {
-              if (scrollSwiper[sc].translate > 36) {
-                scrollSwiper[sc].setTransition(tSpeed);
-                scrollSwiper[sc].setTranslate(36)
-              }
-            }
-          }
-          if (this.translate > 36 && this.translate < 72 && this.translate > startPosition) {
-            // topBar.transform('translateY(0px)');
-            for (let sc = 0; sc < scrollSwiper.length; sc++) {
-              if (scrollSwiper[sc].translate < 72 && scrollSwiper[sc].translate > 0) {
-                scrollSwiper[sc].setTransition(tSpeed);
-                scrollSwiper[sc].setTranslate(72)
-              }
-            }
-          }
-        },
-
-        transitionStart: function() {
-
-          topBar.transition(tSpeed)
-          if (this.translate) {
-            if (scrollSwiper) {
-              for (let sc = 0; sc < scrollSwiper.length; sc++) {
-                if (scrollSwiper[sc].translate < 72 && scrollSwiper[sc].translate > 0) {
-                  scrollSwiper[sc].setTransition(tSpeed);
-                  scrollSwiper[sc].setTranslate(72)
-                }
-              }
-            }
-
-          } else {
-            topBar.transform('translateY(0px)');
-
-            if (scrollSwiper) {
-              for (let sc = 0; sc < scrollSwiper.length; sc++) {
-                if (scrollSwiper[sc].translate < 72 && scrollSwiper[sc].translate > 0) {
-                  scrollSwiper[sc].setTransition(tSpeed);
-                  scrollSwiper[sc].setTranslate(72)
-                }
-              }
-            }
-          }
-        },
-      }
 
     })
   },

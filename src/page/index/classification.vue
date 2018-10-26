@@ -32,10 +32,10 @@
                 <div class="contentIng" style="display:block;">
                   <div class="contentTitle"><em></em><span>分类</span><em></em></div>
                   <div class="contentInfo">
-                    <a href="#">
+                    <router-link to="classificationTwoPage">
                       <div class="infoPic"><img src="../../images/temporary/commodity10.png"></div>
                       <span>111炒货</span>
-                    </a>
+                    </router-link>
                     <a href="#">
                       <div class="infoPic"><img src="../../images/temporary/commodity10.png"></div>
                       <span>坚果炒货</span>
@@ -995,10 +995,12 @@
                   </div>
                   <div class="contentTitle"><em></em><span>热门品牌</span><em></em></div>
                   <div class="contentInfo">
-                    <a href="#">
+                    <router-link to="popularBrand">
                       <div class="infoPic"><img src="../../images/temporary/commodity10.png"></div>
                       <span>坚果炒货</span>
-                    </a>
+                    </router-link>
+
+
                     <a href="#">
                       <div class="infoPic"><img src="../../images/temporary/commodity10.png"></div>
                       <span>坚果炒货</span>

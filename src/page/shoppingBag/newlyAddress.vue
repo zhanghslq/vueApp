@@ -549,7 +549,7 @@
     height: calc(150px + 25px * 2);
     width: auto;
     border-radius: 5px;
-    background: #ebebeb;
+
   }
 
   .img-uploader-placeholder {

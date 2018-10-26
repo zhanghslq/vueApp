@@ -4,24 +4,17 @@
       <header>
         <a href="javascript:history.go(-1);" class="returnBtn"></a>
         我的通知
-        <a href="#" class="remind">提醒设置</a>
+        <router-link class="remind" to="remindSetUp">
+          提醒设置
+        </router-link>
+
       </header>
       <!--头部 结束-->
       <!--中间 开始-->
       <main>
         <div class="myNoticeMain">
-          <a href="#">
-            <em class="outOrder"></em>
-            <div class="noticeTitle">
-              <h3>捕手号外</h3>
-              <p>麻辣小龙虾3.6斤装低至75</p>
-            </div>
-            <div class="times">
-              <p>06/14 12:53</p>
-              <span></span>
-            </div>
-          </a>
-          <a href="#">
+
+         <router-link to="outorder">
             <em class="schoolIcon"></em>
             <div class="noticeTitle">
               <h3>捕手号外</h3>
@@ -31,7 +24,7 @@
               <p>06/14 12:53</p>
               <span></span>
             </div>
-          </a>
+         </router-link>
           <a href="#">
             <em class="shopsIcon"></em>
             <div class="noticeTitle">

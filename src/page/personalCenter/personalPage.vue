@@ -2,8 +2,14 @@
     <div>
       <!--头部 开始-->
       <header class="fix">
-        <div class="message"><span></span><em>5</em></div>
-        <a href="#" class="setUpIcon"></a>
+        <router-link to="myNotice">
+          <div class="message"><span></span><em>5</em></div>
+        </router-link>
+
+        <router-link to="setUp" class="setUpIcon">
+
+        </router-link>
+
       </header>
       <!--头部 结束-->
       <!--中间 开始-->
