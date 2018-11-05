@@ -58,13 +58,20 @@
       methods:{
         chooseAddress(id){
             this.defaultId=id;
+            localStorage.setItem("chooseAddressId",id)
+            this.$router.push("placeOrder")
 
         }
       },
       mounted(){
         var _this=this
-        axios.post('/api//api/wxapp/deliveryAddress/list',{
-          "uid":store.fetch("uid")
+
+        let id=_this.$route.params.id;
+        if(id!=undefined && id!=null && id!=''){
+          _this.defaultId=id;
+        }
+        axios.post(store.getAddress()+'/api/wxapp/deliveryAddress/list', {
+          "uid": store.fetch("uid")
         })
           .then(function (response) {
             console.log(response)

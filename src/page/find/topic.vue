@@ -14,6 +14,7 @@
       <main>
         <div class="dynamic topicMain">
           <div class="catcherHead">
+            <img src="../../images/threeLevel/recommendImg.jpg">
             <div class="topicCon">
               <h3>#6.26爆款#</h3>
               <span>39条动态</span>

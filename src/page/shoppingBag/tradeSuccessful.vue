@@ -22,8 +22,14 @@
             <li><span>支付金额：</span><em class="price">￥19.0</em></li>
           </ul>
           <div class="tradeOperation">
-            <a href="#">查看订单</a>
-            <a href="#">回首页</a>
+            <router-link to="orderDetailsTransaction">
+              查看订单
+            </router-link>
+
+            <router-link to="index">
+              回首页
+            </router-link>
+
           </div>
         </div>
       </main>

@@ -290,6 +290,8 @@
             "frontOfIdCard":_this.frontOfIdCard,
             "reverseSideOfIdCard":_this.reverseSideOfIdCard,
             "isDefault":_this.upisDefault
+
+
           }).then(function (responese) {
             console.log(responese)
             _this.$router.push("receivingAddress")
@@ -566,6 +568,7 @@
           _this.idNumber=responese.data.data.idNumber
           _this.isDefault=responese.data.data.isDefault
           if(responese.data.data.isDefault){
+              console.log("进入修改")
             _this.upisDefault=1
             console.log(responese.data.data.isDefault)
           }

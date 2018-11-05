@@ -9,37 +9,37 @@
       <main>
         <div class="orderDetails">
           <div class="orderDetTop">
-            <div class="topTitle"><em></em><span>待发货</span></div>
-            <p>订单编号：<em>180729447854564787</em></p>
-            <p>付款时间：<em>2018-0719 23:23:09</em></p>
+            <div class="topTitle"><em></em><span>{{statusName}}</span></div>
+            <p>订单编号：<em>{{orderNumber}}</em></p>
+            <p>付款时间：<em>{{createTime}}</em></p>
             <a href="javascript:void(0);" class="copy">复制</a>
           </div>
           <div class="addressInfo">
             <em class="addreeIcon"></em>
             <div class="addreeText">
               <div class="textName">
-                <em>李宗森</em>
-                <span>13811203294</span>
+                <em>{{deliveryAddress.consignee}}</em>
+                <span>{{deliveryAddress.mobile}}</span>
               </div>
-              <p>收货地址：北京市朝阳区百子湾路32号院北区3号楼B座505</p>
+              <p>收货地址：{{deliveryAddress.detailAddress}}</p>
             </div>
           </div>
           <div class="commodity">
             <div class="commodityTitle">品牌商山东威海发货（包邮）</div>
-            <div class="commodDetail">
-              <div class="detailLeft"><img src="../../images/temporary/9.jpg"></div>
+            <div class="commodDetail" v-for="(product,index) in lines">
+              <div class="detailLeft"><img :src="product.goodsTitleImg"></div>
               <div class="detailRight">
                 <div class="rightTop">
-                  <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
-                  <span>￥<em>19</em>.90</span>
+                  <p>{{product.goodsTitle}}</p>
+                  <span>￥<em>{{product.price}}</em></span>
                 </div>
-                <div class="rightNum">X 1</div>
+                <div class="rightNum">X {{product.quantity}}</div>
               </div>
             </div>
             <p><span>发货方式</span> <em>快递：0元（包邮)</em></p>
-            <p><span>订单总计</span> <em>￥19.9</em></p>
+            <p><span>订单总计</span> <em>￥{{totalAmount}}</em></p>
             <p><span>会员减免</span> <em>￥0.09</em></p>
-            <p><span>实付金额</span> <em class="priceNum">￥19.9</em></p>
+            <p><span>实付金额</span> <em class="priceNum">￥{{totalAmount}}</em></p>
             <p><span>付款方式</span> <em>微信支付</em></p>
           </div>
           <a href="#" class="contactService">联系客服</a>
@@ -49,8 +49,51 @@
 </template>
 
 <script>
+  import store from '../../service/store'
+  import axios from 'axios'
     export default {
-        name: "orderDetails"
+        name: "orderDetails",
+      data(){
+          return{
+            orderNumber:'',
+            createTime:'',
+            statusName:'',
+            lines:[],
+            payTimeout:'',
+            deliveryAddress:{},
+            totalAmount:'',
+            expressCompanyName:'',
+            shipOrderNumber:'',
+            payTime:''
+          }
+      },
+      methods:{
+
+      },
+      mounted(){
+          var _this=this;
+        axios.post(store.getAddress()+'/api/wxapp/order/details',{
+          "uid":store.fetch("uid"),
+          "orderId":_this.$route.query.orderId
+        })
+          .then(function (response) {
+            _this.orderNumber=response.data.data.orderNumber;
+            _this.createTime=response.data.data.createTime;
+            _this.statusName=response.data.data.statusName;
+            _this.lines=response.data.data.lines;
+            _this.payTimeout=response.data.data.payTimeout;
+            _this.deliveryAddress=response.data.data.deliveryAddress;
+            _this.totalAmount=response.data.data.totalAmount;
+            _this.expressCompanyName=response.data.data.expressCompanyName;
+            _this.shipOrderNumber=response.data.data.shipOrderNumber;
+            _this.payTime=response.data.data.payTime;
+
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+      }
     }
 </script>
 

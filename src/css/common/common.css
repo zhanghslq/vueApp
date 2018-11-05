@@ -331,6 +331,7 @@ header .releaseBtn{
 }
 .tempWrap ul li a img{
   width:100%;
+  height: 100%;
 }
 .carouseContent .carouselBtn,
 .carouseContent .beautyBtn{
@@ -577,7 +578,7 @@ header .releaseBtn{
 .lookOtherList a .infoPic img,
 .memberList a .infoPic img,
 .shopSelList li a .infoPic img{
-  max-width:100%;
+  width:100%;
   height:100%;
   display:block;
   margin:auto auto;
@@ -794,6 +795,7 @@ header .releaseBtn{
 .nationalMain .propaganda a.propagendaBanner img,
 .memberDatil a.propagendaBanner img{
   width:100%;
+  height: 100%;
 }
 .nationalMain .propaganda a.propagendaBanner .picTitle,
 .memberDatil a.propagendaBanner .picTitle{
@@ -865,6 +867,7 @@ header .releaseBtn{
   background:#f7f7f7;
 }
 .propagandaList .listPics img{
+  width: 100%;
   height: 100%;
   display: block;
   margin:0 auto;
@@ -875,7 +878,7 @@ header .releaseBtn{
   line-height: 0.34rem;
   font-size: 0.24rem;
   color:#444;
-  margin:0.16rem 0 0.23rem 0;
+  margin:0.16rem 0 0.2rem 0;
 }
 .propagandaList .priceIng .newPrice{
   font-size:0.18rem;
@@ -898,7 +901,7 @@ header .releaseBtn{
     line-height: 0.8rem;
     overflow: hidden;
     background: #fff;
-    top: 1.8rem;
+    top: 1.79rem;
 }
 .orderOption .optionNav a{
   height: 0.78rem;
@@ -968,6 +971,7 @@ header .releaseBtn{
   margin-top: 0.03rem;
 }
 .opContInfo li .infoMiddle .middleImg img{
+  width: 100%;
   height: 100%;
   display: block;
   margin:0 auto;

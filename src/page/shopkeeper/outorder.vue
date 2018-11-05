@@ -14,7 +14,7 @@
               <div class="businessMain">
                 <a href="#">
                   <h3>猩际新店主学习指导</h3>
-                  <img src="../../images/temporary/commodity7.jpg">
+                  <div class="businPic"><img src="../../images/temporary/commodity7.jpg"></div>
                   <p>点击图片，开始你的成长计划！</p>
                 </a>
               </div>

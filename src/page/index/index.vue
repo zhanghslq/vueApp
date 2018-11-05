@@ -28,11 +28,10 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide slidepage swiper-slide-active">
               <!--首页-->
-
         <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
           <div class="swiper-wrapper" >
-            <div class="slidescroll swiper-slide swiper-slide-active" style="height: 1811px"   id="sl">
-              <div class="homePageMain" id="test">
+            <div class="slidescroll swiper-slide swiper-slide-active"    id="sl">
+              <div class="homePageMain content-slide" id="test">
                 <!--轮播图-->
                 <div class="carouseContent swiper-no-swiping">
                   <div id="carouselMain">
@@ -89,7 +88,6 @@
                   <div class="secKillMain">
                     <div class="swiper-container1 flashSaleList">
                       <div class="swiper-wrapper" id="bursting" >
-
                           <div v-for="(items ,index) in listSecKillSpecial"  :class="index === 0?'swiper-slide bursNav burCur ':'swiper-slide bursNav'" >
 
                             {{items.name}}
@@ -136,7 +134,9 @@
                   <h2>猜你喜欢</h2>
                   <div class="likeMain">
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+                        <img src="../../images/temporary/commodity8.jpg">
+                      </div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -144,13 +144,18 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
                         <span class="original">￥<em>76.</em> 00 </span>
                       </div>
                     </a>
+                  <div style="height: 300px;">
+
+                  </div>
 
                   </div>
                 </div>
@@ -166,10 +171,11 @@
       </div>
 
       <div class="swiper-slide slidepage swiper-slide-next">
-        <div class="swiper-container scroll1 swiper-container-vertical swiper-container-free-mode swiper-container-ios">
+        <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
           <div class="swiper-wrapper">
             <div class="swiper-slide slidescroll" >
               <!--美妆护肤-->
+              <div class="content-slide">
               <div class="carouseContent swiper-no-swiping">
                 <div id="beautyMain">
                   <div class="tempWrap">
@@ -594,11 +600,11 @@
                 </div>
               </div>
             </div>
-            <div class="swiper-slide slidescroll" style="height: 20px;background-color: red">
-
-            </div>
+          </div>
+            <div class="swiper-slide slidescroll" style="height: 20px;background-color: red"> </div>
           </div>
         </div>
+
 
 
       </div>
@@ -608,7 +614,7 @@
 
       <div class="swiper-slide slidepage">
 
-        <div class="swiper-container scroll2 swiper-container-vertical swiper-container-free-mode swiper-container-ios">
+        <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
           <div class="swiper-wrapper">
             <div class="swiper-slide slidescroll" style="height: auto">
               <div style="height: 200px; width: auto; background-color: red"></div>
@@ -699,7 +705,9 @@
                   <h2>猜你喜欢</h2>
                   <div class="likeMain">
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -707,7 +715,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -715,7 +725,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -723,7 +735,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -731,7 +745,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -739,7 +755,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -747,7 +765,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -755,7 +775,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -847,7 +869,9 @@
                   <h2>猜你喜欢</h2>
                   <div class="likeMain">
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -855,7 +879,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -863,7 +889,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -871,7 +899,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -879,7 +909,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -887,7 +919,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -895,7 +929,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -903,7 +939,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -993,7 +1031,9 @@
                   <h2>猜你喜欢</h2>
                   <div class="likeMain">
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -1001,7 +1041,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -1009,7 +1051,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -1017,7 +1061,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -1025,7 +1071,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -1033,7 +1081,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -1041,7 +1091,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -1049,7 +1101,9 @@
                       </div>
                     </a>
                     <a href="#">
-                      <img src="../../images/temporary/commodity8.jpg">
+                      <div class="likePic">
+									<img src="../../images/temporary/commodity8.jpg">
+								</div>
                       <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
                       <div class="price">
                         <span class="now">￥<em>65.</em> 00 </span>
@@ -1069,7 +1123,7 @@
   </div>
 
   <!--底部 开始-->
-  <footer class="memberFooter">
+  <footer class="memberFooter" v-if="isDev">
 
     <router-link to="/index" class="active">
       <i class="homePage"></i><span>首页</span>
@@ -1105,12 +1159,14 @@ export default {
   name: 'index',
   data () {
     return {
+      isDev:false,
       topList:[],//首页置顶导航
       pageList:[],
       topImageList:[],//首页轮播
       listRecommendSpecial:[],//推荐
       listSecKillSpecial:[],//爆款秒杀
       listHotSellSpecial:[],//热卖
+      navSwiper:{},
 
     }
   },
@@ -1210,22 +1266,32 @@ export default {
   });
   let progress;
   var pageSwiper = new Swiper('#page', {
-    //observer:true,//修改swiper自己或子元素时，自动初始化swiper
+    observer:true,//修改swiper自己或子元素时，自动初始化swiper
     //observeParents:true,//修改swiper的父元素时，自动初始化swiper
-    autoHeight: true, //高度随内容变化
+    //autoHeight: true, //高度随内容变化
     watchSlidesProgress: true,
     resistanceRatio: 0,
     //slidesPerView: 'auto',
+    init(){
 
+    },
     on: {
       slideChange: function () {
         console.log(this.activeIndex);
-        console.log(this)
-       console.log($("#test").height())
-        console.log($("#sl").height())
+
+      $(".scroll .swiper-wrapper").each(function () {
+        console.log($(this).find("swiper-slide"))
+      })
+        console.log("获取slide")
 
 
+       /* var H = $(".content-slide").eq(this.activeIndex).height();
+        $(".scroll .swiper-slide").css('height', H + 'px');
+        $(".scroll .swiper-wrapper").css('height', H + 'px');*/
       },
+
+
+
       touchMove: function() {
         progress = this.progress
 
@@ -1289,8 +1355,11 @@ export default {
       var scrollSwiper = new Swiper('.scroll', {
         //65是头部的高
         //36是top地址和搜索的高
-        observer: true,//修改swiper自己或子元素时，自动初始化swiper
-        observeParents:true,//修改swiper的父元素时，自动初始化swiper
+        //observer: true,//修改swiper自己或子元素时，自动初始化swiper
+        //observeParents:true,//修改swiper的父元素时，自动初始化swiper
+        init(){
+
+        },
         autoHeight: true,
         slidesOffsetBefore: 72,
         direction: 'vertical',
@@ -1308,11 +1377,11 @@ export default {
 
         slidesOffsetAfter: -document.documentElement.clientHeight,
       })
-      var scrollSwiper1 = new Swiper('.scroll1', {
+     /* var scrollSwiper1 = new Swiper('.scroll1', {
         //65是头部的高
         //36是top地址和搜索的高
         //observer: true,//修改swiper自己或子元素时，自动初始化swiper
-        observeParents:true,//修改swiper的父元素时，自动初始化swiper
+        //observeParents:true,//修改swiper的父元素时，自动初始化swiper
         autoHeight: true,
         slidesOffsetBefore: 72,
         direction: 'vertical',
@@ -1320,12 +1389,12 @@ export default {
         slidesPerView: 1,
         //calculateHeight : true,
 
-        /*on:{
+        /!*on:{
           onSlideChangeStart(){
             var H = $(".swiper-slide").eq(tabsSwiper.activeIndex).height();
             $(".swiper-slide").css('height', H + 'px');
           }
-        },*/
+        },*!/
 
 
         slidesOffsetAfter: -document.documentElement.clientHeight,
@@ -1334,7 +1403,7 @@ export default {
         //65是头部的高
         //36是top地址和搜索的高
         //observer: true,//修改swiper自己或子元素时，自动初始化swiper
-        observeParents:true,//修改swiper的父元素时，自动初始化swiper
+        //observeParents:true,//修改swiper的父元素时，自动初始化swiper
         autoHeight: true,
         slidesOffsetBefore: 72,
         direction: 'vertical',
@@ -1342,18 +1411,19 @@ export default {
         slidesPerView: 1,
         //calculateHeight : true,
 
-        /*on:{
+        /!*on:{
           onSlideChangeStart(){
             var H = $(".swiper-slide").eq(tabsSwiper.activeIndex).height();
             $(".swiper-slide").css('height', H + 'px');
           }
-        },*/
+        },*!/
 
 
         slidesOffsetAfter: -document.documentElement.clientHeight,
-      })
+      })*/
 
 
+     this.navSwiper=navSwiper;
 
 
 },
@@ -1388,13 +1458,24 @@ export default {
     $('#bursting .swiper-slide').unbind("click")
   },
   mounted () {
-    console.log($("#test").height())
-    console.log($("#sl").height())
-    console.log("zhixin")
-    $("#sl").height($("#test").height())
-    console.log($("#test").height())
-    console.log($("#sl").height())
+    console.log("执行判断开始")
+    if(store.judge()==1){//1代表ios
 
+      console.log("ios进入")
+
+      window.webkit.messageHandlers.currentCookies.postMessage({
+        "code": "99"
+      });
+
+
+    }else if(store.judge()==3){
+      console.log("windows  浏览器模拟")
+    }else if(store.judge()==0){
+      console.log("安卓")
+    }
+
+    console.log("执行判断结束")
+    this.isDev=store.isDev();
     var a=$("#page");
     console.log(a)
     var b=a.find(".slidePage")
@@ -1515,13 +1596,6 @@ export default {
   @import "../../css/common/common.css";
   @import '../../css/other/index.css';
 </style>
-<style scoped>
-  .swiper-slide-active{
-    height: auto;
-  }
-  .swiper-slide{
-    height: auto;
-  }
-</style>
+
 
 

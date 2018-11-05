@@ -9,43 +9,45 @@
       <!--中间 开始-->
       <main>
         <div class="placeOrderMain">
-          <a href="#" class="addressInfo">
-            <em class="addreeIcon"></em>
-            <div class="addreeText">
-              <div class="textName">
-                <em>李宗森</em>
-                <span>13811203294</span>
+          <router-link to="editAddress" :to="{name:'editAddress',params:{'id':choseAddress.id}}">
+            <a  class="addressInfo">
+              <em class="addreeIcon"></em>
+              <div class="addreeText">
+                <div class="textName">
+                  <em>{{choseAddress.consignee}}</em>
+                  <span>{{choseAddress.mobile}}</span>
+                </div>
+                <p>收货地址：{{choseAddress.provinceName+choseAddress.cityName
+                  +choseAddress.areaName+choseAddress.detailAddress}}</p>
               </div>
-              <p>收货地址：北京市朝阳区百子湾路32号院北区3号楼B座505</p>
-            </div>
-            <em class="intoIcon"></em>
-          </a>
-          <div class="orderMain">
+              <em class="intoIcon"></em>
+            </a>
+          </router-link>
+          <div class="orderMain" v-for="(item,index) in listItems">
             <div class="orderTitle">
-              <em>订单1</em>
-              <span>品牌商杭州发货</span>
+              <em>订单{{index+1}}:</em>
+              <span>{{item.channelName}}</span>
             </div>
-            <div class="orderDetail">
-              <div class="detailLeft"><img src="../../images/temporary/9.jpg"></div>
+            <div class="orderDetail" v-for="(ite,inde) in item.listProducts">
+              <div class="detailLeft"><img :src="ite.goodsTitleImg"></div>
               <div class="detailRight">
                 <div class="rightTop">
-                  <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
-                  <span>￥<em>19</em>.90</span>
+                  <p>{{ite.goodsTitle}}</p>
+                  <span>￥<em>{{ite.actualPrice}}</em></span>
                 </div>
-                <div class="rightNum">X 1</div>
+                <div class="rightNum">X {{ite.quantity}}</div>
               </div>
             </div>
-
             <div class="orderMode">
               <div class="modeLeft">发货方式</div>
               <span class="express">快递（包邮）：<em>0</em>元</span>
             </div>
             <div class="orderMode">
               <div class="modeLeft">订单总计</div>
-              <span class="price">￥<em>39</em>.80</span>
+              <span class="price">￥<em>{{item.groupTotalAmount}}</em></span>
             </div>
           </div>
-          <div class="orderMain">
+          <!--<div class="orderMain">
             <div class="orderTitle">
               <em>订单2</em>
               <span>品牌商杭州发货</span>
@@ -68,7 +70,7 @@
               <div class="modeLeft">订单总计</div>
               <span class="price">￥<em>39</em>.80</span>
             </div>
-          </div>
+          </div>-->
           <div class="preferential">
             <div class="preferenTitle">优惠减免</div>
             <a href="#" class="coupons">
@@ -99,8 +101,11 @@
           </div>
           <div class="settlement">
             <span class="setTitle">支付宝支付</span>
-            <p>总计<span>￥<em>139.99</em></span></p>
-            <a href="#">去付款</a>
+            <p>总计<span>￥<em>{{totalAmount}}</em></span></p>
+            <a v-on:click="payMoney()">
+              去付款
+            </a>
+
           </div>
         </div>
       </main>
@@ -110,21 +115,119 @@
 
 <script>
   import store from '../../service/store'
+  import axios from 'axios'
     export default {
       name: "placeOrder",
       data(){
           return{
+            defaultAddress:{},
+            addressId:'',
+            listItems:[],
+            totalAmount:'',
+            choseAddress:{},
+            payStr:'',
+            orderId:''
+
 
           }
+      },
+      updated(){
+        if(JSON.stringify(this.choseAddress)=='{}'){
+          this.choseAddress=this.defaultAddress
+        }
       },
       methods:{
+        payMoney(){//去付款，需要把订单提交，然后取参数交给app
+          var self=this;
+          axios.post(store.getAddress()+'/api/wxapp/order/submit', {
+            "uid": store.fetch("uid"),
+            "consigneeId":this.choseAddress.id,
+            "transType":101
+          }).then(function (response) {
 
+           let res= response.data.data.request;
+           self.payStr=JSON.stringify(res)
+            self.orderId=response.data.data.orderId
+            window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+              "code": "83",
+              "payStr":JSON.stringify(res),
+          });
+
+          }).catch(function (error) {
+            alert(error)
+          })
+
+
+        },
+        appWxPayResult(result){//等待app回调，0代表失败，1代表成功
+            if(result==1){//支付成功
+              this.$router.push({ name: 'tradeSuccessful',
+                query: {
+                  "payMoney": this.totalAmount,
+
+                }
+              });
+            }else{//支付失败
+
+              this.$router.push({ name: 'tradeFail',
+                query: {
+                  "shouldPayMoney": this.totalAmount,
+                  "paySign":this.payStr
+                }
+              });
+            }
+        },
+
+        getData(){//获取数据
+          var self = this;
+          axios.post(store.getAddress()+'/api/wxapp/order/prepare', {
+            "uid": store.fetch("uid")
+          })
+            .then(function (response) {
+              if(response.data.code==200){
+                self.defaultAddress=response.data.data.defaultAddress;
+                self.totalAmount=response.data.data.totalAmount;
+                self.listItems=response.data.data.listItems;
+
+
+                  let chooseId=localStorage.getItem("chooseAddressId");
+                  console.log("choseId======"+chooseId)
+                  if(chooseId!=undefined && chooseId!=null && chooseId!=''){
+                    console.log("chooseId=="+chooseId)
+                    axios.post(store.getAddress()+'/api/wxapp/deliveryAddress/item', {
+                      "id": chooseId
+                    })
+                      .then(function (response) {
+                        if(response.data.code==200){
+                          self.choseAddress=response.data.data
+                          localStorage.removeItem("chooseAddressId")
+                        }else {
+                          console.log("请检查")
+                        }
+
+                      })
+                      .catch(function (error) {
+                        console.log(error)
+                      })
+                  }
+
+
+              }else {
+                console.log("请检查重试")
+              }
+
+            })
+            .catch(function (error) {
+              console.log("请检查重试")
+            })
+        }
       },
       mounted(){
-          let ids=store.fetch("placeOrderChooseIds");
-          for (let id of ids) {
+       this.getData()
+        window['appWxPayResult'] = (result) => {
+          this.appWxPayResult(result)
+        }
 
-          }
       }
     }
 </script>

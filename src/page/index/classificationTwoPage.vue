@@ -27,7 +27,7 @@
           <div class="swiper-slide slidepage">
             <div class="swiper-container scroll">
               <div class="swiper-wrapper">
-                <div class="swiper-slide slidescroll">
+                <div class="swiper-slide slidescroll swiper-slide-active">
                   <div class="classificaArray">
                     <div class="arrayNav" id="tab">
                       <a href="javascript:void(0);" class="current">热门</a>
@@ -301,9 +301,9 @@
                     </div>
                   </div>
                 </div>
-                <!--<div class="swiper-slide slidescroll" style="height: 100px;background-color: red">
+                <div class="swiper-slide slidescroll" style="height: 100px;background-color: red">
                   我也是有底线的
-                </div>-->
+                </div>
               </div>
             </div>
           </div>
@@ -401,6 +401,7 @@
           });
 
           var pageSwiper = new Swiper('#page', {
+            //autoHeight:true,
             watchSlidesProgress: true,
             resistanceRatio: 0,
             on: {
@@ -464,7 +465,7 @@
     var scrollSwiper = new Swiper('.scroll', {
       //65是头部的高
       //36是top地址和搜索的高
-
+      autoHeight:true,
       slidesOffsetBefore: 72,
       direction: 'vertical',
       freeMode: true,

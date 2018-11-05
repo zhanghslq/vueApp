@@ -10,7 +10,7 @@
   <main >
     <!--轮播图-->
     <div class="carouseContent" style="margin-top: 0.9rem;">
-      <div id="carouselMain">
+      <div id="carouselMain2">
         <div class="tempWrap">
           <ul class="img">
             <li><a href="#"><img src="../../images/temporary/banner1.jpg"></a></li>
@@ -113,7 +113,7 @@
       </div>
       <div class="seriesMain">
         <div id="top" class="navMain" style="transition-duration: 300ms; transform: translateY(0px);">
-          <div class="swiper-container swiper-container-horizontal swiper-container-free-mode swiper-container-ios" id="nav">
+          <div class="swiper-container swiper-container-horizontal swiper-container-free-mode swiper-container-ios" id="nav2">
             <div class="swiper-wrapper">
               <div class="swiper-slide swiper-slide-active"><span>精致生活</span></div>
               <div class="swiper-slide " ><span>中国美食</span></div>
@@ -122,12 +122,12 @@
               <div class="swiper-slide"><span>进口滋补</span></div>
               <div class="swiper-slide"><span>健康生活</span></div>
               <div class="bar">
-                <div class="color"></div>
+                <div class="color" ></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="swiper-container swiper-container-horizontal swiper-container-ios" id="page">
+        <div class="swiper-container swiper-container-horizontal swiper-container-ios" id="page2">
           <div class="swiper-wrapper">
             <div class="swiper-slide slidepage swiper-slide-active topDistance">
               <div class="describeInfo">
@@ -732,15 +732,15 @@
   },
   methods:{
     bannerFocusImg() {
-  TouchSlide({
-    slideCell: "#carouselMain",
-    titCell: ".carouselBtn ul",
-    mainCell: ".img",
-    effect: "leftLoop",
-    autoPlay: true,
-    autoPage: true,
-    interTime: 3000
-  });
+    TouchSlide({
+      slideCell: "#carouselMain2",
+      titCell: ".carouselBtn ul",
+      mainCell: ".img",
+      effect: "leftLoop",
+      autoPlay: true,
+      autoPage: true,
+      interTime: 3000
+    });
   var width = $(window).width();
   var height = parseInt(width / 3 * 2);
   $("#carouselMain li a").css("max-height", height);
@@ -750,7 +750,6 @@
  produceList(){
    let bar;
    let topBar;
-   let barwidth = 36 //导航粉色条的长度px
    let tSpeed = 300 //切换速度300ms
    let clientWidth;
    let navSum;
@@ -759,7 +758,7 @@
 
   //暂时设计每个slide大小需要一致
 
-  var navSwiper = new Swiper('#nav', {
+  var navSwiper2 = new Swiper('#nav2', {
     slidesPerView: 4.5,
     freeMode: true,
     on: {
@@ -784,7 +783,7 @@
   });
   let progress;
 
-  var pageSwiper = new Swiper('#page', {
+  var pageSwiper2 = new Swiper('#page2', {
     watchSlidesProgress: true,
     resistanceRatio: 0,
     on: {
@@ -799,51 +798,51 @@
             let r = Math.floor((102 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
             let g = Math.floor((102 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
             let b = Math.floor((102 - 51) * (1 - Math.pow(Math.abs(slideProgress), 2)) + 51)
-            navSwiper.slides.eq(i).find('span').css('color', 'rgba(' + r + ',' + g + ',' + b + ',1)')
+            navSwiper2.slides.eq(i).find('span').css('color', 'rgba(' + r + ',' + g + ',' + b + ',1)')
           }
         }
       },
       transitionStart: function() {
         let activeIndex = this.activeIndex
-        let activeSlidePosition = navSwiper.slides[activeIndex].offsetLeft
+        let activeSlidePosition = navSwiper2.slides[activeIndex].offsetLeft
         //释放时导航粉色条移动过渡
         bar.transition(tSpeed)
         bar.transform('translateX(' + activeSlidePosition + 'px)')
         //释放时文字变色过渡
-        navSwiper.slides.eq(activeIndex).find('span').transition(tSpeed)
-        navSwiper.slides.eq(activeIndex).find('span').css('color', 'rgba(102,102,102,1)')
+        navSwiper2.slides.eq(activeIndex).find('span').transition(tSpeed)
+        navSwiper2.slides.eq(activeIndex).find('span').css('color', 'rgba(102,102,102,1)')
         if (activeIndex > 0) {
-          navSwiper.slides.eq(activeIndex - 1).find('span').transition(tSpeed)
-          navSwiper.slides.eq(activeIndex - 1).find('span').css('color', 'rgba(102,102,102,1)')
+          navSwiper2.slides.eq(activeIndex - 1).find('span').transition(tSpeed)
+          navSwiper2.slides.eq(activeIndex - 1).find('span').css('color', 'rgba(102,102,102,1)')
         }
         if (activeIndex < this.slides.length) {
-          navSwiper.slides.eq(activeIndex + 1).find('span').transition(tSpeed)
-          navSwiper.slides.eq(activeIndex + 1).find('span').css('color', 'rgba(102,102,102,1)')
+          navSwiper2.slides.eq(activeIndex + 1).find('span').transition(tSpeed)
+          navSwiper2.slides.eq(activeIndex + 1).find('span').css('color', 'rgba(102,102,102,1)')
         }
         //导航居中
-       let  navActiveSlideLeft = navSwiper.slides[activeIndex].offsetLeft //activeSlide距左边的距离
+       let  navActiveSlideLeft = navSwiper2.slides[activeIndex].offsetLeft //activeSlide距左边的距离
 
-        navSwiper.setTransition(tSpeed)
+        navSwiper2.setTransition(tSpeed)
         if (navActiveSlideLeft < (clientWidth - parseInt(navSlideWidth)) / 2) {
-          navSwiper.setTranslate(0)
+          navSwiper2.setTranslate(0)
         } else if (navActiveSlideLeft > navWidth - (parseInt(navSlideWidth) + clientWidth) / 2) {
-          navSwiper.setTranslate(clientWidth - navWidth)
+          navSwiper2.setTranslate(clientWidth - navWidth)
         } else {
-          navSwiper.setTranslate((clientWidth - parseInt(navSlideWidth)) / 2 - navActiveSlideLeft)
+          navSwiper2.setTranslate((clientWidth - parseInt(navSlideWidth)) / 2 - navActiveSlideLeft)
         }
 
       },
     }
   });
 
-  navSwiper.$el.on('touchstart', function(e) {
+  navSwiper2.$el.on('touchstart', function(e) {
     e.preventDefault() //去掉按压阴影
   })
-  navSwiper.on('tap', function(e) {
+  navSwiper2.on('tap', function(e) {
 
     let clickIndex = this.clickedIndex
     let clickSlide = this.slides.eq(clickIndex)
-    pageSwiper.slideTo(clickIndex, 0);
+    pageSwiper2.slideTo(clickIndex, 0);
     this.slides.find('span').css('color', 'rgba(102,102,102,1)');
     clickSlide.find('span').css('color', 'rgba(102,102,102,1)');
   })
@@ -874,3 +873,4 @@
   @import "../../css/other/secondLevel.css";
   @import "../../css/plugins/swiper.min.css";
 </style>
+

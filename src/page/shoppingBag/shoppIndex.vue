@@ -19,13 +19,14 @@
                     <em aem="1" cart_id="84"></em>
                   </div>-->
 
-                  <ul class="commodity_list_term" v-for="product in productList">
+                  <ul class="commodity_list_term" >
 
-                    <li class="select">
-                      <em aem="0" cart_id="84" class="choiceIcon" v-bind:class="{pitch_on:product.isSelected}"> </em>
-                      <div style="display: none">{{product.skuId}}</div>
+                    <li class="select" v-for="product in productList">
+                      <em aem="0"  cart_id="84" class="choiceIcon singleEm" v-bind:class="{pitch_on:product.isSelected}"> </em>
+                      <div style="display: none">{{product.id}}</div>
                       <div class="listPic"><img v-bind:src=product.goodsTitleImg ></div>
                       <p class="copywriting">{{product.goodsTitle}}</p>
+                      <div class="sign">{{product.skuName}}</div>
                       <div class="price now_value">
                         <p class="now_value"><i>￥</i><b class="qu_su"><small>{{product.price}}</small></b></p>
                       </div>
@@ -62,7 +63,7 @@
           </form>
 
           <!--购物车为空 开始-->
-          <div class="shoppEmpty" style="display: none;">
+          <div v-if="productList.length==0" class="shoppEmpty">
             <em></em>
             <p>购物车为空</p>
           </div>
@@ -124,7 +125,7 @@
       </main>
       <!--中间 结束-->
       <!--底部 开始-->
-      <footer class="memberFooter">
+      <footer class="memberFooter" v-if="isDev">
         <router-link to="/index">
           <i class="homePage"></i><span>首页</span>
         </router-link>
@@ -132,7 +133,7 @@
           <i class="find"></i><span>发现</span>
         </router-link>
         <router-link to="/shopIndex" class="active">
-          <i class="shopp"></i><span>购物袋</span><em>99</em>
+          <i class="shopp"></i><span>购物袋</span>
         </router-link>
         <router-link to="/personalPage">
           <i class="personal"></i><span>个人中心</span>
@@ -164,6 +165,7 @@
       name: "shoppIndex",
       data(){
         return{
+          isDev:false,
           i:0,
         //金额总和
         money:0,
@@ -246,20 +248,20 @@
   },
 
         plusw:function (obj){
-    //加
-    var $this = $(obj);
-    var totalH = $("#total_price b").text(); /* 合计金额  */
-    var ise = $this.siblings("span").text();
-    var gc_id = $this.siblings("input").val();
-    var n =parseInt(ise)+1;
-          this.noX++;
+          //加
+          var $this = $(obj);
+          var totalH = $("#total_price b").text(); /* 合计金额  */
+          var ise = $this.siblings("span").text();
+          var gc_id = $this.siblings("input").val();
+          var n =parseInt(ise)+1;
+                this.noX++;
 
-    $this.siblings("span").text(n);
-    if($this.parent().parent().children("em").hasClass("pitch_on")){
-      var mo = $this.parent().parent().children("em");
-      this.plusMod(mo,totalH,2,this.noX);
-      this.noX=0;
-    }
+          $this.siblings("span").text(n);
+          if($this.parent().parent().children("em").hasClass("pitch_on")){
+            var mo = $this.parent().parent().children("em");
+            this.plusMod(mo,totalH,2,this.noX);
+            this.noX=0;
+          }
 
 
   },
@@ -358,9 +360,13 @@
         },
         /*全部商品价格*/
         commodityWhole:function () {
+
+          var je = $(".commodity_list").find(".pitch_on").parent().find(".qu_su");
+          var je1 = $(".commodity_list").find(".pitch_on").parent().find(".zi");
+
           /* 合计金额  */
-          var je = $(".commodity_box .select .qu_su"); /* 全部商品单价  */
-          var je1 = $(".commodity_box .select .zi");  /* 全部商品数量  */
+          /*var je = $(".commodity_box .select .qu_su"); /!* 全部商品单价  *!/
+          var je1 = $(".commodity_box .select .zi");  /!* 全部商品数量  *!/*/
           var TotalJe = 0;
           for(var i=0; i<je.length; i++)
           {
@@ -371,73 +377,101 @@
           }
           $("#total_price b").text(TotalJe.toFixed(2)); /* 合计金额  */
         },
+        selectProduct(id){//选中购物车商品
+          axios.post(store.getAddress()+'/api/wxapp/cart/select',{
+            "id":id,
+          }).then(function (response) {
+            console.log(response)
+            if (response.data.code == 200) {
+              //打印选中
+            } else {
+              //只有失败的时候才提示
+            }
+          }).catch(function (error) {
+            console.log(error);
+          })
+        },
+        disSelectProduct(id){//取消选中购物车商品
+          axios.post(store.getAddress()+'/api/wxapp/cart/unSelect',{
+            "id":id,
+          }).then(function (response) {
+            console.log(response)
+            if (response.data.code == 200) {
+              //打印选中
+            } else {
+              //只有失败的时候才提示
+            }
+          }).catch(function (error) {
+            console.log(error);
+          })
+        },
+        selectAll(){
+          axios.post(store.getAddress()+'/api/wxapp/cart/selectAll',{
+            "uid":store.fetch("uid"),
+          }).then(function (response) {
+            console.log(response)
+            if (response.data.code == 200) {
+              //打印选中
+            } else {
+              //只有失败的时候才提示
+            }
+          }).catch(function (error) {
+            console.log(error);
+          })
+        },
+        unSelectAll(){
+          axios.post(store.getAddress()+'/api/wxapp/cart/cancelAll',{
+            "uid":store.fetch("uid"),
+          }).then(function (response) {
+            console.log(response)
+            if (response.data.code == 200) {
+              //打印选中
+            } else {
+              //只有失败的时候才提示
+            }
+          }).catch(function (error) {
+            console.log(error);
+          })
+        }
 
       },
       updated(){
         let _this=this;
-        _this.allThis=$(".commodity_box .select em")
-        $(".select em").click(function(){
-          var su = $(this).attr("aem");
-          var carts_id=$(this).attr("cart_id");
+        _this.allThis=$(".commodity_box .select .singleEm")
+        $(".select .singleEm").click(function(){
+
+
           var totalH = $("#total_price b").text(); /* 合计金额  */
-          if(su == 0){
+
             /* 单选商品  */
             if($(this).hasClass("pitch_on")){
-              /*去该店全选*/
-              $(this).parents("ul").siblings(".select").find("em").removeClass("pitch_on");
-              /*去底部全选*/
-              $("#all_pitch_on").removeClass("pitch_on");
+
               $(this).removeClass("pitch_on");
+              $("#all_pitch_on").removeClass("pitch_on");
               _this.reduceMod($(this),totalH);
-              _this.cart_id[carts_id]="";
-              delete _this.cart_id[carts_id];
+              //服务器取消选中
+              _this.disSelectProduct($(this).next("div").html())
+
+
             }else{
               $(this).addClass("pitch_on");
+              _this.selectProduct($(this).next("div").html())
               var n = $(this).parents("ul").children().find(".pitch_on");
               var n1 = $(this).parents("ul").children();
               _this.plusMod($(this),totalH,0,_this.noX);
-              _this.cart_id[carts_id]="";
-              /*该店商品全选中时*/
-              if(n.length == n1.length){
-                $(this).parents("ul").siblings(".select").find("em").addClass("pitch_on");
-              }
+
+
               /*商品全部选中时*/
-              var fot = $(".commodity_list_box .tite_tim .pitch_on");
-              var fot1 = $(".commodity_list_box .tite_tim em");
-              if(fot.length == fot1.length)
+              var fot = $(".commodity_list_term  .pitch_on");
+              var fot1 = $(".commodity_list_term  em");
+              console.log("fot.length"+fot.length)
+              console.log("fot1.length"+fot1.length)
+              if(fot.length == fot1.length){
                 $("#all_pitch_on").addClass("pitch_on");
-            }
-          }else{
-            /* 全选该店铺  */
-            if($(this).hasClass("pitch_on")){
-              /*去底部全选*/
-              $("#all_pitch_on").removeClass("pitch_on");
-              $(this).removeClass("pitch_on");
-
-              _this.commodityReduceMod($(this),totalH);
-              $(this).parent().siblings("ul").find("em").removeClass("pitch_on");
-              delete _this.cart_id[carts_id];
-            }else{
-              _this.commodityReduceMod($(this),totalH);
-
-              $(this).addClass("pitch_on");
-
-              $(this).parent().siblings("ul").find("em").addClass("pitch_on");
-
-              if(plus != NaN && plus != undefined){
-                totalH = parseFloat(totalH)-parseFloat(plus);
               }
 
-              _this.commodityPlusMod($(this),totalH);
-              _this.cart_id[carts_id]="";
-              /*商品全部选中时*/
-              var fot = $(".commodity_list_box .tite_tim .pitch_on");
-              var fot1 = $(".commodity_list_box .tite_tim em");
-              if(fot.length == fot1.length)
-                $("#all_pitch_on").addClass("pitch_on");
-
             }
-          }
+
           //计算选择数值
 
 
@@ -445,31 +479,7 @@
         /* 底部全选  */
 
 
-        $("#all_pitch_on").click(function(){
-          if(_this.bot == 0){
-            $(this).addClass("pitch_on");
-            _this.allThis.removeClass("pitch_on");
-            _this.allThis.addClass("pitch_on");
-            /*总价格*/
-            _this. commodityWhole();
-            _this.bot = 1;
-            //重新加入属性对象
-            for(var key in _this.cart_id_copy){
-              _this.cart_id[key]="";
-            }
-          }else{
-            $(this).removeClass("pitch_on");
-            _this.allThis.removeClass("pitch_on");
-            $("#total_price b").text("0");
-            _this.bot = 0;
-            //移除全部对象
-            for(var key in _this.cart_id){
-              delete _this.cart_id[key];
-            }
-          }
-          //计算选择数值
 
-        });
 
 
         /* 编辑商品  */
@@ -556,22 +566,59 @@
 
         //去结算,到生成订单页
         $("#confirm_cart").click(function(){
-          var ids=[];
-          $(".commodity_list_term .pitch_on").each(function(){
-            ids.push($(this).next("div").text())
-            //存入localstorage，然后在下个页面取出
-            store.save("placeOrderChooseIds",ids)
+
+          console.log("选中的个数"+$(".commodity_list_term .pitch_on").length)
+         /* _this.$router.push("placeOrder")*/
+
+          if($(".commodity_list_term .pitch_on").length==0){
+            _this.$layer.toast({
+              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+              content: '请选择商品',
+              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+            })
+          }else{
             _this.$router.push("placeOrder")
+          }
 
-          });
-
-
-          $(".commodity_list_term .pitch_on").parent().remove();
-          /*$(".commodity_list .tite_tim > em.pitch_on").parents(".commodity_box").remove();*/
         })
       },
       mounted:function () {
         let _this=this;
+        $("#all_pitch_on").click(function(){
+          console.log("点击全选")
+          console.log(this)
+          console.log($(this))
+          console.log(_this.allThis)
+
+          if(!$(this).hasClass("pitch_on")){
+            $(this).addClass("pitch_on");
+            _this.allThis.removeClass("pitch_on");
+            _this.allThis.addClass("pitch_on");
+            /*总价格*/
+            _this. commodityWhole();
+            _this.selectAll();
+
+
+          }else{
+            console.log("有pitch——on")
+            $(this).removeClass("pitch_on");
+            _this.allThis.removeClass("pitch_on");
+            $("#total_price b").text("0");
+            _this.unSelectAll();
+
+          }
+          //计算选择数值
+
+        });
+
+        this.isDev=store.isDev();
+        var fot = $(".commodity_list_term  .pitch_on");
+        var fot1 = $(".commodity_list_term  em");
+
+        if(fot.length == fot1.length){
+          $("#all_pitch_on").addClass("pitch_on");
+        }
+
         axios.post(store.getAddress()+'/api/wxapp/cart/list',{
           "uid":store.fetch("uid"),
 
@@ -582,6 +629,17 @@
             _this.productList=response.data.list
             _this.$nextTick(function () {
               _this.commodityWhole();
+              //页面初始化完成，全选是否选中
+              var fot = $(".commodity_list_term  .pitch_on");
+              var fot1 = $(".commodity_list_term  em");
+              console.log("fot.length"+fot.length)
+              console.log("fot1.length"+fot1.length)
+              if(fot.length == fot1.length){
+                $("#all_pitch_on").addClass("pitch_on");
+              }else {
+                $("#all_pitch_on").removeClass("pitch_on");
+              }
+
             })
           } else {
 
@@ -589,19 +647,6 @@
         }).catch(function (error) {
           console.log(error);
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         //下面是计算购物车金额的
 

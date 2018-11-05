@@ -12,10 +12,10 @@
         <a href="#" class="perRight"></a>
       </div>
       <div class="shopkeeepNav">
-        <a href="#">
+       <router-link to="shopKeepSelection">
           <em class="selectedIcon"></em>
           <span>店主精选</span>
-        </a>
+       </router-link>
         <a href="#">
           <em class="invitationIcon"></em>
           <span>邀请店主</span>
@@ -60,10 +60,13 @@
         </div>
       </div>
       <div class="reward">
-        <div class="titleIng">
-          <h4>奖励任务</h4>
-          <em></em>
-        </div>
+        <router-link to="rewardTask">
+          <div class="titleIng">
+            <h4>奖励任务</h4>
+            <em></em>
+          </div>
+        </router-link>
+
         <div class="carouseContent">
           <div id="carouselMain">
             <div class="tempWrap">
@@ -121,7 +124,9 @@
         <router-link to="myClient">
           <em class="manageIcon"></em><span>客户管理</span>
         </router-link>
-        <a href="#"><em class="saleIcon"></em><span>销售订单</span></a>
+        <router-link to="salesOrder">
+         <em class="saleIcon"></em><span>销售订单</span>
+        </router-link>
 
         <router-link to="shopkeeperContactUs">
           <em class="contactIcon"></em><span>联系我们</span>
@@ -135,7 +140,7 @@
   </main>
   <!--中间 结束-->
   <!--底部 开始-->
-  <footer class="memberFooter">
+  <footer class="memberFooter" v-if="isDev">
     <router-link to="/index">
       <i class="homePage"></i><span>首页</span>
     </router-link>
@@ -169,9 +174,15 @@
 <script>
   import {TouchSlide} from "../../js/plugins/TouchSlide.1.1.min";
   import Swiper from 'swiper'
+  import store from "../../service/store";
 
   export default {
         name: "shopkeeperPage",
+    data(){
+          return{
+            isDev:false
+          }
+    },
     components:{
       Swiper,
       TouchSlide
@@ -205,6 +216,7 @@
 
   },
     mounted:function () {
+          this.isDev=store.isDev();
       this.bannerFocusImg(),
       this.sharingLink()
     }

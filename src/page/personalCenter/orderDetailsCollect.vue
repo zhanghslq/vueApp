@@ -23,14 +23,18 @@
             </div>
           </div>
           <div class="expressMain">
-            <a href="#">
-              <div class="expressMainLeft">
-                <em></em>
-                <p>快件在【山东威海】进行装包发往扫描，发往【北京转运中心】</p>
-                <span>2018-07-23 22:08:23</span>
-              </div>
-              <div class="expressMainRight"></div>
-            </a>
+            <!-- <a href="#">
+                <div class="expressMainLeft">
+                    <em></em>
+                    <p>快件在【山东威海】进行装包发往扫描，发往【北京转运中心】</p>
+                    <span>2018-07-23 22:08:23</span>
+                </div>
+                <div class="expressMainRight"></div>
+            </a> -->
+            <div class="expressInfoIng">
+              <span>韵达快运</span>　
+              <em>3987666827779</em>
+            </div>
           </div>
           <div class="addressInfo">
             <em class="addreeIcon"></em>
@@ -63,7 +67,6 @@
           <a href="#" class="contactService">联系客服</a>
         </div>
       </main>
-      <!--中间 结束-->
     </div>
 </template>
 

@@ -11,7 +11,7 @@
       </div>
       <!--头部 结束-->
       <!--中间 开始-->
-      <main>
+      <main class="white">
         <div class="catcherRecommend dynamic">
           <div class="catcherHead"></div>
           <div class="mainText">

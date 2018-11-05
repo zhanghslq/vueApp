@@ -120,7 +120,7 @@
         },
         getMessage(){
           var _this=this
-          axios.post('/api//api/wxapp/account/info',{
+          axios.post(store.getAddress()+'/api/wxapp/account/info',{
             "uid":store.fetch("uid")
           })
             .then(function (response) {

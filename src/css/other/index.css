@@ -83,7 +83,7 @@ header .message em{
 	display: inline-block;
 	float: left;
 }
-.addr .cityCode >>> .triangle{
+.addr .cityCode .triangle{
 	width:0.12rem;
 	height: 0.1rem;
 	display: inline-block;
@@ -157,6 +157,7 @@ header .message em{
 }
 .recommend a img{
 	width:100%;
+	height: 100%;
 }
 .recommend .recommendRight{
 	width:4.04rem;
@@ -220,6 +221,7 @@ header .message em{
 }
 .homePageMain .hotSelling a img{
 	width:100%;
+	height: 100%;
 }
 .homePageMain .guessLike{
 	padding-bottom:2rem;
@@ -237,8 +239,14 @@ header .message em{
 	float:left;
 	margin:0 0 0.2rem 0.24rem;
 }
+.guessLike .likeMain a .likePic{
+	width: 3.41rem;
+	height: 3.38rem;
+	overflow: hidden;
+}
 .guessLike .likeMain a img{
-	max-width: 100%;
+	width: 100%;
+	height: 100%;
 	display:block;
 	margin:0 auto;
 }
@@ -410,6 +418,7 @@ header .message em{
 }
 .selectCont .seleLeft img{
 	width:100%;
+	height: 100%;
 }
 .selectCont .seleRight{
 	width:3.46rem;
@@ -422,6 +431,7 @@ header .message em{
 }
 .selectCont .seleRight a img{
 	width:100%;
+	height: 100%;
 }
 .selectCont .seleRight a:last-child{
 	margin-top: 0.09rem;
@@ -450,6 +460,7 @@ header .message em{
 }
 .nationalMain .nationalInfo a img{
 	width:100%;
+	height: 100%;
 }
 .flashSale .flashSaleList{
 	width:7.02rem;
@@ -474,7 +485,7 @@ header .message em{
 	background: #f7f7f7;
 }
 .flashSaleList .listPics img{
-	max-width: 100%;
+	width: 100%;
 	height: 100%;
 	display: block;
 	margin:0 auto;
@@ -523,7 +534,7 @@ header .message em{
 .flashSaleList .earlyNoticeMain{
 	width: 1.1rem;
 	background:#fff;
-	margin:0.1rem -1.5rem 0 0;
+	margin:0.2rem -1.5rem 0 0;
 }
 .flashSaleList .earlyNoticeMain em{
 	width:0.03rem;
@@ -582,8 +593,8 @@ header .message em{
 	overflow: hidden;
 }
 .burstCont .bursInfo a .burPic img{
-	max-width: 100%;
-    max-height: 100%;
+	width: 100%;
+    height: 100%;
     display: block;
     margin: auto auto;
 }
@@ -663,6 +674,7 @@ header .message em{
 }
 .special .swiper-slide a img{
 	width:100%;
+	height: 100%;
 }
 .findPageMain .swiper-container,
 .findPageMain .swiper-container2{
@@ -681,6 +693,7 @@ header .message em{
 }
 .hotTopic .swiper-slide a img{
 	width:100%;
+	height: 100%;
 }
 .findPageMain .swiper-container2{
     position: relative;
@@ -753,7 +766,7 @@ header .message em{
 }
 .infoHead .infoHeadLeft .headPic img{
 	width:100%;
-
+	height: 100%;
 }
 .infoHead .infoHeadLeft .headName{
 	float: left;
@@ -833,6 +846,7 @@ header .message em{
 }
 .secialField .secialPic img{
 	width:100%;
+	height: 100%;
 }
 .secialField p{
 	font-size:0.28rem;
@@ -943,6 +957,7 @@ header .message em{
 }
 .fabulousNum .numRight span img{
 	width: 100%;
+	height: 100%;
 	border-radius: 50%;
 }
 .personalHome .bottomOperation{
@@ -1069,8 +1084,13 @@ header .message em{
 	width: 7.5rem;
 	height: 5.84rem;
 	overflow:hidden;
-	background:url(../../images/threelevel/recommendImg.jpg) no-repeat;
-	background-size: 100%;
+	/*background:url(../../images/threelevel/recommendImg.jpg) no-repeat;
+	background-size: 100%;*/
+	position: relative;
+}
+.topicMain .catcherHead img{
+	width:100%;
+	height: 100%;
 }
 .topicMain .mainText{
 	height: auto;
@@ -1084,10 +1104,14 @@ header .message em{
 	line-height: 0.54rem;
 }
 .catcherHead .topicCon{
+	width: 100%;
 	height: auto;
 	overflow: hidden;
 	margin:2.5rem 0 0 0;
 	text-align:center;
+	position: absolute;
+	top:0;
+	left:0;
 }
 .catcherHead .topicCon h3{
 	font-size: 0.5rem;
@@ -1300,9 +1324,10 @@ header .message em{
 	background: #f7f7f7;
 	overflow: hidden;
 	float: left;
+	margin-right: 0.2rem;
 }
 .commodity_list_term li .listPic img{
-	max-width: 100%;
+	width: 100%;
 	height: 100%;
 	display: block;
 	margin:auto auto;
@@ -1314,12 +1339,18 @@ header .message em{
 	line-height: 0.4rem;
 	height: 0.75rem;
 	overflow: hidden;
-	float: right;
+  float: left;
+}
+.commodity_list_term li .sign{
+	width: 4.3rem;
+	margin-top: 0.1rem;
+	color:#b5b5b5;
+  float: left;
+  font-size: 0.24rem;
 }
 .commodity_list_term li .priceQuantity{
 	height: auto;
 	overflow: hidden;
-	margin-top: 0.55rem;
 }
 .commodity_list_term .price{
 	width: 1rem;
@@ -1327,7 +1358,7 @@ header .message em{
 	font-size: 0.18rem;
 	color:#f5500e;
 	float: left;
-	margin: 0.64rem 0 0 0.4rem;
+	margin: 0.34rem 0 0 0;
 }
 .commodity_list_term .price small{
 	background: none;
@@ -1342,7 +1373,7 @@ header .message em{
 	height: 0.48rem;
 	float: right;
 	border:0.02rem  solid #ececec;
-	margin:0.52rem 0.03rem 0 0;
+	margin:0.2rem 0.03rem 0 0;
 }
 .commodity_list_term .quantity i{
 	width: 0.54rem;

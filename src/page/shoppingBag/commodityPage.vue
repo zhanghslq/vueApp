@@ -251,13 +251,15 @@
               <a href="javascript:void(0);" class="closeBtning"></a>
             </div>
             <div class="choicMain">
+
             <div class="colourInfo" v-for="skuItem in skuTags">
-              <div class="infoTitle" :aria-valuetext="skuItem.tagsId">{{skuItem.tagsName}}</div>
+              <div class="infoTitle" :value="skuItem.tagsId">{{skuItem.tagsName}}</div>
               <ul>
                 <li v-on:click="chooseTag($event)" v-for="(ite,index) in skuItem.tagsValue" :class="{'Cur' : index == 0 }" :value="ite.valueId" >{{ite.valueName}}</li>
 
               </ul>
             </div>
+
             <div class="numbers">
               <div class="numLeft">数量</div>
               <div class="numRight">
@@ -266,7 +268,7 @@
                 <a href="javascript:void(0);" class="plus">+</a>
               </div>
             </div>
-            <a  class="addCart">加入购物袋</a>
+            <a v-on:click="addShopCart()"  class="addCart">加入购物袋</a>
             </div>
           </div>
         </div>
@@ -331,12 +333,14 @@ export default {
       colorValueId:'',//颜色id
       specificationValueId:'',//规格id
       skuTags:[],//商品的所有规格
+      allSkus:[],//所有的商品规格组合
+      tagsIdStr:'0'
 
     }
   },
 
   methods: {
-    chooseTag(e){
+    chooseTag(e){//每次选择规格的时候都需要计算一次
       var lis=$(e.target).parent().children();
 
       for (let i=0;i<lis.length;i++) {
@@ -344,14 +348,65 @@ export default {
       }
       $(e.target).addClass("Cur")
 
+      this.tagsIdStr='0';
+      var self =this;
+      console.log("colorOnfo")
+      let a=1;
+      $(".colourInfo").each(function () {
+
+        console.log("each")
+
+        let parTag;
+        console.log($(this.firstChild).attr("value"))
+        parTag=$(this.firstChild).attr("value")
+
+
+
+        let choseTag;
+       $(this).find("li").each(function () {
+         if($(this).hasClass("Cur")){
+           console.log($(this).attr("value"))
+           choseTag=$(this).attr("value")
+         }
+       })
+
+
+        if(a==2){
+          self.tagsIdStr+="-"+parTag+"_"+choseTag
+        }
+        if(a==1){
+          self.tagsIdStr=parTag+"_"+choseTag
+          a=2
+        }
+      })//遍历完成
+
+      console.log("tagstr========"+self.tagsIdStr)
+
+
+
+
+      var allSkus=this.allSkus;
+      for (let i = 0; i < allSkus.length; i++) {
+          if(allSkus[i].tagsIdStr==self.tagsIdStr){
+            console.log(allSkus[i].skuId)
+            console.log(allSkus[i].tagsIdStr)
+
+            self.skuId=allSkus[i].skuId
+          }
+
+
+      }
+
+
     },
     //加入购物车
     addShopCart(){
       let self=this;
-      if(self.skuTags.length=0){//证明可以直接添加购物车
-        axios.post(store.getAddress()+"/api/wxapp/cart/add",{"uid":store.fetch("uid"),"items":JSON.stringify([{"productId":self.productId,"quantity":self.quantity,"skuId":self.skuId}])})
+      /*if(self.skuTags.length=0){//证明可以直接添加购物车*/
+        axios.post(store.getAddress()+"/api/wxapp/cart/add",{"uid":store.fetch("uid"),"quantity":self.quantity,"skuId":self.skuId})
           .then(function (responese) {
             console.log(responese)
+            $(".choicElastic .closeBtning").click();
             let msg="添加购物车成功";
             if(responese.data.code!=200){
               msg="添加购物车失败";
@@ -362,14 +417,14 @@ export default {
               time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
             })
           })
-      }else{//证明需要选择规格
+      /*}else{//证明需要选择规格
         $("#choisShopp").click();
         self.$layer.toast({
           icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
           content: "请先选择商品规格",
           time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
         })
-      }
+      }*/
 
 
 
@@ -486,8 +541,9 @@ export default {
     this.pickData.data2=store.fetch("city_ids")
     this.pickData.data3=store.fetch("area_ids")
 
-    this.productId=this.$route.params.id
-      this.skuId=this.$route.params.skuId
+      this.productId=this.$route.query.id
+      this.skuId=this.$route.query.skuId
+
       if(this.productId==undefined){
           this.productId=store.fetch("commodityproductId")
           this.skuId=store.fetch("commodityskuId")
@@ -513,6 +569,7 @@ export default {
           _this.serviceInfo=responese.data.data.serviceInfo
           _this.skuTags=responese.data.data.skuTags
           _this.actualPrice=responese.data.data.actualPrice
+          _this.allSkus=responese.data.data.allSkus
 
           console.log(responese)
 

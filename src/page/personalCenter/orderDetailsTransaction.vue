@@ -1,5 +1,6 @@
 <template>
     <div>
+      <!--头部 开始-->
       <header class="fix">
         <a href="javascript:history.go(-1);" class="returnBtn"></a>
         订单详情
@@ -19,14 +20,18 @@
             </div>
           </div>
           <div class="expressMain">
-            <a href="#">
-              <div class="expressMainLeft">
-                <em></em>
-                <p>快件已签收</p>
-                <span>2018-07-23 22:08:23</span>
-              </div>
-              <div class="expressMainRight"></div>
-            </a>
+            <!-- <a href="#">
+                <div class="expressMainLeft">
+                    <em></em>
+                    <p>快件已签收</p>
+                    <span>2018-07-23 22:08:23</span>
+                </div>
+                <div class="expressMainRight"></div>
+            </a> -->
+            <div class="expressInfoIng">
+              <span>韵达快运</span>　
+              <em>3987666827779</em>
+            </div>
           </div>
           <div class="addressInfo">
             <em class="addreeIcon"></em>

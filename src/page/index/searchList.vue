@@ -30,7 +30,7 @@
           <scroller class="searchCont" :on-infinite="infinite"  :on-refresh = "refresh" ref="my_scroller" :noDataText="noDataText">
 
             <div class="searchContInfo" style="display: block;">
-              <router-link :to="{name:'commodityPage',params:{'id':product.id,'skuId':product.skuId}}" v-for="(product,index) in productList" :key="index">
+              <router-link :to="{name:'commodityPage',query:{'id':product.id,'skuId':product.skuId}}" v-for="(product,index) in productList" :key="index">
                 <div class="infoPic"><img :src="product.titleImage"></div>
                 <p>{{product.title}}</p>
                 <div class="price">
@@ -88,7 +88,7 @@
           productList:[],
           kw:'',
           noDataText:'我也是有底线的',
-          pageNumber:1,
+          pageNumber:0,
         }
       },
       methods:{
@@ -174,7 +174,7 @@
       mounted:function () {
         let _this=this;
         _this.kw = store.fetch("kw")
-        this.querySearchList();
+
       }
     }
 </script>

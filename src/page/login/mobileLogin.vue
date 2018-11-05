@@ -57,7 +57,28 @@ export default {
             console.log(response)
             store.save("uid",response.data.data.uid)
             store.save("mobile",response.data.data.mobile)
-            _this.$router.push("index");
+            if(response.data.data.isStoreKeeper){
+              store.save("isStoreKeeper",1)
+              if(store.judge()==1){
+                window.webkit.messageHandlers.currentCookies.postMessage({
+                  "code": "81",
+                  "role":"1",
+                });
+              }
+
+            }else{
+              store.save("isStoreKeeper",0)
+              if(store.judge()==1){
+                window.webkit.messageHandlers.currentCookies.postMessage({
+                  "code": "81",
+                  "role":"0",
+                });
+              }
+            }
+            if(store.judge()==3){//window浏览器
+              _this.$router.push("index");
+            }
+
 
           }else{
             console.log("jinrushelse")
@@ -139,6 +160,46 @@ export default {
         $('.areaCode').empty()
         this.mobile_view(mobile)
       }
+
+//1：登录后把用户信息存储到本地（code：81 , role :0普通 1我是店主），
+// 除了code，role这两个字段名称固定，其他的不用固定，传什么本地以key-value的形式存什么。
+   /* window.webkit.messageHandlers.currentCookies.postMessage({
+      "code": "81",
+      "role":"1",
+      "loginname":"xiaoma",
+      "password":"adfadfjjkkjjkdjkjjjkjkkjkjkjkkklkljdf"
+  });
+
+    //2：网页获取本地存储的数据（code：82 ）
+   // 网页需要添加js方法  saveMobileData(string)，当原生获取到82方法时，
+    // 会将本地存储的key-value形式的数据组合成json字符串形式返回给H5
+    window.webkit.messageHandlers.currentCookies.postMessage({
+      "code": "82"});
+
+    //微信支付
+    window.webkit.messageHandlers.currentCookies.postMessage({
+      "code": "83",
+      "payStr":"微信支付的字符串"
+  });
+
+    //打开新页面
+    window.webkit.messageHandlers.currentCookies.postMessage({
+      "code": "91",
+      "url":"http://www.baidu.com"
+      });
+
+
+
+    //5：退出登录（code：99）
+    window.webkit.messageHandlers.currentCookies.postMessage({
+      "code": "99"
+      });
+
+   // 6：清除缓存（code：100  解决改变网页样式手机上不及时显示）
+    window.webkit.messageHandlers.currentCookies.postMessage({
+      "code": "99"
+      });*/
+
   }
 }
 </script>

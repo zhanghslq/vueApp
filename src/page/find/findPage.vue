@@ -181,7 +181,7 @@
       </main>
       <!--中间 结束-->
       <!--底部 开始-->
-      <footer class="memberFooter">
+      <footer class="memberFooter" v-if="isDev">
         <router-link to="/index">
          <i class="homePage"></i><span>首页</span>
         </router-link>
@@ -206,7 +206,7 @@
 <script>
   import Vue from 'vue'
   import vuePhotoPreview from 'vue-photo-preview'
-
+  import store from '../../service/store'
   import {TouchSlide} from '../../js/plugins/TouchSlide.1.1.min'
   import Swiper from 'swiper'
   Vue.use(vuePhotoPreview,{
@@ -222,13 +222,14 @@
       },
       data(){
           return{
+            isDev:false,
               swiper1:{},
               swiper2:{}
           }
       },
       methods:{
         /*发现首页左右滑动*/
-        findSlide1:function (){
+      findSlide1:function (){
       this.swiper1 = new Swiper('.swiper-container1', {
       slidesPerView: 2.2,
       spaceBetween: 8,
@@ -307,6 +308,7 @@
 
       },
       mounted:function(){
+          this.isDev=store.isDev();
         this.findSlide1(); //专题左右滑动内容
         this.findSlide2();
         this.findPageTab();//tab切换

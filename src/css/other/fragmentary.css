@@ -285,9 +285,10 @@
 	width: 1.66rem;
 	height: 1.66rem;
 	float: left;
-	margin:0.53rem 0.12rem 0 0.27rem;
+	margin:0.4rem 0.18rem 0 0.27rem;
 }
 .maketingCont .contInfo .infoLeft img{
+	width: 100%;
 	height: 100%;
 	display: block;
 	margin:auto auto;
@@ -367,6 +368,7 @@
 }
 .nearFuturePeo .peoHead img{
 	width: 100%;
+	height: 100%;
 	border-radius: 50%;
 }
 .nearFuturePeo .peoName{
@@ -432,9 +434,10 @@
 	margin:0.12rem 0 0 0;
 }
 .futureLike .futureList .infoLeft{
-	margin-top: 0.2rem;
+	margin-top: 0.3rem;
 }
 .futureLike .futureList a{
+	padding-bottom: 0.2rem;
 	border-bottom: 0.02rem solid #f4f5f7;
 }
 .futureLike .futureList a:last-child{
@@ -466,7 +469,7 @@
 	float: left;
 }
 .highIncomeMain ul li .highLeft img{
-	max-width:100%;
+	width:100%;
 	height: 100%;
 	display: block;
 	margin:auto auto;
@@ -474,7 +477,7 @@
 .highIncomeMain ul li .highRight{
 	width: 5.08rem;
 	float: left;
-	margin-left: 0.1rem;
+	margin-left: 0.2rem;
 }
 .highIncomeMain ul li .highRight p{
 	font-size: 0.28rem;
@@ -705,6 +708,7 @@
 }
 .businessSchool .schoolOper a img{
 	width:100%;
+	height: 100%;
 }
 .shopkeeperMain .moreOpera{
 	height: auto;
@@ -1106,6 +1110,7 @@
 .brochureList a .listLeft img,
 .schoolList a .listLeft img{
 	width: 100%;
+	height: 100%;
 }
 .brochureList a .listRight,
 .schoolList a .listRight{
@@ -1132,7 +1137,8 @@
 	margin-top: 0.9rem;
 }
 .brochureDetail img{
-	max-width: 100%;
+	width: 100%;
+	height: 5rem;
 	display: block;
 	margin:0 auto;
 }
@@ -1197,6 +1203,7 @@
 }
 .schoolContent .schoolNav a img{
 	width: 100%;
+	height: 100%;
 }
 .schoolContent .schoolList{
 	height: auto;
@@ -1442,6 +1449,7 @@
 }
 .myClient .clientMain ul li .listLeft img{
 	width:100%;
+	height: 100%;
 	border-radius: 50%;
 }
 .myClient .clientMain ul li .listRight{
@@ -1601,6 +1609,7 @@
 }
 .contactUs .infoTop .headImg img{
 	width: 100%;
+	height: 100%;
 	border-radius: 50%;
 }
 .contactUs .infoTop span{
@@ -1764,9 +1773,16 @@ header .remind{
 	color:#444;
 	margin-bottom: 0.24rem;
 }
+.businessContent .businessMain a .businPic{
+	width: 100%;
+	height: 2.8rem;
+	overflow: hidden;
+	margin-bottom: 0.22rem;
+}
 .businessContent .businessMain a img{
 	width: 100%;
-	margin:0 auto 0.22rem;
+	height: 100%;
+	margin:0 auto;
 	display: block;
 }
 .businessContent .businessMain a p{
@@ -2036,6 +2052,7 @@ header .remind{
 /*新人手册详细 开始*/
 .schoolContent .brochureBg{
 	width: 7.5rem;
+	height: 5rem;
 	display: block;
 	margin:0 auto;
 }
@@ -2502,16 +2519,78 @@ header .remind{
 	color:#666;
 }
 
-
-
-
-
-
 /*管理系统 结束*/
 
+/*交易物流 开始*/
+.logistics{
+	height: auto;
+	overflow:hidden;
+}
+.logistics a{
+	display: block;
+	height: auto;
+	overflow:hidden;
+	background:#fff;
+	padding-bottom: 0.25rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.logistics .logisticsLeft{
+	width: 1.08rem;
+	height: 1.08rem;
+	float: left;
+	margin: 0.28rem 0.2rem 0 0.24rem;
+}
+.logistics .logisticsLeft img{
+	width: 100%;
+	height: 100%;
+	border-radius:50%;
+}
+.logistics .logisticsRight{
+	width: 5.5rem;
+	float: left;
+	height: auto;
+	overflow:hidden;
+}
+.logistics .logisticsRight .lrightTop{
+	height: auto;
+	overflow:hidden;
+	margin:0.2rem 0;
+}
+.logistics .logisticsRight .lrightTop span{
+	float: left;
+	color:#444;
+	display: inline-block;
+	font-size: 0.28rem;
+}
+.logistics .logisticsRight .lrightTop em{
+	display: inline-block;
+	float: right;
+	font-size: 0.26rem;
+	color:#aeaeae;
+}
+.logistics .logisticsRight .lrightBottom{
+	font-size: 0.26rem;
+	color:#aeaeae;
+}
+.logistics .displayAll{
+	width: 100%;
+    font-size: 0.24rem;
+    color: #adadad;
+    text-align: center;
+    margin: 0.5rem 0;
+}
 
 
 
+
+
+
+
+
+
+
+
+/*交易物流 结束*/
 
 
 

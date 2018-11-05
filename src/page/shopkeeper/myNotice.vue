@@ -42,13 +42,13 @@
               <p>暂无消息</p>
             </div>
           </a>
-          <a href="#">
+          <router-link to="transacitonLogistics">
             <em class="transactionIcon"></em>
             <div class="noticeTitle">
               <h3>交易物流</h3>
               <p>暂无消息</p>
             </div>
-          </a>
+          </router-link>
         </div>
       </main>
       <!--中间 结束-->

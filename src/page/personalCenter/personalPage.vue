@@ -21,17 +21,15 @@
               <div class="headPortrait">
                 <span></span>
                 <router-link to="accountInfo">
-                  <div class="heading"><img src="../../images/temporary/7.jpg"></div>
+                  <div class="heading"><img :src="imageUrl"></div>
                 </router-link>
               </div>
-              <p>李宗森</p>
+              <p>{{username}}</p>
               <em>猩际会员</em>
             </a>
           </div>
           <div class="orderSituation">
-            <router-link to="myOrder">
-
-
+            <router-link :to="{path:'/myOrder',query:{num:0}}">
             <a  class="orderTitle">
               <span class="titleLeft">我的订单</span>
               <div class="titleRight">
@@ -41,22 +39,22 @@
             </a>
             </router-link>
             <div class="orderOperation">
-              <a >
+              <router-link :to="{path:'/myOrder',query:{num:1}}">
                 <em class="pendingPayment"></em>
                 <span>待付款</span>
-              </a>
-              <a >
+              </router-link>
+              <router-link :to="{path:'/myOrder',query:{num:2}}">
                 <em class="PendingDelivery"></em>
                 <span>待发货</span>
-              </a>
-              <a >
+              </router-link>
+                <router-link :to="{path:'/myOrder',query:{num:3}}">
                 <em class="goodsReceived"></em>
                 <span>待收货</span>
-              </a>
-              <a >
+                </router-link>
+              <router-link :to="{path:'/myOrder',query:{num:4}}">
                 <em class="succeTrade"></em>
                 <span>交易成功</span>
-              </a>
+              </router-link>
              <router-link to="refundProgress">
                 <em class="returnGoods"></em>
                 <span>退货/退款</span>
@@ -114,7 +112,7 @@
       </main>
       <!--中间 结束-->
       <!--底部 开始-->
-      <footer class="memberFooter">
+      <footer class="memberFooter" v-if="isDev">
         <router-link to="/index">
           <i class="homePage"></i><span>首页</span>
         </router-link>
@@ -136,8 +134,71 @@
 </template>
 
 <script>
+  import store from '../../service/store'
+  import axios from 'axios'
     export default {
-        name: "personalPage"
+        name: "personalPage",
+      data(){
+        return{
+          username:'',
+          imageUrl:'',
+          isDev:false
+
+        }
+      },
+      methods:{
+        detect(){
+          var equipmentType = "";
+          var agent = navigator.userAgent.toLowerCase();
+          var android = agent.indexOf("android");
+          var iphone = agent.indexOf("iphone");
+          var ipad = agent.indexOf("ipad");
+          if(android != -1){
+            equipmentType = "android";
+          }
+          if(iphone != -1 || ipad != -1){
+            equipmentType = "ios";
+          }
+          return equipmentType;
+        }
+
+      },
+      mounted(){
+          this.isDev=store.isDev();
+          var _this=this;
+          let uid=store.fetch("uid");
+
+
+            if(uid==undefined||uid==null||uid==''){//未登录，需要跳转到登录页
+
+              if(store.judge()==1){
+                window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                  "code": "91",
+                  "url":store.getNextAddress()
+                });
+              }else if(store.judge()==3){
+                _this.$router.push("/")
+              }
+
+
+            }else{//已登录
+              var _this=this;
+              axios.post(store.getAddress()+'/api/wxapp/account/info',{
+                "uid":store.fetch("uid")
+              })
+                .then(function (response) {
+                  _this.username=response.data.data.nickName
+
+                  _this.imageUrl=response.data.data.photo
+
+                })
+                .catch(function (error) {
+                  console.log(error);
+                })
+            }
+
+
+      }
     }
 </script>
 

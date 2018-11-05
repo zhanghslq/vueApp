@@ -103,7 +103,7 @@
 /*X币 结束*/
 /*兑换X币 开始*/
 .exchangeMain{
-	
+
 }
 .exchangeMain .exchangeNav,
 .collectionMain .collectionNav{
@@ -172,7 +172,7 @@
 .contInfo .exchangeMoney .available{
 	height: auto;
 	overflow: hidden;
-	margin:0.4rem 0.23rem 0; 
+	margin:0.4rem 0.23rem 0;
 	font-size:0.27rem;
 	color:#666;
 }
@@ -500,10 +500,10 @@
 	background: #ecbc68;
 }
 .listInfo .infoCont .infoContLeft img{
-	max-width: 100%;
+	width: 100%;
 	height: 100%;
 	display: block;
-	margin:0.1rem auto;
+	margin:0 auto;
 }
 .listInfo .infoCont .infoContRight{
 	width: 5.05rem;
@@ -648,7 +648,7 @@ header .setUpIcon{
 	width:7.5rem;
 	height: 2.96rem;
 	background: url(../../images/secondLevel/personalBg.png) no-repeat;
-	background-size:100%; 
+	background-size:100%;
 }
 .personalMain .accountName{
 	width: 6.94rem;
@@ -702,7 +702,7 @@ header .setUpIcon{
 	height: 0.4rem;
 	line-height: 0.4rem;
 	text-align: center;
-	display: block;	
+	display: block;
 	float: left;
 	font-size: 0.24rem;
 	color:#fff;
@@ -814,9 +814,9 @@ header .setUpIcon{
 	height: 1.46rem;
 	overflow: hidden;
 	display: block;
-	margin:0.4rem auto 0; 
+	margin:0.4rem auto 0;
 	background: url(../../images/threeLevel/memberNameBg.png) no-repeat;
-	background-size: 100%;	
+	background-size: 100%;
 }
 .memberInfo .memberName .memberNameLeft{
 	float: left;
@@ -1212,7 +1212,7 @@ header .setUpIcon{
 }
 .helpService .helpFooter{
 	width: 7.5rem;
-	height: 0.98rem;	
+	height: 0.98rem;
 	background:#fff;
 	position: fixed;
 	bottom: 0;
@@ -1474,7 +1474,7 @@ header .setUpIcon{
 /*我的订单 开始*/
 .myOrderMain{
 	width:100%;
-	position: absolute;
+	/*position: relative;*/
 	top:0.9rem;
 }
 .orderOption .optionNav{
@@ -1486,7 +1486,7 @@ header .setUpIcon{
 	text-align: center;
 }
 .orderOption .optionCont{
-	margin-top: 0.8rem;
+	margin-top: 1.3rem;
 }
 .opContInfo li .infoBottom .cancelBtn,
 .opContInfo li .infoBottom .secondBtn{
@@ -1542,7 +1542,7 @@ header .setUpIcon{
 	margin:0.4rem 0 1.3rem 0;
 }
 .optionCont .optionMain{
-	display: none;
+	display: block;
 }
 .optionCont .opContInfo{
 	display: block;
@@ -1809,7 +1809,7 @@ header .setUpIcon{
 	margin:0 0.1rem 0 0.24rem;
 }
 .commodity .commodDetail .detailLeft img{
-	max-width: 100%;
+	width: 100%;
 	height: 100%;
 	display: block;
 	margin:0 auto;
@@ -1819,7 +1819,7 @@ header .setUpIcon{
 	height: auto;
 	overflow: hidden;
 	float: left;
-} 
+}
 .commodDetail .detailRight .rightTop{
 	height: auto;
 	overflow: hidden;

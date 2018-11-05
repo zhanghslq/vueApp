@@ -6,14 +6,16 @@
 *@create author:gj;
 *@create time 2018/07/05
 **/
-#nav .bar {
+#nav .bar ,
+#nav2 .bar{
 	width:65px;
 	height:3px;
 	position:absolute;
 	bottom:0;
 	left:0;
 }
-#nav .bar .color {
+#nav .bar .color,
+#nav2 .bar .color{
 	width:65px;
 	margin:0 auto;
 	height:3px;
@@ -128,10 +130,10 @@
 	margin-bottom:0.15rem;
 }
 .recommendation .listMain a img{
-	max-width: 100%;
+	width: 100%;
 	height: 100%;
 	display: block;
-	margin:0.15rem auto 0;
+	margin:0 auto;
 }
 .recommendation .listMain a h3{
 	height:0.35rem;
@@ -174,7 +176,7 @@
 	display: block;
 }
 .newGoodMain li .newGoodLeft img{
-	max-width:100%;
+	width:100%;
 	height: 100%;
 	display: block;
 	margin:0 auto;
@@ -266,7 +268,7 @@
 	overflow:hidden;
 }
 .exhibitionList li .exhibitPic img{
-	max-width:100%;
+	width:100%;
 	height: 100%;
 	display: block;
 	margin:0 auto;
@@ -305,6 +307,7 @@
 }
 .tenBanner img{
 	width:100%;
+	height: 100%;
 }
 .tenMain{
 	height:auto;
@@ -344,7 +347,8 @@
 	position:relative;
 }
 .tenMain li .tenmainLeft img{
-	max-width:100%;
+	width:100%;
+	height: 100%;
 	display:block;
 	margin:auto auto;
 }
@@ -774,6 +778,7 @@ header .classifiSearch input{
 }
 .hotList ul li .hotListLeft img{
 	width:100%;
+	height: 100%;
 }
 .hotList ul li .hotListRight{
 	width: 5.08rem;
@@ -1059,7 +1064,7 @@ header .classifiSearch input{
 	-webkit-box-shadow: 0 0 0.25rem #d3d4d7;
     -moz-box-shadow: 0 0 0.25rem #d3d4d7;
     box-shadow: 0 0 0.25rem #d3d4d7;
-  z-index: 999;
+    z-index:999;
 }
 .placeOrderMain .settlement .setTitle{
 	font-size: 0.28rem;
