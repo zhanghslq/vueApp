@@ -51,7 +51,7 @@
                 <em class="goodsReceived"></em>
                 <span>待收货</span>
                 </router-link>
-              <router-link :to="{path:'/myOrder',query:{num:4}}">
+              <router-link :to="{path:'/myOrder',query:{num:5}}">
                 <em class="succeTrade"></em>
                 <span>交易成功</span>
               </router-link>
@@ -167,17 +167,19 @@
           this.isDev=store.isDev();
           var _this=this;
           let uid=store.fetch("uid");
-
-
             if(uid==undefined||uid==null||uid==''){//未登录，需要跳转到登录页
 
               if(store.judge()==1){
                 window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                   "code": "91",
-                  "url":store.getNextAddress()
+                  "url":store.getNextAddress()+"mobileLogin"
                 });
+              }else if(store.judge()==0){//安卓
+                window.androidXingJiApp.postMessage({
+                  "code": "91",
+                  "url":store.getNextAddress()+"mobileLogin"});
               }else if(store.judge()==3){
-                _this.$router.push("/")
+                _this.$router.push("/mobileLogin")
               }
 
 

@@ -9,9 +9,11 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import layer from 'vue-layer-mobile'
 import VueScroller from 'vue-scroller'
 
+import Validator from 'vue-validator'
 Vue.use(VueScroller)
 Vue.use(layer)
 Vue.use(VueAwesomeSwiper)
+Vue.use(Validator)
 /* eslint-disable */
 import $ from 'jquery'
 /* eslint-disable no-new */

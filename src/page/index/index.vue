@@ -1000,12 +1000,12 @@
                   </div>
                 </div>
                 <!--爆品秒杀-->
-                <div class="secKill">
+                <div class="secKill" v-if="listSecKillSpecial.length!=0">
                   <h2>爆品秒杀</h2>
 
                 </div>
                 <!--超值热卖-->
-                <div class="hotSelling">
+                <div class="hotSelling" v-if="listSecKillSpecial.length!=0">
                   <h2>超值热卖</h2>
                   <div class="hotMain">
                     <a href="#"><img src="../../images/temporary/commodity7.jpg"></a>
@@ -1451,13 +1451,6 @@ export default {
     }
   },
   created(){
-
-
-  },
-  destroyed(){
-    $('#bursting .swiper-slide').unbind("click")
-  },
-  mounted () {
     console.log("执行判断开始")
     if(store.judge()==1){//1代表ios
 
@@ -1467,14 +1460,20 @@ export default {
         "code": "99"
       });
 
-
     }else if(store.judge()==3){
       console.log("windows  浏览器模拟")
     }else if(store.judge()==0){
       console.log("安卓")
     }
 
-    console.log("执行判断结束")
+  },
+  destroyed(){
+    $('#bursting .swiper-slide').unbind("click")
+  },
+  mounted () {
+
+
+    console.log(this.listSecKillSpecial.length)
     this.isDev=store.isDev();
     var a=$("#page");
     console.log(a)

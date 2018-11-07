@@ -211,7 +211,7 @@
 
           <a  class="chat"><img src="../../images/common/chatIcon.png"></a>
           <a v-on:click="addShopCart()" class="join">加入购物袋</a>
-          <a  class="immediately">立即购买</a>
+          <a  class="immediately" v-on:click="nowBuy()">立即购买</a>
         </div>
         <!--底部 结束-->
         <a  class="serviceIcon"></a>
@@ -340,6 +340,9 @@ export default {
   },
 
   methods: {
+    nowBuy(){
+      this.$router.push({path:'placeOrder',query:{"skuId":this.skuId,"quantity":this.quantity}})
+    },
     chooseTag(e){//每次选择规格的时候都需要计算一次
       var lis=$(e.target).parent().children();
 

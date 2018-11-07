@@ -6,8 +6,8 @@
 *@create author:gj;
 *@create time 2018/07/05
 **/
-#nav .bar ,
-#nav2 .bar{
+#nav .bar,
+#nav2 .bar {
 	width:65px;
 	height:3px;
 	position:absolute;
@@ -56,7 +56,7 @@
 	margin:0.33rem 0.1rem 0 0;
 	background:url(../../images/secondLevel/strictIcon.png) no-repeat;
 	background-size:100%;
-}
+} 
 .advantage span em.afterSale{
 	width:0.27rem;
 	height:0.27rem;
@@ -65,7 +65,7 @@
 	margin:0.33rem 0.1rem 0 0;
 	background:url(../../images/secondLevel/afterSale.png) no-repeat;
 	background-size:100%;
-}
+} 
 .recommendation{
 	height:auto;
 	overflow:hidden;
@@ -321,9 +321,9 @@
 	display:block;
 	margin:0 auto 0.15rem;
 	border-radius:0.06rem;
-	-webkit-box-shadow:0 0 0.2rem #c8c8c8;
-    -moz-box-shadow:0 0 0.2rem #c8c8c8;
-    box-shadow:0 0 0.2rem #c8c8c8;
+	-webkit-box-shadow:0 0 0.2rem #c8c8c8;  
+    -moz-box-shadow:0 0 0.2rem #c8c8c8;  
+    box-shadow:0 0 0.2rem #c8c8c8; 
 	position:relative;
 }
 .tenMain li .hotLabel{
@@ -441,9 +441,9 @@
 	height:auto;
 	margin:0 auto 0.15rem;
 	display:block;
-	-webkit-box-shadow:0 0 0.2rem #c8c8c8;
-    -moz-box-shadow:0 0 0.2rem #c8c8c8;
-    box-shadow:0 0 0.2rem #c8c8c8;
+	-webkit-box-shadow:0 0 0.2rem #c8c8c8;  
+    -moz-box-shadow:0 0 0.2rem #c8c8c8;  
+    box-shadow:0 0 0.2rem #c8c8c8; 
 	background:#fff;
 }
 .growGrassMain a .picInfo{
@@ -565,18 +565,18 @@
     width: 0;
     height: 0;
     transform:rotate(270deg);
-	-ms-transform:rotate(270deg);
-	-moz-transform:rotate(270deg);
-	-webkit-transform:rotate(270deg);
-	-o-transform:rotate(270deg);
+	-ms-transform:rotate(270deg); 	
+	-moz-transform:rotate(270deg); 
+	-webkit-transform:rotate(270deg); 
+	-o-transform:rotate(270deg); 
 }
 .searchListMain .sortIcon em:last-child{
 	transform:rotate(90deg);
-	-ms-transform:rotate(90deg);
-	-moz-transform:rotate(90deg);
-	-webkit-transform:rotate(90deg);
+	-ms-transform:rotate(90deg); 	
+	-moz-transform:rotate(90deg); 
+	-webkit-transform:rotate(90deg); 
 	-o-transform:rotate(90deg);
-	margin-top: 0.05rem;
+	margin-top: 0.05rem; 
 }
 .searchListMain .sortIcon em.Cur{
 	border-left: 0.08rem solid #000;
@@ -638,7 +638,7 @@ header .classifiSearch input{
 }
 .classifiMain{
  	height: auto;
- 	overflow:hidden;
+ 	overflow:hidden;   
 }
 .classifiMain .classifiContent{
 	width: 100%;
@@ -654,7 +654,7 @@ header .classifiSearch input{
 	position: fixed;
 	left:0;
 	top:0.9rem;
-}
+} 
 .classifiContent .classifiLeft a{
 	width:100%;
 	height: 0.9rem;
@@ -711,7 +711,7 @@ header .classifiSearch input{
 	display: block;
 	height: 1.7rem;
 	width:1.24rem;
-	text-align:center;
+	text-align:center; 
 	overflow:hidden;
 	float: left;
 	margin:0 0 0.3rem 0.58rem;
@@ -909,7 +909,7 @@ header .classifiSearch input{
 	height: auto;
 	overflow: hidden;
 	float: left;
-}
+} 
 .orderDetail .detailRight .rightTop{
 	height: auto;
 	overflow: hidden;
@@ -1018,7 +1018,7 @@ header .classifiSearch input{
 	background: url(../../images/secondLevel/conInto.png) no-repeat;
 	background-size: 100%;
 	float: right;
-	margin:0.3rem 0 0 0.1rem;
+	margin:0.3rem 0 0 0.1rem; 
 }
 .preferential .offset{
 	height: 0.8rem;

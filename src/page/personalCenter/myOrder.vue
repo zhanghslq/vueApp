@@ -4,7 +4,7 @@
       <header class="fix">
         <a href="javascript:history.go(-1);" class="returnBtn"></a>
         我的订单
-        <a href="#" class="searchBtn"></a>
+        <a  class="searchBtn"></a>
       </header>
       <!--头部 结束-->
       <!--中间 开始-->
@@ -19,14 +19,14 @@
               <a href="javascript:void(0);">交易成功</a>
             </div>
             <div class="optionCont">
-              <scroller  class="optionMain" style="margin-top: 1.4rem"  :on-infinite="infinite"  :on-refresh = "refresh" ref="allOrder_scroller" :noDataText="noDataText"><!--这里是全部的-->
+              <scroller  class="optionMain" style="margin-top: 1.4rem;margin-bottom: 1rem"  :on-infinite="infinite"  :on-refresh = "refresh" ref="allOrder_scroller" :noDataText="noDataText"><!--这里是全部的-->
                 <ul class="opContInfo">
-                  <li v-for="(order,index) in orderList" :id="order.orderId" v-on:click="goToDetail(order.orderId,order.status)">
+                  <li v-for="(order,index) in orderList" :id="order.orderId">
                     <div class="infoTop">
                       <span>{{order.createTime}}</span>
                       <em>{{order.statusName}}</em>
                     </div>
-                    <a href="#" class="infoMiddle" v-for="(ite,inde) in order.lines">
+                    <a  class="infoMiddle" v-for="(ite,inde) in order.lines" v-on:click="goToDetail(order.orderId,order.status)">
                       <div class="middleImg"><img :src="ite.goodsTitleImg"></div>
                       <div class="middleDet">
                         <div class="middleTitle">
@@ -43,21 +43,37 @@
                     </div>
                     <div class="infoBottom" v-if="order.status==1">
                       <a href="javascript:void(0);" class="cancelBtn" v-on:click="cancelOrder()">取消</a>
-                      <a href="#" class="toPay"><span>去付款</span><em id="btn0">30:00</em></a>
+                      <a  class="toPay"><span>去付款</span><em class="btnTime"></em></a>
                     </div>
+                    <div class="infoBottom" v-if="order.status==2">
+                      <a href="javascript:void(0);" class="thirdBtn">提醒发货</a>
+                      <a href="javascript:void(0);" class="secondBtn">退款</a>
+                    </div>
+                    <div class="infoBottom" v-if="order.status==3">
+                      <a href="javascript:void(0);" class="thirdBtn">延长收获</a>
+                      <a href="javascript:void(0);" class="thirdBtn">查看物流</a>
+                      <a href="javascript:void(0);" class="fourthBtn" v-on:click="confirmProduct(order.orderId)">确认收货</a>
+                    </div>
+                    <div class="infoBottom" v-if="order.status==5">
+                      <a href="javascript:void(0);" class="thirdBtn">删除订单</a>
+                      <a href="javascript:void(0);" class="thirdBtn">查看物流</a>
+                      <a href="javascript:void(0);" class="secondBtn">评价</a>
+                    </div>
+
+
                   </li>
 
                 </ul>
 
               </scroller>
-              <scroller class="optionMain" style="margin-top: 1.4rem" :on-infinite="infinite1"  :on-refresh = "refresh1" ref="waitOrder_scroller" :noDataText="noDataText">
+              <scroller class="optionMain" style="margin-top: 1.4rem;margin-bottom: 1rem" :on-infinite="infinite1"  :on-refresh = "refresh1" ref="waitOrder_scroller" :noDataText="noDataText">
                 <ul class="opContInfo">
-                  <li v-for="(order,index) in orderList1" :id="order.orderId">
+                  <li v-for="(order,index) in orderList1"  :id="order.orderId">
                     <div class="infoTop">
                       <span>{{order.createTime}}</span>
                       <em>{{order.statusName}}</em>
                     </div>
-                    <a href="#" class="infoMiddle" v-for="(ite,inde) in order.lines">
+                    <a  class="infoMiddle" v-on:click="goToDetail(order.orderId,order.status)" v-for="(ite,inde) in order.lines">
                       <div class="middleImg"><img :src="ite.goodsTitleImg"></div>
                       <div class="middleDet">
                         <div class="middleTitle">
@@ -73,22 +89,22 @@
                       <div class="discount">优惠：<em>￥0.00</em></div>
                     </div>
                     <div class="infoBottom">
-                      <a href="javascript:void(0);" class="cancelBtn">取消</a>
-                      <a href="#" class="toPay"><span>去付款</span><em id="btn1">30:00</em></a>
+                      <a  v-on:click="cancelOrder(order.orderId)" class="cancelBtn">取消</a>
+                      <a  class="toPay" v-on:click="repayMoney(order.orderId)"><span>去付款</span><em class="btnTime"></em></a>
                     </div>
                   </li>
 
                 </ul>
 
               </scroller>
-              <scroller class="optionMain" style="margin-top: 1.4rem" :on-infinite="infinite2"  :on-refresh = "refresh2" ref="waitSendProductOrder_scroller" :noDataText="noDataText">
+              <scroller class="optionMain" style="margin-top: 1.4rem;margin-bottom: 1rem" :on-infinite="infinite2"  :on-refresh = "refresh2" ref="waitSendProductOrder_scroller" :noDataText="noDataText">
                 <ul class="opContInfo">
-                  <li v-for="(order,index) in orderList2" :id="order.orderId">
+                  <li v-for="(order,index) in orderList2"  :id="order.orderId" >
                     <div class="infoTop">
                       <span>{{order.createTime}}</span>
                       <em>{{order.statusName}}</em>
                     </div>
-                    <a href="#" class="infoMiddle" v-for="(ite,inde) in order.lines">
+                    <a  class="infoMiddle" v-for="(ite,inde) in order.lines" v-on:click="goToDetail(order.orderId,order.status)">
                       <div class="middleImg"><img :src="ite.goodsTitleImg"></div>
                       <div class="middleDet">
                         <div class="middleTitle">
@@ -112,14 +128,14 @@
                 </ul>
 
               </scroller>
-              <scroller class="optionMain" style="margin-top: 1.4rem" :on-infinite="infinite3"  :on-refresh = "refresh3" ref="waitreceiveProductOrder_scroller" :noDataText="noDataText">
+              <scroller class="optionMain" style="margin-top: 1.4rem;margin-bottom: 1rem" :on-infinite="infinite3"  :on-refresh = "refresh3" ref="waitreceiveProductOrder_scroller" :noDataText="noDataText">
                 <ul class="opContInfo">
-                  <li v-for="(order,index) in orderList3" :id="order.orderId">
+                  <li v-for="(order,index) in orderList3" >
                     <div class="infoTop">
                       <span>{{order.createTime}}</span>
                       <em>{{order.statusName}}</em>
                     </div>
-                    <a href="#" class="infoMiddle" v-for="(ite,inde) in order.lines">
+                    <a  class="infoMiddle" v-for="(ite,inde) in order.lines" v-on:click="goToDetail(order.orderId,order.status)" :id="order.orderId">
                       <div class="middleImg"><img :src="ite.goodsTitleImg"></div>
                       <div class="middleDet">
                         <div class="middleTitle">
@@ -137,21 +153,21 @@
                     <div class="infoBottom">
                       <a href="javascript:void(0);" class="thirdBtn">延长收获</a>
                       <a href="javascript:void(0);" class="thirdBtn">查看物流</a>
-                      <a href="javascript:void(0);" class="fourthBtn">确认收货</a>
+                      <a v-on:click="confirmProduct(order.orderId)" class="fourthBtn">确认收货</a>
                     </div>
                   </li>
 
                 </ul>
 
               </scroller>
-              <scroller class="optionMain" style="margin-top: 1.4rem" :on-infinite="infinite4"  :on-refresh = "refresh4" ref="tradeSuccessOrder_scroller" :noDataText="noDataText">
+              <scroller class="optionMain" style="margin-top: 1.4rem;margin-bottom: 1rem" :on-infinite="infinite4"  :on-refresh = "refresh4" ref="tradeSuccessOrder_scroller" :noDataText="noDataText">
                 <ul class="opContInfo">
-                  <li v-for="(order,index) in orderList4" :id="order.orderId">
+                  <li v-for="(order,index) in orderList4"  :id="order.orderId">
                     <div class="infoTop">
                       <span>{{order.createTime}}</span>
                       <em>{{order.statusName}}</em>
                     </div>
-                    <a href="#" class="infoMiddle" v-for="(ite,inde) in order.lines">
+                    <a  class="infoMiddle" v-for="(ite,inde) in order.lines" v-on:click="goToDetail(order.orderId,order.status)">
                       <div class="middleImg"><img :src="ite.goodsTitleImg"></div>
                       <div class="middleDet">
                         <div class="middleTitle">
@@ -185,10 +201,10 @@
       <!--底部 开始-->
       <footer class="memberFooter">
         <a href=""><i class="homePage"></i><span>首页</span></a>
-        <a href="#"><i class="find"></i><span>发现</span></a>
-        <a href="#"><i class="shopp"></i><span>购物袋</span></a>
-        <a href="#"  class="active"><i class="personal"></i><span>个人中心</span></a>
-        <a href="#"><i class="shopkeeper"></i><span>我是店主</span></a>
+        <a ><i class="find"></i><span>发现</span></a>
+        <a ><i class="shopp"></i><span>购物袋</span></a>
+        <a   class="active"><i class="personal"></i><span>个人中心</span></a>
+        <a ><i class="shopkeeper"></i><span>我是店主</span></a>
       </footer>
       <!--底部 结束-->
     </div>
@@ -224,22 +240,139 @@
       },
 
       methods:{
-        goToDetail(orderId,status){//去详情页
-          if(status==1){
-            this.$router.push({path:'orderDetails',query:{'orderId':orderId}})
-          }else if(status==2){
 
-          }else if(status==3){
+        repayMoney(orderId){
+          let _this=this;
+          axios.post(store.getAddress()+'/api/wxapp/order/repay',{
+            "uid":store.fetch("uid"),
+            "transType":101,
+            "orderId":orderId
+          }).then(function (responese) {
+            if(responese.data.code==200){
 
-          }else if(status==4){
+              let res= response.data.data.request;
+              self.payStr=JSON.stringify(res)
+              self.orderId=response.data.data.orderId
 
+              if(store.judge()==1){//等于1 代表ios
+                window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                  "code": "83",
+                  "payStr":JSON.stringify(res),
+                });
+              }else if(store.judge()==0){
+                window.androidXingJiApp.postMessage({
+                  "code": "83",
+                  "payStr":JSON.stringify(res),
+                });
+              }
+            }else{
+              _this.$layer.toast({
+                icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+                content: responese.data.message,
+                time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+              })
+            }
+          }).catch(function (error) {
+            console.log(error)
+          })
+        },
+
+        appWxPayResult(result){//等待app回调，0代表失败，1代表成功
+          let _this=this;
+          if(result==1){//支付成功
+            _this.$layer.toast({
+              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+              content: '支付成功',
+              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+            })
+            _this.refreshAllOrder();
+          }else{//支付失败
+            _this.$layer.toast({
+              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+              content: '支付失败',
+              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+            })
           }
+        },
+        deleteOrder(orderId){
+          let _this=this;
+          this.$layer.dialog({
+            title: ['取消订单', 'background:skyblue'], // 第一个是标题内容  第二个是标题栏的style(可以为空)
+            content: '确定要删除订单吗，删除后不可恢复',
+            contentClass: 'className',
+            btn: ['取消','确定'],
+            //   time: 2000
+          })
+          // 如果有btn
+            .then(function (res){
+              // res为0时是用户点击了左边  为1时用户点击了右边
 
+              if(res==1){//确认取消订单
+                console.log("确认")
+                axios.post(store.getAddress()+"/api/wxapp/order/delete",{
+                  "uid":store.fetch("uid"),
+                  "orderId":orderId
+                }).then(function (responese) {
+                  if(responese.data.code==200){
+                    _this.$layer.toast({
+                      icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+                      content: '删除订单成功',
+                      time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+                    })
+                  }
+                }).catch(function (error) {
+                  console.log(error)
+                })
+
+              }else{//取
+                console.log("取消")
+              }
+            })
 
         },
-        cancelOrder(){
-          console.log("取消订单")
 
+        confirmProduct(orderId){//确认收货
+          let _this=this;
+          this.$layer.dialog({
+            title: ['取消订单', 'background:skyblue'], // 第一个是标题内容  第二个是标题栏的style(可以为空)
+            content: '请确认已收到货物',
+            contentClass: 'className',
+            btn: ['取消','确定'],
+            //   time: 2000
+          })
+          // 如果有btn
+            .then(function (res){
+              // res为0时是用户点击了左边  为1时用户点击了右边
+
+              if(res==1){//确认取消订单
+                console.log("确认")
+                axios.post(store.getAddress()+"/api/wxapp/order/sureTaken",{
+                  "uid":store.fetch("uid"),
+                  "orderId":orderId
+                }).then(function (responese) {
+                  if(responese.data.code==200){
+                    _this.$layer.toast({
+                      icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+                      content: '确认收货成功',
+                      time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+                    })
+                  }
+                }).catch(function (error) {
+                  console.log(error)
+                })
+
+              }else{//取
+                console.log("取消")
+              }
+            })
+
+        },
+
+        goToDetail(orderId,status){//去详情页,暂时不区分状态，都跳转到orderDetail
+            this.$router.push({path:'orderDetails',query:{'orderId':orderId}})
+
+        },
+        cancelOrder(orderId){
           this.$layer.dialog({
             title: ['取消订单', 'background:skyblue'], // 第一个是标题内容  第二个是标题栏的style(可以为空)
             content: '确定要取消订单吗',
@@ -251,9 +384,20 @@
             .then(function (res){
               // res为0时是用户点击了左边  为1时用户点击了右边
 
-              if(res==1){
+              if(res==1){//确认取消订单
                 console.log("确认")
-              }else{
+                axios.post(store.getAddress()+"/api/wxapp/order/cancel",{
+                  "uid":store.fetch("uid"),
+                  "orderId":orderId
+                }).then(function (responese) {
+                  if(responese.data.code==200){
+                    console.log("成功取消订单")
+                  }
+                }).catch(function (error) {
+                  console.log(error)
+                })
+
+              }else{//取
                 console.log("取消")
               }
             })
@@ -268,7 +412,7 @@
             number=this.pageNumber2
           }else if(num==3){
             number=this.pageNumber3
-          }else if(num==4){
+          }else if(num==5){
             number=this.pageNumber4
           }else{
             number=this.pageNumber
@@ -278,7 +422,7 @@
             "uid":store.fetch("uid"),
             "status":num,
             "page":number,
-            "limit":10
+            "limit":4
           })
             .then(function (response) {
               console.log(response)
@@ -289,10 +433,10 @@
                   _this.orderList2=_this.orderList2.concat(response.data.list)
                 }else if(num==3){
                   _this.orderList3=_this.orderList3.concat(response.data.list)
-                }else if(num==4){
+                }else if(num==5){
                   _this.orderList4=_this.orderList4.concat(response.data.list)
                 }else{
-                  _this.orderList=_this.orderList1.concat(response.data.list)
+                  _this.orderList=_this.orderList.concat(response.data.list)
                 }
               }else{
 
@@ -307,15 +451,16 @@
           let _this=this;
           let num=this.num
           let number;
+
           if(num==1){
             number=_this.pageNumber1
           }else if(num==2){
             number=this.pageNumber2
           }else if(num==3){
             number=this.pageNumber3
-          }else if(num==4){
+          }else if(num==5){
             number=this.pageNumber4
-          }else{
+          }else {
             number=this.pageNumber
           }
 
@@ -323,7 +468,7 @@
             "uid":store.fetch("uid"),
             "status":num,
             "page":number,
-            "limit":10
+            "limit":4
           })
             .then(function (response) {
               console.log(response)
@@ -334,7 +479,7 @@
                   _this.orderList2=response.data.list
                 }else if(num==3){
                   _this.orderList3=response.data.list
-                }else if(num==4){
+                }else if(num==5){
                   _this.orderList4=response.data.list
                 }else{
                   _this.orderList=response.data.list
@@ -377,44 +522,44 @@
 
         },
         infinite2(){
-          this.pageNumber ++;
+          this.pageNumber2 ++;
           console.log("加载更多")//加载更多，即往数据里面push新的数据，需要在原来的基础上继续加载剩余的数据
-          //this.querySearchList();
+          this.queryAllOrder();
           this.$refs.waitSendProductOrder_scroller.finishInfinite(true);
           this.$refs.waitSendProductOrder_scroller.resize()
         },
         refresh2(){
-          this.pageNumber = 1;
+          this.pageNumber2 = 1;
           console.log("重新加载")
-          //this.refreshData();
+          this.refreshAllOrder();
           this.$refs.waitSendProductOrder_scroller.finishPullToRefresh()//结束动作，在完成调用时执行
 
         },
         infinite3(){
-          this.pageNumber ++;
+          this.pageNumber3 ++;
           console.log("加载更多")//加载更多，即往数据里面push新的数据，需要在原来的基础上继续加载剩余的数据
-          //this.querySearchList();
+          this.queryAllOrder();
           this.$refs.waitreceiveProductOrder_scroller.finishInfinite(true);
           this.$refs.waitreceiveProductOrder_scroller.resize()
         },
         refresh3(){
-          this.pageNumber = 1;
+          this.pageNumber3 = 1;
           console.log("重新加载")
-          //this.refreshData();
+          this.refreshAllOrder();
           this.$refs.waitreceiveProductOrder_scroller.finishPullToRefresh()//结束动作，在完成调用时执行
 
         },
         infinite4(){
-          this.pageNumber ++;
+          this.pageNumber4 ++;
           console.log("加载更多")//加载更多，即往数据里面push新的数据，需要在原来的基础上继续加载剩余的数据
-          //this.querySearchList();
+          this.queryAllOrder();
           this.$refs.tradeSuccessOrder_scroller.finishInfinite(true);
           this.$refs.tradeSuccessOrder_scroller.resize()
         },
         refresh4(){
-          this.pageNumber = 1;
+          this.pageNumber4 = 1;
           console.log("重新加载")
-          //this.refreshData();
+          this.refreshAllOrder();
           this.$refs.tradeSuccessOrder_scroller.finishPullToRefresh()//结束动作，在完成调用时执行
 
         },
@@ -429,33 +574,17 @@
       $li.click(function(){
         var $this = $(this);
         var $t = $this.index();
-        _this.num=$t;
-        let num=$t;
-        /*if(num==1){
-         if(JSON.stringify(_this.orderList1)=="[]"){
-            _this.queryAllOrder();
-         }
-        }else if(num==2){
-          if(JSON.stringify(_this.orderList2)=="[]"){
-            _this.queryAllOrder();
+
+          if($t==4){
+            _this.num=5
+          }else{
+            _this.num=$t
           }
-        }else if(num==3){
-          if(JSON.stringify(_this.orderList3)=="[]"){
-            _this.queryAllOrder();
-          }
-        }else if(num==4){
-          if(JSON.stringify(_this.orderList4)=="[]"){
-            _this.queryAllOrder();
-          }
-        }else{
-          if(JSON.stringify(_this.orderList)=="[]"){
-            _this. queryAllOrder();
-          }
-        }*/
 
         $li.removeClass();
         $this.addClass('Cur');
         $ul.css('display','none');
+
         $ul.eq($t).css('display','block');
 
         $("#optionTab").css('height','80%')
@@ -465,9 +594,47 @@
       destroyed(){
         window.clearInterval(this.interval)
       },
+      updated(){
+
+        this.interval = setInterval(function() {
+
+          $(".btnTime").each(function () {
+
+            //这是订单生成的时间
+            let createTime=$(this).parents('li').find('.infoTop').find('span').html();
+
+            var ctime = createTime.replace(/\-/g, "/");
+            var ct = new Date(ctime);
+            var now=new Date();
+
+            var sec=parseInt(now-ct)/1000;
+
+            var canSec=1800-parseInt(sec);
+
+
+
+            let m=parseInt(canSec/60);
+            let s=canSec-(m*60)
+
+            m = m < 10 ? "0" + m : m;
+            s = s < 10 ? "0" + s : s;
+
+            if (canSec<0) {
+              this.refreshAllOrder();
+            }else{
+              $(this).html(m + ":" + s)
+            }
+
+          })}, 1000);
+
+
+
+      },
       mounted:function () {
 
-       // this.queryAllOrder();
+        window['appWxPayResult'] = (result) => {
+          this.appWxPayResult(result)
+        }
         this.myOrderTab();
         var $li = $('.orderOption .optionNav a');
         var $ul = $('.orderOption .optionCont .optionMain');
@@ -475,29 +642,14 @@
         $ul.css('display','none');
         let num = this.$route.query.num
         this.num=num;
-        $li.eq(num).addClass('Cur');
-        $ul.eq(num).css('display','block');
-
-          var x = 30;
-
-          var d = new Date("1111/1/1,0:" + x + ":0");
-          this.interval = setInterval(function() {
-            var m = d.getMinutes();
-            var s = d.getSeconds();
-            m = m < 10 ? "0" + m : m;
-            s = s < 10 ? "0" + s : s;
-            // btn.innerHTML = m + ":" + s;
-            for(var i=0;i < $(".opContInfo li").length;i++){
-              $("#btn"+i).html(m + ":" + s);
-            }
-
-            if (m == 0 && s == 0) {
-              clearInterval(interval);
-              return;
-            }
-            d.setSeconds(s - 1);
-          }, 1000);
+        if(num==5){
+          $li.eq(4).addClass('Cur');
+          $ul.eq(4).css('display','block');
+        }else{
+          $li.eq(num).addClass('Cur');
+          $ul.eq(num).css('display','block');
         }
+     }
 
     }
 </script>

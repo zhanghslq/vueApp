@@ -1286,7 +1286,7 @@
 	height: 0.51rem;
 	display: inline-block;
 	float: left;
-	background: url(../../images/secondLevel/paymentIcon.png) no-repeat;
+	background: url(../../images/secondLevel/weChatPayment.png) no-repeat;
 	background-size: 100%;
 	margin:0.13rem 0.17rem 0.15rem 0;
 }

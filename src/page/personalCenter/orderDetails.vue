@@ -10,9 +10,22 @@
         <div class="orderDetails">
           <div class="orderDetTop">
             <div class="topTitle"><em></em><span>{{statusName}}</span></div>
-            <p>订单编号：<em>{{orderNumber}}</em></p>
-            <p>付款时间：<em>{{createTime}}</em></p>
-            <a href="javascript:void(0);" class="copy">复制</a>
+
+            <div class="orderNum">
+              <p>订单编号：<em>{{orderNumber}}</em></p>
+
+              <a href="javascript:void(0);" class="copy">复制</a>
+            </div>
+            <div class="orderNum">
+              <p>付款时间：<em>{{createTime}}</em></p>
+            </div>
+          </div>
+
+          <div class="expressMain" v-if="expressCompanyName!=''">
+            <div class="expressInfoIng">
+              <span>{{expressCompanyName}}</span>　
+              <em>{{shipOrderNumber}}</em>
+            </div>
           </div>
           <div class="addressInfo">
             <em class="addreeIcon"></em>

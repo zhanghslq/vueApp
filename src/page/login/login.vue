@@ -49,11 +49,25 @@
   },
   methods:{
     goToMobileLogin(){
-      window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
-        "code": "91",
-        "url":store.getNextAddress()+"mobileLogin"
-      });
+      if(store.judge()==1){
+        window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+          "code": "91",
+          "url":store.getNextAddress()+"mobileLogin"
+        });
+      }else if(store.judge()==0){
+        window.androidXingJiApp.postMessage({
+          "code": "91",
+          "url":store.getNextAddress()+"mobileLogin"});
+      }else{
+        this.$router.push("mobileLogin")
+      }
+
+
+
+
     }
+
+
   },
   mounted(){
     this.isDev=store.isDev();

@@ -13,22 +13,22 @@
             <img src="../../images/threeLevel/pitchIcon.png" class="trTLeft">
             <div class="trTRight">
               <h3>付款失败</h3>
-              <p>请在<span id="btn">30:00</span>内完成付款</p>
+              <p>请在<span id="btn">{{limitTime}}</span>内完成付款</p>
             </div>
           </div>
           <div class="amountMoney">
-            <p>应付金额：<em>￥8.91</em></p>
-            <span>订单总计：<em>￥9.00</em></span>
-            <span>会员减免：<em>￥0.09</em></span>
+            <p>应付金额：<em>￥{{shouldPayMoney}}</em></p>
+            <span>订单总计：<em>￥{{shouldPayMoney}}</em></span>
+            <span>会员减免：<em>￥0.00</em></span>
           </div>
           <div class="paymentMain">
             <div class="payTitle">选择支付方式</div>
             <div class="payCont">
-              <div class="payLeft"><span></span> <em>支付宝支付</em></div>
+              <div class="payLeft"><span></span> <em>微信支付</em></div>
               <div class="payRight"></div>
             </div>
           </div>
-          <a href="#" class="paymentBtn">去付款</a>
+          <a  class="paymentBtn" v-on:click="payMoney()">去付款</a>
         </div>
       </main>
       <!--中间 结束-->
@@ -36,9 +36,69 @@
 </template>
 
 <script>
+  import store from '../../service/store'
+  import axios from 'axios'
     export default {
         name: "tradeFail",
+      data(){
+        return{
+          orderId:'',
+          totalAmount:'',
+          paySign:'',
+          payStr:'',
+          limitTime:'30'
+        }
+      },
+      methods:{
+        payMoney(){//重新去付款，直接重新取支付参数，然后取参数交给app
+          var self=this;
+          axios.post(store.getAddress()+'/api/wxapp/order/repay', {
+            "uid": store.fetch("uid"),
+            "orderId":self.orderId,
+            "transType":101
+          }).then(function (response) {
+
+            let res= response.data.data.request;
+            self.payStr=JSON.stringify(res)
+            self.orderId=response.data.data.orderId
+            if(store.judge()==1){//代表是ios
+              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                "code": "83",
+                "payStr":JSON.stringify(res),
+              });
+            }
+
+          }).catch(function (error) {
+            alert(error)
+          })
+
+
+        },
+        appWxPayResult(result){//等待app回调，0代表失败，1代表成功
+          if(result==1){//支付成功
+            this.$router.push({ name: 'tradeSuccessful',
+              query: {
+                "payMoney": this.totalAmount,
+
+              }
+            });
+          }else{//支付失败
+
+            this.$router.push({ name: 'tradeFail',
+              query: {
+                "orderId":this.orderId,
+                "shouldPayMoney": this.totalAmount,
+                "paySign":this.payStr
+              }
+            });
+          }
+        },
+      },
       mounted:function () {
+        this.orderId=this.$route.query.orderId;
+        this.totalAmount=this.$route.query.shouldPayMoney;
+
+
         var x = 30,
         interval;
         window.onload = function() {
@@ -55,6 +115,11 @@
             }
             d.setSeconds(s - 1);
           }, 1000);
+        }
+
+
+        window['appWxPayResult'] = (result) => {
+          this.appWxPayResult(result)
         }
       }
     }

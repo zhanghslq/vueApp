@@ -19,7 +19,7 @@
             <div class="fillInfo">
               <i>*</i>
               <span>手机号码：</span>
-              <input type="text" v-model="phoneNumber" name="" placeholder="请输入手机号">
+              <input  type="text" v-model="phoneNumber" name="" placeholder="请输入手机号">
             </div>
             <div class="fillInfo">
               <i>*</i>
@@ -156,6 +156,7 @@
   import resizeImage from '@/components/resize';
   import Progress from 'mint-ui/lib/progress';
   import 'mint-ui/lib/Progress/style.css';
+  import 'vue-layer-mobile/need/layer.css'
   import store from '../../service/store'
   import axios from 'axios'
   const axiosInstance = axios.create({});
@@ -277,25 +278,45 @@
         },
         updateAddress(){//提交更新
           var _this=this;
-          axios.post(store.getAddress()+'/api/wxapp/deliveryAddress/add',{
-            "id":_this.address_id,
-            "uid":store.fetch("uid"),
-            "consignee":_this.consignee,
-            "mobile":_this.phoneNumber,
-            "provinceCode":_this.prov_id,
-            "cityCode":_this.city_id,
-            "areaCode":_this.area_id,
-            "detailAddress":_this.detailAddress,
-            "idNumber":_this.idNumber,
-            "frontOfIdCard":_this.frontOfIdCard,
-            "reverseSideOfIdCard":_this.reverseSideOfIdCard,
-            "isDefault":_this.upisDefault
+          if (_this.phoneNumber === '') {
+            _this.$layer.toast({
+              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+              content: '手机号不能为空',
+              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+            })
+          }else {
+            var reg=/^1[3456789]\d{9}$/;
+            if(!reg.test(_this.phoneNumber)){
+              _this.$layer.toast({
+                icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+                content: '请填写正确的手机号',
+                time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+              })
+            }else{
+              axios.post(store.getAddress()+'/api/wxapp/deliveryAddress/add',{
+                "id":_this.address_id,
+                "uid":store.fetch("uid"),
+                "consignee":_this.consignee,
+                "mobile":_this.phoneNumber,
+                "provinceCode":_this.prov_id,
+                "cityCode":_this.city_id,
+                "areaCode":_this.area_id,
+                "detailAddress":_this.detailAddress,
+                "idNumber":_this.idNumber,
+                "frontOfIdCard":_this.frontOfIdCard,
+                "reverseSideOfIdCard":_this.reverseSideOfIdCard,
+                "isDefault":_this.upisDefault
 
 
-          }).then(function (responese) {
-            console.log(responese)
-            _this.$router.push("receivingAddress")
-          })
+              }).then(function (responese) {
+                console.log(responese)
+                _this.$router.push("receivingAddress")
+              }).catch(function (error) {
+                console.log(error)
+              })
+            }
+          }
+
         },
         isCheckDefault(){
           if(document.getElementById("test").checked){

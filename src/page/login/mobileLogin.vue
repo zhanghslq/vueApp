@@ -64,7 +64,13 @@ export default {
                   "code": "81",
                   "role":"1",
                 });
+              }else if(store.judge()==0){
+                window.androidXingJiApp.postMessage({
+                  "code": "81",
+                  "role":"1",
+                });
               }
+
 
             }else{
               store.save("isStoreKeeper",0)
@@ -73,7 +79,12 @@ export default {
                   "code": "81",
                   "role":"0",
                 });
+              }else if(store.judge()==0){
+                window.androidXingJiApp.postMessage({
+                  "code": "81",
+                  "role":"0",});
               }
+
             }
             if(store.judge()==3){//window浏览器
               _this.$router.push("index");

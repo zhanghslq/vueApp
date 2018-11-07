@@ -109,7 +109,7 @@
         querySearchList(){
           store.save("kw",this.kw)
           let _this=this
-          axios.post('/api//api/wxapp/product/list',{
+          axios.post(store.getAddress()+'/api/wxapp/product/list',{
             "kw":_this.kw,
             "page":_this.pageNumber,
             "limit":10

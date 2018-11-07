@@ -1543,9 +1543,11 @@ header .setUpIcon{
 }
 .optionCont .optionMain{
 	display: block;
+
 }
 .optionCont .opContInfo{
 	display: block;
+  height: auto;
 }
 .opContInfo .infoTop .checkIng,
 .opContInfo .infoTop .checkCur{

@@ -18,7 +18,7 @@
             <div class="fillInfo">
               <i>*</i>
               <span>手机号码：</span>
-              <input type="text" name="" placeholder="请输入手机号">
+              <input type="text" name="" v-model="mobile" placeholder="请输入手机号">
             </div>
             <div class="fillInfo">
               <i>*</i>
@@ -29,12 +29,12 @@
             <div class="fillInfo">
               <i>*</i>
               <span>详细地址：</span>
-              <textarea class="detailedAdd" placeholder="请输入详细地址"></textarea>
+              <textarea v-model="detailAddress" class="detailedAdd" placeholder="请输入详细地址"></textarea>
             </div>
             <div class="fillInfo">
               <i>*</i>
               <span>身份证号：</span>
-              <input type="text" name="" placeholder="请输入身份证号">
+              <input type="text" v-model="idNumber" placeholder="请输入身份证号">
             </div>
           </div>
           <div class="identification">
@@ -240,31 +240,51 @@
       methods:{
      /*选择地址的方法*/
         submitAddress(){
-          let _this=this;
-          axios.post('/api//api/wxapp/deliveryAddress/add',{
-            "uid":store.fetch("uid"),
-            "consignee":this.consignee,
-            "mobile":this.mobile,
-            "provinceCode":this.provinceCode,
-            "cityCode":this.cityCode,
-            "areaCode":this.areaCode,
-            "detailAddress":this.detailAddress,
-            "idNumber":this.idNumber,
-            "isDefault":this.isDefault,
-            "frontOfIdCard":this.frontOfIdCard,
-            "reverseSideOfIdCard":this.reverseSideOfIdCard,
-          }).then(function (response) {
-              console.log(response)
-              if (response.data.code == 200) {
+
+
+          var _this=this;
+          if (_this.mobile === '') {
+            _this.$layer.toast({
+              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+              content: '手机号不能为空',
+              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+            })
+          }else {
+            var reg = /^1[3456789]\d{9}$/;
+            if (!reg.test(_this.mobile)) {
+              _this.$layer.toast({
+                icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+                content: '请填写正确的手机号',
+                time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+              })
+            } else {
+              axios.post('/api//api/wxapp/deliveryAddress/add',{
+                "uid":store.fetch("uid"),
+                "consignee":this.consignee,
+                "mobile":this.mobile,
+                "provinceCode":this.provinceCode,
+                "cityCode":this.cityCode,
+                "areaCode":this.areaCode,
+                "detailAddress":this.detailAddress,
+                "idNumber":this.idNumber,
+                "isDefault":this.isDefault,
+                "frontOfIdCard":this.frontOfIdCard,
+                "reverseSideOfIdCard":this.reverseSideOfIdCard,
+              }).then(function (response) {
                 console.log(response)
-                _this.$router.push("receivingAddress")
-              } else {
+                if (response.data.code == 200) {
+                  console.log(response)
+                  _this.$router.push("receivingAddress")
+                } else {
 
 
-              }
-            }).catch(function (error) {
-            console.log(error);
-          })
+                }
+              }).catch(function (error) {
+                console.log(error);
+              })
+            }
+          }
+
         },
         isCheckDefault(){
           if(document.getElementById("test").checked){

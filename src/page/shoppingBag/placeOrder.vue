@@ -9,7 +9,7 @@
       <!--中间 开始-->
       <main>
         <div class="placeOrderMain">
-          <router-link to="editAddress" :to="{name:'editAddress',params:{'id':choseAddress.id}}">
+          <router-link to="editAddress" :to="{name:'editAddress',query:{'id':choseAddress.id,'skuId':skuId,'quantity':quantity}}">
             <a  class="addressInfo">
               <em class="addreeIcon"></em>
               <div class="addreeText">
@@ -47,30 +47,7 @@
               <span class="price">￥<em>{{item.groupTotalAmount}}</em></span>
             </div>
           </div>
-          <!--<div class="orderMain">
-            <div class="orderTitle">
-              <em>订单2</em>
-              <span>品牌商杭州发货</span>
-            </div>
-            <div class="orderDetail">
-              <div class="detailLeft"><img src="../../images/temporary/9.jpg"></div>
-              <div class="detailRight">
-                <div class="rightTop">
-                  <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
-                  <span>￥<em>19</em>.90</span>
-                </div>
-                <div class="rightNum">X 1</div>
-              </div>
-            </div>
-            <div class="orderMode">
-              <div class="modeLeft">发货方式</div>
-              <span class="express">快递（包邮）：<em>0</em>元</span>
-            </div>
-            <div class="orderMode">
-              <div class="modeLeft">订单总计</div>
-              <span class="price">￥<em>39</em>.80</span>
-            </div>
-          </div>-->
+
           <div class="preferential">
             <div class="preferenTitle">优惠减免</div>
             <a href="#" class="coupons">
@@ -95,7 +72,7 @@
             <div class="preferenTitle">选择支付方式</div>
             <div class="paymentInfo">
               <img src="../../images/secondLevel/paymentIcon.png">
-              <span>支付宝支付</span>
+              <span>微信支付</span>
               <em></em>
             </div>
           </div>
@@ -126,8 +103,11 @@
             totalAmount:'',
             choseAddress:{},
             payStr:'',
-            orderId:''
+            orderId:'',
 
+
+            skuId:'',//立即购买的skuId
+            quantity:'',//立即购买的商品数量
 
           }
       },
@@ -148,10 +128,19 @@
            let res= response.data.data.request;
            self.payStr=JSON.stringify(res)
             self.orderId=response.data.data.orderId
-            window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
-              "code": "83",
-              "payStr":JSON.stringify(res),
-          });
+
+            if(store.judge()==1){//等于1 代表ios
+              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                "code": "83",
+                "payStr":JSON.stringify(res),
+              });
+            }else if(store.judge()==0){
+              window.androidXingJiApp.postMessage({
+                "code": "83",
+                "payStr":JSON.stringify(res),
+              });
+            }
+
 
           }).catch(function (error) {
             alert(error)
@@ -171,17 +160,19 @@
 
               this.$router.push({ name: 'tradeFail',
                 query: {
+                  "orderId":this.orderId,
                   "shouldPayMoney": this.totalAmount,
-                  "paySign":this.payStr
                 }
               });
             }
         },
 
-        getData(){//获取数据
+        getData(fromType,lines){//获取数据
           var self = this;
           axios.post(store.getAddress()+'/api/wxapp/order/prepare', {
-            "uid": store.fetch("uid")
+            "uid": store.fetch("uid"),
+            "fromType":fromType,
+            "lines":lines
           })
             .then(function (response) {
               if(response.data.code==200){
@@ -193,10 +184,10 @@
                   let chooseId=localStorage.getItem("chooseAddressId");
                   console.log("choseId======"+chooseId)
                   if(chooseId!=undefined && chooseId!=null && chooseId!=''){
-                    console.log("chooseId=="+chooseId)
-                    axios.post(store.getAddress()+'/api/wxapp/deliveryAddress/item', {
-                      "id": chooseId
-                    })
+                      console.log("chooseId=="+chooseId)
+                      axios.post(store.getAddress()+'/api/wxapp/deliveryAddress/item', {
+                        "id": chooseId
+                      })
                       .then(function (response) {
                         if(response.data.code==200){
                           self.choseAddress=response.data.data
@@ -209,6 +200,8 @@
                       .catch(function (error) {
                         console.log(error)
                       })
+                  }else {
+                    self.choseAddress=self.defaultAddress
                   }
 
 
@@ -222,8 +215,28 @@
             })
         }
       },
+      beforeRouteLeave(from,to,next){//离开之前，判断是否是去地址页
+
+        next()
+      },
+      beforeRouteEnter(from,to,next){//进入之前，判断是否是从地址页回来的
+
+
+        next()
+      },
       mounted(){
-       this.getData()
+        let skuId=this.$route.query.skuId;
+
+        let quantity=this.$route.query.quantity;
+        this.skuId=skuId;
+        this.quantity=quantity;
+
+        if(skuId==undefined||skuId==''||skuId==null){
+          this.getData(1,"[]")
+        }else {
+          this.getData(2,"[{'skuId':"+skuId+',quantity:'+quantity+"}]")
+        }
+
         window['appWxPayResult'] = (result) => {
           this.appWxPayResult(result)
         }

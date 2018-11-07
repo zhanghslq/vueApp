@@ -26,11 +26,11 @@ export default {
     //判断：
     var and=browser.versions.android;//android
     var ios=browser.versions.ios;//ios
-    if(and){
+    if(and){//0代表安卓
       return 0;
-    }else if(ios){
+    }else if(ios){//1代表ios
       return 1;
-    }else {
+    }else {//3代表其他
       return 3;
     }
 
