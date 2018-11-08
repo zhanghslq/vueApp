@@ -1360,7 +1360,7 @@ export default {
         init(){
 
         },
-        autoHeight: true,
+        //autoHeight: true,
         slidesOffsetBefore: 72,
         direction: 'vertical',
         freeMode: true,

@@ -954,14 +954,16 @@ header .releaseBtn{
   margin-top: 0.03rem;
   margin-left: 0.1rem;
 }
-.opContInfo li .infoMiddle{
+.opContInfo li .infoMiddle,
+.productSelect .infoMiddle{
   height: auto;
   overflow: hidden;
   background: #f7f7f7;
   display: block;
   padding:0.24rem;
 }
-.opContInfo li .infoMiddle .middleImg{
+.opContInfo li .infoMiddle .middleImg,
+.productSelect .infoMiddle .middleImg{
   width:1.22rem;
   height: 1.22rem;
   background: #fff;
@@ -970,35 +972,42 @@ header .releaseBtn{
   margin-right: 0.08rem;
   margin-top: 0.03rem;
 }
-.opContInfo li .infoMiddle .middleImg img{
+.opContInfo li .infoMiddle .middleImg img,
+.productSelect .infoMiddle .middleImg img{
   width: 100%;
   height: 100%;
   display: block;
   margin:0 auto;
 }
-.opContInfo li .infoMiddle .middleDet{
+.opContInfo li .infoMiddle .middleDet,
+.productSelect .infoMiddle .middleDet{
   width: 5.7rem;
   float: left;
 }
-.opContInfo .middleDet .middleTitle{
+.opContInfo .middleDet .middleTitle,
+.productSelect .infoMiddle .middleDet .middleTitle{
   height: auto;
   overflow: hidden;
 }
-.opContInfo .middleDet .middleTitle p{
+.opContInfo .middleDet .middleTitle p,
+.productSelect .infoMiddle .middleDet .middleTitle p{
   width:4.15rem;
   height: 0.75rem;
   overflow: hidden;
   float: left;
   color:#444;
   font-size: 0.26rem;
+  text-align: left;
 }
-.opContInfo .middleDet .middleTitle span{
+.opContInfo .middleDet .middleTitle span,
+.productSelect .infoMiddle .middleDet .middleTitle span{
   font-size: 0.26rem;
   color:#f5500e;
   display: inline-block;
   float: right;
 }
-.opContInfo .middleDet .orderNum{
+.opContInfo .middleDet .orderNum,
+.productSelect .infoMiddle .middleDet .orderNum{
   float: right;
   font-size: 0.22rem;
   color:#7b7b7b;

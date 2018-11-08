@@ -175,11 +175,11 @@
                   "url":store.getNextAddress()+"mobileLogin"
                 });
               }else if(store.judge()==0){//安卓
-                window.androidXingJiApp.postMessage({
+                window.androidXingJiApp.postMessage(JSON.stringify({
                   "code": "91",
-                  "url":store.getNextAddress()+"mobileLogin"});
+                  "url":store.getNextAddress()+"mobileLogin"}));
               }else if(store.judge()==3){
-                _this.$router.push("/mobileLogin")
+                _this.$router.push("mobileLogin")
               }
 
 

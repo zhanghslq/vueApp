@@ -10,9 +10,9 @@
       <main>
         <div class="aboutUs">
           <img src="../../images/threeLevel/aboutUsPic.png" class="aboutPic">
-          <h3>V3.4</h3>
-          <p>Copyright©2016 WisdomWorks Co,Ltd</p>
-          <p>All Rights Reserved</p>
+          <h3>V1.1</h3>
+          <p>Copyright ©  2018 </p>
+          <p>北京猩际网络xingjiyouxuan.com版权所有</p>
         </div>
       </main>
       <!--中间 结束-->

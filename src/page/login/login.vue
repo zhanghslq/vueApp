@@ -38,7 +38,6 @@
 </template>
 <script>
   import store from '../../service/store'
-  import $ from 'jquery'
   export default {
   name: 'login',
   data(){

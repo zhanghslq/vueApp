@@ -199,13 +199,13 @@
       </main>
       <!--中间 结束-->
       <!--底部 开始-->
-      <footer class="memberFooter">
+      <!--<footer class="memberFooter">
         <a href=""><i class="homePage"></i><span>首页</span></a>
         <a ><i class="find"></i><span>发现</span></a>
         <a ><i class="shopp"></i><span>购物袋</span></a>
         <a   class="active"><i class="personal"></i><span>个人中心</span></a>
         <a ><i class="shopkeeper"></i><span>我是店主</span></a>
-      </footer>
+      </footer>-->
       <!--底部 结束-->
     </div>
 </template>

@@ -103,7 +103,7 @@
 /*X币 结束*/
 /*兑换X币 开始*/
 .exchangeMain{
-
+	
 }
 .exchangeMain .exchangeNav,
 .collectionMain .collectionNav{
@@ -172,7 +172,7 @@
 .contInfo .exchangeMoney .available{
 	height: auto;
 	overflow: hidden;
-	margin:0.4rem 0.23rem 0;
+	margin:0.4rem 0.23rem 0; 
 	font-size:0.27rem;
 	color:#666;
 }
@@ -389,7 +389,7 @@
 .aboutUs .aboutPic{
 	width: 7.5rem;
 	height: 7.46rem;
-	margin-bottom: 2rem;
+	margin-bottom: 1.8rem;
 }
 .aboutUs h3{
 	font-size: 0.3rem;
@@ -648,7 +648,7 @@ header .setUpIcon{
 	width:7.5rem;
 	height: 2.96rem;
 	background: url(../../images/secondLevel/personalBg.png) no-repeat;
-	background-size:100%;
+	background-size:100%; 
 }
 .personalMain .accountName{
 	width: 6.94rem;
@@ -702,7 +702,7 @@ header .setUpIcon{
 	height: 0.4rem;
 	line-height: 0.4rem;
 	text-align: center;
-	display: block;
+	display: block;	
 	float: left;
 	font-size: 0.24rem;
 	color:#fff;
@@ -814,9 +814,9 @@ header .setUpIcon{
 	height: 1.46rem;
 	overflow: hidden;
 	display: block;
-	margin:0.4rem auto 0;
+	margin:0.4rem auto 0; 
 	background: url(../../images/threeLevel/memberNameBg.png) no-repeat;
-	background-size: 100%;
+	background-size: 100%;	
 }
 .memberInfo .memberName .memberNameLeft{
 	float: left;
@@ -1212,7 +1212,7 @@ header .setUpIcon{
 }
 .helpService .helpFooter{
 	width: 7.5rem;
-	height: 0.98rem;
+	height: 0.98rem;	
 	background:#fff;
 	position: fixed;
 	bottom: 0;
@@ -1474,7 +1474,7 @@ header .setUpIcon{
 /*我的订单 开始*/
 .myOrderMain{
 	width:100%;
-	/*position: relative;*/
+	position: absolute;
 	top:0.9rem;
 }
 .orderOption .optionNav{
@@ -1486,7 +1486,7 @@ header .setUpIcon{
 	text-align: center;
 }
 .orderOption .optionCont{
-	margin-top: 1.3rem;
+	margin-top: 0.8rem;
 }
 .opContInfo li .infoBottom .cancelBtn,
 .opContInfo li .infoBottom .secondBtn{
@@ -1542,12 +1542,10 @@ header .setUpIcon{
 	margin:0.4rem 0 1.3rem 0;
 }
 .optionCont .optionMain{
-	display: block;
-
+	display: none;
 }
 .optionCont .opContInfo{
 	display: block;
-  height: auto;
 }
 .opContInfo .infoTop .checkIng,
 .opContInfo .infoTop .checkCur{
@@ -1821,7 +1819,7 @@ header .setUpIcon{
 	height: auto;
 	overflow: hidden;
 	float: left;
-}
+} 
 .commodDetail .detailRight .rightTop{
 	height: auto;
 	overflow: hidden;
@@ -2031,3 +2029,64 @@ header .setUpIcon{
 
 
 /*订单详情 结束*/
+
+/*选择服务类型 开始*/
+.selectTypeMain{ 
+	height: auto;
+	overflow: hidden;
+}
+.selectTypeMain .productSelect{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background:#fff;
+	padding:0.15rem 0;
+}
+.selectTypeMain .refundMain{
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	margin-top: 0.15rem;
+}
+.selectTypeMain .refundMain a{
+	height: auto;
+	overflow:hidden;
+	display: block;
+	margin:0 0.24rem;
+	border-bottom: 0.02rem solid #f4f5f7;
+}
+.selectTypeMain .refundMain a .refundmLeft{
+	width: 6.03rem;
+	float: left;
+}
+.refundMain a .refundmLeft h5{
+	color:#444;
+	font-size: 0.24rem;
+	margin:0.22rem 0 0.14rem 0;
+}
+.refundMain a .refundmLeft span{
+	font-size: 0.22rem;
+	color:#9f9f9f;
+	display: inline-block;
+	margin-bottom: 0.2rem;
+}
+.refundMain a .refundmRight{
+	width: 0.14rem;
+	height: 0.25rem;
+	display: inline-block;
+	float: right;
+	background:url(../../images/secondLevel/conInto.png) no-repeat;
+	background-size: 100%;
+	margin-top: 0.44rem;
+} 
+
+
+
+
+
+
+
+
+
+
+/*选择服务类型 结束*/

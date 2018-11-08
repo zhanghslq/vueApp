@@ -77,7 +77,7 @@
             </div>
           </div>
           <div class="settlement">
-            <span class="setTitle">支付宝支付</span>
+            <span class="setTitle">微信支付</span>
             <p>总计<span>￥<em>{{totalAmount}}</em></span></p>
             <a v-on:click="payMoney()">
               去付款
@@ -135,10 +135,10 @@
                 "payStr":JSON.stringify(res),
               });
             }else if(store.judge()==0){
-              window.androidXingJiApp.postMessage({
+              window.androidXingJiApp.postMessage(JSON.stringify({
                 "code": "83",
                 "payStr":JSON.stringify(res),
-              });
+              }));
             }
 
 

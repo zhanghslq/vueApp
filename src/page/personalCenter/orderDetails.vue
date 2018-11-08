@@ -12,9 +12,9 @@
             <div class="topTitle"><em></em><span>{{statusName}}</span></div>
 
             <div class="orderNum">
-              <p>订单编号：<em>{{orderNumber}}</em></p>
+              <p>订单编号：<em id="orderNumber">{{orderNumber}}</em></p>
 
-              <a href="javascript:void(0);" class="copy">复制</a>
+              <a v-on:click="copyBoard()" class="copy">复制</a>
             </div>
             <div class="orderNum">
               <p>付款时间：<em>{{createTime}}</em></p>
@@ -64,6 +64,7 @@
 <script>
   import store from '../../service/store'
   import axios from 'axios'
+  import Clipboard from 'clipboard'
     export default {
         name: "orderDetails",
       data(){
@@ -81,7 +82,20 @@
           }
       },
       methods:{
+        copyBoard(){
+          $("#copyBoard").text();
+          let clipboard = new Clipboard('#codeBtn');
+          clipboard.on("success", function(e){
 
+            e.clearSelection();
+
+            console.log("复制成功")
+          });
+          clipboard.on("error", function(e){
+
+          });
+
+        }
       },
       mounted(){
           var _this=this;

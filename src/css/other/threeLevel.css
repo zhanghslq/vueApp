@@ -631,8 +631,12 @@
 	margin:0.7rem 0 0 0;
 	height: 5.8rem;
 }
+.productCarouse .carouseContent .swiper-wrapper{
+	height: 6.3rem;
+	margin:0;
+}
 .productCarouse .carouseContent .swiper-wrapper li{
-	height: 5.8rem;
+	height: 6.3rem;
 }
 .tempWrap ul li a,
 .tempWrap ul,
@@ -640,6 +644,9 @@
 .productCarouse .carouseContent .swiper-wrapper li a{
 	height: 5.2rem !important;
 	display: block;
+}
+.productCarouse .carouseContent .swiper-wrapper li a{
+	height: 6.3rem !important;
 }
 .tempWrap ul li a{
 	margin-top: 0.1rem;
@@ -662,6 +669,9 @@
 .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
 	bottom: 0;
 }
+.swiper-container-horizontal>.swiper-pagination-bullets{
+	bottom:0.2rem;
+}
 .swiper-pagination-bullet{
 	width: 0.3rem;
 	height: 0.06rem;
@@ -682,7 +692,7 @@
 	background: #ecbc68;
 	position: absolute;
 	right: 0.1rem;
-	bottom: -0.1rem;
+	bottom: 0.25rem;
 	border-radius: 0.3rem;
 	z-index: 99;
 }
@@ -703,7 +713,6 @@
 .productDetail .productExplain{
 	height: auto;
 	overflow: hidden;
-	margin-top: 0.25rem;
 }
 .productExplain .priceContrast{
 	height: auto;
@@ -1090,7 +1099,6 @@
 .productExplain .commodityPrice{
 	height: auto;
 	overflow: hidden;
-	margin-top: 0.1rem;
 }
 .commodityPrice .countDown{
 	width: 7.5rem;
