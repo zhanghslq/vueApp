@@ -147,20 +147,7 @@
         }
       },
       methods:{
-        detect(){
-          var equipmentType = "";
-          var agent = navigator.userAgent.toLowerCase();
-          var android = agent.indexOf("android");
-          var iphone = agent.indexOf("iphone");
-          var ipad = agent.indexOf("ipad");
-          if(android != -1){
-            equipmentType = "android";
-          }
-          if(iphone != -1 || ipad != -1){
-            equipmentType = "ios";
-          }
-          return equipmentType;
-        }
+
 
       },
       mounted(){
@@ -168,7 +155,7 @@
           var _this=this;
           let uid=store.fetch("uid");
             if(uid==undefined||uid==null||uid==''){//未登录，需要跳转到登录页
-
+              store.save("lastPage","personalPage")
               if(store.judge()==1){
                 window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                   "code": "91",

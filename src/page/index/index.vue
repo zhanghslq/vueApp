@@ -1357,70 +1357,16 @@ export default {
         //36是top地址和搜索的高
         //observer: true,//修改swiper自己或子元素时，自动初始化swiper
         //observeParents:true,//修改swiper的父元素时，自动初始化swiper
-        init(){
 
-        },
-        //autoHeight: true,
-        slidesOffsetBefore: 72,
-        direction: 'vertical',
-        freeMode: true,
-        slidesPerView: 1,
-
-
-        /*on:{
-          onSlideChangeStart(){
-            var H = $(".swiper-slide").eq(tabsSwiper.activeIndex).height();
-            $(".swiper-slide").css('height', H + 'px');
-          }
-        },*/
-
-
-        slidesOffsetAfter: -document.documentElement.clientHeight,
-      })
-     /* var scrollSwiper1 = new Swiper('.scroll1', {
-        //65是头部的高
-        //36是top地址和搜索的高
-        //observer: true,//修改swiper自己或子元素时，自动初始化swiper
-        //observeParents:true,//修改swiper的父元素时，自动初始化swiper
         autoHeight: true,
         slidesOffsetBefore: 72,
         direction: 'vertical',
         freeMode: true,
         slidesPerView: 1,
-        //calculateHeight : true,
-
-        /!*on:{
-          onSlideChangeStart(){
-            var H = $(".swiper-slide").eq(tabsSwiper.activeIndex).height();
-            $(".swiper-slide").css('height', H + 'px');
-          }
-        },*!/
-
 
         slidesOffsetAfter: -document.documentElement.clientHeight,
       })
-      var scrollSwiper2 = new Swiper('.scroll2', {
-        //65是头部的高
-        //36是top地址和搜索的高
-        //observer: true,//修改swiper自己或子元素时，自动初始化swiper
-        //observeParents:true,//修改swiper的父元素时，自动初始化swiper
-        autoHeight: true,
-        slidesOffsetBefore: 72,
-        direction: 'vertical',
-        freeMode: true,
-        slidesPerView: 1,
-        //calculateHeight : true,
 
-        /!*on:{
-          onSlideChangeStart(){
-            var H = $(".swiper-slide").eq(tabsSwiper.activeIndex).height();
-            $(".swiper-slide").css('height', H + 'px');
-          }
-        },*!/
-
-
-        slidesOffsetAfter: -document.documentElement.clientHeight,
-      })*/
 
 
      this.navSwiper=navSwiper;

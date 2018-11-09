@@ -45,15 +45,16 @@ export default {
   },
 
   getAddress: function() {//获取域名，浏览器测试的时候，跨域访问，真机的时候直接配置地址
-    return "https://api.xingjiyouxuan.com";
-    //return "/api";
-  },
-  getNextAddress: function() {//获取域名，浏览器测试的时候，跨域访问，真机的时候直接配置地址
-    return "https://api.xingjiyouxuan.com/dist/#/";
+    //return "https://api.xingjiyouxuan.com";
+    return "/api";
   },
   isDev(){
     return true;
   },
+  getNextAddress: function() {//获取域名，浏览器测试的时候，跨域访问，真机的时候直接配置地址
+    return "https://api.xingjiyouxuan.com/dist/#/";
+  },
+
   save: function(STORAGE_KEY,items) {
 
     window.localStorage.setItem(STORAGE_KEY, window.JSON.stringify(items))

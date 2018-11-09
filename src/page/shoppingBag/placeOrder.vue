@@ -119,32 +119,39 @@
       methods:{
         payMoney(){//去付款，需要把订单提交，然后取参数交给app
           var self=this;
-          axios.post(store.getAddress()+'/api/wxapp/order/submit', {
-            "uid": store.fetch("uid"),
-            "consigneeId":this.choseAddress.id,
-            "transType":101
-          }).then(function (response) {
+          if(this.choseAddress.id==''||this.choseAddress.id==undefined||this.choseAddress.id==null){
+            self.$layer.toast({
+              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+              content: "请选择收货地址",
+              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+            })
+          }else{
+            axios.post(store.getAddress()+'/api/wxapp/order/submit', {
+              "uid": store.fetch("uid"),
+              "consigneeId":this.choseAddress.id,
+              "transType":101
+            }).then(function (response) {
 
-           let res= response.data.data.request;
-           self.payStr=JSON.stringify(res)
-            self.orderId=response.data.data.orderId
+              let res= response.data.data.request;
+              self.payStr=JSON.stringify(res)
+              self.orderId=response.data.data.orderId
 
-            if(store.judge()==1){//等于1 代表ios
-              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
-                "code": "83",
-                "payStr":JSON.stringify(res),
-              });
-            }else if(store.judge()==0){
-              window.androidXingJiApp.postMessage(JSON.stringify({
-                "code": "83",
-                "payStr":JSON.stringify(res),
-              }));
-            }
+              if(store.judge()==1){//等于1 代表ios
+                window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                  "code": "83",
+                  "payStr":JSON.stringify(res),
+                });
+              }else if(store.judge()==0){
+                window.androidXingJiApp.postMessage(JSON.stringify({
+                  "code": "83",
+                  "payStr":JSON.stringify(res),
+                }));
+              }
+            }).catch(function (error) {
+              alert(error)
+            })
+          }
 
-
-          }).catch(function (error) {
-            alert(error)
-          })
 
 
         },

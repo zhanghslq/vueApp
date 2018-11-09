@@ -24,12 +24,12 @@
 .mobileMain .logonBtn{
   display: block;
   background: -webkit-linear-gradient(left, #f4e28f , #ecbc68);
-  background: -o-linear-gradient(right, #f4e28f, #ecbc68); 
-  background: -moz-linear-gradient(right, #f4e28f, #ecbc68); 
+  background: -o-linear-gradient(right, #f4e28f, #ecbc68);
+  background: -moz-linear-gradient(right, #f4e28f, #ecbc68);
   background: linear-gradient(to right, #f4e28f , #ecbc68);
-  -webkit-box-shadow:0.2rem 0.1rem 0.5rem #d3d4d7;  
-  -moz-box-shadow:0.2rem 0.1rem 0.5rem #d3d4d7;  
-  box-shadow:0.2rem 0.1rem 0.5rem #d3d4d7; 
+  -webkit-box-shadow:0.2rem 0.1rem 0.5rem #d3d4d7;
+  -moz-box-shadow:0.2rem 0.1rem 0.5rem #d3d4d7;
+  box-shadow:0.2rem 0.1rem 0.5rem #d3d4d7;
 }
 .logoMain .authorization{
   width: 6.32rem;
@@ -73,9 +73,9 @@
   height: 1.02rem;
   background: #fff;
   margin:0 auto 0.2rem;
-  -webkit-box-shadow:0.1rem 0.05rem 0.1rem #ebebea;   
-  -moz-box-shadow:0.1rem 0.05rem 0.1rem #ebebea;   
-  box-shadow:0.1rem 0.05rem 0.1rem #ebebea; 
+  -webkit-box-shadow:0.1rem 0.05rem 0.1rem #ebebea;
+  -moz-box-shadow:0.1rem 0.05rem 0.1rem #ebebea;
+  box-shadow:0.1rem 0.05rem 0.1rem #ebebea;
 }
 .mobileInfo #mobile-number{
   width:6.1rem;
@@ -178,7 +178,7 @@
   overflow:hidden;
   background: #fff;
 }
-.countryAreaMain ul li{
+.countryAreaMain ul >>>li{
   height: 0.72rem;
   line-height: 0.72rem;
   overflow:hidden;
@@ -186,19 +186,19 @@
   padding:0 0.06rem;
   border-bottom: 0.01rem solid #f6f6f6;
 }
-.countryAreaMain ul li span{
+.countryAreaMain ul >>>li >>>span{
   font-size: 0.26rem;
   color:#000;
   display: block;
   float: left;
 }
-.countryAreaMain ul li em{
+.countryAreaMain ul >>>li >>>em{
   display: block;
   float: right;
   color:#969696;
   font-size: 0.26rem;
 }
-.countryAreaMain ul li.letter{
+.countryAreaMain ul >>>li >>>.letter{
   margin:0;
   height: 0.5rem;
   line-height: 0.5rem;

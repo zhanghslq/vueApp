@@ -10,6 +10,9 @@ $(function(){
    explain();           //商品说明弹层
    choiseShopp();       //商品选择弹层
    makeUpone();
+   refundReason();      //退款--原因
+   refundState();       //退款--状态
+   refundExchange();    //退款--换货
 })
 $(".codeBtn a.obtain").on("click", function() {
     var validCode=true;
@@ -137,3 +140,36 @@ function makeUpone(){
       },
     });
 }
+/*退款选择项弹层 开始*/
+function refundReason(){
+    $(".refundMain #reason").on("click",function(){
+        $(".elasticBox").show();
+        $(".elasticBox .boxContent .reasonInfo").show();
+    });
+    $(".elasticBox .closeBtn").on("click",function(){
+        $(".elasticBox").hide();
+        $(".elasticBox .boxContent .reasonInfo").hide();
+    });
+}
+function refundState(){
+    $(".refundMain #state").on("click",function(){
+        $(".elasticBox").show();
+        $(".elasticBox .boxContent .stateInfo").show();
+    });
+    $(".elasticBox .closeBtn").on("click",function(){
+        $(".elasticBox").hide();
+        $(".elasticBox .boxContent .stateInfo").hide();
+    });
+}
+function refundExchange(){
+    $(".refundMain #refunExchange").on("click",function(){
+        $(".elasticBox").show();
+        $(".elasticBox .boxContent .exchangeInfo").show();
+    });
+    $(".elasticBox .closeBtn").on("click",function(){
+        $(".elasticBox").hide();
+        $(".elasticBox .boxContent .exchangeInfo").hide();
+    });
+}
+
+/*退款选择项弹层 结束*/

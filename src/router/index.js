@@ -1,113 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import VueResource from 'vue-resource'
-/*import mobileLogin from '../page/login/mobileLogin'
-import search from '../page/index/search'
-import tenCommendation from '../page/index/tenCommendation'
-import newGrowGrass from '../page/index/newGrowGrass'
-import index from '../page/index/index'
-
-import catcherRecommend from '../page/find/catcherRecommend'
-import classification from '../page/index/classification'
-import classificationTwoPage from '../page/index/classificationTwoPage'
-import popularBrand from '../page/index/popularBrand'
-import searchList from '../page/index/searchList'
-import selecTregion from '../page/index/selecTregion'
-import xingjiProduce from '../page/index/xingjiProduce'
-
-import dynamicDetails from '../page/find/dynamicDetails'
-import demo from '../page/demo/demo'
-import findPage from '../page/find/findPage'
-import hotTopic from '../page/find/hotTopic'
-import personalHomePage from '../page/find/personalHomePage'
-import releaseDynamics from '../page/find/releaseDynamics'
-import upload from '../page/demo/upload'
-import topic from '../page/find/topic'
-import onlineCustomers from '../page/find/onlineCustomers'
-import Xcurrency from '../page/personalCenter/Xcurrency'
-import shopIndex from '../page/shoppingBag/shoppIndex'
-import modifyAddress from '../page/shoppingBag/modifyAddress'
-import accountInfo from '../page/personalCenter/accountInfo'
-import aboutUS from '../page/personalCenter/aboutUS'
-import coupon from '../page/personalCenter/coupon'
-import detailedPage from '../page/personalCenter/detailedPage'
-import exchangeX from '../page/personalCenter/exchangeX'
-import memberCenter from '../page/personalCenter/memberCenter'
-import modifyName from '../page/personalCenter/modifyName'
-import modifyPhone from '../page/personalCenter/modifyPhone'
-import myCollection from '../page/personalCenter/myCollection'
-import personalPage from '../page/personalCenter/personalPage'
-import refundProgress from '../page/personalCenter/refundProgress'
-import remindSetUp from '../page/personalCenter/remindSetUp'
-import selectCountryAreaPersonal from '../page/personalCenter/selectCountryArea'
-import setUp from '../page/personalCenter/setUp'
-import updateMobileLogin from '../page/personalCenter/updateMobileLogin'
-import myOrder from '../page/personalCenter/myOrder'
-import lookLogistics from '../page/personalCenter/lookLogistics'
-import orderDetailsTransaction from '../page/personalCenter/orderDetailsTransaction'
-import orderDetails from '../page/personalCenter/orderDetails'
-import orderDetailsCollect from '../page/personalCenter/orderDetailsCollect'
-import orderDetailsGoods from '../page/personalCenter/orderDetailsGoods'
-import orderDetailsPayment from '../page/personalCenter/orderDetailsPayment'
-import orderDetailsRefund from '../page/personalCenter/orderDetailsRefund'
-import modifyAutograph from '../page/personalCenter/modifyAutograph'
-import modifyWechat from '../page/personalCenter/modifyWechat'
-import helpService from '../page/personalCenter/helpService'
-import opinionFeedback from '../page/personalCenter/opinionFeedback'
-import questionAnswer from '../page/personalCenter/questionAnswer'
-
-import newlyAddress from '../page/shoppingBag/newlyAddress'
-import editAddress from '../page/shoppingBag/editAddress'
-import placeOrder from '../page/shoppingBag/placeOrder'
-
-
-/!*import TestPost from '../page/demo/TestPost'
-import address from '../page/demo/address'
-import TestAddress from '../page/demo/TestAddress'
-import TestAlert from '../page/demo/TestAlert'
-import img from '../page/demo/img'
-import img2 from '../page/demo/img2'
-import regShop from '../page/demo/regShop'
-import regShopImg from '../page/demo/regShopImg'
-import imageUploader from '../page/demo/ImageUploader'
-import swiper from '../page/demo/swiper'
-import carrousel from '../page/demo/carrousel'
-import demoSwiper from '../page/demo/demoSwiper'
-import AweSwiper from '../page/demo/AweSwiper'
-import Testqiniu from '../page/demo/Testqiniu'*!/
-
-
-import conventionalGood from '../page/shoppingBag/conventionalGood'
-import commodityPage from '../page/shoppingBag/commodityPage'
-import highlncome from '../page/shopkeeper/highlncome'
-import marketing from '../page/shopkeeper/marketing'
-import putForward from '../page/shopkeeper/putForward'
-import recruitment from '../page/shopkeeper/recruitment'
-import rewardDetails from '../page/shopkeeper/rewardDetails'
-import shopkeeperPage from '../page/shopkeeper/shopkeeperPage'
-import rewardTask from '../page/shopkeeper/rewardTask'
-import business from '../page/shopkeeper/business'
-import businessSchool from '../page/shopkeeper/businessSchool'
-import shopkeeperContactUs from '../page/shopkeeper/contactUs'
-import managementInfo from '../page/shopkeeper/managementInfo'
-import myClient from '../page/shopkeeper/myClient'
-import myNotice from '../page/shopkeeper/myNotice'
-import newBrochure from '../page/shopkeeper/newBrochure'
-import newBrochureDetail from '../page/shopkeeper/newBrochureDetail'
-import outorder from '../page/shopkeeper/outorder'
-import putForwardRecord from '../page/shopkeeper/putForwardRecord'
-import shopKeepSelection from '../page/shopkeeper/shopKeepSelection'
-import newBrochureInfo from '../page/shopkeeper/newBrochureInfo'
-import putForwardAdminist from '../page/shopkeeper/putForwardAdminist'
-import salesOrder from '../page/shopkeeper/salesOrder'
-import shopkeSelection from '../page/shopkeeper/shopkeSelection'
-import dataCenter from '../page/shopkeeper/dataCenter'
-import manageSystem from '../page/shopkeeper/manageSystem'
-import codeShare from '../page/shopkeeper/codeShare'
-
-import receivingAddress from '../page/shoppingBag/receivingAddress'
-import tradeFail from '../page/shoppingBag/tradeFail'
-import tradeSuccessful from '../page/shoppingBag/tradeSuccessful'*/
 
 Vue.use(Router)
 Vue.use(VueResource)
@@ -128,6 +21,41 @@ export default new Router({
       name:'transacitonLogistics',
       component(resolve){
         require(['../page/shopkeeper/transacitonLogistics.vue'],resolve)
+      }
+
+    },{
+      path:'/applicationRefunding',
+      name:'applicationRefunding',
+      component(resolve){
+        require(['../page/personalCenter/applicationRefunding.vue'],resolve)
+      }
+
+    },{
+      path:'/applyforExchange',
+      name:'applyforExchange',
+      component(resolve){
+        require(['../page/personalCenter/applyforExchange.vue'],resolve)
+      }
+
+    },{
+      path:'/selectServiceType',
+      name:'selectServiceType',
+      component(resolve){
+        require(['../page/personalCenter/selectServiceType.vue'],resolve)
+      }
+
+    },{
+      path:'/applicationRefund',
+      name:'applicationRefund',
+      component(resolve){
+        require(['../page/personalCenter/applicationRefund.vue'],resolve)
+      }
+
+    },{
+      path:'/selectServiceType',
+      name:'selectServiceType',
+      component(resolve){
+        require(['../page/personalCenter/selectServiceType.vue'],resolve)
       }
 
     },{
@@ -189,25 +117,6 @@ export default new Router({
         require(['../page/personalCenter/modifyAutograph.vue'],resolve)
       }
     },{
-      path:'/Testqiniu',
-      name:'Testqiniu',
-      component(resolve){
-        require(['../page/demo/Testqiniu.vue'],resolve)
-      }
-    },{
-      path:'/AweSwiper',
-      name:'AweSwiper',
-      component(resolve){
-        require(['../page/demo/AweSwiper.vue'],resolve)
-      }
-
-    },{
-      path:'/demoSwiper',
-      name:'demoSwiper',
-      component(resolve){
-        require(['../page/demo/demoSwiper.vue'],resolve)
-      }
-    },{
       path:'/orderDetailsRefund',
       name:'orderDetailsRefund',
       component(resolve){
@@ -250,22 +159,10 @@ export default new Router({
         require(['../page/personalCenter/lookLogistics.vue'],resolve)
       }
     },{
-      path:'/carrousel',
-      name:'carrousel',
-      component(resolve){
-        require(['../page/demo/carrousel.vue'],resolve)
-      }
-    },{
       path:'/myOrder',
       name:'myOrder',
       component(resolve){
         require(['../page/personalCenter/myOrder.vue'],resolve)
-      }
-    },{
-      path:'/swiper',
-      name:'swiper',
-      component(resolve){
-        require(['../page/demo/swiper.vue'],resolve)
       }
     },{
       path:'/tradeFail',
@@ -298,13 +195,7 @@ export default new Router({
       component(resolve){
         require(['../page/index/searchList.vue'],resolve)
       }
-    },/*{
-      path:'/imageUploader',
-      name:'imageUploader',
-      component(resolve){
-        require(['../page/demo/imageUploader.vue'],resolve)
-      }
-    },*/ {
+    }, {
       path:'/newBrochureInfo',
       name:'newBrochureInfo',
       component(resolve){
@@ -334,27 +225,13 @@ export default new Router({
       component(resolve){
         require(['../page/shopkeeper/putForwardRecord.vue'],resolve)
       }
-    },/*{
-      path:'/regShopImg',
-      name:'regShopImg',
-      component(resolve){
-        require(['../page/shopkeeper/regShopImg.vue'],resolve)
-      }
-    },*//*{
-      path:'/regShop',
-      name:'regShop',
-      component:regShop
-    },*/{
+    },{
       path:'/newlyAddress',
       name:'newlyAddress',
       component(resolve){
         require(['../page/shoppingBag/newlyAddress.vue'],resolve)
       }
-    },/*{
-      path:'/img2',
-      name:'img2',
-      component:img2
-    },*/{
+    },{
       path:'/receivingAddress',
       name:'receivingAddress',
       component(resolve){
@@ -428,11 +305,7 @@ export default new Router({
       component(resolve){
         require(['../page/shopkeeper/rewardTask.vue'],resolve)
       }
-    },/*{
-      path:'/img',
-      name:'img',
-      component:img
-    },*/{
+    },{
       path:'/shopkeeperPage',
       name:'shopkeeperPage',
       component(resolve){
@@ -474,32 +347,13 @@ export default new Router({
       component(resolve){
         require(['../page/shoppingBag/commodityPage.vue'],resolve)
       }
-    },/*{
-      path:'/TestPost',
-      name:'TestPost',
-      component:TestPost
     },{
-      path:'/TestAlert',
-      name:'TestAlert',
-      component:TestAlert
-    },
-    {
-      path:'/TestAddress',
-      name:'TestAddress',
-      component:TestAddress
-    },*/{
       path:'/conventionalGood',
       name:'conventionalGood',
       component(resolve){
         require(['../page/shoppingBag/conventionalGood.vue'],resolve)
       }
-    },/*{
-      path:'/address',
-      name:'address',
-      component(resolve){
-        require(['../page/shoppingBag/address.vue'],resolve)
-      }
-    },*/{
+    },{
       path:'/detailedPage',
       name:'detailedPage',
       component(resolve){
@@ -616,11 +470,7 @@ export default new Router({
       component(resolve){
         require(['../page/personalCenter/Xcurrency.vue'],resolve)
       }
-    },/*{
-      path: '/demo',
-      name: 'demo',
-      component: demo
-    },*/{
+    },{
       path: '/topic',
       name: 'topic',
       component(resolve){

@@ -258,7 +258,7 @@
                 time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
               })
             } else {
-              axios.post('/api//api/wxapp/deliveryAddress/add',{
+              axios.post(store.getAddress()+'/api/wxapp/deliveryAddress/add',{
                 "uid":store.fetch("uid"),
                 "consignee":this.consignee,
                 "mobile":this.mobile,

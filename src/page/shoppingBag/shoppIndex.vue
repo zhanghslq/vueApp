@@ -45,7 +45,7 @@
               </div>
 
 
-              <div class="settle_box">
+              <div class="settle_box" :style="{bottom:(isDev==true?'0':'1rem')}">
                 <div class="total all_check select">
                   <div><span id="all_pitch_on"></span><em>全选</em></div>
                 </div>
@@ -204,25 +204,25 @@
             })
           }
         },
-        addOnServer(id,e){
-          console.log($(e.target).prev().prev().html())
-          axios.post(store.getAddress()+'/api/wxapp/cart/changeNum',{
-            "uid":store.fetch("uid"),"quantity":parseInt($(e.target).prev().prev().html())+1,"skuId":id
+      addOnServer(id,e){
+        console.log($(e.target).prev().prev().html())
+        axios.post(store.getAddress()+'/api/wxapp/cart/changeNum',{
+          "uid":store.fetch("uid"),"quantity":parseInt($(e.target).prev().prev().html())+1,"skuId":id
 
-          }).then(function (response) {
+        }).then(function (response) {
 
-            if (response.data.code == 200) {
-              console.log(response)
+          if (response.data.code == 200) {
+            console.log(response)
 
-            } else {
+          } else {
 
-            }
-          }).catch(function (error) {
-            console.log(error);
-          })
+          }
+        }).catch(function (error) {
+          console.log(error);
+        })
 
-        },
-        reducew:function (obj){
+      },
+      reducew:function (obj){
     //减
     var $this = $(obj);
     var totalH = $("#total_price b").text(); /* 合计金额  */
@@ -272,19 +272,19 @@
 
 
 
-   /* $(".commodity_list .tite_tim > em.pitch_on").parents(".commodity_box").remove();*/
+
   },
         reduceMod:function (e,totalH,mod){
-    var tn = e.siblings().find(".qu_su").text(); /* 当前选中商品  */
-    var tn1 = e.siblings().find(".zi").text(); /* 商品数量  */
-    if(mod != 2){
-      var Total = parseFloat(totalH) - (tn*tn1);  /* 总价格减该商品总数价格  */
-      $("#total_price b").text(Total.toFixed(2));
-    }else{
-      /* 合计加单价-1 */
-      var Total = parseFloat(totalH) - parseFloat(tn);    /* 总价格减该商品总数价格  */
-      $("#total_price b").text(Total.toFixed(2));
-    }
+          var tn = e.siblings().find(".qu_su").text(); /* 当前选中商品  */
+          var tn1 = e.siblings().find(".zi").text(); /* 商品数量  */
+          if(mod != 2){
+            var Total = parseFloat(totalH) - (tn*tn1);  /* 总价格减该商品总数价格  */
+            $("#total_price b").text(Total.toFixed(2));
+          }else{
+            /* 合计加单价-1 */
+            var Total = parseFloat(totalH) - parseFloat(tn);    /* 总价格减该商品总数价格  */
+            $("#total_price b").text(Total.toFixed(2));
+          }
 
   },
         /* 加  */

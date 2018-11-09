@@ -65,7 +65,27 @@
         name: "setUp",
         methods:{
             logOut(){
-             localStorage.removeItem("uid")
+
+              this.$layer.dialog({
+                title: ['退出登录', 'background:skyblue'], // 第一个是标题内容  第二个是标题栏的style(可以为空)
+                content: '确定要退出此账号吗',
+                contentClass: 'className',
+                btn: ['取消','确定'],
+                //   time: 2000
+              })
+              // 如果有btn
+                .then(function (res){
+                  // res为0时是用户点击了左边  为1时用户点击了右边
+
+                  if(res==1){//确认取消订单
+                    localStorage.removeItem("uid")
+                    this.$router.push("index")
+
+                  }else{//取
+                    console.log("取消")
+                  }
+                })
+
             }
         }
     }

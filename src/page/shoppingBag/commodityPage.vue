@@ -341,7 +341,21 @@ export default {
 
   methods: {
     nowBuy(){
-      this.$router.push({path:'placeOrder',query:{"skuId":this.skuId,"quantity":this.quantity}})
+
+      if(store.fetch("uid")==undefined||store.fetch("uid")==''||store.fetch("uid")==null){
+
+        store.save("lastPage","commodityPage")
+        this.$layer.toast({
+          icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+          content: '请先登录',
+          time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+        })
+        this.$router.push({path:'mobileLogin'})
+
+      }else{
+        this.$router.push({path:'placeOrder',query:{"skuId":this.skuId,"quantity":this.quantity}})
+      }
+
     },
     chooseTag(e){//每次选择规格的时候都需要计算一次
       var lis=$(e.target).parent().children();
@@ -406,6 +420,18 @@ export default {
     addShopCart(){
       let self=this;
       /*if(self.skuTags.length=0){//证明可以直接添加购物车*/
+
+      if(store.fetch("uid")==undefined||store.fetch("uid")==''||store.fetch("uid")==null){
+
+        store.save("lastPage","commodityPage")
+        this.$layer.toast({
+          icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+          content: '请先登录',
+          time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+        })
+        this.$router.push({path:'mobileLogin'})
+
+      }else{
         axios.post(store.getAddress()+"/api/wxapp/cart/add",{"uid":store.fetch("uid"),"quantity":self.quantity,"skuId":self.skuId})
           .then(function (responese) {
             console.log(responese)
@@ -420,18 +446,7 @@ export default {
               time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
             })
           })
-      /*}else{//证明需要选择规格
-        $("#choisShopp").click();
-        self.$layer.toast({
-          icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
-          content: "请先选择商品规格",
-          time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
-        })
-      }*/
-
-
-
-
+      }
     },
     /*商品说明弹层 开始*/
      explain(){

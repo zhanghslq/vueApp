@@ -84,13 +84,11 @@ export default {
               }
 
             }
-            if(store.judge()==3){//window浏览器
-              _this.$router.push("index");
-            }
 
+            _this.$router.push("index");
 
           }else{
-            console.log("jinrushelse")
+
             _this.$layer.toast({
               icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
               content: response.data.message,
