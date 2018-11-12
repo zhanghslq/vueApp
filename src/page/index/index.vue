@@ -7,9 +7,9 @@
       </router-link>
       <div class="search">
         <em></em>
-        <router-link to="search">
+        <a v-on:click="toSearch()">
           <input type="text" placeholder="搜索喜欢的宝贝">
-        </router-link>
+        </a>
       </div>
     <router-link to="selecTregion">
       <a  class="cityCode">北京 <em class="triangle"></em></a>
@@ -1176,6 +1176,24 @@ export default {
     TouchSlide,
   },
   methods: {
+
+    toSearch(){
+      if(store.isDev()){
+        this.$router.push("search")
+      }else{
+        if(store.judge()==1) {
+          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+            "code": "91",
+            "url":store.getNextAddress()+"search"
+          });
+        }else if(store.judge()==0) {
+          window.androidXingJiApp.postMessage(JSON.stringify({
+            "code": "91",
+            "url":store.getNextAddress()+"search"}));
+        }
+      }
+
+    },
     /*滑动导航切换内容*/
     bannerFocusImg: function () {
       TouchSlide({
@@ -1278,11 +1296,13 @@ export default {
     on: {
       slideChange: function () {
         console.log(this.activeIndex);
+        //$(".swiper-wrapper").css("height","100%");
 
-      $(".scroll .swiper-wrapper").each(function () {
-        console.log($(this).find("swiper-slide"))
-      })
-        console.log("获取slide")
+
+        $(".scroll .swiper-wrapper").each(function () {
+          console.log($($(this).find("swiper-slide").find("content-slide")).attr("height"))
+        })
+          console.log("获取slide")
 
 
        /* var H = $(".content-slide").eq(this.activeIndex).height();
@@ -1402,9 +1422,9 @@ export default {
 
       console.log("ios进入")
 
-      window.webkit.messageHandlers.currentCookies.postMessage({
+     /* window.webkit.messageHandlers.currentCookies.postMessage({
         "code": "99"
-      });
+      });*/
 
     }else if(store.judge()==3){
       console.log("windows  浏览器模拟")

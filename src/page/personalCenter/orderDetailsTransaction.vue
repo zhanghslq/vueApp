@@ -69,7 +69,8 @@
 
 <script>
     export default {
-        name: "orderDetailsTransaction"
+        name: "orderDetailsTransaction",
+
     }
 </script>
 

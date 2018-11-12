@@ -16,19 +16,21 @@
             </div>
           </div>
           <ul class="tradeOrder">
-            <li><span>订单编号：</span><em>37685645852567</em></li>
-            <li><span>交易时间：</span><em>2018-07-19 22:08:09</em></li>
+            <li><span>订单编号：</span><em>{{orderNumber}}</em></li>
+            <li><span>交易时间：</span><em>{{createTime}}</em></li>
             <li><span>支付方式：</span><em>微信支付</em></li>
-            <li><span>支付金额：</span><em class="price">￥19.0</em></li>
+            <li><span>支付金额：</span><em class="price">￥{{totalAmount}}</em></li>
           </ul>
           <div class="tradeOperation">
-            <router-link to="orderDetailsTransaction">
-              查看订单
-            </router-link>
 
-            <router-link to="index">
+
+            <a  v-on:click="toOrderDetail()">
+              查看订单
+            </a>
+
+            <a v-on:click="toIndex()">
               回首页
-            </router-link>
+            </a>
 
           </div>
         </div>
@@ -38,8 +40,59 @@
 </template>
 
 <script>
+  import store from '../../service/store'
+  import axios from 'axios'
     export default {
-        name: "tradeSuccessful"
+        name: "tradeSuccessful",
+      data(){
+          return{
+            orderId:'',
+            orderNumber:'',
+            createTime:'',
+            totalAmount:''
+          }
+      },
+      methods:{
+        toOrderDetail(){
+          this.$router.push({path:'orderDetails',query:{"orderId":this.orderId}})
+        },
+        toIndex(){
+          if(store.isDev()){
+            this.$router.push("index")
+          }else{
+            if(store.judge()==1){
+              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                "code": "91",
+                "url":store.getNextAddress()+"index"
+              });
+            }else if(store.judge()==0){
+              window.androidXingJiApp.postMessage(JSON.stringify({
+                "code": "91",
+                "url":store.getNextAddress()+"index"}));
+            }
+          }
+
+        }
+
+      },
+      mounted(){
+
+          var _this=this;
+          _this.orderId=_this.$route.query.orderId
+        axios.post(store.getAddress()+'/api/wxapp/order/details',{
+          "uid":store.fetch("uid"),
+          "orderId":_this.orderId
+        }).then(function (responese) {
+          _this.orderNumber=response.data.data.orderNumber;
+          _this.createTime=response.data.data.createTime;
+
+          _this.totalAmount=response.data.data.totalAmount;
+
+        }).catch(function (error) {
+          console.log(error)
+        })
+
+      }
     }
 </script>
 

@@ -74,7 +74,7 @@
             </div>
             <div class="choiceProduct">
               <a  id="choisShopp">
-                <span>选择 颜色</span>
+                <span>规格</span>
                 <div class="threePoints">
                   <i></i>
                   <i></i>
@@ -205,9 +205,9 @@
         <!--中间 结束-->
         <!--底部 开始-->
         <div class="conventFooter">
-          <router-link to="shopIndex">
-            <a  class="shoppBox"><img src="../../images/common/shoppBoxIcon.png"></a>
-          </router-link>
+
+          <a  class="shoppBox" v-on:click="toShopIndex()"><img src="../../images/common/shoppBoxIcon.png"></a>
+
 
           <a  class="chat"><img src="../../images/common/chatIcon.png"></a>
           <a v-on:click="addShopCart()" class="join">加入购物袋</a>
@@ -340,6 +340,22 @@ export default {
   },
 
   methods: {
+    toShopIndex(){
+      if(store.isDev()){
+        this.$router.push("shopIndex")
+      }else{
+        if(store.judge()==1){
+          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+            "code": "91",
+            "url":store.getNextAddress()+"shopIndex"
+          });
+        }else if(store.judge()==0){
+          window.androidXingJiApp.postMessage(JSON.stringify({
+            "code": "91",
+            "url":store.getNextAddress()+"shopIndex"}));
+        }
+      }
+    },
     nowBuy(){
 
       if(store.fetch("uid")==undefined||store.fetch("uid")==''||store.fetch("uid")==null){

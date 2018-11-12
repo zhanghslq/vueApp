@@ -57,7 +57,6 @@
             "orderId":self.orderId,
             "transType":101
           }).then(function (response) {
-
             let res= response.data.data.request;
             self.payStr=JSON.stringify(res)
             self.orderId=response.data.data.orderId
@@ -78,12 +77,12 @@
           if(result==1){//支付成功
             this.$router.push({ name: 'tradeSuccessful',
               query: {
+                "orderId":this.orderId,
                 "payMoney": this.totalAmount,
 
               }
             });
           }else{//支付失败
-
             this.$router.push({ name: 'tradeFail',
               query: {
                 "orderId":this.orderId,
@@ -94,11 +93,14 @@
           }
         },
       },
+
+      updated(){
+
+
+      },
       mounted:function () {
         this.orderId=this.$route.query.orderId;
         this.totalAmount=this.$route.query.shouldPayMoney;
-
-
         var x = 30,
         interval;
         window.onload = function() {

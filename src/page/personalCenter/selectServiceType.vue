@@ -39,7 +39,7 @@
                 <em></em>
               </div>
             </router-link>
-            <router-link to="applicationRefund">
+            <router-link to="applyforExchange">
               <div class="refundmLeft">
                 <h5>仅换货</h5>
                 <span>已收到货，需要退换已收到的货物</span>

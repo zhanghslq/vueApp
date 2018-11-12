@@ -159,6 +159,7 @@
             if(result==1){//支付成功
               this.$router.push({ name: 'tradeSuccessful',
                 query: {
+                  "orderId":this.orderId,
                   "payMoney": this.totalAmount,
 
                 }

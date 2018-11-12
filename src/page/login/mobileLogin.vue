@@ -59,16 +59,29 @@ export default {
             store.save("mobile",response.data.data.mobile)
             if(response.data.data.isStoreKeeper){
               store.save("isStoreKeeper",1)
+
+              if(store.fetch("lastPage")=='[]'||store.fetch("lastPage")==''||store.fetch("lastPage")==undefined||store.fetch("lastPage")==null){
+                store.save("lasePage","index")
+              }
               if(store.judge()==1){
                 window.webkit.messageHandlers.currentCookies.postMessage({
                   "code": "81",
                   "role":"1",
+                });
+
+                window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                  "code": "91",
+                  "url":store.getNextAddress()+store.fetch("lastPage")
                 });
               }else if(store.judge()==0){
                 window.androidXingJiApp.postMessage(JSON.stringify({
                   "code": "81",
                   "role":"1",
                 }));
+
+                window.androidXingJiApp.postMessage(JSON.stringify({
+                  "code": "91",
+                  "url":store.getNextAddress()+store.fetch("lastPage")}));
               }
             }else{
               store.save("isStoreKeeper",0)
@@ -77,18 +90,23 @@ export default {
                   "code": "81",
                   "role":"0",
                 });
+                window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                  "code": "91",
+                  "url":store.getNextAddress()+store.fetch("lastPage")
+                });
               }else if(store.judge()==0){
                 window.androidXingJiApp.postMessage(JSON.stringify({
                   "code": "81",
                   "role":"0",}));
+
+                window.androidXingJiApp.postMessage(JSON.stringify({
+                  "code": "91",
+                  "url":store.getNextAddress()+store.fetch("lastPage")}));
               }
 
             }
 
-            _this.$router.push("index");
-
           }else{
-
             _this.$layer.toast({
               icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
               content: response.data.message,

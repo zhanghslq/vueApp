@@ -42,7 +42,7 @@
                       <div class="discount">优惠：<em>￥0.00</em></div>
                     </div>
                     <div class="infoBottom" v-if="order.status==1">
-                      <a href="javascript:void(0);" class="cancelBtn" v-on:click="cancelOrder()">取消</a>
+                      <a href="javascript:void(0);" class="cancelBtn" v-on:click="cancelOrder(order.orderId)">取消</a>
                       <a  class="toPay"><span>去付款</span><em class="btnTime"></em></a>
                     </div>
                     <div class="infoBottom" v-if="order.status==2">
@@ -364,6 +364,7 @@
 
         },
         cancelOrder(orderId){
+          var _this=this;
           this.$layer.dialog({
             title: ['取消订单', 'background:skyblue'], // 第一个是标题内容  第二个是标题栏的style(可以为空)
             content: '确定要取消订单吗',
@@ -382,7 +383,7 @@
                   "orderId":orderId
                 }).then(function (responese) {
                   if(responese.data.code==200){
-                    console.log("成功取消订单")
+                    _this.refreshAllOrder();
                   }
                 }).catch(function (error) {
                   console.log(error)

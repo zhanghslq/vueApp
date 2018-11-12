@@ -45,7 +45,7 @@
               </div>
 
 
-              <div class="settle_box" :style="{bottom:(isDev==true?'0':'1rem')}">
+              <div class="settle_box">
                 <div class="total all_check select">
                   <div><span id="all_pitch_on"></span><em>全选</em></div>
                 </div>
@@ -577,13 +577,50 @@
               time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
             })
           }else{
-            _this.$router.push("placeOrder")
+
+            if(store.isDev()){
+              _this.$router.push("placeOrder")
+            }else{
+              if(store.judge()==1){
+                window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                  "code": "91",
+                  "url":store.getNextAddress()+"placeOrder"
+                });
+              }else if(store.judge()==0){
+                window.androidXingJiApp.postMessage(JSON.stringify({
+                  "code": "91",
+                  "url":store.getNextAddress()+"placeOrder"}));
+              }
+            }
+
+
           }
 
         })
       },
       mounted:function () {
-        let _this=this;
+
+        this.isDev=store.isDev();
+        var _this=this;
+        let uid=store.fetch("uid");
+        if(uid==undefined||uid==null||uid==''){//未登录，需要跳转到登录页
+          store.save("lastPage","shoppIndex")
+          if(store.judge()==1){
+            window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+              "code": "91",
+              "url":store.getNextAddress()+"mobileLogin"
+            });
+          }else if(store.judge()==0){//安卓
+            window.androidXingJiApp.postMessage(JSON.stringify({
+              "code": "91",
+              "url":store.getNextAddress()+"mobileLogin"}));
+          }else if(store.judge()==3){
+            _this.$router.push("mobileLogin")
+          }
+
+
+        }
+
         $("#all_pitch_on").click(function(){
           console.log("点击全选")
           console.log(this)
@@ -611,7 +648,7 @@
 
         });
 
-        this.isDev=store.isDev();
+
         var fot = $(".commodity_list_term  .pitch_on");
         var fot1 = $(".commodity_list_term  em");
 
