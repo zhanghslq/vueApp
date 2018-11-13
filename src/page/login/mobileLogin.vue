@@ -71,6 +71,7 @@ export default {
 
                 window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                   "code": "91",
+                  "index":store.fetch("appBarIndex"),
                   "url":store.getNextAddress()+store.fetch("lastPage")
                 });
               }else if(store.judge()==0){
@@ -81,6 +82,7 @@ export default {
 
                 window.androidXingJiApp.postMessage(JSON.stringify({
                   "code": "91",
+                  "index":store.fetch("appBarIndex"),
                   "url":store.getNextAddress()+store.fetch("lastPage")}));
               }
             }else{
@@ -92,15 +94,18 @@ export default {
                 });
                 window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                   "code": "91",
+                  "index":store.fetch("appBarIndex"),
                   "url":store.getNextAddress()+store.fetch("lastPage")
                 });
               }else if(store.judge()==0){
                 window.androidXingJiApp.postMessage(JSON.stringify({
                   "code": "81",
+
                   "role":"0",}));
 
                 window.androidXingJiApp.postMessage(JSON.stringify({
                   "code": "91",
+                  "index":store.fetch("appBarIndex"),
                   "url":store.getNextAddress()+store.fetch("lastPage")}));
               }
 

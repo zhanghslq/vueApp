@@ -63,11 +63,13 @@
             if(store.judge()==1){
               window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                 "code": "91",
+                "index":1,
                 "url":store.getNextAddress()+"index"
               });
             }else if(store.judge()==0){
               window.androidXingJiApp.postMessage(JSON.stringify({
                 "code": "91",
+                "index":1,
                 "url":store.getNextAddress()+"index"}));
             }
           }
@@ -82,7 +84,7 @@
         axios.post(store.getAddress()+'/api/wxapp/order/details',{
           "uid":store.fetch("uid"),
           "orderId":_this.orderId
-        }).then(function (responese) {
+        }).then(function (response) {
           _this.orderNumber=response.data.data.orderNumber;
           _this.createTime=response.data.data.createTime;
 

@@ -359,7 +359,7 @@ export default {
     nowBuy(){
 
       if(store.fetch("uid")==undefined||store.fetch("uid")==''||store.fetch("uid")==null){
-
+        store.save("index",3)
         store.save("lastPage","commodityPage")
         this.$layer.toast({
           icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
@@ -395,7 +395,7 @@ export default {
 
 
 
-        let choseTag;
+        let choseTag='';
        $(this).find("li").each(function () {
          if($(this).hasClass("Cur")){
            console.log($(this).attr("value"))
@@ -414,9 +414,6 @@ export default {
       })//遍历完成
 
       console.log("tagstr========"+self.tagsIdStr)
-
-
-
 
       var allSkus=this.allSkus;
       for (let i = 0; i < allSkus.length; i++) {
@@ -438,6 +435,7 @@ export default {
       /*if(self.skuTags.length=0){//证明可以直接添加购物车*/
 
       if(store.fetch("uid")==undefined||store.fetch("uid")==''||store.fetch("uid")==null){
+        store.save("index",3)
 
         store.save("lastPage","commodityPage")
         this.$layer.toast({

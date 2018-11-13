@@ -604,15 +604,18 @@
         var _this=this;
         let uid=store.fetch("uid");
         if(uid==undefined||uid==null||uid==''){//未登录，需要跳转到登录页
-          store.save("lastPage","shoppIndex")
+          store.save("lastPage","shopIndex")
+          store.save("index",3)
           if(store.judge()==1){
             window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
               "code": "91",
+              "index":0,
               "url":store.getNextAddress()+"mobileLogin"
             });
           }else if(store.judge()==0){//安卓
             window.androidXingJiApp.postMessage(JSON.stringify({
               "code": "91",
+              "index":0,
               "url":store.getNextAddress()+"mobileLogin"}));
           }else if(store.judge()==3){
             _this.$router.push("mobileLogin")

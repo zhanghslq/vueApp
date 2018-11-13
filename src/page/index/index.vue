@@ -1184,11 +1184,13 @@ export default {
         if(store.judge()==1) {
           window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
             "code": "91",
+            "index":0,
             "url":store.getNextAddress()+"search"
           });
         }else if(store.judge()==0) {
           window.androidXingJiApp.postMessage(JSON.stringify({
             "code": "91",
+            "index":0,
             "url":store.getNextAddress()+"search"}));
         }
       }
@@ -1291,7 +1293,14 @@ export default {
     resistanceRatio: 0,
     //slidesPerView: 'auto',
     init(){
+      $(".scroll .swiper-wrapper .swiper-slide .content-slide").each(function () {
 
+        console.log($(this).height())
+        $(this).parent().height($(this).height())
+        $(this).parent().next().css("display","none")
+        console.log($(this).parent().parent().parent(".scroll").height())
+
+      })
     },
     on: {
       slideChange: function () {
@@ -1299,9 +1308,7 @@ export default {
         //$(".swiper-wrapper").css("height","100%");
 
 
-        $(".scroll .swiper-wrapper").each(function () {
-          console.log($($(this).find("swiper-slide").find("content-slide")).attr("height"))
-        })
+
           console.log("获取slide")
 
 
@@ -1375,7 +1382,7 @@ export default {
       var scrollSwiper = new Swiper('.scroll', {
         //65是头部的高
         //36是top地址和搜索的高
-        //observer: true,//修改swiper自己或子元素时，自动初始化swiper
+        observer: true,//修改swiper自己或子元素时，自动初始化swiper
         //observeParents:true,//修改swiper的父元素时，自动初始化swiper
 
         autoHeight: true,
@@ -1384,7 +1391,7 @@ export default {
         freeMode: true,
         slidesPerView: 1,
 
-        slidesOffsetAfter: -document.documentElement.clientHeight,
+        //slidesOffsetAfter: -document.documentElement.clientHeight,
       })
 
 
@@ -1451,7 +1458,7 @@ export default {
     var s =curScroll.find(".slidescroll");
     var h=$(s[0]).scrollHeight;
 
-    console.log("高度"+h)
+
 
 
     this.beautyImg();
@@ -1481,9 +1488,7 @@ export default {
         console.log(response)
         if (response.data.code == 200) {
           _this.topList=response.data.list
-          _this.$nextTick(function () {
-            _this.navTab();
-          })
+
         } else {
 
         }
@@ -1533,6 +1538,9 @@ export default {
             $this.addClass('burCur');
             $(".burstCont .bursInfo:eq("+i+")").show().siblings().hide();
           });
+
+            _this.navTab();
+
         })
       } else {
 
