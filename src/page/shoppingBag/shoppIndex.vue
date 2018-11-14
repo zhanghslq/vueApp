@@ -584,11 +584,13 @@
               if(store.judge()==1){
                 window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                   "code": "91",
+                  "index":0,
                   "url":store.getNextAddress()+"placeOrder"
                 });
               }else if(store.judge()==0){
                 window.androidXingJiApp.postMessage(JSON.stringify({
                   "code": "91",
+                  "index":0,
                   "url":store.getNextAddress()+"placeOrder"}));
               }
             }
