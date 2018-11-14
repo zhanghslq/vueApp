@@ -47,7 +47,7 @@
                 <em class="PendingDelivery"></em>
                 <span>待发货</span>
               </router-link>
-                <router-link :to="{path:'/myOrder',query:{num:3}}">
+              <router-link :to="{path:'/myOrder',query:{num:3}}">
                 <em class="goodsReceived"></em>
                 <span>待收货</span>
                 </router-link>

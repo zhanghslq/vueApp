@@ -10,30 +10,29 @@
       <main>
         <div class="orderDetails">
           <div class="orderDetTop refund">
-            <div class="topTitle"><span>退款成功</span></div>
+            <div class="topTitle"><span>{{order.refundDetails.handleStatusName}}</span></div>
             <div class="orderNum">
-              <p>2018-7019 23:23:09</p>
+              <p>{{order.refundDetails.applyForTime}}</p>
             </div>
           </div>
           <ul class="refundMoney">
-            <li><span>退款总金额</span><em class="total">￥19.90</em></li>
-            <li><span>退回余额</span><em>￥19.90</em></li>
+            <li><span>退款总金额</span><em class="total">￥{{order.totalAmount}}</em></li>
+            <li><span>退款方式</span><em>￥{{order.refundDetails.refundTypeName}}</em></li>
           </ul>
           <div class="commodity">
             <div class="commodityTitle">退款信息</div>
-            <div class="commodDetail">
-              <div class="detailLeft"><img src="../../images/temporary/9.jpg"></div>
+            <div class="commodDetail" v-for="(item,index) in order.lines" :key="index">
+              <div class="detailLeft"><img :src="item.goodsTitleImg"></div>
               <div class="detailRight">
                 <div class="rightTop">
-                  <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
+                  <p>{{item.goodsTitle}}</p>
                 </div>
               </div>
             </div>
-            <p><span>退款原因</span> <em>拍错/不喜欢/效果差</em></p>
-            <p><span>退款金额</span> <em>￥19.9</em></p>
-            <p><span>申请件数</span> <em>1</em></p>
-            <p><span>申请时间</span> <em>2018-7-23 23:24:55</em></p>
-            <p><span>退款编号</span> <em>176381628792909808</em></p>
+            <p><span>退款原因</span> <em>{{order.refundDetails.refundRemark}}</em></p>
+
+            <p><span>支付时间</span> <em>{{order.refundDetails.applyForTime}}</em></p>
+            <!--<p><span>退款编号</span> <em>176381628792909808</em></p>-->
           </div>
           <div class="refundBtn">
             <a href="#"><em class="seller"></em><span>联系卖家</span></a>
@@ -46,8 +45,35 @@
 </template>
 
 <script>
+  import store from '../../service/store'
+  import axios from 'axios'
     export default {
-        name: "orderDetailsRefund"
+        name: "orderDetailsRefund",
+      data(){
+          return{
+            orderId:'',
+            order:{}
+
+          }
+      },
+      methods:{
+
+      },
+      mounted(){
+          var _this=this;
+          this.orderId=this.$route.query.orderId
+        axios.post(store.getAddress()+'/api/wxapp/order/details',{
+          "uid":store.fetch("uid"),
+          "orderId":_this.orderId
+        }).then(function (response) {
+          if(response.data.code==200){
+            _this.order=response.data.data
+
+          }
+        }).catch(function (error) {
+            console.log(error)
+        })
+      }
     }
 </script>
 

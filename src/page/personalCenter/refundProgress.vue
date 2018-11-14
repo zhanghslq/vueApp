@@ -17,118 +17,24 @@
           </div>
           <div class="optionMain">
             <ul class="opContInfo">
-              <li>
+
+              <li v-for="(order,index) in orderList" :key="index">
                 <div class="infoTop">
-                  <span>2018-06-26 23:24:11</span>
-                  <em>退货退款</em>
-                  <em>退款成功</em>
+                  <span>{{order.createTime}}</span>
+                  <em v-if="order.hasRefund">仅退款</em>
+                  <em v-else-if="order.hasReturn">退货</em>
                 </div>
-                <a href="#" class="infoMiddle">
-                  <div class="middleImg"><img src="../../images/temporary/commodity9.png"></div>
+                <a  class="infoMiddle" v-for="(item,inde) in order.lines" :key="inde">
+                  <div class="middleImg"><img :src="item.goodsTitleImg"></div>
                   <div class="middleDet">
                     <div class="middleTitle">
-                      <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
+                      <p>{{item.goodsTitle}}</p>
                     </div>
-                    <div class="orderNum">X1</div>
+                    <div class="orderNum">X{{item.quantity}}</div>
                   </div>
                 </a>
                 <div class="infoBottom">
-                  <a href="javascript:void(0);" class="fourthBtn">查看详情</a>
-                </div>
-              </li>
-              <li>
-                <div class="infoTop">
-                  <span>2018-06-26 23:24:11</span>
-                  <em>仅退款</em>
-                  <em>退款成功</em>
-                </div>
-                <a href="#" class="infoMiddle">
-                  <div class="middleImg"><img src="../../images/temporary/commodity9.png"></div>
-                  <div class="middleDet">
-                    <div class="middleTitle">
-                      <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
-                    </div>
-                    <div class="orderNum">X1</div>
-                  </div>
-                </a>
-                <div class="infoBottom">
-                  <a href="javascript:void(0);" class="fourthBtn">查看详情</a>
-                </div>
-              </li>
-              <li>
-                <div class="infoTop">
-                  <span>2018-06-26 23:24:11</span>
-                  <em>仅退款</em>
-                  <em>退款成功</em>
-                </div>
-                <a href="#" class="infoMiddle">
-                  <div class="middleImg"><img src="../../images/temporary/commodity9.png"></div>
-                  <div class="middleDet">
-                    <div class="middleTitle">
-                      <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
-                    </div>
-                    <div class="orderNum">X1</div>
-                  </div>
-                </a>
-                <div class="infoBottom">
-                  <a href="javascript:void(0);" class="fourthBtn">查看详情</a>
-                </div>
-              </li>
-              <li>
-                <div class="infoTop">
-                  <span>2018-06-26 23:24:11</span>
-                  <em>仅退款</em>
-                  <em>退款成功</em>
-                </div>
-                <a href="#" class="infoMiddle">
-                  <div class="middleImg"><img src="../../images/temporary/commodity9.png"></div>
-                  <div class="middleDet">
-                    <div class="middleTitle">
-                      <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
-                    </div>
-                    <div class="orderNum">X1</div>
-                  </div>
-                </a>
-                <div class="infoBottom">
-                  <a href="javascript:void(0);" class="fourthBtn">查看详情</a>
-                </div>
-              </li>
-              <li>
-                <div class="infoTop">
-                  <span>2018-06-26 23:24:11</span>
-                  <em>仅退款</em>
-                  <em>退款成功</em>
-                </div>
-                <a href="#" class="infoMiddle">
-                  <div class="middleImg"><img src="../../images/temporary/commodity9.png"></div>
-                  <div class="middleDet">
-                    <div class="middleTitle">
-                      <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
-                    </div>
-                    <div class="orderNum">X1</div>
-                  </div>
-                </a>
-                <div class="infoBottom">
-                  <a href="javascript:void(0);" class="fourthBtn">查看详情</a>
-                </div>
-              </li>
-              <li>
-                <div class="infoTop">
-                  <span>2018-06-26 23:24:11</span>
-                  <em>仅退款</em>
-                  <em>退款成功</em>
-                </div>
-                <a href="#" class="infoMiddle">
-                  <div class="middleImg"><img src="../../images/temporary/commodity9.png"></div>
-                  <div class="middleDet">
-                    <div class="middleTitle">
-                      <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
-                    </div>
-                    <div class="orderNum">X1</div>
-                  </div>
-                </a>
-                <div class="infoBottom">
-                  <a href="javascript:void(0);" class="fourthBtn">查看详情</a>
+                  <a  class="fourthBtn" v-on:click="goToRefundDetail(order.orderId)">查看详情</a>
                 </div>
               </li>
             </ul>
@@ -148,24 +54,64 @@
         name: "refundProgress",
       data(){
           return{
-            noDataText:'我也是有底线的'
+            noDataText:'我也是有底线的',
+            orderList:[],
+            pageNumber:1,
+
           }
       },
       methods:{
-        infinite(){
+        goToRefundDetail(orderId){
+          this.$router.push({path:'orderDetailsRefund',query:{"orderId":orderId}})
+        },
+        queryAllOrder(){
+          var _this=this;
+          axios.post(store.getAddress()+'/api/wxapp/order/list',{
+            "uid":store.fetch("uid"),
+            "status":0,
+            "support":1,
+            "page":_this.pageNumber,
+            "limit":4
+          }).then(function (response) {
+              _this.orderList=_this.orderList.concat(response.data.list)
+          }).catch(function (error) {
+            console.log(error)
 
+          })
+        },
+        refreshOrder(){
+          var _this=this;
+          axios.post(store.getAddress()+'/api/wxapp/order/list',{
+            "uid":store.fetch("uid"),
+            "status":0,
+            "support":1,
+            "page":_this.pageNumber,
+            "limit":4
+          }).then(function (response) {
+            _this.orderList=response.data.list
+          }).catch(function (error) {
+            console.log(error)
+
+          })
+        },
+        infinite(){
+          console.log("加载更多")//加载更多，即往数据里面push新的数据，需要在原来的基础上继续加载剩余的数据
+
+          this.queryAllOrder();
+          this.pageNumber++;
+          this.$refs.refunedScroller.finishInfinite(true);
         },
         refresh(){
-
+          console.log("重新加载")
+          this.pageNumber=1;
+          this.refreshOrder();
+          this.$refs.refunedScroller.finishPullToRefresh()//结束动作，在完成调用时执行
 
 
         }
       },
       mounted(){
-        axios.post('',{})
-          .then(function (response) {
-            
-          })
+
 
       }
     }
@@ -173,5 +119,5 @@
 
 <style scoped>
 @import "../../css/common/common.css";
-  @import "../../css/other/personalCenter.css";
+@import "../../css/other/personalCenter.css";
 </style>

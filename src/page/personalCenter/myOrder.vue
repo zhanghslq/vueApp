@@ -42,22 +42,22 @@
                       <div class="discount">优惠：<em>￥0.00</em></div>
                     </div>
                     <div class="infoBottom" v-if="order.status==1">
-                      <a href="javascript:void(0);" class="cancelBtn" v-on:click="cancelOrder(order.orderId)">取消</a>
+                      <a  class="cancelBtn" v-on:click="cancelOrder(order.orderId)">取消</a>
                       <a  class="toPay"><span>去付款</span><em class="btnTime"></em></a>
                     </div>
                     <div class="infoBottom" v-if="order.status==2">
-                      <a href="javascript:void(0);" class="thirdBtn">提醒发货</a>
-                      <a href="javascript:void(0);" class="secondBtn">退款</a>
+                      <a  class="thirdBtn">提醒发货</a>
+                      <a  class="secondBtn" v-on:click="goToRefundMoney()">退款</a>
                     </div>
                     <div class="infoBottom" v-if="order.status==3">
-                      <a href="javascript:void(0);" class="thirdBtn">延长收获</a>
-                      <a href="javascript:void(0);" class="thirdBtn">查看物流</a>
-                      <a href="javascript:void(0);" class="fourthBtn" v-on:click="confirmProduct(order.orderId)">确认收货</a>
+                      <a  class="thirdBtn">延长收货</a>
+                      <a  class="thirdBtn" v-on:click="goToDetail(order.orderId,order.status)">查看物流</a>
+                      <a  class="fourthBtn" v-on:click="confirmProduct(order.orderId)">确认收货</a>
                     </div>
                     <div class="infoBottom" v-if="order.status==5">
-                      <a href="javascript:void(0);" class="thirdBtn">删除订单</a>
-                      <a href="javascript:void(0);" class="thirdBtn">查看物流</a>
-                      <a href="javascript:void(0);" class="secondBtn">评价</a>
+                      <a  class="thirdBtn">删除订单</a>
+                      <a  class="thirdBtn" v-on:click="goToDetail(order.orderId,order.status)">查看物流</a>
+                      <a  class="secondBtn">评价</a>
                     </div>
 
 
@@ -121,7 +121,7 @@
                     </div>
                     <div class="infoBottom">
                       <a href="javascript:void(0);" class="thirdBtn">提醒发货</a>
-                      <a href="javascript:void(0);" class="secondBtn">退款</a>
+                      <a v-on:click="goToRefundMoney()" class="secondBtn">退款</a>
                     </div>
                   </li>
 
@@ -151,8 +151,8 @@
                       <div class="discount">优惠：<em>￥0.00</em></div>
                     </div>
                     <div class="infoBottom">
-                      <a href="javascript:void(0);" class="thirdBtn">延长收获</a>
-                      <a href="javascript:void(0);" class="thirdBtn">查看物流</a>
+                      <a  class="thirdBtn">延长收货</a>
+                      <a  class="thirdBtn" v-on:click="goToDetail(order.orderId,order.status)">查看物流</a>
                       <a v-on:click="confirmProduct(order.orderId)" class="fourthBtn">确认收货</a>
                     </div>
                   </li>
@@ -184,7 +184,7 @@
                     </div>
                     <div class="infoBottom">
                       <a href="javascript:void(0);" class="thirdBtn">删除订单</a>
-                      <a href="javascript:void(0);" class="thirdBtn">查看物流</a>
+                      <a  class="thirdBtn"  v-on:click="goToDetail(order.orderId,order.status)">查看物流</a>
                       <a href="javascript:void(0);" class="secondBtn">评价</a>
                     </div>
                   </li>
@@ -231,7 +231,11 @@
       },
 
       methods:{
+        goToRefundMoney(orderId,status){//去详情页,暂时不区分状态，都跳转到orderDetail
 
+          this.$router.push({path:'applicationRefund',query:{'orderId':orderId}})
+
+        },
         repayMoney(orderId){
           let _this=this;
           axios.post(store.getAddress()+'/api/wxapp/order/repay',{
@@ -363,6 +367,7 @@
             this.$router.push({path:'orderDetails',query:{'orderId':orderId}})
 
         },
+
         cancelOrder(orderId){
           var _this=this;
           this.$layer.dialog({
@@ -413,6 +418,7 @@
           axios.post(store.getAddress()+'/api/wxapp/order/list',{
             "uid":store.fetch("uid"),
             "status":num,
+            "support":0,
             "page":number,
             "limit":4
           })
@@ -459,6 +465,7 @@
           axios.post(store.getAddress()+'/api/wxapp/order/list',{
             "uid":store.fetch("uid"),
             "status":num,
+            "support":0,
             "page":number,
             "limit":4
           })

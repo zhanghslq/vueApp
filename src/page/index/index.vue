@@ -1293,14 +1293,14 @@ export default {
     resistanceRatio: 0,
     //slidesPerView: 'auto',
     init(){
-      $(".scroll .swiper-wrapper .swiper-slide .content-slide").each(function () {
+      /*$(".scroll .swiper-wrapper .swiper-slide .content-slide").each(function () {
 
         console.log($(this).height())
         $(this).parent().height($(this).height())
         $(this).parent().next().css("display","none")
         console.log($(this).parent().parent().parent(".scroll").height())
 
-      })
+      })*/
     },
     on: {
       slideChange: function () {

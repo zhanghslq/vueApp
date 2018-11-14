@@ -21,16 +21,16 @@
             </a>
           </div>
           <div class="refundMain">
-            <a href="#">
+            <a >
               <div class="refundmLeft">
                 <h5>货物状态</h5>
               </div>
               <div class="refundmRight" id="state">
-                <span class="pleSel">请选择</span>
+                <span class="pleSel" >请选择</span>
                 <em style="margin-top: 0.24rem;"></em>
               </div>
             </a>
-            <a href="#">
+            <a >
               <div class="refundmLeft">
                 <h5>退款原因</h5>
               </div>
@@ -49,10 +49,10 @@
           </div>
           <div class="refundsExplain">
             <div class="explainTitle">退款说明：</div>
-            <textarea placeholder="选填"></textarea>
+            <textarea placeholder="选填" v-model="refundText"></textarea>
           </div>
           <div class="submissionBtn">
-            <a href="#" >提交</a>
+            <a v-on:click="submitRefund()">提交</a>
           </div>
         </div>
       </main>
@@ -68,13 +68,10 @@
               <em class="closeBtn"></em>
             </div>
             <ul class="refundPick">
-              <li><span>数量不够</span><em class="Cur"></em></li>
-              <li><span>数量不够数量不够数量不够</span><em></em></li>
-              <li><span>数量不够数量不够数量不够</span><em></em></li>
-              <li><span>数量不够数量不够数量不够</span><em></em></li>
-              <li><span>数量不够数量不够数量不够</span><em></em></li>
-              <li><span>数量不够数量不够数量不够</span><em></em></li>
-              <li><span>数量不够数量不够数量不够</span><em></em></li>
+              <li><span>数量不够</span><em class="Cur" ></em></li>
+              <li><span>数量不够数量不够数量不够</span><em ></em></li>
+              <li><span>数量不够数量不够数量不够</span><em > </em></li>
+
             </ul>
           </div>
           <!--货物状态-->
@@ -95,18 +92,64 @@
 
 <script>
 
+  import 'vue-layer-mobile/need/layer.css'
+  import axios from 'axios'
+  import store from '../../service/store'
     export default {
-        name: "applicationRefund",
+      name: "applicationRefund",
+      data(){
+        return{
+          productStatus:'',//货物状态
+          backReason:'',//退款原因
+          refundText:'',
+          productList:[],//订单包含的商品列表
+
+        }
+      },
       methods:{
+        submitRefund(){//提交申请退款的请求
+          var _this=this;
+          if(_this.productStatus==''){
+            $(".refundMain #state").click();
+            _this.$layer.toast({
+              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+              content: '请先选择商品状态',
+              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+            })
+          }else if(_this.backReason==''){
+            $(".refundMain #reason").click()
+            _this.$layer.toast({
+              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+              content: '请先选择退货原因',
+              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+            })
+
+          }else{
+            axios.post(store.getAddress()+"/api/wxapp/order/support",{}).then(function (response) {
+              if(response.data.code==200){
+                _this.$layer.toast({
+                  icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+                  content: '退款申请已提交',
+                  time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+                })
+              }
+            }).catch(function (error) {
+              console.log(error)
+            })
+
+          }
+
+
+        },
          refundReason(){
-      $(".refundMain #reason").on("click",function(){
-        $(".elasticBox").show();
-        $(".elasticBox .boxContent .reasonInfo").show();
-      });
-      $(".elasticBox .closeBtn").on("click",function(){
-        $(".elasticBox").hide();
-        $(".elasticBox .boxContent .reasonInfo").hide();
-      });
+          $(".refundMain #reason").on("click",function(){
+            $(".elasticBox").show();
+            $(".elasticBox .boxContent .reasonInfo").show();
+          });
+          $(".elasticBox .closeBtn").on("click",function(){
+            $(".elasticBox").hide();
+            $(".elasticBox .boxContent .reasonInfo").hide();
+          });
     },
          refundState(){
           $(".refundMain #state").on("click",function(){
@@ -118,21 +161,54 @@
             $(".elasticBox .boxContent .stateInfo").hide();
           });
         },
-         refundExchange(){
-          $(".refundMain #refunExchange").on("click",function(){
-            $(".elasticBox").show();
-            $(".elasticBox .boxContent .exchangeInfo").show();
-          });
-          $(".elasticBox .closeBtn").on("click",function(){
-            $(".elasticBox").hide();
-            $(".elasticBox .boxContent .exchangeInfo").hide();
-          });
+        getOrder(){
+
         }
+
+
+      },
+      destroyed(){
+        $(".stateInfo .refundPick li span em").unbind()
+        $(".reasonInfo .refundPick li span em").unbind()
+      },
+      updated(){
+       /* $(".reasonInfo .refundPick li  em").click(function () {
+          console.log(this)
+          $(".reasonInfo .refundPick li  em").each(function () {
+            $(this).removeClass("Cur")
+          })
+          $(this).addClass("Cur")
+
+          console.log($(this).text())
+        })*/
       },
       mounted(){
+        var _this=this;
         this.refundReason();
         this.refundState();
-        this.refundExchange();
+
+        $(".reasonInfo .refundPick li  em").click(function () {
+
+          $(".reasonInfo .refundPick li  em").each(function () {
+            $(this).removeClass("Cur")
+          })
+          $(this).addClass("Cur")
+
+          _this.backReason=$(this).prev("span").text()
+
+        })
+
+
+        $(".stateInfo .refundPick li  em").click(function () {
+
+          $(".stateInfo .refundPick li  em").each(function () {
+            $(this).removeClass("Cur")
+          })
+          $(this).addClass("Cur")
+
+          _this.productStatus=$(this).prev("span").text()
+
+        })
       }
     }
 </script>
