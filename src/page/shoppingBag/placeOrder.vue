@@ -92,9 +92,6 @@
 
 <script>
 
-  function test5() {
-    alert("进入外部的test5")
-  }
   import store from '../../service/store'
   import axios from 'axios'
 
@@ -123,12 +120,7 @@
         }
       },
       methods:{
-        test(){
-          alert("进入  test（）（）")
-        },
-        test2:function () {
-          alert("jinru function ")
-        },
+
         payMoney(){//去付款，需要把订单提交，然后取参数交给app
           var self=this;
           if(this.choseAddress.id==''||this.choseAddress.id==undefined||this.choseAddress.id==null){
@@ -168,9 +160,9 @@
 
         },
         appWxPayResult(result){//等待app回调，0代表失败，1代表成功
-          alert("进入回调")
+
             if(result==1){//支付成功
-              alert("支付成功")
+
               this.$router.push({ name: 'tradeSuccessful',
                 query: {
                   "orderId":this.orderId,
@@ -180,7 +172,7 @@
               });
 
             }else{//支付失败
-              alert("支付失败")
+
               this.$router.push({ name: 'tradeFail',
                 query: {
                   "orderId":this.orderId,
@@ -261,7 +253,7 @@
         }
 
         window['appWxPayResult'] = (result) => {
-        alert("进入windows方法")
+
           this.appWxPayResult(result)
         }
 

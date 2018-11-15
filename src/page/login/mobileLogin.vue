@@ -61,6 +61,7 @@ export default {
               store.save("isStoreKeeper",1)
 
               if(store.fetch("lastPage")=='[]'||store.fetch("lastPage")==''||store.fetch("lastPage")==undefined||store.fetch("lastPage")==null){
+                store.save("index",1)
                 store.save("lasePage","index")
               }
               if(store.judge()==1){
@@ -71,7 +72,7 @@ export default {
 
                 window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                   "code": "91",
-                  "index":store.fetch("appBarIndex"),
+                  "index":store.fetch("index"),
                   "url":store.getNextAddress()+store.fetch("lastPage")
                 });
               }else if(store.judge()==0){
@@ -82,7 +83,7 @@ export default {
 
                 window.androidXingJiApp.postMessage(JSON.stringify({
                   "code": "91",
-                  "index":store.fetch("appBarIndex"),
+                  "index":store.fetch("index"),
                   "url":store.getNextAddress()+store.fetch("lastPage")}));
               }
             }else{
@@ -94,7 +95,7 @@ export default {
                 });
                 window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                   "code": "91",
-                  "index":store.fetch("appBarIndex"),
+                  "index":store.fetch("index"),
                   "url":store.getNextAddress()+store.fetch("lastPage")
                 });
               }else if(store.judge()==0){
@@ -105,7 +106,7 @@ export default {
 
                 window.androidXingJiApp.postMessage(JSON.stringify({
                   "code": "91",
-                  "index":store.fetch("appBarIndex"),
+                  "index":store.fetch("index"),
                   "url":store.getNextAddress()+store.fetch("lastPage")}));
               }
 

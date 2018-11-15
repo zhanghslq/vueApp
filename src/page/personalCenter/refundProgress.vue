@@ -2,7 +2,7 @@
     <div>
       <!--头部 开始-->
       <header class="fix">
-        <a href="javascript:history.go(-1);" class="returnBtn"></a>
+        <a  v-on:click="toPersonalPage()" class="returnBtn"></a>
         退款进度
       </header>
       <!--头部 结束-->
@@ -61,6 +61,26 @@
           }
       },
       methods:{
+        toPersonalPage(){
+
+          if(store.isDev()){
+            this.$router.push("personalPage")
+          }else{
+            if(store.judge()==0){
+              window.androidXingJiApp.postMessage(JSON.stringify({
+                "code": "91",
+                "index":4,
+                "url":store.getNextAddress()+"personalPage"}));
+            }else if(store.judge()==1){
+              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                "code": "91",
+                "index":4,
+                "url":store.getNextAddress()+"personalPage"
+              });
+            }
+
+          }
+        },
         goToRefundDetail(orderId){
           this.$router.push({path:'orderDetailsRefund',query:{"orderId":orderId}})
         },

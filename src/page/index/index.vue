@@ -5,10 +5,10 @@
       <router-link to="myNotice">
         <div class="message"><span></span><em>5</em></div>
       </router-link>
-      <div class="search">
+      <div class="search" v-on:click="toSearch()">
         <em></em>
-        <a v-on:click="toSearch()">
-          <input type="text" placeholder="搜索喜欢的宝贝">
+        <a >
+          <!--<input type="text" placeholder="搜索喜欢的宝贝">-->
         </a>
       </div>
     <router-link to="selecTregion">
@@ -1391,7 +1391,7 @@ export default {
         freeMode: true,
         slidesPerView: 1,
 
-        //slidesOffsetAfter: -document.documentElement.clientHeight,
+        slidesOffsetAfter: -document.documentElement.clientHeight,
       })
 
 

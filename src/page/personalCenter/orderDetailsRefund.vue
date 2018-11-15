@@ -10,14 +10,14 @@
       <main>
         <div class="orderDetails">
           <div class="orderDetTop refund">
-            <div class="topTitle"><span>{{order.refundDetails.handleStatusName}}</span></div>
+            <div class="topTitle"><span>{{refundDetail.handleStatusName}}</span></div>
             <div class="orderNum">
-              <p>{{order.refundDetails.applyForTime}}</p>
+              <p>{{refundDetail.applyForTime}}</p>
             </div>
           </div>
           <ul class="refundMoney">
             <li><span>退款总金额</span><em class="total">￥{{order.totalAmount}}</em></li>
-            <li><span>退款方式</span><em>￥{{order.refundDetails.refundTypeName}}</em></li>
+            <li><span>退款方式</span><em>￥{{refundDetail.refundTypeName}}</em></li>
           </ul>
           <div class="commodity">
             <div class="commodityTitle">退款信息</div>
@@ -29,14 +29,18 @@
                 </div>
               </div>
             </div>
-            <p><span>退款原因</span> <em>{{order.refundDetails.refundRemark}}</em></p>
+            <p><span>退款原因</span> <em>{{refundDetail.refundRemark}}</em></p>
 
-            <p><span>支付时间</span> <em>{{order.refundDetails.applyForTime}}</em></p>
+            <p><span>支付时间</span> <em>{{refundDetail.applyForTime}}</em></p>
             <!--<p><span>退款编号</span> <em>176381628792909808</em></p>-->
           </div>
           <div class="refundBtn">
-            <a href="#"><em class="seller"></em><span>联系卖家</span></a>
-            <a href="#"><em class="onLine"></em><span>在线客服</span></a>
+            <router-link to="service">
+              <em class="seller"></em><span>联系卖家</span>
+            </router-link>
+            <router-link to="service">
+              <em class="onLine"></em><span>在线客服</span>
+            </router-link>
           </div>
         </div>
       </main>
@@ -52,7 +56,8 @@
       data(){
           return{
             orderId:'',
-            order:{}
+            order:{},
+            refundDetail:{}
 
           }
       },
@@ -68,6 +73,7 @@
         }).then(function (response) {
           if(response.data.code==200){
             _this.order=response.data.data
+            _this.refundDetail=response.data.data.refundDetails
 
           }
         }).catch(function (error) {

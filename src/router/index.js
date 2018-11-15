@@ -24,6 +24,13 @@ export default new Router({
       }
 
     },{
+      path:'/service',
+      name:'service',
+      component(resolve){
+        require(['../page/personalCenter/service.vue'],resolve)
+      }
+
+    },{
       path:'/applicationRefunding',
       name:'applicationRefunding',
       component(resolve){

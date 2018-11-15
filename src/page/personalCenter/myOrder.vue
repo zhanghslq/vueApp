@@ -47,7 +47,7 @@
                     </div>
                     <div class="infoBottom" v-if="order.status==2">
                       <a  class="thirdBtn">提醒发货</a>
-                      <a  class="secondBtn" v-on:click="goToRefundMoney()">退款</a>
+                      <a  class="secondBtn" v-on:click="goToRefundMoney(order.orderId,order.totalAmount)">退款</a>
                     </div>
                     <div class="infoBottom" v-if="order.status==3">
                       <a  class="thirdBtn">延长收货</a>
@@ -121,7 +121,7 @@
                     </div>
                     <div class="infoBottom">
                       <a href="javascript:void(0);" class="thirdBtn">提醒发货</a>
-                      <a v-on:click="goToRefundMoney()" class="secondBtn">退款</a>
+                      <a v-on:click="goToRefundMoney(order.orderId,order.totalAmount)" class="secondBtn">退款</a>
                     </div>
                   </li>
 
@@ -184,7 +184,7 @@
                     </div>
                     <div class="infoBottom">
                       <a href="javascript:void(0);" class="thirdBtn">删除订单</a>
-                      <a  class="thirdBtn"  v-on:click="goToDetail(order.orderId,order.status)">查看物流</a>
+                      <a  class="thirdBtn"  v-on:click="goToRefundMoney(order.orderId,order.totalAmount)">退款</a>
                       <a href="javascript:void(0);" class="secondBtn">评价</a>
                     </div>
                   </li>
@@ -231,9 +231,9 @@
       },
 
       methods:{
-        goToRefundMoney(orderId,status){//去详情页,暂时不区分状态，都跳转到orderDetail
+        goToRefundMoney(orderId,totalAmount){//去详情页,暂时不区分状态，都跳转到orderDetail
 
-          this.$router.push({path:'applicationRefund',query:{'orderId':orderId}})
+          this.$router.push({path:'applicationRefund',query:{'orderId':orderId,"totalAmount":totalAmount}})
 
         },
         repayMoney(orderId){

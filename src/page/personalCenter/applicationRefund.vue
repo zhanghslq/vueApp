@@ -26,7 +26,7 @@
                 <h5>货物状态</h5>
               </div>
               <div class="refundmRight" id="state">
-                <span class="pleSel" >请选择</span>
+                <span class="pleSel" id="chooseState">请选择</span>
                 <em style="margin-top: 0.24rem;"></em>
               </div>
             </a>
@@ -35,12 +35,12 @@
                 <h5>退款原因</h5>
               </div>
               <div class="refundmRight" id="reason">
-                <span class="pleSel">请选择</span>
+                <span class="pleSel" id="chooseReason">请选择</span>
                 <em style="margin-top: 0.24rem;"></em>
               </div>
               <div class="refundAmount">
                 <h5>退款金额：</h5>
-                <span>￥<em>19</em>.90</span>
+                <span>￥<em>{{totalAmount}}</em></span>
               </div>
             </a>
           </div>
@@ -68,7 +68,7 @@
               <em class="closeBtn"></em>
             </div>
             <ul class="refundPick">
-              <li><span>数量不够</span><em class="Cur" ></em></li>
+              <li><span>数量不够</span><em  ></em></li>
               <li><span>数量不够数量不够数量不够</span><em ></em></li>
               <li><span>数量不够数量不够数量不够</span><em > </em></li>
 
@@ -81,7 +81,7 @@
               <em class="closeBtn"></em>
             </div>
             <ul class="refundPick">
-              <li><span>未收到货</span><em class="Cur"></em></li>
+              <li><span>未收到货</span><em ></em></li>
               <li><span>已收到货</span><em></em></li>
             </ul>
           </div>
@@ -103,6 +103,9 @@
           backReason:'',//退款原因
           refundText:'',
           productList:[],//订单包含的商品列表
+          totalAmount:'',
+          orderId:'',
+          status:2,
 
         }
       },
@@ -125,11 +128,23 @@
             })
 
           }else{
-            axios.post(store.getAddress()+"/api/wxapp/order/support",{}).then(function (response) {
+            axios.post(store.getAddress()+"/api/wxapp/order/support",{
+              "uid":store.fetch("uid"),
+              "orderId":_this.orderId,
+              "op":_this.status,
+              "remark":_this.backReason+"   备注："+_this.refundText
+            }).then(function (response) {
               if(response.data.code==200){
                 _this.$layer.toast({
                   icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
                   content: '退款申请已提交',
+                  time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+                })
+                _this.$router.push("refundProgress")
+              }else{
+                _this.$layer.toast({
+                  icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+                  content: response.data.message,
                   time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
                 })
               }
@@ -184,6 +199,9 @@
       },
       mounted(){
         var _this=this;
+
+        this.orderId=this.$route.query.orderId;
+        this.totalAmount=this.$route.query.totalAmount;
         this.refundReason();
         this.refundState();
 
@@ -196,17 +214,25 @@
 
           _this.backReason=$(this).prev("span").text()
 
+          $("#chooseReason").html(_this.backReason)
+
         })
 
 
         $(".stateInfo .refundPick li  em").click(function () {
-
           $(".stateInfo .refundPick li  em").each(function () {
             $(this).removeClass("Cur")
           })
           $(this).addClass("Cur")
 
           _this.productStatus=$(this).prev("span").text()
+          if(_this.productStatus=='已收到货'){
+            _this.status=2
+          }else{
+            _this.status=1;
+          }
+
+          $("#chooseState").html(_this.productStatus)
 
         })
       }

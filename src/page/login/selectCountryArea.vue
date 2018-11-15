@@ -7,33 +7,35 @@
     <!--头部 结束-->
     <!--中间 开始-->
     <main>
-      <div class="countryAreaMain">
-        <ul id="phone">
-        </ul>
-        <div class="letterList">
-          <em flag="item0" title="0">A</em>
-          <em flag="item1" title="1">B</em>
-          <em flag="item2" title="2">C</em>
-          <em flag="item3" title="3">D</em>
-          <em flag="item4" title="4">E</em>
-          <em flag="item5" title="5">F</em>
-          <em flag="item6" title="6">G</em>
-          <em flag="item7" title="7">H</em>
-          <em flag="item8" title="8">J</em>
-          <em flag="item9" title="9">K</em>
-          <em flag="item10" title="10">L</em>
-          <em flag="item11" title="11">M</em>
-          <em flag="item12" title="12">N</em>
-          <em flag="item13" title="13">P</em>
-          <em flag="item14" title="14">R</em>
-          <em flag="item15" title="15">S</em>
-          <em flag="item16" title="16">T</em>
-          <em flag="item17" title="17">W</em>
-          <em flag="item18" title="18">X</em>
-          <em flag="item19" title="19">Y</em>
-          <em flag="item20" title="20">Z</em>
+      <scroller>
+        <div class="countryAreaMain">
+          <ul id="phone">
+          </ul>
+          <div class="letterList">
+            <em flag="item0" title="0">A</em>
+            <em flag="item1" title="1">B</em>
+            <em flag="item2" title="2">C</em>
+            <em flag="item3" title="3">D</em>
+            <em flag="item4" title="4">E</em>
+            <em flag="item5" title="5">F</em>
+            <em flag="item6" title="6">G</em>
+            <em flag="item7" title="7">H</em>
+            <em flag="item8" title="8">J</em>
+            <em flag="item9" title="9">K</em>
+            <em flag="item10" title="10">L</em>
+            <em flag="item11" title="11">M</em>
+            <em flag="item12" title="12">N</em>
+            <em flag="item13" title="13">P</em>
+            <em flag="item14" title="14">R</em>
+            <em flag="item15" title="15">S</em>
+            <em flag="item16" title="16">T</em>
+            <em flag="item17" title="17">W</em>
+            <em flag="item18" title="18">X</em>
+            <em flag="item19" title="19">Y</em>
+            <em flag="item20" title="20">Z</em>
+          </div>
         </div>
-      </div>
+      </scroller>
     </main>
     <!--中间 结束-->
   </div>
