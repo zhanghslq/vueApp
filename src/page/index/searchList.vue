@@ -2,7 +2,7 @@
     <div>
       <!--头部 开始-->
       <header class="fix">
-        <a href="javascript:history.go(-2);" class="returnBtn"></a>
+        <a href="javascript:history.go(-1);" class="returnBtn"></a>
         <div class="searchHead searchList">
           <div class="search">
             <em v-on:click="querySearchList()"></em>
@@ -90,6 +90,9 @@
           noDataText:'我也是有底线的',
           pageNumber:0,
         }
+      },
+      created(){
+        store.checkAreaData();
       },
       methods:{
         searchTab:function (){

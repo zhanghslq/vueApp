@@ -41,25 +41,33 @@
                       <div class="total"><em>总计：</em><span>￥{{order.totalAmount}}</span></div>
                       <div class="discount">优惠：<em>￥0.00</em></div>
                     </div>
-                    <div class="infoBottom" v-if="order.status==1">
-                      <a  class="cancelBtn" v-on:click="cancelOrder(order.orderId)">取消</a>
-                      <a  class="toPay"><span>去付款</span><em class="btnTime"></em></a>
-                    </div>
-                    <div class="infoBottom" v-if="order.status==2">
-                      <a  class="thirdBtn">提醒发货</a>
-                      <a  class="secondBtn" v-on:click="goToRefundMoney(order.orderId,order.totalAmount)">退款</a>
-                    </div>
-                    <div class="infoBottom" v-if="order.status==3">
-                      <a  class="thirdBtn">延长收货</a>
-                      <a  class="thirdBtn" v-on:click="goToDetail(order.orderId,order.status)">查看物流</a>
-                      <a  class="fourthBtn" v-on:click="confirmProduct(order.orderId)">确认收货</a>
-                    </div>
-                    <div class="infoBottom" v-if="order.status==5">
-                      <a  class="thirdBtn">删除订单</a>
-                      <a  class="thirdBtn" v-on:click="goToDetail(order.orderId,order.status)">查看物流</a>
-                      <a  class="secondBtn">评价</a>
-                    </div>
+                    <div v-if="!order.hasRefund &&!order.hasReturn">
+                      <div class="infoBottom" v-if="order.status==1">
+                        <a  class="cancelBtn" v-on:click="cancelOrder(order.orderId)">取消</a>
+                        <a  class="toPay" v-on:click="toRePay(order.orderId,order.totalAmount)"><span>去付款</span><em class="btnTime"></em></a>
+                      </div>
+                      <div class="infoBottom" v-if="order.status==2">
 
+                        <a  class="secondBtn" v-on:click="goToRefundMoney(order.orderId,order.totalAmount,order.status)">退款</a>
+                      </div>
+                      <div class="infoBottom" v-if="order.status==3">
+                        <!--<a  class="thirdBtn">延长收货</a>-->
+                        <!--<a  class="thirdBtn" v-on:click="goToDetail(order.orderId,order.status)">查看物流</a>-->
+                        <a  class="fourthBtn" v-on:click="confirmProduct(order.orderId)">确认收货</a>
+                      </div>
+                      <div class="infoBottom" v-if="order.status==5">
+                        <!--<a  class="thirdBtn">删除订单</a>-->
+                        <!--<a  class="thirdBtn" v-on:click="goToDetail(order.orderId,order.status)">查看物流</a>-->
+                        <a  class="thirdBtn"  v-on:click="goToRefundMoney(order.orderId,order.totalAmount,order.status)">退货退款</a>
+                        <a  class="secondBtn">评价</a>
+                      </div>
+                    </div>
+                    <div v-else>
+                      <div class="infoBottom">
+                        <a  class="cancelBtn">已申退款</a>
+
+                      </div>
+                    </div>
 
                   </li>
 
@@ -90,7 +98,7 @@
                     </div>
                     <div class="infoBottom">
                       <a  v-on:click="cancelOrder(order.orderId)" class="cancelBtn">取消</a>
-                      <a  class="toPay" v-on:click="repayMoney(order.orderId)"><span>去付款</span><em class="btnTime"></em></a>
+                      <a  class="toPay" v-on:click="toRePay(order.orderId,order.totalAmount)"><span>去付款</span><em class="btnTime"></em></a>
                     </div>
                   </li>
 
@@ -119,9 +127,17 @@
                       <div class="total"><em>总计：</em><span>￥{{order.totalAmount}}</span></div>
                       <div class="discount">优惠：<em>￥0.00</em></div>
                     </div>
-                    <div class="infoBottom">
-                      <a href="javascript:void(0);" class="thirdBtn">提醒发货</a>
-                      <a v-on:click="goToRefundMoney(order.orderId,order.totalAmount)" class="secondBtn">退款</a>
+
+                    <div v-if="!order.hasRefund &&!order.hasReturn">
+                      <div class="infoBottom">
+
+                        <a v-on:click="goToRefundMoney(order.orderId,order.totalAmount,order.status)" class="secondBtn">退款</a>
+                      </div>
+                    </div>
+                    <div v-else>
+                      <div class="infoBottom">
+                        <a  class="secondBtn">已申退款</a>
+                      </div>
                     </div>
                   </li>
 
@@ -151,8 +167,8 @@
                       <div class="discount">优惠：<em>￥0.00</em></div>
                     </div>
                     <div class="infoBottom">
-                      <a  class="thirdBtn">延长收货</a>
-                      <a  class="thirdBtn" v-on:click="goToDetail(order.orderId,order.status)">查看物流</a>
+                      <!--<a  class="thirdBtn">延长收货</a>-->
+                      <!--<a  class="thirdBtn" v-on:click="goToDetail(order.orderId,order.status)">查看物流</a>-->
                       <a v-on:click="confirmProduct(order.orderId)" class="fourthBtn">确认收货</a>
                     </div>
                   </li>
@@ -182,11 +198,22 @@
                       <div class="total"><em>总计：</em><span>￥{{order.totalAmount}}</span></div>
                       <div class="discount">优惠：<em>￥0.00</em></div>
                     </div>
-                    <div class="infoBottom">
-                      <a href="javascript:void(0);" class="thirdBtn">删除订单</a>
-                      <a  class="thirdBtn"  v-on:click="goToRefundMoney(order.orderId,order.totalAmount)">退款</a>
-                      <a href="javascript:void(0);" class="secondBtn">评价</a>
+
+                    <div v-if="!order.hasRefund &&!order.hasReturn">
+                      <div class="infoBottom">
+                        <!--<a href="javascript:void(0);" class="thirdBtn">删除订单</a>-->
+                        <a  class="thirdBtn"  v-on:click="goToRefundMoney(order.orderId,order.totalAmount,order.status)">退货退款</a>
+                        <a href="javascript:void(0);" class="secondBtn">评价</a>
+                      </div>
                     </div>
+                    <div v-else>
+                      <div class="infoBottom">
+                        <a  class="secondBtn">已申退款</a>
+                      </div>
+                    </div>
+
+
+
                   </li>
 
                 </ul>
@@ -225,30 +252,36 @@
 
           num:0,//所在订单的类型，默认0代表全部
 
+          payStr:'',
+          orderId:'',
+          totalAmount:'',
 
 
         }
       },
 
       methods:{
-        goToRefundMoney(orderId,totalAmount){//去详情页,暂时不区分状态，都跳转到orderDetail
 
-          this.$router.push({path:'applicationRefund',query:{'orderId':orderId,"totalAmount":totalAmount}})
+
+        goToRefundMoney(orderId,totalAmount,status){//去详情页,暂时不区分状态，都跳转到orderDetail
+
+          this.$router.push({path:'applicationRefund',
+            query:{'orderId':orderId,"totalAmount":totalAmount,"status":status}})
 
         },
-        repayMoney(orderId){
-          let _this=this;
+        toRePay(orderId,totalAmount){
+          let self=this;
+          self.totalAmount=totalAmount;
+          self.orderId=orderId;
           axios.post(store.getAddress()+'/api/wxapp/order/repay',{
             "uid":store.fetch("uid"),
             "transType":101,
             "orderId":orderId
-          }).then(function (responese) {
-            if(responese.data.code==200){
+          }).then(function (response) {
+            if(response.data.code==200){
 
               let res= response.data.data.request;
               self.payStr=JSON.stringify(res)
-              self.orderId=response.data.data.orderId
-
               if(store.judge()==1){//等于1 代表ios
                 window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                   "code": "83",
@@ -261,9 +294,9 @@
                 });
               }
             }else{
-              _this.$layer.toast({
+              self.$layer.toast({
                 icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
-                content: responese.data.message,
+                content: response.data.message,
                 time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
               })
             }

@@ -8,7 +8,7 @@
         <input type="text" v-model="kw" placeholder="搜索喜欢的宝贝">
       </div>
 
-        <a  class="cancelBtn" @click="$router.back(-1)">取消</a>
+        <a  class="cancelBtn" v-on:click="toBack()">取消</a>
 
     </div>
   </header>
@@ -36,6 +36,35 @@ export default {
     }
   },
   methods:{
+    toBack(){
+      if(store.isDev()){
+        this.$router.back(-1)
+      }else{
+
+        if(store.judge()==1) {
+          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+            "code": "91",
+            "index":1,
+            "url":store.getNextAddress()+"index"
+          });
+        }else if(store.judge()==0) {
+          window.androidXingJiApp.postMessage(JSON.stringify({
+            "code": "91",
+            "index":1,
+            "url":store.getNextAddress()+"index"}));
+        }
+        /*if(store.judge()==0){
+          window.androidXingJiApp.postMessage(JSON.stringify({
+            "code": "66",
+          }))
+        }else if(store.judge()==1){
+          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+            "code": "66",
+          });
+        }*/
+      }
+
+    },
     searchList(){
       store.save("kw",this.kw)
       this.$router.push({ name: 'searchList', params: { kw: this.kw }})

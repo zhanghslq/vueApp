@@ -10,18 +10,18 @@
       <main>
         <div class="selectTypeMain">
           <div class="productSelect">
-            <a href="#" class="infoMiddle">
-              <div class="middleImg"><img src="../../images/temporary/commodity9.png"></div>
+            <a  class="infoMiddle" v-for="(product,index) in productList" :key="index">
+              <div class="middleImg"><img :src="product.goodsTitleImg"></div>
               <div class="middleDet">
                 <div class="middleTitle">
-                  <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
+                  <p>{{product.goodsTitle}}</p>
                 </div>
-                <div class="orderNum">X1</div>
+                <div class="orderNum">X{{product.quantity}}</div>
               </div>
             </a>
           </div>
           <div class="refundMain">
-            <a >
+            <!--<a >
               <div class="refundmLeft">
                 <h5>货物状态</h5>
               </div>
@@ -29,15 +29,15 @@
                 <span class="pleSel" id="chooseState">请选择</span>
                 <em style="margin-top: 0.24rem;"></em>
               </div>
-            </a>
+            </a>-->
             <a >
-              <div class="refundmLeft">
+              <!--<div class="refundmLeft">
                 <h5>退款原因</h5>
               </div>
               <div class="refundmRight" id="reason">
                 <span class="pleSel" id="chooseReason">请选择</span>
                 <em style="margin-top: 0.24rem;"></em>
-              </div>
+              </div>-->
               <div class="refundAmount">
                 <h5>退款金额：</h5>
                 <span>￥<em>{{totalAmount}}</em></span>
@@ -58,10 +58,10 @@
       </main>
       <!--中间 结束-->
       <!--弹层开始-->
-      <div class="elasticBox">
+      <!--<div class="elasticBox">
         <div class="blackBag"></div>
         <div class="boxContent">
-          <!--退款原因-->
+          &lt;!&ndash;退款原因&ndash;&gt;
           <div class="reasonInfo">
             <div class="textTitle">
               退款原因
@@ -74,7 +74,7 @@
 
             </ul>
           </div>
-          <!--货物状态-->
+          &lt;!&ndash;货物状态&ndash;&gt;
           <div class="stateInfo">
             <div class="textTitle">
               货物状态
@@ -86,7 +86,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
 </template>
 
@@ -106,13 +106,14 @@
           totalAmount:'',
           orderId:'',
           status:2,
+          orderStatus:''
 
         }
       },
       methods:{
         submitRefund(){//提交申请退款的请求
           var _this=this;
-          if(_this.productStatus==''){
+          /*if(_this.productStatus==''){
             $(".refundMain #state").click();
             _this.$layer.toast({
               icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
@@ -127,7 +128,7 @@
               time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
             })
 
-          }else{
+          }else{*/
             axios.post(store.getAddress()+"/api/wxapp/order/support",{
               "uid":store.fetch("uid"),
               "orderId":_this.orderId,
@@ -152,8 +153,8 @@
               console.log(error)
             })
 
-          }
-
+          /*}
+*/
 
         },
          refundReason(){
@@ -183,8 +184,8 @@
 
       },
       destroyed(){
-        $(".stateInfo .refundPick li span em").unbind()
-        $(".reasonInfo .refundPick li span em").unbind()
+       /* $(".stateInfo .refundPick li span em").unbind()
+        $(".reasonInfo .refundPick li span em").unbind()*/
       },
       updated(){
        /* $(".reasonInfo .refundPick li  em").click(function () {
@@ -200,12 +201,30 @@
       mounted(){
         var _this=this;
 
+
         this.orderId=this.$route.query.orderId;
         this.totalAmount=this.$route.query.totalAmount;
+        this.orderStatus=this.$route.query.status;
+        if(this.orderStatus==2){
+          this.status=1//未收到货，仅退款
+        }else if(this.orderStatus==5){//交易成功
+          this.status=2//已收到货，退货退款
+        }
         this.refundReason();
         this.refundState();
 
-        $(".reasonInfo .refundPick li  em").click(function () {
+        axios.post(store.getAddress()+"/api/wxapp/order/details",{
+          "uid":store.fetch("uid"),
+          "orderId":_this.orderId
+
+        }).then(function (response) {
+          _this.productList=response.data.data.lines
+        }).catch(function (error) {
+          console.log(error)
+        })
+
+
+        /*$(".reasonInfo .refundPick li  em").click(function () {
 
           $(".reasonInfo .refundPick li  em").each(function () {
             $(this).removeClass("Cur")
@@ -216,25 +235,25 @@
 
           $("#chooseReason").html(_this.backReason)
 
-        })
+        })*/
 
 
-        $(".stateInfo .refundPick li  em").click(function () {
+        /*$(".stateInfo .refundPick li  em").click(function () {
           $(".stateInfo .refundPick li  em").each(function () {
             $(this).removeClass("Cur")
           })
           $(this).addClass("Cur")
 
           _this.productStatus=$(this).prev("span").text()
-          if(_this.productStatus=='已收到货'){
+          /!*if(_this.productStatus=='已收到货'){
             _this.status=2
           }else{
             _this.status=1;
-          }
+          }*!/
 
           $("#chooseState").html(_this.productStatus)
 
-        })
+        })*/
       }
     }
 </script>

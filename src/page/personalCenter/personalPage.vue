@@ -14,6 +14,7 @@
       <!--头部 结束-->
       <!--中间 开始-->
       <main>
+        <scroller>
         <div class="personalMain">
           <div class="personalBg"></div>
           <div class="accountName">
@@ -101,14 +102,15 @@
                 <em></em>
               </div>
             </router-link>
-            <a href="#">
+           <!-- <a href="#">
               <span class="infoLeft">给我评分</span>
               <div class="infoRight">
                 <em></em>
               </div>
-            </a>
+            </a>-->
           </div>
         </div>
+        </scroller>
       </main>
       <!--中间 结束-->
       <!--底部 开始-->

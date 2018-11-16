@@ -46,7 +46,7 @@ export default {
 
   getAddress: function() {//获取域名，浏览器测试的时候，跨域访问，真机的时候直接配置地址
     return "https://api.xingjiyouxuan.com";
-    //     //return "/api";
+    //return "/api";
   },
   isDev(){
     return false;
@@ -92,6 +92,7 @@ export default {
           .then(function (responese) {
             if(responese.data.code==200){
               self.save("area_ids",window.JSON.parse(responese.data.list))
+              return Promise.resolve()
             }else {
               console.log("服务器正忙")
             }

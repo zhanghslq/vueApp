@@ -57,13 +57,12 @@
             noDataText:'我也是有底线的',
             orderList:[],
             pageNumber:1,
-
           }
       },
       methods:{
         toPersonalPage(){
-
-          if(store.isDev()){
+          this.$router.push("personalPage")
+          /*if(store.isDev()){
             this.$router.push("personalPage")
           }else{
             if(store.judge()==0){
@@ -79,7 +78,7 @@
               });
             }
 
-          }
+          }*/
         },
         goToRefundDetail(orderId){
           this.$router.push({path:'orderDetailsRefund',query:{"orderId":orderId}})

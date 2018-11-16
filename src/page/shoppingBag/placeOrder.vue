@@ -107,7 +107,8 @@
             choseAddress:{},
             payStr:'',
             orderId:'',
-
+            fromType:'',
+            lines:'',
 
             skuId:'',//立即购买的skuId
             quantity:'',//立即购买的商品数量
@@ -133,7 +134,10 @@
             axios.post(store.getAddress()+'/api/wxapp/order/submit', {
               "uid": store.fetch("uid"),
               "consigneeId":this.choseAddress.id,
-              "transType":101
+              "transType":101,
+              "lines":self.lines,
+              "fromType":self.fromType,
+
             }).then(function (response) {
 
               let res= response.data.data.request;
@@ -187,7 +191,8 @@
           axios.post(store.getAddress()+'/api/wxapp/order/prepare', {
             "uid": store.fetch("uid"),
             "fromType":fromType,
-            "lines":lines
+            "lines":lines,
+
           })
             .then(function (response) {
               if(response.data.code==200){
@@ -248,8 +253,12 @@
 
         if(skuId==undefined||skuId==''||skuId==null){
           this.getData(1,"[]")
+          this.fromType=1;
+          this.lines="[]"
         }else {
           this.getData(2,"[{'skuId':"+skuId+',quantity:'+quantity+"}]")
+          this.fromType=2;
+          this.lines="[{'skuId':"+skuId+',quantity:'+quantity+"}]"
         }
 
         window['appWxPayResult'] = (result) => {

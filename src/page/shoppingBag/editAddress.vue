@@ -57,13 +57,16 @@
               quantity:''
           }
       },
+      created(){
+        store.checkAreaData();
+      },
       methods:{
         chooseAddress(id){
             this.defaultId=id;
             localStorage.setItem("chooseAddressId",id)
             this.$router.push({path:'placeOrder',query:{"skuId":this.skuId,"quantity":this.quantity}})
 
-        }
+        },
       },
       mounted(){
         var _this=this
@@ -71,8 +74,6 @@
         let id=_this.$route.query.id;
         this.quantity=_this.$route.query.quantity;
         this.skuId=_this.$route.query.skuId;
-
-
 
         if(id!=undefined && id!=null && id!=''){
           _this.defaultId=id;

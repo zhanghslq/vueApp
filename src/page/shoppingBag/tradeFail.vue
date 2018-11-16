@@ -17,8 +17,8 @@
             </div>
           </div>
           <div class="amountMoney">
-            <p>应付金额：<em>￥{{shouldPayMoney}}</em></p>
-            <span>订单总计：<em>￥{{shouldPayMoney}}</em></span>
+            <p>应付金额：<em>￥{{totalAmount}}</em></p>
+            <span>订单总计：<em>￥{{totalAmount}}</em></span>
             <span>会员减免：<em>￥0.00</em></span>
           </div>
           <div class="paymentMain">
@@ -65,6 +65,10 @@
                 "code": "83",
                 "payStr":JSON.stringify(res),
               });
+            }else if(store.judge()==0){
+              window.androidXingJiApp.postMessage(JSON.stringify({
+                "code": "83",
+                "payStr":JSON.stringify(res)}));
             }
 
           }).catch(function (error) {
@@ -101,7 +105,7 @@
       mounted:function () {
         this.orderId=this.$route.query.orderId;
         this.totalAmount=this.$route.query.shouldPayMoney;
-        var x = 30,
+        /*var x = 30,
         interval;
         window.onload = function() {
           var d = new Date("1111/1/1,0:" + x + ":0");
@@ -117,7 +121,7 @@
             }
             d.setSeconds(s - 1);
           }, 1000);
-        }
+        }*/
 
 
         window['appWxPayResult'] = (result) => {

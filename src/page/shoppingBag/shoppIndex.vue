@@ -7,25 +7,23 @@
       <!--头部 结束-->
       <!--中间 开始-->
       <main>
-        <div class="shoppBagMain">
+        <div><!--后期可以改div的-->
+          <div class="shoppBagMain">
           <form method="post"  name="cart_form" target="_self" id="cart_form" action="">
             <div class="commodity_list_box">
               <div class="cart_top">
               </div>
               <div class="commodity_box">
                 <div class="commodity_list">
-                  <!--店名信息-->
-                  <!--<div class="tite_tim select" style="display: none;">
-                    <em aem="1" cart_id="84"></em>
-                  </div>-->
+
 
                   <ul class="commodity_list_term" >
 
                     <li class="select" v-for="product in productList">
                       <em aem="0"  cart_id="84" class="choiceIcon singleEm" v-bind:class="{pitch_on:product.isSelected}"> </em>
                       <div style="display: none">{{product.id}}</div>
-                      <div class="listPic"><img v-bind:src=product.goodsTitleImg ></div>
-                      <p class="copywriting">{{product.goodsTitle}}</p>
+                      <div class="listPic" v-on:click="toDetail(product.goodsId,product.skuId)"><img v-bind:src=product.goodsTitleImg ></div>
+                      <p class="copywriting" v-on:click="toDetail(product.goodsId,product.skuId)">{{product.goodsTitle}}</p>
                       <div class="sign">{{product.skuName}}</div>
                       <div class="price now_value">
                         <p class="now_value"><i>￥</i><b class="qu_su"><small>{{product.price}}</small></b></p>
@@ -122,6 +120,7 @@
           </div>
 
         </div>
+        </div>
       </main>
       <!--中间 结束-->
       <!--底部 开始-->
@@ -187,6 +186,9 @@
         }
       },
       methods:{
+        toDetail(goodsId,skuId){
+
+        },
         minusOnServer(id,e){
           if($(e.target).next("span").html()-1>0){
             axios.post(store.getAddress()+'/api/wxapp/cart/changeNum',{

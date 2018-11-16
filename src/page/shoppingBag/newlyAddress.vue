@@ -494,7 +494,55 @@
             };
             reader.readAsDataURL(file);
           }
-        }
+        },
+
+        checkSelfAreaData(){
+
+          var self=this;
+          if(store.fetch("prov_ids")==null){
+
+            axios.post(store.getAddress()+"/api/wxapp/district/listProvinceForH5")
+              .then(function (responese) {
+                if(responese.data.code==200){
+                  store.save("prov_ids",responese.data.list)
+
+                  self.pickData.data1=store.fetch("prov_ids")
+                }else {
+                  console.log("服务器正忙")
+                }
+              }).catch(function (err) {
+              console.log(err)
+            })
+          }else{self.pickData.data1=store.fetch("prov_ids")}
+          if(store.fetch("city_ids")==null){
+            axios.post(store.getAddress()+"/api/wxapp/district/listCityForH5")
+              .then(function (responese) {
+                if(responese.data.code==200){
+                  store.save("city_ids",window.JSON.parse(responese.data.list))
+
+                  self.pickData.data2=store.fetch("city_ids")
+                }else {
+                  console.log("服务器正忙")
+                }
+              }).catch(function (err) {
+              console.log(err)
+            })
+          }else{self.pickData.data2=store.fetch("city_ids")}
+          if(store.fetch("area_ids")==null){
+            axios.post(store.getAddress()+"/api/wxapp/district/listDistForH5")
+              .then(function (responese) {
+                if(responese.data.code==200){
+                  store.save("area_ids",window.JSON.parse(responese.data.list))
+                  self.pickData.data3=store.fetch("area_ids")
+
+                }else {
+                  console.log("服务器正忙")
+                }
+              }).catch(function (err) {
+              console.log(err)
+            })
+          }else{self.pickData.data3=store.fetch("area_ids")}
+        },
       },
     computed: {
       // 是否有图片
@@ -529,12 +577,14 @@
       mounted:function () {
         this.getToken();
         var _this=this;
-        store.checkAreaData();
+
+
+
         this.pickData.data1=store.fetch("prov_ids")
         this.pickData.data2=store.fetch("city_ids")
         this.pickData.data3=store.fetch("area_ids")
 
-
+        _this.checkSelfAreaData();
         $(".identification .idTop").on("click",function(){
           if (!$('.nav').hasClass('nav-mini')) {
             if ($(this).next().css('display') == "none") {

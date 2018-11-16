@@ -347,11 +347,13 @@ export default {
         if(store.judge()==1){
           window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
             "code": "91",
+            "index":3,
             "url":store.getNextAddress()+"shopIndex"
           });
         }else if(store.judge()==0){
           window.androidXingJiApp.postMessage(JSON.stringify({
             "code": "91",
+            "index":3,
             "url":store.getNextAddress()+"shopIndex"}));
         }
       }
@@ -537,7 +539,7 @@ export default {
        var height = parseInt(width / 3 * 2);
        $("#carouselMain li a").css("max-height", height);
      }
-     console.log("进入bannerFocusImg")
+
 
     },
     makeUpone: function (){
@@ -548,6 +550,54 @@ export default {
           clickable: true,
         },
       });
+    },
+
+    checkSelfAreaData(){
+
+      var self=this;
+      if(store.fetch("prov_ids")==null){
+
+        axios.post(store.getAddress()+"/api/wxapp/district/listProvinceForH5")
+          .then(function (responese) {
+            if(responese.data.code==200){
+              store.save("prov_ids",responese.data.list)
+
+              self.pickData.data1=store.fetch("prov_ids")
+            }else {
+              console.log("服务器正忙")
+            }
+          }).catch(function (err) {
+          console.log(err)
+        })
+      }else{self.pickData.data1=store.fetch("prov_ids")}
+      if(store.fetch("city_ids")==null){
+        axios.post(store.getAddress()+"/api/wxapp/district/listCityForH5")
+          .then(function (responese) {
+            if(responese.data.code==200){
+              store.save("city_ids",window.JSON.parse(responese.data.list))
+
+              self.pickData.data2=store.fetch("city_ids")
+            }else {
+              console.log("服务器正忙")
+            }
+          }).catch(function (err) {
+          console.log(err)
+        })
+      }else{self.pickData.data2=store.fetch("city_ids")}
+      if(store.fetch("area_ids")==null){
+        axios.post(store.getAddress()+"/api/wxapp/district/listDistForH5")
+          .then(function (responese) {
+            if(responese.data.code==200){
+              store.save("area_ids",window.JSON.parse(responese.data.list))
+              self.pickData.data3=store.fetch("area_ids")
+
+            }else {
+              console.log("服务器正忙")
+            }
+          }).catch(function (err) {
+          console.log(err)
+        })
+      }else{self.pickData.data3=store.fetch("area_ids")}
     },
   },
   updated(){
@@ -565,13 +615,15 @@ export default {
     }
     next()
   },*/
+    created(){
+
+    },
 
     mounted: function () {
-      var _this=this;
-    store.checkAreaData();
-    this.pickData.data1=store.fetch("prov_ids")
-    this.pickData.data2=store.fetch("city_ids")
-    this.pickData.data3=store.fetch("area_ids")
+    var _this=this;
+      console.log("准备执行")
+      _this.checkSelfAreaData();
+      console.log("执行完成check")
 
       this.productId=this.$route.query.id
       this.skuId=this.$route.query.skuId
