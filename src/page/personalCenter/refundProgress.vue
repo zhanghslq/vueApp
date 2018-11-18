@@ -61,8 +61,9 @@
       },
       methods:{
         toPersonalPage(){
-          this.$router.push("personalPage")
-          /*if(store.isDev()){
+          //this.$router.push("personalPage")
+
+          if(store.isDev()){
             this.$router.push("personalPage")
           }else{
             if(store.judge()==0){
@@ -72,13 +73,11 @@
                 "url":store.getNextAddress()+"personalPage"}));
             }else if(store.judge()==1){
               window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
-                "code": "91",
-                "index":4,
-                "url":store.getNextAddress()+"personalPage"
+                "code": "99",
               });
             }
 
-          }*/
+          }
         },
         goToRefundDetail(orderId){
           this.$router.push({path:'orderDetailsRefund',query:{"orderId":orderId}})

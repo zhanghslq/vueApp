@@ -56,10 +56,10 @@
                 <em class="succeTrade"></em>
                 <span>交易成功</span>
               </router-link>
-             <router-link to="refundProgress">
+             <a  v-on:click="toRefundProgress()">
                 <em class="returnGoods"></em>
                 <span>退货/退款</span>
-             </router-link>
+             </a>
             </div>
           </div>
           <div class="personalInfo">
@@ -149,7 +149,25 @@
         }
       },
       methods:{
+        toRefundProgress(){
+          if(store.isDev()){
+            this.$router.push("refundProgress")
+          }else{
+            if(store.judge()==0){
+              window.androidXingJiApp.postMessage(JSON.stringify({
+                "code": "91",
+                "index":store.fetch("index"),
+                "url":store.getNextAddress()+"refundProgress"}));
+            }else if(store.judge()==1){
+              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                "code": "91",
+                "index":0,
+                "url":store.getNextAddress()+"refundProgress"
+              });
+            }
+          }
 
+        }
 
       },
       mounted(){
