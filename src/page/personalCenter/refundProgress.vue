@@ -11,7 +11,7 @@
         <scroller style="margin-top: 1rem" :on-infinite="infinite"  :on-refresh = "refresh" ref="refunedScroller" :noDataText="noDataText">
         <div class="refurdMain">
 
-          <div class="noTimes" style="display: none;">
+          <div class="noTimes" v-if="orderList.length==0">
             <img src="../../images/threeLevel/refundPic.png" class="refurdNoPic">
             <p>暂无退款订单</p>
           </div>

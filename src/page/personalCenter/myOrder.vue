@@ -2,7 +2,7 @@
     <div>
       <!--头部 开始-->
       <header class="fix">
-        <a href="javascript:history.go(-1);" class="returnBtn"></a>
+        <a  v-on:click="toBack()" class="returnBtn"></a>
         我的订单
         <a  class="searchBtn"></a>
       </header>
@@ -261,13 +261,27 @@
       },
 
       methods:{
+        toBack(){
+          if(store.isDev()){
+            this.$router.push("personalPage")
+          }else{
+            if(store.judge()==0){
+              window.androidXingJiApp.postMessage(JSON.stringify({
+                "code": "91",
+                "index":4,
+                "url":store.getNextAddress()+"personalPage"}));
+            }else if(store.judge()==1){
+              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                "code": "99",
+              });
+            }
 
+          }
+        },
 
         goToRefundMoney(orderId,totalAmount,status){//去详情页,暂时不区分状态，都跳转到orderDetail
-
           this.$router.push({path:'applicationRefund',
             query:{'orderId':orderId,"totalAmount":totalAmount,"status":status}})
-
         },
         toRePay(orderId,totalAmount){
           let self=this;

@@ -187,6 +187,26 @@
       },
       methods:{
         toDetail(goodsId,skuId){
+          var _this=this;
+          //需要先存一个标识，来判断是从购物车跳转到商品详情页
+          store.save("isShopIndex","1");
+          if(store.isDev()){
+            _this.$router.push({path:'commodityPage',query:{"id":goodsId,"skuId":skuId}})
+          }else {//线上环境，判断ios或者安卓，
+            if (store.judge() == 0) {
+              window.androidXingJiApp.postMessage(JSON.stringify({
+                "code": "91",
+                "index": 0,
+                "url": store.getNextAddress() + "commodityPage?id=" + goodsId + "&skuId=" + skuId
+              }));
+            } else if (store.judge() == 1) {
+              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                "code": "91",
+                "index": 0,
+                "url": store.getNextAddress() + "commodityPage?id=" + goodsId + "&skuId=" + skuId
+              });
+            }
+          }
 
         },
         minusOnServer(id,e){

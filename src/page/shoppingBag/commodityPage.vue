@@ -5,7 +5,7 @@
         <div class="transparent fix">
           <div class="transparentBg"></div>
           <div class="transparentCon">
-            <a href="javascript:history.go(-1);" class="returnBtn"></a>
+            <a  v-on:click="toBack()" class="returnBtn"></a>
             <div class="detailTabNav">
               <ul class="conventTab">
                 <li class="on">商品</li>
@@ -334,12 +334,37 @@ export default {
       specificationValueId:'',//规格id
       skuTags:[],//商品的所有规格
       allSkus:[],//所有的商品规格组合
-      tagsIdStr:'0'
+      tagsIdStr:'0',
 
+      isShopIndex:false,
     }
   },
 
   methods: {
+    toBack(){//回退一步
+      var _this=this;
+      if(store.isDev()){
+        _this.$router.go(-1)
+      }else{//正式
+        if(_this.isShopIndex){//从购物袋过来的
+          if(store.judge()==0){//andriod    暂时先用跳转
+            window.androidXingJiApp.postMessage(JSON.stringify({
+              "code": "91",
+              "index": 3,
+              "url": store.getNextAddress() + "shopIndex"
+            }));
+
+          }else if(store.judge()==1){//ios
+            window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+              "code": "99",
+            });
+          }
+        }else {
+          _this.$router.go(-1)
+        }
+
+      }
+    },
     toShopIndex(){
       if(store.isDev()){
         this.$router.push("shopIndex")
@@ -621,9 +646,12 @@ export default {
 
     mounted: function () {
     var _this=this;
-      console.log("准备执行")
+
       _this.checkSelfAreaData();
-      console.log("执行完成check")
+
+      if(store.fetch("isShopIndex")==1){
+        _this.isShopIndex=true;
+      }
 
       this.productId=this.$route.query.id
       this.skuId=this.$route.query.skuId

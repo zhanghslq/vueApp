@@ -16,7 +16,7 @@
           <div class="collectionList">
             <div class="listInfo" style="display: block;">
               <div class="infoCont">
-                <a href="#">
+                <a >
                   <div class="infoContLeft"><img src="../../images/temporary/commodity6.png"><span>01:26:02后开抢</span></div>
                   <div class="infoContRight">
                     <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
@@ -26,7 +26,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="#">
+                <a >
                   <div class="infoContLeft"><img src="../../images/temporary/commodity6.png"></div>
                   <div class="infoContRight">
                     <p>健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
@@ -46,7 +46,7 @@
             </div>
             <div class="listInfo">
               <div class="infoCont">
-                <a href="#">
+                <a >
                   <div class="infoContLeft"><img src="../../images/temporary/commodity6.png"><span>01:26:02后开抢</span></div>
                   <div class="infoContRight">
                     <p>2健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
@@ -56,7 +56,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="#">
+                <a >
                   <div class="infoContLeft"><img src="../../images/temporary/commodity6.png"><span>01:26:02后开抢</span></div>
                   <div class="infoContRight">
                     <p>2健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
@@ -66,7 +66,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="#">
+                <a >
                   <div class="infoContLeft"><img src="../../images/temporary/commodity6.png"><span>01:26:02后开抢</span></div>
                   <div class="infoContRight">
                     <p>2健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>
@@ -76,7 +76,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="#">
+                <a >
                   <div class="infoContLeft"><img src="../../images/temporary/commodity6.png"><span>01:26:02后开抢</span></div>
                   <div class="infoContRight">
                     <p>2健安喜(GNC)乳清蛋白粉蛋白质粉增肌粉健身进口 2磅</p>

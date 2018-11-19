@@ -30,7 +30,7 @@
             </a>
           </div>
           <div class="orderSituation">
-            <router-link :to="{path:'/myOrder',query:{num:0}}">
+          <a v-on:click="toOrderList(0)">
             <a  class="orderTitle">
               <span class="titleLeft">我的订单</span>
               <div class="titleRight">
@@ -38,24 +38,24 @@
                 <em></em>
               </div>
             </a>
-            </router-link>
+            </a>
             <div class="orderOperation">
-              <router-link :to="{path:'/myOrder',query:{num:1}}">
+              <a v-on:click="toOrderList(1)">
                 <em class="pendingPayment"></em>
                 <span>待付款</span>
-              </router-link>
-              <router-link :to="{path:'/myOrder',query:{num:2}}">
+              </a>
+              <a v-on:click="toOrderList(2)">
                 <em class="PendingDelivery"></em>
                 <span>待发货</span>
-              </router-link>
-              <router-link :to="{path:'/myOrder',query:{num:3}}">
+              </a>
+              <a v-on:click="toOrderList(3)">
                 <em class="goodsReceived"></em>
                 <span>待收货</span>
-                </router-link>
-              <router-link :to="{path:'/myOrder',query:{num:5}}">
+                </a>
+              <a v-on:click="toOrderList(5)">
                 <em class="succeTrade"></em>
                 <span>交易成功</span>
-              </router-link>
+              </a>
              <a  v-on:click="toRefundProgress()">
                 <em class="returnGoods"></em>
                 <span>退货/退款</span>
@@ -63,7 +63,7 @@
             </div>
           </div>
           <div class="personalInfo">
-            <a href="#">
+            <a >
               <span class="infoLeft">我是店主</span>
               <div class="infoRight">
                 <em></em>
@@ -156,7 +156,7 @@
             if(store.judge()==0){
               window.androidXingJiApp.postMessage(JSON.stringify({
                 "code": "91",
-                "index":store.fetch("index"),
+                "index":0,
                 "url":store.getNextAddress()+"refundProgress"}));
             }else if(store.judge()==1){
               window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
@@ -167,7 +167,25 @@
             }
           }
 
-        }
+        },
+        toOrderList(num){//跳转去订单列表页，用app的跳转
+          if(store.isDev()){
+            this.$router.push({path:"myOrder",query:{"num":num}})
+          }else{
+            if(store.judge()==0){
+              window.androidXingJiApp.postMessage(JSON.stringify({
+                "code": "91",
+                "index":0,
+                "url":store.getNextAddress()+"myOrder?num="+num}));
+            }else if(store.judge()==1){
+              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                "code": "91",
+                "index":0,
+                "url":store.getNextAddress()+"myOrder?num="+num
+              });
+            }
+          }
+        },
 
       },
       mounted(){

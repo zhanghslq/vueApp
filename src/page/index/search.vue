@@ -42,10 +42,8 @@ export default {
       }else{
 
         if(store.judge()==1) {
-          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
-            "code": "91",
-            "index":1,
-            "url":store.getNextAddress()+"index"
+          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({//后退，关闭新页面
+            "code": "99",
           });
         }else if(store.judge()==0) {
           window.androidXingJiApp.postMessage(JSON.stringify({
