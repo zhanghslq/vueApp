@@ -302,10 +302,11 @@
                   "payStr":JSON.stringify(res),
                 });
               }else if(store.judge()==0){
-                window.androidXingJiApp.postMessage({
-                  "code": "83",
-                  "payStr":JSON.stringify(res),
-                });
+                window.androidXingJiApp.postMessage(JSON.stringify({
+                    "code": "83",
+                    "payStr":JSON.stringify(res),
+                  })
+                  );
               }
             }else{
               self.$layer.toast({
