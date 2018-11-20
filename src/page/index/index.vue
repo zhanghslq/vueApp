@@ -3,7 +3,7 @@
   <div id="top" class="fix">
     <div class="addr">
       <router-link to="myNotice">
-        <div class="message"><span></span><em>5</em></div>
+        <div class="message"><span></span><em></em></div>
       </router-link>
       <div class="search" v-on:click="toSearch()">
         <em></em>

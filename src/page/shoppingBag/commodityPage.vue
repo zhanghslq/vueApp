@@ -651,6 +651,7 @@ export default {
 
       if(store.fetch("isShopIndex")==1){
         _this.isShopIndex=true;
+        window.localStorage.removeItem("isShopIndex")
       }
 
       this.productId=this.$route.query.id

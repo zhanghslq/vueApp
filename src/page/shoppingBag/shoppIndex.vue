@@ -179,7 +179,7 @@
          noX : 0,  /* 没选中时点击加减计算数量  */
          allThis : {}, /*底部全选*/
         /* 减  */
-         plus:'',
+          plus:'',
           bot :0,
           topb : 0,
           productList:[],
