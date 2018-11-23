@@ -24,6 +24,13 @@ export default new Router({
       }
 
     },{
+      path:'/test',
+      name:'test',
+      component(resolve){
+        require(['../page/test/test.vue'],resolve)
+      }
+
+    },{
       path:'/service',
       name:'service',
       component(resolve){
@@ -42,13 +49,6 @@ export default new Router({
       name:'applyforExchange',
       component(resolve){
         require(['../page/personalCenter/applyforExchange.vue'],resolve)
-      }
-
-    },{
-      path:'/selectServiceType',
-      name:'selectServiceType',
-      component(resolve){
-        require(['../page/personalCenter/selectServiceType.vue'],resolve)
       }
 
     },{
