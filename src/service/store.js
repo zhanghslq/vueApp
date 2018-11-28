@@ -45,11 +45,11 @@ export default {
   },
 
   getAddress: function() {//获取域名，浏览器测试的时候，跨域访问，真机的时候直接配置地址
-    //return "https://api.xingjiyouxuan.com";
-    return "/api";
+    return "https://api.xingjiyouxuan.com";
+    //return "/api";
   },
   isDev(){
-    return true;
+    return false;
   },
   getNextAddress: function() {//获取域名，浏览器测试的时候，跨域访问，真机的时候直接配置地址
     return "https://api.xingjiyouxuan.com/dist/#/";

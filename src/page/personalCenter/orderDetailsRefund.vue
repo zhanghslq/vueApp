@@ -73,7 +73,13 @@
         }).then(function (response) {
           if(response.data.code==200){
             _this.order=response.data.data
-            _this.refundDetail=response.data.data.refundDetails
+            if(response.data.data.hasRefund){
+              _this.refundDetail=response.data.data.refundDetails
+            }else{
+              _this.refundDetail=response.data.data.returnDetails
+            }
+
+
 
           }
         }).catch(function (error) {

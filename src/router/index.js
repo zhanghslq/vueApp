@@ -66,6 +66,12 @@ export default new Router({
       }
 
     },{
+      path:'/camera',
+      name:'camera',
+      component(resolve){
+        require(['../page/personalCenter/camera.vue'],resolve)
+      }
+    },{
       path:'/manageSystem',
       name:'manageSystem',
       component(resolve){

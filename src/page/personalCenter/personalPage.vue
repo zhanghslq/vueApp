@@ -63,12 +63,12 @@
             </div>
           </div>
           <div class="personalInfo">
-            <a >
+            <router-link to="camera">
               <span class="infoLeft">我是店主</span>
               <div class="infoRight">
                 <em></em>
               </div>
-            </a>
+            </router-link>
             <router-link to="exchangeX">
               <span class="infoLeft">猩际X币</span>
               <div class="infoRight">
