@@ -21,23 +21,16 @@
             </a>
           </div>
           <div class="refundMain">
-            <!--<a >
-              <div class="refundmLeft">
-                <h5>货物状态</h5>
-              </div>
-              <div class="refundmRight" id="state">
-                <span class="pleSel" id="chooseState">请选择</span>
-                <em style="margin-top: 0.24rem;"></em>
-              </div>
-            </a>-->
             <a >
-              <!--<div class="refundmLeft">
-                <h5>退款原因</h5>
+              <div class="refundmLeft">
+                <h5>订单物流号：</h5>
               </div>
-              <div class="refundmRight" id="reason">
-                <span class="pleSel" id="chooseReason">请选择</span>
-                <em style="margin-top: 0.24rem;"></em>
-              </div>-->
+              <div class="refundmRight" style="float: left;">
+                <span class="pleSel">37982759847985</span>
+              </div>
+            </a>
+            <a >
+
               <div class="refundAmount">
                 <h5>退款金额：</h5>
                 <span>￥<em>{{totalAmount}}</em></span>

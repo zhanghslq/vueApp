@@ -26,6 +26,16 @@
               <span>{{expressCompanyName}}</span>　
               <em>{{shipOrderNumber}}</em>
             </div>
+
+          <br/>
+            <a v-for="(item,index) in expressList">
+              <div class="expressMainLeft">
+                <em></em>
+                <p>{{item.context}}</p>
+                <span>{{item.time}}</span>
+              </div>
+              <div class="expressMainRight"></div>
+            </a>
           </div>
           <div class="addressInfo">
             <em class="addreeIcon"></em>
@@ -77,8 +87,10 @@
             deliveryAddress:{},
             totalAmount:'',
             expressCompanyName:'',
+            expressList:[],
+
             shipOrderNumber:'',
-            payTime:''
+            payTime:'',
           }
       },
       methods:{
@@ -112,6 +124,7 @@
             _this.deliveryAddress=response.data.data.deliveryAddress;
             _this.totalAmount=response.data.data.totalAmount;
             _this.expressCompanyName=response.data.data.expressCompanyName;
+            _this.expressList=response.data.data.expressList;
             _this.shipOrderNumber=response.data.data.shipOrderNumber;
             _this.payTime=response.data.data.payTime;
 

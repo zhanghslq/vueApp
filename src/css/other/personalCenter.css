@@ -1609,55 +1609,86 @@ header .setUpIcon{
 	overflow: hidden;
 	background: #fff;
 }
-.logisticsMain .logisticsCont ul{
-	margin-left:0.68rem;
-	padding-left: 0.68rem;
-	border-left: 0.02rem solid #f4f5f7;
-	margin-top: 0.19rem;
+.logisticsMain .logisticsCont ul,
+.expressMain ul{
+  margin-left:0.68rem;
+  padding-left: 0.68rem;
+  border-left: 0.02rem solid #f4f5f7;
+  margin-top: 0.19rem;
 }
-.logisticsMain .logisticsCont ul li:first-child{
-	padding-top: 0;
+.expressMain ul{
+  margin:0;
+  padding-left: 0.48rem;
 }
-.logisticsMain .logisticsCont ul li{
-	border-bottom: 0.02rem solid #f4f4f4;
-	padding-bottom: 0.22rem;
-	padding-top: 0.2rem;
-	position: relative;
+.logisticsMain .logisticsCont ul li:first-child,
+.expressMain ul:first-child{
+  padding-top: 0;
 }
-.logisticsMain .logisticsCont ul li:last-child{
-	border:none;
+.logisticsMain .logisticsCont ul li,
+.expressMain ul li{
+  border-bottom: 0.02rem solid #f4f4f4;
+  padding-bottom: 0.22rem;
+  padding-top: 0.2rem;
+  position: relative;
 }
-.logisticsMain .logisticsCont ul li p{
-	font-size: 0.28rem;
-	color:#7b7b7b;
-	margin-bottom: 0.18rem;
+.expressMain ul li{
+  padding:0.15rem 0 0.17rem 0;
 }
-.logisticsMain .logisticsCont ul li span{
-	font-size: 0.24rem;
-	color:#c2c2c2;
+.logisticsMain .logisticsCont ul li:last-child,
+.expressMain ul li:last-child{
+  border:none;
 }
-.logisticsMain .logisticsCont ul li p.Cur{
-	color:#ecbc68;
+.logisticsMain .logisticsCont ul li p,
+.expressMain ul li p{
+  font-size: 0.28rem;
+  color:#7b7b7b;
+  margin-bottom: 0.18rem;
 }
-.logisticsMain .logisticsCont ul li em{
-	width: 0.16rem;
-	height: 0.16rem;
-	display: inline-block;
-	background: #f4f4f4;
-	border-radius: 50%;
-	position: absolute;
-	top:0.3rem;
-	left: -0.76rem;
+.expressMain ul li p{
+  font-size: 0.24rem;
+  margin-bottom: 0.14rem;
 }
-.logisticsMain .logisticsCont ul li em.Cur{
-	width: 0.28rem;
-	height: 0.28rem;
-	display: inline-block;
-	background: url(../../images/threeLevel/circleIcon.png) no-repeat;
-	background-size: 100%;
-	border-radius: 0;
-	top:0.1rem;
-	left:-0.84rem;
+.logisticsMain .logisticsCont ul li span,
+.expressMain ul li span{
+  font-size: 0.24rem;
+  color:#c2c2c2;
+}
+.expressMain ul li span{
+  font-size: 0.22rem;
+}
+.logisticsMain .logisticsCont ul li p.Cur,
+.expressMain ul li p.Cur{
+  color:#ecbc68;
+}
+.logisticsMain .logisticsCont ul li em,
+.expressMain ul li em{
+  width: 0.16rem;
+  height: 0.16rem;
+  display: inline-block;
+  background: #f4f4f4;
+  border-radius: 50%;
+  position: absolute;
+  top:0.3rem;
+  left: -0.76rem;
+}
+.expressMain ul li em{
+  top:0.2rem;
+  left:-0.57rem;
+}
+.logisticsMain .logisticsCont ul li em.Cur,
+.expressMain ul li em.Cur{
+  width: 0.28rem;
+  height: 0.28rem;
+  display: inline-block;
+  background: url(../../images/threeLevel/circleIcon.png) no-repeat;
+  background-size: 100%;
+  border-radius: 0;
+  top:0.1rem;
+  left:-0.84rem;
+}
+.expressMain ul li em.Cur{
+  top:0.08rem;
+  left: -0.64rem;
 }
 /*查看物流 结束*/
 /*订单详情 开始*/
@@ -2083,10 +2114,13 @@ header .setUpIcon{
 	margin-top: 0.44rem;
 }
 .refundMain a .pleSel{
-	font-size: 0.24rem;
-	color:#8d8d8d;
-	display: inline-block;
-	margin: 0.18rem 0.1rem 0 0;
+  width: 5rem;
+  font-size: 0.24rem;
+  color:#8d8d8d;
+  color:#444;
+  display: inline-block;
+  margin: 0.18rem 0.1rem 0 0;
+  border:none;
 }
 .refundMain .refundAmount{
 	width: 100%;
@@ -2214,6 +2248,32 @@ header .setUpIcon{
 }
 
 
-
+.selectTypeMain .uploadCredentials{
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  margin-top: 0.15rem;
+  padding: 0.2rem 0 0.4rem 0;
+}
+.uploadCredentials .uploadTitle{
+  width: 1.3rem;
+  color: #444;
+  font-size: 0.24rem;
+  float: left;
+  margin-left: 0.3rem;
+}
+.uploadCredentials .uploadPhoto{
+  width: 1.42rem;
+  height: 1.42rem;
+  background: url(../../images/common/credenPic.jpg) no-repeat;
+  background-size: 100%;
+  margin:0.5rem 0 0 0.3rem;
+}
+.uploadCredentials .uploadPhoto input{
+  width: 1.42rem;
+  height: 1.42rem;
+  overflow: hidden;
+  opacity:0;
+}
 
 /*选择服务类型 结束*/

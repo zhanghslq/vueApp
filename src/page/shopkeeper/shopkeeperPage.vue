@@ -16,7 +16,7 @@
           <em class="selectedIcon"></em>
           <span>店主精选</span>
        </router-link>
-        <a href="#">
+        <a href="https://api.xingjiyouxuan.com/dist/#/camera">
           <em class="invitationIcon"></em>
           <span>邀请店主</span>
         </a>

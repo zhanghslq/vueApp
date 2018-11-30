@@ -3,13 +3,17 @@
 /* eslint-disable */
 
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App'
 import router from './router'
+import store from './store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import layer from 'vue-layer-mobile'
 import VueScroller from 'vue-scroller'
 
 import Validator from 'vue-validator'
+
+Vue.use(Vuex)
 Vue.use(VueScroller)
 Vue.use(layer)
 Vue.use(VueAwesomeSwiper)
@@ -20,7 +24,7 @@ import $ from 'jquery'
 new Vue({
   el: '#app',
   router,
-
+  store,
   components: { App },
   template: '<App/>'
 })
