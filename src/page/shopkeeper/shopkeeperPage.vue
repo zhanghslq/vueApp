@@ -72,22 +72,22 @@
             <div class="tempWrap">
               <ul class="img">
                 <li>
-                  <a href="#">
+                  <a >
                     <img src="../../images/temporary/reward1.jpg">
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <img src="../../images/temporary/reward2.jpg">
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <img src="../../images/temporary/reward1.jpg">
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <img src="../../images/temporary/reward2.jpg">
                   </a>
                 </li>
@@ -115,9 +115,9 @@
           <router-link to="newBrochureInfo">
             <img src="../../images/index/newBrochure.jpg">
           </router-link>
-          <a href="#"><img src="../../images/index/classMust.jpg"></a>
-          <a href="#"><img src="../../images/index/demeanor.jpg"></a>
-          <a href="#"><img src="../../images/index/activityInfo.jpg"></a>
+          <a ><img src="../../images/index/classMust.jpg"></a>
+          <a ><img src="../../images/index/demeanor.jpg"></a>
+          <a ><img src="../../images/index/activityInfo.jpg"></a>
         </div>
       </div>
       <div class="moreOpera">
@@ -131,10 +131,13 @@
         <router-link to="shopkeeperContactUs">
           <em class="contactIcon"></em><span>联系我们</span>
         </router-link>
-        <router-link to="putForward">
+        <!--<router-link to="putForward" >
           <em class="forwardIcon"></em><span>提现</span>
-        </router-link>
-        <a href="#"><em class="downloadIcon"></em><span>下载APP</span></a>
+        </router-link>-->
+        <a v-on:click="toPutForward()">
+          <em class="forwardIcon"></em><span>提现</span>
+        </a>
+        <a ><em class="downloadIcon"></em><span>下载APP</span></a>
       </div>
     </div>
   </main>
@@ -188,6 +191,25 @@
       TouchSlide
     },
     methods:{
+      toPutForward(){
+        if(store.isDev()){
+          this.$router.push("putForward")
+        }else{
+          if(store.judge()==0){
+            window.androidXingJiApp.postMessage(JSON.stringify({
+              "code": "91",
+              "index":0,
+              "url":store.getNextAddress()+"putForward"}));
+          }else if(store.judge()==1){
+            window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+              "code": "91",
+              "index":0,
+              "url":store.getNextAddress()+"putForward"
+            });
+          }
+        }
+
+      },
       bannerFocusImg: function () {
       TouchSlide({
         slideCell: "#carouselMain",

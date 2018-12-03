@@ -169,7 +169,7 @@
           show: false,
           columns: 3,
           link: true,
-          defaultData:[{"text":"\u5929\u6d25\u5e02","value":"120000"},{"text":"\u53bf","value":"120200"},{"text":"\u5b81\u6cb3\u53bf","value":"120221"}],
+          defaultData:[],
           pickData: {
             data1: [],
             data2: [],

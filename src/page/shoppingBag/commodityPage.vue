@@ -50,12 +50,12 @@
             <div class="productExplain">
               <div class="commodityPrice">
                 <div class="countDown">
-                  <span class="now">￥<em>94.00</em></span>
+                  <span class="now">￥<em>{{price}}</em></span>
                   <div class="member">
-                    <span>限时直降</span>
-                    <span>会员价￥<em>86.04</em></span>
+                    <span><!--限时直降--></span>
+                    <span>会员价￥<em>{{actualPrice}}</em></span>
                   </div>
-                  <div class="endTime">
+                  <!--<div class="endTime">
                     <em>距结束剩</em>
                     <div class="times">
                       <span>58</span>
@@ -64,14 +64,15 @@
                       <i>:</i>
                       <span>42</span>
                     </div>
-                  </div>
+                  </div>-->
                 </div>
-                <div class="earn">推广赚<em>7.52</em>元</div>
-                <div class="voucher"><em></em><span>您有一张10元满减劵，下单即可使用</span></div>
+                <br/>
+                <!--<div class="earn">推广赚<em>7.52</em>元</div>
+                <div class="voucher"><em></em><span>您有一张10元满减劵，下单即可使用</span></div>-->
               </div>
               <h4>{{goodsTitle}}</h4>
-              <p>{{goodsLongTitle}}</p>
-            </div>
+            <p>{{goodsLongTitle}}</p>
+          </div>
             <div class="choiceProduct">
               <a  id="choisShopp">
                 <span>规格</span>
@@ -316,7 +317,9 @@ export default {
       },
       goodsId:'',//商品id
       skuId:'',
-      actualPrice:'',//商品实际价格
+
+      price:0,
+      actualPrice:0,//商品实际价格
       goodsTitle:'',
       goodsTitleImg:'',
       goodsLongTitle:'',
@@ -339,6 +342,7 @@ export default {
       isShopIndex:false,
     }
   },
+
 
   methods: {
     toBack(){//回退一步
@@ -682,6 +686,7 @@ export default {
           _this.serviceInfo=responese.data.data.serviceInfo
           _this.skuTags=responese.data.data.skuTags
           _this.actualPrice=responese.data.data.actualPrice
+          _this.price=responese.data.data.price
           _this.allSkus=responese.data.data.allSkus
 
           console.log(responese)

@@ -24,6 +24,34 @@ export default new Router({
       }
 
     },{
+      path:'/editBankCard',
+      name:'editBankCard',
+      component(resolve){
+        require(['../page/personalCenter/editBankCard.vue'],resolve)
+      }
+
+    },{
+      path:'/receivingBankCard',
+      name:'receivingBankCard',
+      component(resolve){
+        require(['../page/personalCenter/receivingBankCard.vue'],resolve)
+      }
+
+    },{
+      path:'/modifyCard',
+      name:'modifyCard',
+      component(resolve){
+        require(['../page/personalCenter/modifyCard.vue'],resolve)
+      }
+
+    },{
+      path:'/newlyCard',
+      name:'newlyCard',
+      component(resolve){
+        require(['../page/personalCenter/newlyCard.vue'],resolve)
+      }
+
+    },{
       path:'/test',
       name:'test',
       component(resolve){

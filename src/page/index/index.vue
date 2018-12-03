@@ -11,14 +11,15 @@
           <!--<input type="text" placeholder="搜索喜欢的宝贝">-->
         </a>
       </div>
-    <router-link to="selecTregion">
+    <!--<router-link to="selecTregion">
       <a  class="cityCode">北京 <em class="triangle"></em></a>
-    </router-link>
+    </router-link>-->
+      <a  class="cityCode" v-on:click="openCamera()">扫一扫 </a>
 
     </div>
     <div class="swiper-container" id="nav" style="background-color: white">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" ><span>首页</span></div>
+        <div class="swiper-slide swiper-slide-active" ><span>首页</span></div>
         <div class="swiper-slide" v-for="item in topList"><span>{{item.name}}</span></div>
       </div>
     </div>
@@ -28,6 +29,9 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide slidepage swiper-slide-active">
               <!--首页-->
+        <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide slidescroll" style="height: auto">
               <div class="homePageMain content-slide" id="test">
                 <!--轮播图-->
                 <div class="carouseContent swiper-no-swiping">
@@ -157,11 +161,17 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
 
       </div>
 
       <div class="swiper-slide slidepage swiper-slide-next">
               <!--美妆护肤-->
+        <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide slidescroll" style="height: auto">
               <div class="content-slide">
               <div class="carouseContent swiper-no-swiping">
                 <div id="beautyMain">
@@ -587,10 +597,15 @@
                 </div>
               </div>
             </div>
+            </div>
+          </div>
+        </div>
           </div>
 
       <div class="swiper-slide slidepage">
 
+        <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
+          <div class="swiper-wrapper">
             <div class="swiper-slide slidescroll" style="height: auto">
               <div class="homePageMain">
                 <!--轮播图-->
@@ -747,6 +762,8 @@
               </div>
 
             </div>
+          </div>
+        </div>
 
 
 
@@ -789,6 +806,11 @@ import Swiper from 'swiper'
 
 import axios from 'axios'
 let pageSwiper=null;
+
+
+
+
+
 export default {
   name: 'index',
   data () {
@@ -821,7 +843,25 @@ export default {
     TouchSlide,
   },
   methods: {
+    openCamera(){//打开相机扫描二维码
+        if(store.isDev()){
+          alert("test")
+        }else{
+          if(store.judge()==1){
+            window.webkit.messageHandlers.currentCookies.postMessage({
+              "code": "100",
+            });
 
+          }else if(store.judge()==0){
+            window.androidXingJiApp.postMessage(JSON.stringify({
+              "code": "100",
+            }));
+          }
+        }
+    },
+    receiveResult(result) {//接受返回值信息
+        alert(result)
+    },
     toSearch(){
       if(store.isDev()){
         this.$router.push("search")
@@ -1031,16 +1071,16 @@ export default {
       var scrollSwiper = new Swiper('.scroll', {
         //65是头部的高
         //36是top地址和搜索的高
-        observer: true,//修改swiper自己或子元素时，自动初始化swiper
+        //observer: true,//修改swiper自己或子元素时，自动初始化swiper
         //observeParents:true,//修改swiper的父元素时，自动初始化swiper
 
         autoHeight: true,
-        slidesOffsetBefore: 72,
+        //slidesOffsetBefore: 72,
         direction: 'vertical',
         freeMode: true,
-        slidesPerView: 1,
+        slidesPerView: 'auto',
 
-        slidesOffsetAfter: -document.documentElement.clientHeight,
+        slidesOffsetAfter: 80,
       })
 
 
@@ -1093,7 +1133,9 @@ export default {
     $('#bursting .swiper-slide').unbind("click")
   },
   mounted () {
-
+    window['receiveResult'] = (result) => {
+      this.receiveResult(result)
+    }
 
     console.log(this.listSecKillSpecial.length)
     this.isDev=store.isDev();
@@ -1198,17 +1240,14 @@ export default {
       console.log(error);
     })
 
-
-
-
-
-
     $("#two2").attr("height",$("#two").attr("height"))
     var mobile = this.$route.params.city
     if(mobile){
       $('.cityCode').empty()
       this.mobile_view(mobile)
     }
+
+
   }
 }
 </script>
