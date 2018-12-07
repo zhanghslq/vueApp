@@ -26,7 +26,7 @@
                 <h5>订单物流号：</h5>
               </div>
               <div class="refundmRight" style="float: left;">
-                <span class="pleSel">37982759847985</span>
+                <input type="text" class="pleSel" placeholder="请输入订单号">
               </div>
             </a>
             <a >
@@ -43,6 +43,32 @@
           <div class="refundsExplain">
             <div class="explainTitle">退款说明：</div>
             <textarea placeholder="选填" v-model="refundText"></textarea>
+          </div>
+          <div class="uploadCredentials">
+            <div class="uploadTitle">上传凭证</div>
+            <div >
+
+              <img class="image_sty" :src="image.src" alt="" v-for="(image , i) in images" @click="bingtap_preview(i)">
+              <image-upload
+                class="image_upload"
+                url='https://tsesb.yunjuhe.com.cn/medicalServer/doctor/uploadServerImage'
+                :touch-size = 1
+                :multiple = true
+                field-name = 'serverImgFile'
+                :max-count = 10
+                @chooseImages='bindtap_chooseImages'
+              />
+
+              <image-preview
+                style="z-index:200"
+                :images="preImages"
+                v-model="index"
+                :numIsShow="true"
+                :deleteIsShow="true"
+                @delete="bindtap_delete"
+              />
+
+            </div>
           </div>
           <div class="submissionBtn">
             <a v-on:click="submitRefund()">提交</a>
@@ -84,7 +110,7 @@
 </template>
 
 <script>
-
+  import {ImageUpload , ImagePreview} from 'vue-image-upload-preview'
   import 'vue-layer-mobile/need/layer.css'
   import axios from 'axios'
   import store from '../../service/store'
@@ -99,11 +125,66 @@
           totalAmount:'',
           orderId:'',
           status:2,
-          orderStatus:''
+          orderStatus:'',
+
+          msg: 'Welcome to Your Vue.js App',
+          images:[],
+          index:-1,
 
         }
       },
+      components: {
+        'image-preview':ImagePreview,
+        'image-upload':ImageUpload
+      },
+      computed:{
+        preImages(){
+          return this.images.map(v=>{return v.src});
+        },
+      },
       methods:{
+        /**
+         *  绑定函数 -- 选择图片
+         */
+        bindtap_chooseImages(res){
+          if (Array.isArray(res)) {
+            this.images = this.images.concat(res);
+          }else {
+            console.log(res);
+          }
+        },
+        /**
+         *  绑定函数 -- 删除图片
+         */
+        bindtap_delete(){
+          this.images = this.images.filter((v,i) => {
+            return this.index!=i;
+          })
+        },
+        /**
+         *  绑定函数 -- 预览图片
+         */
+        bingtap_preview(i){
+          this.index = i;
+        },
+        /**
+         *  绑定函数 -- 取消预览
+         */
+        bingtap_hiddenImg() {
+          this.index = -1;
+        },
+        /**
+         *  绑定函数 -- 上传图片
+         */
+        bindtap_upload(){
+          this.$refs.imgaeUpload.uploadImages(this.images)
+            .then(res => {
+              console.log(res);
+            })
+            .catch(err => {
+              console.log(err);
+            })
+        },
         submitRefund(){//提交申请退款的请求
           var _this=this;
           /*if(_this.productStatus==''){
@@ -254,4 +335,23 @@
 <style scoped>
 @import "../../css/common/common.css";
   @import "../../css/other/personalCenter.css";
+</style>
+<style scoped>
+  .image_upload{ width: 1.44rem;
+    height: 1.44rem;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin:0.1rem 0.2rem 0.1rem 0;
+    background: url(../../images/common/credenPic.jpg) no-repeat;
+    background-size: 100%;}
+  .image_sty{
+    width: 1.42rem;
+    height: 1.42rem;
+    border:solid 0.01rem #ccc;
+    margin:0.1rem 0.2rem 0.1rem 0;
+    float: left;
+    position: relative;
+    box-shadow: 0 0 0.1rem #eee;
+  }
 </style>

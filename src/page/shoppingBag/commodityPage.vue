@@ -190,12 +190,13 @@
             <div class="plateTitle">商品信息</div>
             <ul class="commodityInfo">
               <li><label>品牌</label><span>{{brandName}}</span></li>
-              <li><label>国家</label><span>{{locality}}</span></li>
-              <li><label>保质期</label><span>3年</span></li>
-              <li><label>规格</label><span></span></li>
-              <li><label>产地</label><span>富川</span></li>
+              <li><label>产地</label><span>{{locality}}</span></li>
+
               <li><label>快递信息</label><span>{{expressInfo}}</span></li>
               <li><label>服务信息</label><span>{{serviceInfo}}</span></li>
+              <li v-for="tag in baseTags"><label>{{tag.tagName}}</label><span>{{tag.tagInfo}}</span></li>
+
+
             </ul>
             <div class="detailCont" v-html="detailsContent">
               <!--<img src="../../images/temporary/12.jpg">
@@ -338,6 +339,7 @@ export default {
       skuTags:[],//商品的所有规格
       allSkus:[],//所有的商品规格组合
       tagsIdStr:'0',
+      baseTags:[],
 
       isShopIndex:false,
     }
@@ -553,7 +555,7 @@ export default {
       console.log(this.detailsImg)
     },
     bannerFocusImg: function () {
-     if(this.isFirst==0){
+     if(this.isFirst==0&& this.detailsImg.length!=0){
        this.isFirst=1;
        TouchSlide({
          slideCell: "#carouselMain",
@@ -688,8 +690,7 @@ export default {
           _this.actualPrice=responese.data.data.actualPrice
           _this.price=responese.data.data.price
           _this.allSkus=responese.data.data.allSkus
-
-          console.log(responese)
+          _this.baseTags=responese.data.data.baseTags
 
         }else {
           console.log("服务器正忙")

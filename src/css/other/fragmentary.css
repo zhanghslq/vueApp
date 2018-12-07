@@ -81,14 +81,14 @@
 .imgFileUploade .imgAll{
 	position:relative;
 }
-.imgFileUploade .imgAll ul:after{ 
-	visibility: hidden;  
-	display: block; 
-	font-size: 0; 
-	content: ".";  
-	clear: both; 
+.imgFileUploade .imgAll ul:after{
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: ".";
+	clear: both;
 	height: 0
-} 
+}
 .imgFileUploade .imgAll li{
 	width: 1.42rem;
 	height: 1.42rem;
@@ -105,7 +105,7 @@
 	cursor: pointer;
 	display: block;
 	background: url(../../images/common/addPicbtn.png) no-repeat;
-	background-size:100%; 
+	background-size:100%;
 }
 .imgFileUploade .imgAll li img{
 	position: absolute;
@@ -345,7 +345,7 @@
 .contInfo .noTime p{
 	color:#666;
 	font-size: 0.32rem;
-} 
+}
 .contInfo .nearFuture{
 	height: auto;
 	overflow: hidden;
@@ -499,7 +499,7 @@
 .shopkeeperMain{
 	height: auto;
 	overflow: hidden;
-	margin-bottom: 1rem;
+	margin-bottom: 1.2rem;
 }
 .shopkeeperMain .shopPersonal{
 	width: 7.5rem;
@@ -653,7 +653,7 @@
 	height: auto;
 	overflow: hidden;
 	border-top:0.02rem solid #f4f5f7;
-} 
+}
 .management .marketing a{
 	margin: 0.07rem 0;
 	display:block;
@@ -1805,7 +1805,7 @@ header .remind{
 	-ms-transform:rotate(24deg); 	/* IE 9 */
 	-moz-transform:rotate(24deg); 	/* Firefox */
 	-webkit-transform:rotate(24deg); /* Safari 和 Chrome */
-	-o-transform:rotate(24deg); 
+	-o-transform:rotate(24deg);
 	position: absolute;
 	top:0.7rem;
 	right: 0.3rem;
@@ -1964,7 +1964,7 @@ header .remind{
 .shopkerSelMain{
 	height:auto;
 	overflow: hidden;
-	
+
 }
 .shopkerSelMain .oneOpenBtn{
 	width:7.5rem;
@@ -2245,7 +2245,7 @@ header .remind{
 	margin-bottom: 0.3rem;
 }
 .dataCenterInfo .dataTaber{
-	
+
 }
 .dataCenterInfo .dataTaber ul.tabNave{
 
@@ -2486,7 +2486,7 @@ header .remind{
 	float: left;
 	overflow: hidden;
 	border-radius: 50%;
-	
+
 }
 .screenMain .screenList a .listHead img{
 	width: 100%;

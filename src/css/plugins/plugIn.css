@@ -1,10 +1,5 @@
- html,body {
-	position:relative;
-	height:100%;
-}
-html {
-	overflow:hidden;
-}
+
+
 * {
 	padding:0;
 	margin:0;
@@ -12,11 +7,7 @@ html {
 li {
 	list-style:none;
 }
-body {
-	background:#fff;
-	font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
-	font-size:12px;
-}
+
 .img img {
 	width:100%;
 	display:block;
@@ -34,27 +25,16 @@ body {
 	margin:0 auto;
 	display:block;
 }
-#nav {
+/*#nav {
 	height: 30px;
 	line-height: 30px;
-}
+}*/
 #nav .swiper-slide span {
 	text-align:center;
 	display:block;
 	line-height:2.5;
 }
-#nav .bar {
-	width:55px;
-	height:3px;
-	position:absolute;
-	bottom:0;
-}
-#nav .bar .color {
-	width:55px;
-	margin:0 auto;
-	height:3px;
-	background:#ecbc68;
-}
+
 .banner img {
 	width:100%;
 	display:block;

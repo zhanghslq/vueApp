@@ -2087,7 +2087,6 @@ header .setUpIcon{
 	border-bottom: 0.02rem solid #f4f5f7;
 }
 .selectTypeMain .refundMain a .refundmLeft{
-	width: 6.03rem;
 	float: left;
 }
 .refundMain a .refundmLeft h5{
@@ -2259,16 +2258,15 @@ header .setUpIcon{
   width: 1.3rem;
   color: #444;
   font-size: 0.24rem;
-  float: left;
   margin-left: 0.3rem;
 }
-.uploadCredentials .uploadPhoto{
+/*.uploadCredentials .uploadPhoto{
   width: 1.42rem;
   height: 1.42rem;
-  background: url(../../images/common/credenPic.jpg) no-repeat;
+  !*background: url(../../images/common/credenPic.jpg) no-repeat;*!
   background-size: 100%;
   margin:0.5rem 0 0 0.3rem;
-}
+}*/
 .uploadCredentials .uploadPhoto input{
   width: 1.42rem;
   height: 1.42rem;

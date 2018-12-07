@@ -14,7 +14,10 @@
     <!--<router-link to="selecTregion">
       <a  class="cityCode">北京 <em class="triangle"></em></a>
     </router-link>-->
-      <a  class="cityCode" v-on:click="openCamera()">扫一扫 </a>
+      <div class="scanMain" v-on:click="openCamera()">
+
+      </div>
+      <!--<a  class="cityCode" v-on:click="openCamera()">扫一扫 </a>-->
 
     </div>
     <div class="swiper-container" id="nav" style="background-color: white">
@@ -826,18 +829,7 @@ export default {
 
     }
   },
-  computed: {
-    currentIndex() {
-      return this.$store.state.home.pageIndex
-    }
-  },
-  watch: {
-    currentIndex() {
-      if (pageSwiper.activeIndex !== this.currentIndex) {
-        pageSwiper.slideTo(this.currentIndex)
-      }
-    }
-  },
+
   components: {
     Swiper,
     TouchSlide,
@@ -937,7 +929,7 @@ export default {
   //暂时设计每个slide大小需要一致
   let bar;
   let topBar;
-  let barwidth = 36 //导航粉色条的长度px
+
   let tSpeed = 300 //切换速度300ms
   let clientWidth;
   let navSum;
@@ -949,12 +941,12 @@ export default {
     slidesPerView: 5,
     freeMode: true,
     on: {
-      slideChange() {
-        _this.$store.commit('setPageIndex', this.activeIndex)
-      },
+
       init: function() {
 
         navSlideWidth = this.slides.eq(0).css('width'); //导航字数需要统一,每个导航宽度一致
+
+        console.log(navSlideWidth)
         bar = this.$el.find('.bar')
         bar.css('width', navSlideWidth)
         bar.transition(tSpeed)
@@ -967,7 +959,7 @@ export default {
         }
         topBar = this.$el.parents('body').find('#top') //页头
 
-        //$("#sl").height($("#test").height())//自己加的
+
 
       },
 
@@ -1137,20 +1129,8 @@ export default {
       this.receiveResult(result)
     }
 
-    console.log(this.listSecKillSpecial.length)
+
     this.isDev=store.isDev();
-    var a=$("#page");
-    console.log(a)
-    var b=a.find(".slidePage")
-    console.log(b)
-    var curScroll=$(b[0]);
-    console.log(curScroll)
-
-    var s =curScroll.find(".slidescroll");
-    var h=$(s[0]).scrollHeight;
-
-
-
 
     this.beautyImg();
     let _this=this;

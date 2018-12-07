@@ -92,6 +92,14 @@ header .message em{
 	background-size: 100%;
 	margin:45% 0 0 0.08rem;
 }
+.addr .scanMain{
+  width: 0.47rem;
+  height: 0.42rem;
+  background: url(../../images/index/scanIcon.png) no-repeat;
+  background-size: 100%;
+  float: right;
+  margin:0.25rem 0.3rem 0 0;
+}
 #nav .swiper-slide-active {
     color: #ecbc68 !important;
 }
