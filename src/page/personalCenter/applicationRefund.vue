@@ -26,7 +26,7 @@
                 <h5>订单物流号：</h5>
               </div>
               <div class="refundmRight" style="float: left;">
-                <input type="text" class="pleSel" placeholder="请输入订单号">
+                <input type="text" v-model="shipOrderNumber" class="pleSel" placeholder="请输入订单号">
               </div>
             </a>
             <a >
@@ -38,7 +38,7 @@
             </a>
           </div>
           <div class="mostRefunds">
-            <p>最多 ￥<span>18.75</span>，含发货邮费￥<span>0.00</span></p>
+            <p>最多 ￥<span>{{totalAmount}}</span><!--，含发货邮费￥<span>0.00</span>--></p>
           </div>
           <div class="refundsExplain">
             <div class="explainTitle">退款说明：</div>
@@ -114,6 +114,7 @@
   import 'vue-layer-mobile/need/layer.css'
   import axios from 'axios'
   import store from '../../service/store'
+  const axiosInstance = axios.create({});
     export default {
       name: "applicationRefund",
       data(){
@@ -127,11 +128,19 @@
           status:2,
           orderStatus:'',
 
+
           msg: 'Welcome to Your Vue.js App',
           images:[],
           index:-1,
+          uploadToken:'',
+          imageSrc:[],//图片在七牛上的存储标值
+          shipOrderNumber:'',//退货物流单号
+
 
         }
+      },
+      updated(){
+        console.log(this.images)
       },
       components: {
         'image-preview':ImagePreview,
@@ -143,12 +152,26 @@
         },
       },
       methods:{
+        getToken(){
+          var  self=this;
+          axios.post(
+            store.getAddress()+'/api/wxapp/qiniu/upToken'
+          ).then(function (response) {
+            console.log(response)
+            self.uploadToken=response.data.data.upToken
+
+          })
+            .catch(function (error) {
+              console.log(error);
+            });
+        },
         /**
          *  绑定函数 -- 选择图片
          */
         bindtap_chooseImages(res){
           if (Array.isArray(res)) {
             this.images = this.images.concat(res);
+
           }else {
             console.log(res);
           }
@@ -185,29 +208,47 @@
               console.log(err);
             })
         },
+        uploadImages(){
+          var _this=this;
+          //遍历图片的数组，然后上传
+          _this.images.forEach((item,index)=>{
+
+            if(item!=undefined){//判断文件是否为空，空的就不上传，不更新
+              var data = new FormData();
+              data.append('token', _this.uploadToken);
+              data.append('file', item.file);
+              axiosInstance({
+                method: 'POST',
+                url: 'http://up.qiniu.com',
+                data: data,
+
+              }).then(function(res) {
+                _this.imageSrc.push(res.data.key)//把七牛返回的标志存储起来，之后一起上传
+
+              }).catch(function(err) {
+                console.log('err', err);
+              });
+            }
+          })
+
+        },
         submitRefund(){//提交申请退款的请求
           var _this=this;
-          /*if(_this.productStatus==''){
-            $(".refundMain #state").click();
-            _this.$layer.toast({
-              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
-              content: '请先选择商品状态',
-              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
-            })
-          }else if(_this.backReason==''){
-            $(".refundMain #reason").click()
-            _this.$layer.toast({
-              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
-              content: '请先选择退货原因',
-              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
-            })
+          _this.uploadImages()
 
-          }else{*/
+          /*提交申请之前需要先进行上传图片，然后把上传之后得到的存起来数组*/
+
+        },
+        submitCommit(){
+          let _this=this;
+          if(_this.images.length==_this.imageSrc.length){
             axios.post(store.getAddress()+"/api/wxapp/order/support",{
               "uid":store.fetch("uid"),
               "orderId":_this.orderId,
               "op":_this.status,
-              "remark":_this.backReason+"   备注："+_this.refundText
+              "imgs":JSON.stringify(_this.imageSrc),
+              "shipOrderNumber":_this.shipOrderNumber,
+              "remark":_this.refundText
             }).then(function (response) {
               if(response.data.code==200){
                 _this.$layer.toast({
@@ -223,13 +264,18 @@
                   time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
                 })
               }
+              _this.imageSrc=[]
             }).catch(function (error) {
               console.log(error)
+
             })
-
-          /*}
-*/
-
+          }else{//还没上传完成
+            _this.$layer.toast({
+              icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+              content: '请等待图片上传完成',
+              time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+            })
+          }
         },
          refundReason(){
           $(".refundMain #reason").on("click",function(){
@@ -272,10 +318,22 @@
           console.log($(this).text())
         })*/
       },
+      watch:{
+        imageSrc:{
+          handler(curVal,oldVal){
+
+            if(curVal.length!=0&&curVal.length==this.images.length){
+                this.submitCommit();
+            }
+          },
+          deep:true
+        },
+
+      },
       mounted(){
         var _this=this;
 
-
+        this.getToken();
         this.orderId=this.$route.query.orderId;
         this.totalAmount=this.$route.query.totalAmount;
         this.orderStatus=this.$route.query.status;
@@ -296,7 +354,7 @@
         }).catch(function (error) {
           console.log(error)
         })
-
+/*下面是直接赋值来的方法，需要具体使用的时候具体修改，在选择图片的时候上传图片，并记录图片的，然后点击删除的时候需要删除对应的标值*/
 
         /*$(".reasonInfo .refundPick li  em").click(function () {
 

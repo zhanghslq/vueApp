@@ -852,6 +852,26 @@ export default {
         }
     },
     receiveResult(result) {//接受返回值信息
+      store.save("lastPage","index")
+      store.save("cameraResult",result)
+      if(store.isDev()){
+        this.$router.push("mobileLogin")
+      }else{
+        if(store.judge()==1){
+          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+            "code": "91",
+            "index":0,
+            "url":store.getNextAddress()+"mobileLogin"
+          });
+
+        }else if(store.judge()==0){
+          window.androidXingJiApp.postMessage(JSON.stringify({
+            "code": "91",
+            "index":0,
+            "url":store.getNextAddress()+"mobileLogin"
+          }));
+        }
+      }
         alert(result)
     },
     toSearch(){

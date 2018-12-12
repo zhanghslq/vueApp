@@ -166,13 +166,13 @@
                 axios.post(store.getAddress()+'/api/wxapp/account/update',{
                   "uid":store.fetch("uid"),
                   "photo":res.data.key
-                }).then(function(re){
+                }).then(function(response){
                     self.getMessage()
                   }
 
                 ).catch(function(err) {
-                  console.log('err', err);
-                });
+                console.log('err', err);
+              });
 
               })
               .catch(function(err) {

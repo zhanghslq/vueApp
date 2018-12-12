@@ -45,6 +45,62 @@ export default {
     }
   },
   methods: {
+    toUrl(isStoreKeeper){
+      if(isStoreKeeper){//这里需要改下
+        store.save("isStoreKeeper",1)
+
+        if(store.fetch("lastPage")=='[]'||store.fetch("lastPage")==''||store.fetch("lastPage")==undefined||store.fetch("lastPage")==null){
+          store.save("index",1)
+          store.save("lasePage","index")
+        }
+        if(store.judge()==1){
+          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+            "code": "81",
+            "role":"1",
+          });
+
+          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+            "code": "91",
+            "index":store.fetch("index"),
+            "url":store.getNextAddress()+store.fetch("lastPage")
+          });
+        }else if(store.judge()==0){
+          window.androidXingJiApp.postMessage(JSON.stringify({
+            "code": "81",
+            "role":"1",
+          }));
+
+          window.androidXingJiApp.postMessage(JSON.stringify({
+            "code": "91",
+            "index":store.fetch("index"),
+            "url":store.getNextAddress()+store.fetch("lastPage")}));
+        }
+      }else{
+        store.save("isStoreKeeper",0)
+        if(store.judge()==1){
+          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+            "code": "81",
+            "role":"0",
+          });
+          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+            "code": "91",
+            "index":store.fetch("index"),
+            "url":store.getNextAddress()+store.fetch("lastPage")
+          });
+        }else if(store.judge()==0){
+          window.androidXingJiApp.postMessage(JSON.stringify({
+            "code": "81",
+
+            "role":"0",}));
+
+          window.androidXingJiApp.postMessage(JSON.stringify({
+            "code": "91",
+            "index":store.fetch("index"),
+            "url":store.getNextAddress()+store.fetch("lastPage")}));
+        }
+
+      }
+    },
     login:function(){
       let _this=this;
       axios.post(store.getAddress()+'/api/wxapp/sms/validCode',{
@@ -57,60 +113,34 @@ export default {
             console.log(response)
             store.save("uid",response.data.data.uid)
             store.save("mobile",response.data.data.mobile)
-            if(response.data.data.isStoreKeeper){
-              store.save("isStoreKeeper",1)
-
-              if(store.fetch("lastPage")=='[]'||store.fetch("lastPage")==''||store.fetch("lastPage")==undefined||store.fetch("lastPage")==null){
-                store.save("index",1)
-                store.save("lasePage","index")
-              }
-              if(store.judge()==1){
-                window.webkit.messageHandlers.currentCookies.postMessage({
-                  "code": "81",
-                  "role":"1",
-                });
-
-                window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
-                  "code": "91",
-                  "index":store.fetch("index"),
-                  "url":store.getNextAddress()+store.fetch("lastPage")
-                });
-              }else if(store.judge()==0){
-                window.androidXingJiApp.postMessage(JSON.stringify({
-                  "code": "81",
-                  "role":"1",
-                }));
-
-                window.androidXingJiApp.postMessage(JSON.stringify({
-                  "code": "91",
-                  "index":store.fetch("index"),
-                  "url":store.getNextAddress()+store.fetch("lastPage")}));
-              }
-            }else{
-              store.save("isStoreKeeper",0)
-              if(store.judge()==1){
-                window.webkit.messageHandlers.currentCookies.postMessage({
-                  "code": "81",
-                  "role":"0",
-                });
-                window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
-                  "code": "91",
-                  "index":store.fetch("index"),
-                  "url":store.getNextAddress()+store.fetch("lastPage")
-                });
-              }else if(store.judge()==0){
-                window.androidXingJiApp.postMessage(JSON.stringify({
-                  "code": "81",
-
-                  "role":"0",}));
-
-                window.androidXingJiApp.postMessage(JSON.stringify({
-                  "code": "91",
-                  "index":store.fetch("index"),
-                  "url":store.getNextAddress()+store.fetch("lastPage")}));
-              }
-
+            let result=store.fetch("cameraResult");
+            let upuid='';
+            if(result!=null&&result!=undefined&&result!=''){
+              upuid=result.uid;
             }
+            if(result==null||result==undefined||result==''){
+                _this.toUrl(response.data.data.isStoreKeeper)
+            }else{
+              if(upuid!=''&&upuid!=null&&upuid!=undefined){
+                axios.post(store.getAddress()+'/api/wxapp/account/bind',{
+                  "uid":response.data.data.uid,
+                  "referUid":upuid
+                }).then(function (response) {
+                  _this.$layer.toast({
+                    icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+                    content: '注册并绑定上级成功',
+                    time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+                  })
+                  _this.toUrl(response.data.data.isStoreKeeper)
+                }).catch(function (error) {
+                  console.log(error)
+                })
+              }else {
+                _this.toUrl(response.data.data.isStoreKeeper)
+              }
+            }
+
+
 
           }else{
             _this.$layer.toast({
