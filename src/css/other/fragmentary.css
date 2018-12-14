@@ -2592,7 +2592,43 @@ header .remind{
 
 /*交易物流 结束*/
 
-
+/*店主 二维码弹层 开始*/
+.elasticBoxCode{
+  height: auto;
+  overflow: hidden;
+  display: none;;
+}
+.elasticBoxCode .blackBagCode{
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8888;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+.elasticBoxCode .sharingLinksCode{
+  height: 4.71rem;
+  overflow: hidden;
+  width: 6.12rem;
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -2.35rem 0 0 -3.05rem;
+  z-index: 999999;
+  border-radius: 0.08rem;
+  text-align: center;
+}
+.elasticBoxCode .sharingLinksCode img{
+  width: 3.6rem;
+  height: 3.6rem;
+  display: block;
+  margin:0.4rem auto 0;
+}
+/*店主 二维码弹层 结束*/
 
 
 
