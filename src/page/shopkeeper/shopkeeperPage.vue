@@ -173,6 +173,12 @@
     </div>
   </div>
   <!--弹层 结束-->
+  <div class="elasticBoxCode">
+    <div class="blackBagCode"></div>
+    <div class="sharingLinksCode">
+      <img src="../../images/common/codePic.jpg">
+    </div>
+  </div>
 </div>
 </template>
 

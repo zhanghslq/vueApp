@@ -89,7 +89,7 @@
                         "index":1,
                         "url":store.getNextAddress()+"index"}));
                     }else if(store.judge()==1){
-                       window.webkit.messageHandlers.currentCookies.postMessage({
+                       window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                           "code": "99"
                         });
                       window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
