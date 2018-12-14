@@ -6,9 +6,9 @@
           <div class="message"><span></span><em>5</em></div>
         </router-link>
 
-        <router-link to="setUp" class="setUpIcon">
+        <a v-on:click="toSetUp()" class="setUpIcon">
 
-        </router-link>
+        </a>
 
       </header>
       <!--头部 结束-->
@@ -21,9 +21,9 @@
             <a href="#">
               <div class="headPortrait">
                 <span></span>
-                <router-link to="accountInfo">
+                <!--<router-link to="accountInfo">-->
                   <div class="heading"><img :src="imageUrl"></div>
-                </router-link>
+                <!--</router-link>-->
               </div>
               <p>{{username}}</p>
               <em>猩际会员</em>
@@ -149,6 +149,24 @@
         }
       },
       methods:{
+        toSetUp(){
+          if(store.isDev()){
+            this.$router.push("setUp")
+          }else{
+            if(store.judge()==0){
+              window.androidXingJiApp.postMessage(JSON.stringify({
+                "code": "91",
+                "index":0,
+                "url":store.getNextAddress()+"setUp"}));
+            }else if(store.judge()==1){
+              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                "code": "91",
+                "index":0,
+                "url":store.getNextAddress()+"setUp"
+              });
+            }
+          }
+        },
         toRefundProgress(){
           if(store.isDev()){
             this.$router.push("refundProgress")

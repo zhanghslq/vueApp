@@ -22,7 +22,7 @@
             <a href="javascript:void(0);" class="obtain fr" v-on:click="check($event)">获取验证码</a>
           </div>
         </div>
-        <div class="voice">收不到短信，试试 <a href="javascript:void(0);">语音验证码</a></div>
+
 
           <a  class="logonBtn" v-on:click="login()">登录</a>
 
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     toUrl(isStoreKeeper){
-      if(isStoreKeeper){//这里需要改下
+      if(isStoreKeeper==1){//这里需要改下
         store.save("isStoreKeeper",1)
 
         if(store.fetch("lastPage")=='[]'||store.fetch("lastPage")==''||store.fetch("lastPage")==undefined||store.fetch("lastPage")==null){
@@ -114,6 +114,7 @@ export default {
             store.save("uid",response.data.data.uid)
             store.save("mobile",response.data.data.mobile)
             let result=store.fetch("cameraResult");
+            localStorage.removeItem("cameraResult")
             let upuid='';
             if(result!=null&&result!=undefined&&result!=''){
               upuid=result.uid;
@@ -125,13 +126,18 @@ export default {
                 axios.post(store.getAddress()+'/api/wxapp/account/bind',{
                   "uid":response.data.data.uid,
                   "referUid":upuid
-                }).then(function (response) {
-                  _this.$layer.toast({
-                    icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
-                    content: '注册并绑定上级成功',
-                    time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
-                  })
+                }).then(function (res) {
+                  if(res.data.code==200){
+                    _this.$layer.toast({
+                      icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+                      content: '注册并绑定上级成功',
+                      time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+                    })
+                  }
+
                   _this.toUrl(response.data.data.isStoreKeeper)
+
+
                 }).catch(function (error) {
                   console.log(error)
                 })
@@ -180,6 +186,8 @@ export default {
           console.log(error);
         })
     },
+    //
+
     check: function (e) {
 
       var validCode = true
@@ -270,6 +278,4 @@ export default {
 
 
 </style>
-<style scoped>
 
-</style>

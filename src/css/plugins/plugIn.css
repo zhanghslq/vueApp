@@ -25,10 +25,10 @@ li {
 	margin:0 auto;
 	display:block;
 }
-/*#nav {
+#nav {
 	height: 30px;
 	line-height: 30px;
-}*/
+}
 #nav .swiper-slide span {
 	text-align:center;
 	display:block;

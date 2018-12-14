@@ -55,7 +55,9 @@
           <router-link to="highlncome">
             高收益商品
           </router-link>
-
+          <router-link to="manageSystem">
+            管理系统
+          </router-link>
 
         </div>
       </div>

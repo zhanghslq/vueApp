@@ -2,7 +2,7 @@
     <div>
       <!--头部 开始-->
       <header>
-        <a href="javascript:history.go(-1);" class="returnBtn"></a>
+        <a v-on:click="toPersonlPage()" class="returnBtn"></a>
         设置
       </header>
       <!--头部 结束-->
@@ -61,31 +61,68 @@
 
 <script>
 
+    import store from "../../service/store";
+
     export default {
         name: "setUp",
         methods:{
             logOut(){
-
-              this.$layer.dialog({
+              let _this=this;
+              _this.$layer.dialog({
                 title: ['退出登录', 'background:skyblue'], // 第一个是标题内容  第二个是标题栏的style(可以为空)
                 content: '确定要退出此账号吗',
                 contentClass: 'className',
                 btn: ['取消','确定'],
                 //   time: 2000
-              })
-              // 如果有btn
-                .then(function (res){
+              }).then(function (res){
                   // res为0时是用户点击了左边  为1时用户点击了右边
-
                   if(res==1){//确认取消订单
-                    localStorage.removeItem("uid")
-                    this.$router.push("index")
+                    localStorage.removeItem("uid");
+                    localStorage.removeItem("isStoreKeeper");
 
+                    if(store.judge()==0){
+                      window.androidXingJiApp.postMessage(JSON.stringify({
+                        "code": "99",
+                        }));
+                      window.androidXingJiApp.postMessage(JSON.stringify({
+                        "code": "91",
+                        "index":1,
+                        "url":store.getNextAddress()+"index"}));
+                    }else if(store.judge()==1){
+                       window.webkit.messageHandlers.currentCookies.postMessage({
+                          "code": "99"
+                        });
+                      window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                        "code": "91",
+                        "index":1,
+                        "url":store.getNextAddress()+"index"
+                      });
+                    }
                   }else{//取
                     console.log("取消")
                   }
-                })
+                }).catch(function (error) {
+                  console.log(error)
+              })
 
+            },
+            toPersonlPage(){
+              if(store.isDev()){
+                this.$router.push("personalPage")
+              }else{
+                if(store.judge()==0){
+                  window.androidXingJiApp.postMessage(JSON.stringify({
+                    "code": "91",
+                    "index":4,
+                    "url":store.getNextAddress()+"personalPage"}));
+                }else if(store.judge()==1){
+                  window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                    "code": "91",
+                    "index":4,
+                    "url":store.getNextAddress()+"personalPage"
+                  });
+                }
+              }
             }
         }
     }

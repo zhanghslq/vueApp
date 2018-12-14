@@ -546,7 +546,7 @@ export default new Router({
       path: '/',
       name: 'login',
       component(resolve){
-        require(['../page/login/login.vue'],resolve)
+        require(['../page/login/mobileLogin.vue'],resolve)
       }
     },
     {
@@ -562,7 +562,6 @@ export default new Router({
       component(resolve){
         require(['../page/index/search.vue'],resolve)
       }
-
     },
     {
       path: '/selectCountryArea',
@@ -570,8 +569,6 @@ export default new Router({
       component(resolve){
         require(['../page/login/selectCountryArea.vue'],resolve)
       }
-
-
     },
     {
       path: '/tenCommendation',

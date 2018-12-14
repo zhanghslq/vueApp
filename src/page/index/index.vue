@@ -808,6 +808,7 @@ import {TouchSlide} from '../../js/plugins/TouchSlide.1.1.min'
 import Swiper from 'swiper'
 
 import axios from 'axios'
+import 'vue-layer-mobile/need/layer.css'
 let pageSwiper=null;
 
 
@@ -852,27 +853,52 @@ export default {
         }
     },
     receiveResult(result) {//接受返回值信息
-      store.save("lastPage","index")
-      store.save("cameraResult",result)
-      if(store.isDev()){
-        this.$router.push("mobileLogin")
-      }else{
-        if(store.judge()==1){
-          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
-            "code": "91",
-            "index":0,
-            "url":store.getNextAddress()+"mobileLogin"
-          });
+      let _this=this;
+      if(result!=null&&result!=undefined&&result!=''){
 
-        }else if(store.judge()==0){
-          window.androidXingJiApp.postMessage(JSON.stringify({
-            "code": "91",
-            "index":0,
-            "url":store.getNextAddress()+"mobileLogin"
-          }));
+        result=JSON.parse(result)
+
+        if(result.uid!=undefined&&result.uid!=null&&result.uid!=''){
+
+          store.save("lastPage","index")
+          store.save("cameraResult",result)
+
+          if(store.isDev()){
+            this.$router.push("mobileLogin")
+          }else{
+            if(store.judge()==1){
+              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                "code": "91",
+                "index":0,
+                "url":store.getNextAddress()+"mobileLogin"
+              });
+
+            }else if(store.judge()==0){
+              window.androidXingJiApp.postMessage(JSON.stringify({
+                "code": "91",
+                "index":0,
+                "url":store.getNextAddress()+"mobileLogin"
+              }));
+            }
+          }
+        }else{
+          _this.$layer.toast({
+            icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+            content: "得到的结果取uid为空",
+            time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+          })
         }
+      }else{
+
+
+        _this.$layer.toast({
+          icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
+          content: "扫描得到的结果为空",
+          time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
+        })
       }
-        alert(result)
+
+
     },
     toSearch(){
       if(store.isDev()){
@@ -909,7 +935,7 @@ export default {
       $('#carouselMain li a').css('max-height', height1)
     },
     /*轮播图*/
-  beautyImg: function () {
+    beautyImg: function () {
     TouchSlide({
       slideCell: "#beautyMain",
       titCell: ".beautyBtn ul",
@@ -953,7 +979,7 @@ export default {
   let tSpeed = 300 //切换速度300ms
   let clientWidth;
   let navSum;
-  let navSlideWidth;
+  let navSlideWidth=75;
   let  navWidth;
   var navSwiper = new Swiper('#nav', {
     //observer:true,//修改swiper自己或子元素时，自动初始化swiper
@@ -1124,23 +1150,7 @@ export default {
       this.mobile_view(mobile)
     }
   },
-  created(){
-    console.log("执行判断开始")
-    if(store.judge()==1){//1代表ios
 
-      console.log("ios进入")
-
-     /* window.webkit.messageHandlers.currentCookies.postMessage({
-        "code": "99"
-      });*/
-
-    }else if(store.judge()==3){
-      console.log("windows  浏览器模拟")
-    }else if(store.judge()==0){
-      console.log("安卓")
-    }
-
-  },
   destroyed(){
     $('#bursting .swiper-slide').unbind("click")
   },
@@ -1148,7 +1158,22 @@ export default {
     window['receiveResult'] = (result) => {
       this.receiveResult(result)
     }
-
+    var isStore=store.fetch("isStoreKeeper");
+    if(!store.isDev()){
+      if(1==isStore){
+        if(store.judge()==1){
+          window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+            "code": "81",
+            "role":"1",
+          });
+        }else if(store.judge()==0){
+          window.androidXingJiApp.postMessage(JSON.stringify({
+            "code": "81",
+            "role":"1",
+          }));
+        }
+      }
+    }
 
     this.isDev=store.isDev();
 
@@ -1174,8 +1199,7 @@ export default {
     })
 
 
-      axios.post(store.getAddress()+'/api/wxapp/category/listTop',{
-      }).then(function (response) {
+      axios.post(store.getAddress()+'/api/wxapp/category/listTop').then(function (response) {
         console.log(response)
         if (response.data.code == 200) {
           _this.topList=response.data.list
@@ -1263,7 +1287,7 @@ export default {
       position: fixed !important;
       z-index: 222;
       left: 0;
-      top: 50px;
+      top: 42px;
       right: 0;
     }
 
