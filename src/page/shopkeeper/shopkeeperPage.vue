@@ -176,7 +176,7 @@
   <div class="elasticBoxCode">
     <div class="blackBagCode"></div>
     <div class="sharingLinksCode">
-      <img src="../../images/common/codePic.jpg">
+      <img :src="myQrcode">
     </div>
   </div>
 </div>
@@ -186,12 +186,14 @@
   import {TouchSlide} from "../../js/plugins/TouchSlide.1.1.min";
   import Swiper from 'swiper'
   import store from "../../service/store";
+  import axios from 'axios'
 
   export default {
         name: "shopkeeperPage",
     data(){
           return{
-            isDev:false
+            isDev:false,
+            myQrcode:'',
           }
     },
     components:{
@@ -199,6 +201,18 @@
       TouchSlide
     },
     methods:{
+      /*我是店主 二维码弹框 开始*/
+      QRCode(){
+    $(".perRight").on("click",function(){
+      $("body").css({"height":"100%","overflow":"hidden"})
+      $(".elasticBoxCode").show();
+    });
+    $(".elasticBoxCode .blackBagCode").on("click",function(){
+      $("body").css({"height":"auto","overflow":"auto"})
+      $(".elasticBoxCode").hide();
+    });
+  },
+  /*我是店主 二维码弹框 结束*/
       toPutForward(){
         if(store.isDev()){
           this.$router.push("putForward")
@@ -242,13 +256,26 @@
       $("body").css({"height":"auto","overflow":"auto"})
       $(".elasticBox").hide();
     })
-  }
+  },
+      getMyCode(){
+        let _this=this;
+        axios.post(store.getAddress()+'/api/wxapp/account/qrcode',{"uid":store.fetch("uid")}).then(function (response) {
+          if(response.data.code==200){
+            _this.myQrcode=response.data.data.qrcode
+          }
+        }).catch(function (error) {
+          console.log(error)
+        })
+      }
 
   },
     mounted:function () {
           this.isDev=store.isDev();
       this.bannerFocusImg(),
       this.sharingLink()
+      this.getMyCode()
+      this.QRCode()
+
     }
 }
 </script>
