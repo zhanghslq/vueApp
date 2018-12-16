@@ -110,38 +110,50 @@ export default {
         .then(function (response) {
           console.log(response)
           if(response.data.code==200){
-            console.log(response)
+
             store.save("uid",response.data.data.uid)
             store.save("mobile",response.data.data.mobile)
             let result=store.fetch("cameraResult");
-            localStorage.removeItem("cameraResult")
+            //alert("登陆页面取得result")
+            //alert(result)
             let upuid='';
             if(result!=null&&result!=undefined&&result!=''){
               upuid=result.uid;
             }
             if(result==null||result==undefined||result==''){
+                  //alert("result  结果为空")
                 _this.toUrl(response.data.data.isStoreKeeper)
+
             }else{
+              localStorage.removeItem("cameraResult")
               if(upuid!=''&&upuid!=null&&upuid!=undefined){
                 axios.post(store.getAddress()+'/api/wxapp/account/bind',{
                   "uid":response.data.data.uid,
                   "referUid":upuid
                 }).then(function (res) {
+                  //alert("绑定上级得到的结果")
+                  //alert(res)
+                  //alert(res.data.code)
                   if(res.data.code==200){
+                    //alert("绑定上级得到的结果为200正常")
                     _this.$layer.toast({
                       icon: 'icon-check', // 图标clssName 如果为空 toast位置位于下方,否则居中
                       content: '注册并绑定上级成功',
                       time: 2000 // 自动消失时间 toast类型默认消失时间为2000毫秒
                     })
+
+                      //alert("谈完准备跳转")
+                      _this.toUrl(response.data.data.isStoreKeeper)
+                  }else{
+                    alert("绑定失败")
                   }
-
-                  _this.toUrl(response.data.data.isStoreKeeper)
-
 
                 }).catch(function (error) {
                   console.log(error)
                 })
               }else {
+
+                //alert("upuid  是空")
                 _this.toUrl(response.data.data.isStoreKeeper)
               }
             }

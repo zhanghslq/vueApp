@@ -854,22 +854,28 @@ export default {
     },
     receiveResult(result) {//接受返回值信息
       let _this=this;
+      //alert("扫描得到的结果")
+      //alert(result)
       if(result!=null&&result!=undefined&&result!=''){
-
-        result=JSON.parse(result)
-
+        if(typeof result=="string"){
+          result=JSON.parse(result)
+        }
+        //alert("经过判定")
+        //alert(result)
         if(result.uid!=undefined&&result.uid!=null&&result.uid!=''){
 
           store.save("lastPage","index")
+          store.save("index",1)
           store.save("cameraResult",result)
 
+         // alert("存起来之后取出来")
+         // alert(store.fetch("cameraResult"))
+          //alert(store.fetch("cameraResult").uid)
           if(store.isDev()){
             this.$router.push("mobileLogin")
           }else{
             if(store.judge()==1){
-              window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
-                "code": "99"
-              });
+
               window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                 "code": "91",
                 "index":0,

@@ -82,16 +82,18 @@
 
                     if(store.judge()==0){
                       window.androidXingJiApp.postMessage(JSON.stringify({
-                        "code": "99",
+                        "code": "81",
+                        "role":"0",
                         }));
                       window.androidXingJiApp.postMessage(JSON.stringify({
                         "code": "91",
                         "index":1,
                         "url":store.getNextAddress()+"index"}));
                     }else if(store.judge()==1){
-                       window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
-                          "code": "99"
-                        });
+                      window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
+                        "code": "81",
+                        "role":"0",
+                      });
                       window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
                         "code": "91",
                         "index":1,

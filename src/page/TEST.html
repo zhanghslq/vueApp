@@ -1,0 +1,18 @@
+<html>
+<script>
+  function test(){
+    alert("进入测试方法")
+    var test={"uid":3}
+    console.log(typeof test)
+    var one=JSON.stringify(test);
+    console.log(typeof one)
+    var two=JSON.parse(one)
+    console.log(two)
+    console.log(typeof two=="object")
+
+  }
+
+</script>
+<div style="height:300px;width:200px;background-color:black" onclick="test()"></div>
+
+</html>
