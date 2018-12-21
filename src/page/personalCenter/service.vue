@@ -1,8 +1,9 @@
 <template>
-  <div >
+  <div>
     <div class="leavingMessage" >
       <a href="javascript:history.go(-1);" class="returnBtn"></a>
       <iframe src="https://chat.weiliaokefu.com/mobile-index-cid-31204" >
+
       </iframe>
     </div>
   </div>

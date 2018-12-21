@@ -1,18 +1,24 @@
 <html>
+<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+<script src="../js/libs/jquery-2.1.1.min.js"></script>
 <script>
-  function test(){
-    alert("进入测试方法")
-    var test={"uid":3}
-    console.log(typeof test)
-    var one=JSON.stringify(test);
-    console.log(typeof one)
-    var two=JSON.parse(one)
-    console.log(two)
-    console.log(typeof two=="object")
 
-  }
+  $(document).ready(function()
+  {
+    var obj = new WxLogin({
+      self_redirect:true,
+      id:"login_container",
+      appid: "wx2db0cf503ddc8bec",
+      scope: "snsapi_login",
+      redirect_uri: encodeURI("www.baidu.com"),
+      state: "",
+      style: "black",
+      href: ""
+    });
 
+  });
 </script>
-<div style="height:300px;width:200px;background-color:black" onclick="test()"></div>
+<div id="login_container">
 
+</div>
 </html>

@@ -9,7 +9,7 @@
           <h3>李宗森</h3>
           <span>ID:1285324061</span>
         </div>
-        <a href="#" class="perRight"></a>
+        <a  class="perRight"></a>
       </div>
       <div class="shopkeeepNav">
        <router-link to="shopKeepSelection">
@@ -20,7 +20,7 @@
           <em class="invitationIcon"></em>
           <span>邀请店主</span>
         </a>
-        <a href="#" id="shareLike">
+        <a  id="shareLike">
           <em class="shareIcon"></em>
           <span>分享店铺</span>
         </a>
@@ -117,7 +117,8 @@
           <router-link to="newBrochureInfo">
             <img src="../../images/index/newBrochure.jpg">
           </router-link>
-          <a ><img src="../../images/index/classMust.jpg"></a>
+
+          <a href="https://www.iqiyi.com/v_19rr1i5o2k.html"><img src="../../images/index/classMust.jpg"></a>
           <a ><img src="../../images/index/demeanor.jpg"></a>
           <a ><img src="../../images/index/activityInfo.jpg"></a>
         </div>

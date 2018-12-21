@@ -3,7 +3,7 @@
   <header class="fix">
     <a href="javascript:history.go(-1);" class="returnBtn"></a>
     猩际出品
-    <a href="#" class="shareBtn"></a>
+    <a  class="shareBtn"></a>
   </header>
   <!--头部 结束-->
   <!--中间 开始-->
@@ -13,10 +13,9 @@
       <div id="carouselMain2">
         <div class="tempWrap">
           <ul class="img">
-            <li><a href="#"><img src="../../images/temporary/banner1.jpg"></a></li>
-            <li><a href="#"><img src="../../images/temporary/banner2.jpg"></a></li>
-            <li><a href="#"><img src="../../images/temporary/banner3.jpg"></a></li>
-            <li><a href="#"><img src="../../images/temporary/banner4.jpg"></a></li>
+            <li v-for="(image,index) in bannerImage" :key="index">
+              <a ><img :src="image.imgUrl"></a>
+            </li>
           </ul>
         </div>
         <div class="carouselBtn">
@@ -40,30 +39,13 @@
         <span>RECOMMEND</span>
       </div>
       <div class="listMain">
-        <a href="#">
+        <a v-for="product in weekRecommend">
           <em></em>
-          <img src="../../images/temporary/commodity8.png">
-          <h3>环球出品收口便携垃圾袋</h3>
-          <span>3包共15卷</span>
+          <img :src="product.titleImage">
+          <h3>{{product.title}}</h3>
+
         </a>
-        <a href="#">
-          <em></em>
-          <img src="../../images/temporary/commodity8.png">
-          <h3>环球出品收口便携垃圾袋</h3>
-          <span>3包共15卷</span>
-        </a>
-        <a href="#">
-          <em></em>
-          <img src="../../images/temporary/commodity8.png">
-          <h3>环球出品收口便携垃圾袋</h3>
-          <span>3包共15卷</span>
-        </a>
-        <a href="#">
-          <em></em>
-          <img src="../../images/temporary/commodity8.png">
-          <h3>环球出品收口便携垃圾袋</h3>
-          <span>3包共15卷</span>
-        </a>
+
       </div>
     </div>
     <div class="newGood">
@@ -72,38 +54,15 @@
         <span>NEWARRIVAL</span>
       </div>
       <ul class="newGoodMain">
-        <li>
-          <a href="#" class="newGoodLeft"><img src="../../images/temporary/3.jpg"></a>
+        <li v-for="pro in newProduct">
+          <a  class="newGoodLeft"><img :src="pro.titleImage"></a>
           <div class="newGoodRight">
-            <h3>肩颈电动按摩椅</h3>
-            <span>零捆绑 释放双手</span>
-            <a href="#" class="purchaseBtn">立即购买</a>
+            <h3>{{pro.title}}</h3>
+            <!--<span>零捆绑 释放双手</span>-->
+            <a  class="purchaseBtn">立即购买</a>
           </div>
         </li>
-        <li>
-          <a href="#" class="newGoodLeft"><img src="../../images/temporary/3.jpg"></a>
-          <div class="newGoodRight">
-            <h3>肩颈电动按摩椅</h3>
-            <span>零捆绑 释放双手</span>
-            <a href="#" class="purchaseBtn">立即购买</a>
-          </div>
-        </li>
-        <li>
-          <a href="#" class="newGoodLeft"><img src="../../images/temporary/3.jpg"></a>
-          <div class="newGoodRight">
-            <h3>肩颈电动按摩椅</h3>
-            <span>零捆绑 释放双手</span>
-            <a href="#" class="purchaseBtn">立即购买</a>
-          </div>
-        </li>
-        <li>
-          <a href="#" class="newGoodLeft"><img src="../../images/temporary/3.jpg"></a>
-          <div class="newGoodRight">
-            <h3>肩颈电动按摩椅</h3>
-            <span>零捆绑 释放双手</span>
-            <a href="#" class="purchaseBtn">立即购买</a>
-          </div>
-        </li>
+
       </ul>
     </div>
     <div class="selectedSeries">
@@ -115,12 +74,8 @@
         <div id="top" class="navMain" style="transition-duration: 300ms; transform: translateY(0px);">
           <div class="swiper-container swiper-container-horizontal swiper-container-free-mode swiper-container-ios" id="nav2">
             <div class="swiper-wrapper">
-              <div class="swiper-slide swiper-slide-active"><span>精致生活</span></div>
-              <div class="swiper-slide " ><span>中国美食</span></div>
-              <div class="swiper-slide"><span>手工之美</span></div>
-              <div class="swiper-slide"><span>舒适生活</span></div>
-              <div class="swiper-slide"><span>进口滋补</span></div>
-              <div class="swiper-slide"><span>健康生活</span></div>
+              <div v-for="(product,index) in boutiqueList" :key="index" class="swiper-slide " v-bind:class="{ 'swiper-slide-active': !index}"><span>{{product.name}}</span></div>
+
               <div class="bar">
                 <div class="color" ></div>
               </div>
@@ -137,93 +92,73 @@
                 <p>在平凡的生活中能找寻出趣味</p>
                 <p>便是生活最好的模样</p>
                 <p>猩际出品精挑细选把你日子如诗般填充</p>
-                <a href="#" class="moreBtn">更多</a>
+                <a  class="moreBtn">更多</a>
               </div>
               <ul class="exhibitionList">
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
-                <li>
-                  <a href="#">
-                    <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
-                    <h3>【金晨同款】KOEHL晶彩KO</h3>
-                    <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
-                    <h3>【金晨同款】KOEHL晶彩KO</h3>
-                    <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
-                    <h3>【金晨同款】KOEHL晶彩KO</h3>
-                    <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
-                  </a>
-                </li>
+
               </ul>
             </div>
             <div class="swiper-slide slidepage swiper-slide-active topDistance">
@@ -234,88 +169,88 @@
                 <p>在平凡的生活中能找寻出趣味</p>
                 <p>便是生活最好的模样</p>
                 <p>猩际出品精挑细选把你日子如诗般填充</p>
-                <a href="#" class="moreBtn">更多</a>
+                <a  class="moreBtn">更多</a>
               </div>
               <ul class="exhibitionList">
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
@@ -332,88 +267,88 @@
                 <p>在平凡的生活中能找寻出趣味</p>
                 <p>便是生活最好的模样</p>
                 <p>猩际出品精挑细选把你日子如诗般填充</p>
-                <a href="#" class="moreBtn">更多</a>
+                <a  class="moreBtn">更多</a>
               </div>
               <ul class="exhibitionList">
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
@@ -429,88 +364,88 @@
                 <p>在平凡的生活中能找寻出趣味</p>
                 <p>便是生活最好的模样</p>
                 <p>猩际出品精挑细选把你日子如诗般填充</p>
-                <a href="#" class="moreBtn">更多</a>
+                <a  class="moreBtn">更多</a>
               </div>
               <ul class="exhibitionList">
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
@@ -526,88 +461,88 @@
                 <p>在平凡的生活中能找寻出趣味</p>
                 <p>便是生活最好的模样</p>
                 <p>猩际出品精挑细选把你日子如诗般填充</p>
-                <a href="#" class="moreBtn">更多</a>
+                <a  class="moreBtn">更多</a>
               </div>
               <ul class="exhibitionList">
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
@@ -623,88 +558,88 @@
                 <p>在平凡的生活中能找寻出趣味</p>
                 <p>便是生活最好的模样</p>
                 <p>猩际出品精挑细选把你日子如诗般填充</p>
-                <a href="#" class="moreBtn">更多</a>
+                <a  class="moreBtn">更多</a>
               </div>
               <ul class="exhibitionList">
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a >
                     <div class="exhibitPic"><img src="../../images/temporary/commodity8.jpg"></div>
                     <h3>【金晨同款】KOEHL晶彩KO</h3>
                     <div class="priceInfo"><span class="newPri">￥<em>79</em></span><span class="timePri">￥179</span></div>
@@ -723,10 +658,20 @@
 
 <script>
   import $ from 'jquery'
+  import axios from 'axios'
   import {TouchSlide} from "../../js/plugins/TouchSlide.1.1.min";
   import Swiper from 'swiper'
+  import store from '../../service/store'
   export default {
   name: 'xingjiProduce',
+  data(){
+    return{
+      bannerImage:[],//顶部banner
+      weekRecommend:[],//每周推荐
+      newProduct:[],//新品
+      boutiqueList:[],//精品
+    }
+  },
   components:{
     TouchSlide
   },
@@ -853,8 +798,62 @@
       $(window).unbind()
     },
   mounted(){
-    this.bannerFocusImg();
-    this.produceList();
+    let _this=this;
+
+
+    axios.post(store.getAddress()+'/api/wxapp/fromXj/listBanner').then(function (response) {
+      if(response.data.code==200){
+        _this.bannerImage=response.data.list;
+        _this.$nextTick(function (){
+          _this.bannerFocusImg()
+        })
+
+      }else{
+        console.log("程序查询出错")
+      }
+    }).catch(function (error) {
+      console.log(error)
+    })
+    axios.post(store.getAddress()+'/api/wxapp/fromXj/listWeekRecommend').then(function (response) {
+      if(response.data.code=200){
+        _this.weekRecommend=response.data.list;
+      }else{
+        console.log("每周推荐查询出错")
+      }
+    }).catch(function (error) {
+      console.log(error)
+    })
+    axios.post(store.getAddress()+'/api/wxapp/fromXj/listNew').then(function (response) {
+    if(response.data.code==200){
+      _this.newProduct=response.data.list;
+    }else{
+      console.log("新品出错")
+    }
+
+
+    }).catch(function (error) {
+      console.log(error)
+    })
+    axios.post(store.getAddress()+'/api/wxapp/fromXj/listSupreme').then(function (response) {
+
+      if(response.data.code==200){
+        _this.boutiqueList=response.data.list;
+        _this.$nextTick(function () {
+          _this.produceList();
+        })
+      }else{
+        console.log("分类查询出错")
+      }
+
+    }).catch(function (error) {
+      console.log(error)
+    })
+
+
+
+
+
+
     $(window).scroll(function(){
       var $scrolltop=document.documentElement.scrollTop||document.body.scrollTop;
       var $tabScroll=$("#top").offset().top-600;
