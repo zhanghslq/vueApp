@@ -341,7 +341,14 @@ export default {
       tagsIdStr:'0',
       baseTags:[],
 
-      isShopIndex:false,
+
+
+
+      isAppFrom:false,//是否是app原生导航跳转过来的
+
+      beforeToDetailAddress:'',//跳转来之前的地址
+
+      barIndex:'',//跳转来之前的地址属于第几个
     }
   },
 
@@ -352,15 +359,15 @@ export default {
       if(store.isDev()){
         _this.$router.go(-1)
       }else{//正式
-        if(_this.isShopIndex){//从购物袋过来的
+        if(_this.isAppFrom){    //从购物袋过来的
           if(store.judge()==0){//andriod    暂时先用跳转
             window.androidXingJiApp.postMessage(JSON.stringify({
               "code": "91",
-              "index": 3,
-              "url": store.getNextAddress() + "shopIndex"
+              "index": _this.barIndex,
+              "url": store.getNextAddress() + _this.beforeToDetailAddress
             }));
 
-          }else if(store.judge()==1){//ios
+          }else if(store.judge()==1){//ios  只需要关闭
             window.webkit.messageHandlers.htmlSetAppActionCode.postMessage({
               "code": "99",
             });
@@ -446,7 +453,7 @@ export default {
         }
       })//遍历完成
 
-      console.log("tagstr========"+self.tagsIdStr)
+
 
       var allSkus=this.allSkus;
       for (let i = 0; i < allSkus.length; i++) {
@@ -655,10 +662,17 @@ export default {
 
       _this.checkSelfAreaData();
 
-      if(store.fetch("isShopIndex")==1){
-        _this.isShopIndex=true;
-        window.localStorage.removeItem("isShopIndex")
+
+      if(store.fetch("isAppFrom")==1){
+        _this.isAppFrom=true;
+        _this.barIndex=store.fetch("barIndex")
+        _this.beforeToDetailAddress=store.fetch("beforeToDetailAddress")
+
+        window.localStorage.removeItem("isAppFrom")
+        window.localStorage.removeItem("barIndex")
+        window.localStorage.removeItem("beforeToDetailAddress")
       }
+
 
       this.productId=this.$route.query.id
       this.skuId=this.$route.query.skuId

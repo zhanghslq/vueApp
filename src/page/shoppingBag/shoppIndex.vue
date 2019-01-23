@@ -189,7 +189,14 @@
         toDetail(goodsId,skuId){
           var _this=this;
           //需要先存一个标识，来判断是从购物车跳转到商品详情页
-          store.save("isShopIndex","1");
+
+
+
+          store.save("isAppFrom","1")  //标识是否是原生导航栏跳过来的
+          store.save("beforeToDetailAddress","shopIndex") //存储来的地址
+          store.save("barIndex","3")
+
+
           if(store.isDev()){
             _this.$router.push({path:'commodityPage',query:{"id":goodsId,"skuId":skuId}})
           }else {//线上环境，判断ios或者安卓，

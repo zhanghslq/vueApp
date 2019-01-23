@@ -52,13 +52,6 @@ export default new Router({
       }
 
     },{
-      path:'/test',
-      name:'test',
-      component(resolve){
-        require(['../page/test.vue'],resolve)
-      }
-
-    },{
       path:'/service',
       name:'service',
       component(resolve){

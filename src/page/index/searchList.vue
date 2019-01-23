@@ -5,10 +5,8 @@
         <a href="javascript:history.go(-1);" class="returnBtn"></a>
         <div class="searchHead searchList">
           <div class="search">
-            <em v-on:click="querySearchList()"></em>
-
+            <em v-on:click="refresh()"></em>
               <input type="text" v-model="kw" placeholder="搜索喜欢的宝贝">
-
           </div>
         </div>
       </header>
@@ -130,6 +128,7 @@
               console.log(error);
             })
         },
+
         refreshData(){
           store.save("kw",this.kw)
           let _this=this

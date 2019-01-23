@@ -35,7 +35,7 @@
         <div class="swiper-container scroll swiper-container-vertical swiper-container-free-mode swiper-container-ios">
           <div class="swiper-wrapper">
             <div class="swiper-slide slidescroll" style="height: auto">
-              <div class="homePageMain content-slide" id="test">
+              <div class="homePageMain content-slide">
                 <!--轮播图-->
                 <div class="carouseContent swiper-no-swiping">
                   <div id="carouselMain">
@@ -75,7 +75,7 @@
                   <router-link to="classification">
                     <em class="classificaIcon"></em> 分类
                   </router-link>
-                </div>
+                </div><!--
                 <div class="recommend">
                   <a  class="recommendLeft" v-if="listRecommendSpecial[0]!=undefined" ><img :src="listRecommendSpecial[0].imgUrl"></a>
                   <div class="recommendRight">
@@ -85,7 +85,7 @@
                       <a  class="rightTwoRight" v-if="listRecommendSpecial[3]!=undefined"><img :src="listRecommendSpecial[3].imgUrl"></a>
                     </div>
                   </div>
-                </div>
+                </div>-->
                 <!--爆品秒杀-->
                 <div class="secKill" v-if="listSecKillSpecial.length!=0">
                   <h2>爆品秒杀</h2>
@@ -93,13 +93,8 @@
                     <div class="swiper-container1 flashSaleList">
                       <div class="swiper-wrapper" id="bursting" >
                           <div v-for="(items ,index) in listSecKillSpecial"  :class="index === 0?'swiper-slide bursNav burCur ':'swiper-slide bursNav'" >
-
                             {{items.name}}
-
                           </div>
-
-
-
 
                       </div>
                       <div class="burstCont" v-for="(items ,index) in listSecKillSpecial">
@@ -134,30 +129,21 @@
 
                   </div>
                 </div>
-                <div class="guessLike">
+                <div class="guessLike" v-if="guessLike.length!=0">
                   <h2>猜你喜欢</h2>
                   <div class="likeMain">
-                    <a href="#">
+                    <a v-on:click="toProductDetail(product.id,product.skuId)"  v-for="(product,index) in guessLike" :key="index">
                       <div class="likePic">
-                        <img src="../../images/temporary/commodity8.jpg">
+                        <img :src="product.titleImage">
                       </div>
-                      <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
+                      <p>{{product.title}}</p>
                       <div class="price">
-                        <span class="now">￥<em>65.</em> 00 </span>
-                        <span class="original">￥<em>76.</em> 00 </span>
+                        <span class="now">￥<em>{{product.actualPrice}}</em></span>
+                        <span class="original">￥<em>{{product.price}}</em></span>
                       </div>
                     </a>
-                    <a href="#">
-                      <div class="likePic">
-									<img src="../../images/temporary/commodity8.jpg">
-								</div>
-                      <p>【原味】【9杯装】熊猫有礼&新农新疆冰淇淋</p>
-                      <div class="price">
-                        <span class="now">￥<em>65.</em> 00 </span>
-                        <span class="original">￥<em>76.</em> 00 </span>
-                      </div>
-                    </a>
-                  <div style="height: 300px;">
+
+                    <div style="height: 300px;">
 
                   </div>
 
@@ -323,23 +309,9 @@
                   </div>
                 </div>
               </div>
-              <div class="activitiesSelect">
-                <div class="titles">精选活动</div>
-                <div class="selectCont">
-                  <div class="seleLeft"><a href="#"><img src="../../images/index/activity1.jpg"></a></div>
-                  <div class="seleRight">
-                    <a href="#"><img src="../../images/index/activity2.jpg"></a>
-                    <a href="#"><img src="../../images/index/activity3.jpg"></a>
-                  </div>
-                </div>
-              </div>
+
               <div class="nationalMain">
-                <div class="titles">环球国家馆</div>
-                <div class="nationalInfo">
-                  <a href="#"><img src="../../images/index/country1.jpg"></a>
-                  <a href="#"><img src="../../images/index/country2.jpg"></a>
-                  <a href="#"><img src="../../images/index/country3.jpg"></a>
-                </div>
+
                 <div class="propaganda">
                   <a href="#" class="propagendaBanner">
                     <img src="../../images/temporary/3.jpg">
@@ -823,10 +795,12 @@ export default {
       topList:[],//首页置顶导航
       pageList:[],
       topImageList:[],//首页轮播
-      listRecommendSpecial:[],//推荐
+      //listRecommendSpecial:[],//推荐
       listSecKillSpecial:[],//爆款秒杀
       listHotSellSpecial:[],//热卖
       navSwiper:{},
+      guessLike:[],
+      scrollSwiper:[],
 
     }
   },
@@ -851,6 +825,15 @@ export default {
             }));
           }
         }
+    },
+    toProductDetail(id,skuId){//跳转商品详情页
+
+      store.save("isAppFrom","1")  //标识是否是原生导航栏跳过来的
+      store.save("beforeToDetailAddress","index") //存储来的地址
+      store.save("barIndex","1")
+
+      this.$router.push({path:'commodityPage',query:{id:id,skuId:skuId}})
+
     },
     receiveResult(result) {//接受返回值信息
       let _this=this;
@@ -1131,10 +1114,30 @@ export default {
         slidesPerView: 'auto',
 
         slidesOffsetAfter: 80,
+
+        on:{
+          touchMove(){
+            //console.log(scrollSwiper[0].translate)
+          },
+          touchEnd(){
+
+            // 上拉加载
+           /* if(this.translate <=  - 50 &&this.translate < 0) {
+              // console.log("已经到达底部！");
+
+
+
+             console.log("请求数据填充")//渲染完成之后，重新计算高度
+
+             this.update(); // 重新计算高度;
+
+            }*/
+
+            //上拉加载结束
+          }
+        }
       })
-
-
-
+      this.scrollSwiper=scrollSwiper;
      this.navSwiper=navSwiper;
 
 
@@ -1222,9 +1225,22 @@ export default {
       }).catch(function (error) {
         console.log(error);
       })
+    //猜你喜欢
+    axios.post(store.getAddress()+'/api/wxapp/product/guessLike').then(function (response) {
+      console.log(response)
+      if (response.data.code == 200) {
+        _this.guessLike=response.data.list
 
+        _this.$nextTick(function () {
+
+          _this.scrollSwiper[0].update();
+        })
+      }
+    }).catch(function (error) {
+      console.log(error);
+    })
     //推荐
-    axios.post(store.getAddress()+'/api/wxapp/home/listRecommendSpecial',{
+    /*axios.post(store.getAddress()+'/api/wxapp/home/listRecommendSpecial',{
     }).then(function (response) {
       console.log(response)
       if (response.data.code == 200) {
@@ -1235,7 +1251,7 @@ export default {
       }
     }).catch(function (error) {
       console.log(error);
-    })
+    })*/
     axios.post(store.getAddress()+'/api/wxapp/home/listHotSellSpecial',{
     }).then(function (response) {
       console.log(response)
